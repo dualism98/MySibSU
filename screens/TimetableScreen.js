@@ -8,7 +8,7 @@ import TimetableHeader from '../modules/TimetableHeader'
 import Day from '../modules/timetableFolder/Day'
 import Swiper from 'react-native-swiper'
 import Help from '../modules/timetableFolder/Help'
-
+import { LinearGradient } from 'expo-linear-gradient'
 
 const groupURL = 'https://timetable.mysibsau.ru/groups/'
 const secondGroupURL = 'http://185.228.233.243/groups/'
@@ -38,17 +38,8 @@ export default class TimetableScreen extends PureComponent {
         groupList: [],
         timetable: [{even_week: [], odd_week: []}],
         loading: true,
-        changeButtonFirst: {
-            width: w,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'lightgray',
-        },
-        changeButtonSecond: {
-            width: w,
-            alignItems: 'center',
-            justifyContent: 'center',
-        },
+        width: 0,
+        height: 0,
         similar: [],
         shown: [],
         x: 0,
@@ -185,7 +176,7 @@ export default class TimetableScreen extends PureComponent {
                 
                 <View style={styles.container}>
                     <View style={{ height: StatusBar.currentHeight, width: w, backgroundColor: 'white', position: 'absolute', zIndex: 2}}></View>
-                    <TimetableHeader title={this.state.textGroup} onPress={() => {
+                    <TimetableHeader title={this.state.textGroup} week={'1 неделя'} onPress={() => {
                         AsyncStorage.removeItem('@key')
                         AsyncStorage.removeItem('@group')
                         this.setState({ group: null, textGroup: '', shown: [], timetable: [{even_week: [], odd_week: []}]})
@@ -193,14 +184,9 @@ export default class TimetableScreen extends PureComponent {
 
                     <Swiper style={styles.wrapper} loop={false} index={this.getIndex() - 1} showsPagination={false}>
                         <ScrollView ref={"_ScrollView1"}>
-    
-                        <View style={styles.changeView}>
-                            <TouchableWithoutFeedback>
-                                <View style={this.state.changeButtonSecond}>
-                                    <Text style={styles.changeText}>1 неделя</Text>
-                                </View>
-                            </TouchableWithoutFeedback>
-                        </View>
+                            <View style={styles.week}>
+                                <Text style={styles.changeText}>1 неделя</Text>
+                            </View>
                         {this.state.loading === true ? <Text style={styles.loading}>Подождите, идёт загрузка...</Text> :
                         this.state.timetable[0].odd_week.map(item => {
                             return(
@@ -217,13 +203,9 @@ export default class TimetableScreen extends PureComponent {
                         )})}
                         </ScrollView>
                         <ScrollView ref={"_ScrollView2"}>
-                        <View style={styles.changeView}>
-                            <TouchableWithoutFeedback>
-                                <View style={this.state.changeButtonSecond}>
-                                    <Text style={styles.changeText}>2 неделя</Text>
-                                </View>
-                            </TouchableWithoutFeedback>
-                        </View>
+                        <View style={styles.week}>
+                                <Text style={styles.changeText}>2 неделя</Text>
+                            </View>
                         {this.state.loading === true ? <Text style={styles.loading}>Подождите, идёт загрузка...</Text> :
                         this.state.timetable[0].even_week.map(item => {
                             return(<View onLayout={(event) => {
@@ -252,20 +234,27 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         flex: 1,
         alignItems: 'center',
-        paddingBottom: 0
+        paddingBottom: 0,
     },
 
     input: {
         width: w * 0.75,
         height: h * 0.06,
-        borderWidth: 2,
-        borderColor: '#006AB3',
         borderTopLeftRadius: 7,
         borderBottomLeftRadius: 7,
         backgroundColor: 'white',
         paddingLeft: 10,
         fontSize: 20,
-        fontFamily: 'roboto'
+        fontFamily: 'roboto',
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 6,
+	        height: 6,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+
+        elevation: 4,
     },
 
     button: {
@@ -273,35 +262,19 @@ const styles = StyleSheet.create({
         width: w * 0.15,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: '#006AB3',
-        borderWidth: 2,
         borderLeftWidth: 0,
         borderTopRightRadius: 7,
         borderBottomRightRadius: 7,
         backgroundColor: 'white',
-    },
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 6,
+	        height: 6,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
 
-    changeView: {
-        height: w * 0.1,
-        flexDirection: 'row',
-        alignSelf: 'center',
-        borderTopWidth: 2,
-        borderBottomWidth: 2,
-        borderColor: '#006AB3',
-        marginBottom: 20
-    },
-
-    changeButton: {
-        width: w,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    changeButtonChoosen: {
-        width: w * 0.5,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'lightgray',
+        elevation: 4,
     },
 
     changeText: {
@@ -310,29 +283,36 @@ const styles = StyleSheet.create({
         color: '#006AB3',
     },
 
-    changeGroupView: {
-        height: w * 0.1,
-        width: w,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 20,
-        borderBottomWidth: 2,
-        borderColor: '#006AB3',
-    },
-
-    changeGroupText: {
-        color: '#006AB3',
-        fontFamily: 'roboto',
-        fontSize: 20
-    },
-
     loading: {
         marginTop: 20,
         fontSize: 20,
         fontFamily: 'roboto',
         color: '#006AB3',
         alignSelf: 'center'
-    }
+    },
+
+    week: {
+        width: 100,
+        alignItems: 'center',
+        paddingLeft: 5,
+        paddingRight: 5,
+        paddingTop: 3,
+        paddingBottom: 3,
+        borderRadius: 15,
+        backgroundColor: 'white',
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 6,
+	        height: 6,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+
+        elevation: 4,
+        marginTop: 10,
+        marginRight: w * 0.05,
+        alignSelf: 'flex-end',
+    },
 
 })
 

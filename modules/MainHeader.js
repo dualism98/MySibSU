@@ -23,8 +23,6 @@ const styles = StyleSheet.create({
         elevation: 10,
         position: 'relative',
         flexDirection: 'row',
-        borderBottomWidth: 3,
-        borderColor: 'rgb(125, 199, 28)',
         alignItems: 'flex-end',
       },
     

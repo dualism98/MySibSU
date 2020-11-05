@@ -12,15 +12,23 @@ const Day = ({day, week, currentWeek, weekDay}) => {
                 <Text style={styles.title}>{weekday[Number(day.day)]}</Text>
                 {week === currentWeek && weekDay ===  weekday[Number(day.day)] ?
                         Platform.OS === 'android' ?
-                        <Text style={{ backgroundColor: 'red', alignSelf: 'center', fontSize: 18, color: 'white', paddingLeft: 8, paddingRight: 8, paddingBottom: 4, paddingTop: 3, borderRadius: 14, fontFamily: 'roboto', marginLeft: 3}}>cегодня</Text> :
+                        <Text style={{ backgroundColor: '#FF7575', opacity: 0.9, alignSelf: 'center', fontSize: 18, color: 'white', paddingLeft: 8, paddingRight: 8, paddingBottom: 4, paddingTop: 3, borderRadius: 14, fontFamily: 'roboto', marginLeft: 3,
+                        shadowOffset: {
+                            width: 0,
+                            height: 3,
+                        },
+                        shadowOpacity: 0.27,
+                        shadowRadius: 4.65,
+                        elevation: 10,}}>cегодня</Text> :
                         <Text style={{ alignSelf: 'center', fontSize: 18, color: 'white', paddingLeft: 8, paddingRight: 8, paddingBottom: 4, paddingTop: 3, borderRadius: 14, fontFamily: 'roboto', marginLeft: 3}}>(сегодня)</Text>
                  : null}
                 </View>
-                <View style={styles.subjects}>
-                    {day.lessons.map(item => {
-                        return(<Subject data={item} key={item.time}/>)
-                    })}
-                </View>
+                {day.lessons.map(item => {
+                    let index = day.lessons.indexOf(item)
+                    return(<Subject data={item} key={index}/>)
+                })}
+                
+                <View style={{borderBottomLeftRadius: 14, borderBottomRightRadius: 14}}></View>
             </View>
         )
     }
@@ -32,44 +40,51 @@ const Day = ({day, week, currentWeek, weekDay}) => {
 const styles = StyleSheet.create({
 
     container: {
-        backgroundColor: 'white',
+        //backgroundColor: 'white',
         alignItems: 'center',
         marginBottom: 30,
-        width: w * 0.9,
+        //width: w * 0.9,
         alignSelf: 'center',
+        /*shadowColor: "#000",
+        shadowOffset: {
+	        width: 0,
+	        height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,*/
+        //borderRadius: 14
     },
 
     dayname: {
         width: w * 0.9,
         minHeight: h * 0.06,
         maxHeight: h * 0.06,
-        backgroundColor: '#006AB3',
-        borderWidth: 2,
-        borderColor: '#006AB3',
-        borderTopLeftRadius: 14,
-        borderTopRightRadius: 14,
-        justifyContent: 'center',
+        //backgroundColor: '#006AB3',
+        //borderColor: '#006AB3',
         flexDirection: 'row',
-        alignContent: 'center',
+        //elevation: 6,
 
     },
 
     title: {
-        textAlign: 'center',
+        marginRight: 5,
+        paddingLeft: 7,
+        textAlign: 'left',
         textAlignVertical: 'center',
-        color: 'white', 
+        color: '#5575A7', 
         fontFamily: 'roboto',
+        fontWeight: 'bold',
         fontSize: 20,
         alignSelf: 'center'
     },
 
     subjects: {
+        color: 'transparent',
         width: w * 0.9,
         borderBottomLeftRadius: 14,
         borderBottomRightRadius: 14,
-        borderColor: '#006AB3',
-        borderWidth: 2,
-        borderTopWidth: 0,
+        //borderColor: '#006AB3',
         paddingBottom: 10
     }
 })

@@ -6,7 +6,7 @@ import { useFonts } from '@use-expo/font'
 
 function App(){
   let [fontsLoaded] = useFonts({
-    'roboto': require('./assets/fonts/release.ttf'),
+    'roboto': require('./assets/fonts/18811.ttf'),
   });
   if (!fontsLoaded) {
     return <AppLoading />;

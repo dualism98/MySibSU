@@ -12,7 +12,15 @@ const MapModule = (name) => {
             if(mode === true){setMode(false)}
             else{setMode(true)}
             }}>
-            <View style={{width: w, alignItems: 'center'}}>
+            <View style={{width: w, alignItems: 'center', shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 3,
+},
+shadowOpacity: 0.27,
+shadowRadius: 4.65,
+
+elevation: 6,}}>
             {mode === true ?
             <Image style={{width: w * 0.7, height: h/2, marginBottom: 10, marginTop: 10, borderRadius: 10, resizeMode: 'contain'}}
             source={{ uri: name.name }} /> : 
