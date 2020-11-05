@@ -4,15 +4,16 @@ import { h, w } from './constants'
 import { AntDesign } from '@expo/vector-icons'
 
 
-const MainHeader = ({title, onPress}) => {
-    const {container, maintext} = styles
+const MainHeader = ({title, onPress, week}) => {
+    const {container, maintext } = styles
     return(
         <View style={container}>
-            <Image style={{width: 45, height: 45, marginLeft: 31}} source={require('../assets/logo.jpeg')}/>
+            {/*<Image style={{width: 45, height: 45, marginLeft: 31}} source={require('../assets/logo.jpeg')}/>*/}
+            <TouchableWithoutFeedback style={{ zIndex: 4}} onPress={onPress}>
+                <AntDesign name="logout" size={24} color="gray" style={{ position: 'absolute', left: 20, top: 45, transform:[{rotate: '180deg'}] }}/>
+            </TouchableWithoutFeedback>
             <Text style={maintext}>{title}</Text>
-                <TouchableWithoutFeedback onPress={onPress}>
-                    <AntDesign name="logout" size={24} color="gray" style={{ position: 'absolute', right: 20, top: 45 }}/>
-                </TouchableWithoutFeedback>
+            {/*<Text style={styles.week}>{week}</Text>*/}
         </View>
     )
 }
@@ -22,23 +23,33 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         height: 80,
         width: w,
-        paddingLeft: 10,
         paddingTop: 30,
-        elevation: 10,
+        elevation: 8,
         position: 'relative',
         flexDirection: 'row',
-        borderBottomWidth: 3,
-        borderColor: 'rgb(125, 199, 28)',
-        alignItems: 'flex-end',
       },
     
     maintext: {
         fontSize: 30,
         color: 'grey',
         textAlignVertical: 'bottom',
-        marginLeft: 10,
-        fontFamily: 'roboto'
+        fontFamily: 'roboto',
+        alignSelf: 'center',
+        position: 'absolute',
+        left: w * 0.3,
+        top: 35,
       },
+    
+    week: {
+        position: 'absolute',
+        right: 20,
+        bottom: 8,
+        fontFamily: 'roboto',
+        textAlignVertical: 'bottom',
+        fontSize: 17,
+        color: 'gray'
+
+    }
 })
 
 export default MainHeader

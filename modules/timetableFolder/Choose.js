@@ -62,26 +62,33 @@ const styles = StyleSheet.create({
         zIndex: -1,
         position: 'absolute',
         top: 130 + h * 0.06, 
+        
     },
 
     table: {
         marginTop: 20,
-        borderRadius: 4,
-        borderWidth: 1,
-        borderColor: 'rgb(154,158,159)',
+        borderRadius: 20,
     },
 
     cell: {
         width: w * 0.3,
         height: h * 0.06,
-        borderWidth: 1,
-        borderColor: 'rgb(154,158,159)',
+        borderRadius: 3,
         justifyContent: 'center',
-        paddingLeft: 5
+        paddingLeft: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 2,
+	        height: 2,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+
+        elevation: 2,
     },
 
     cellText: {
-        //fontFamily: 'roboto',
+        fontFamily: 'roboto',
         fontSize: 16,
         color: '#006AB3'
     }

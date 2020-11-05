@@ -12,7 +12,7 @@ const Header = ({title, onPress}) => {
                 <Ionicons name="ios-arrow-back" size={30} color="black" style={{ color: '#006AB3', paddingRight: 20, marginBottom: 8}}/>
             </TouchableWithoutFeedback>
             
-            <Image style={{width: 45, height: 45}} source={require('../assets/logo.jpeg')}/>
+            {/*<Image style={{width: 45, height: 45}} source={require('../assets/logo.jpeg')}/>*/}
             <Text style={maintext}>{title}</Text>
         </View>
     )
@@ -28,17 +28,16 @@ const styles = StyleSheet.create({
         elevation: 10,
         position: 'relative',
         flexDirection: 'row',
-        borderBottomWidth: 3,
-        borderColor: 'rgb(125, 199, 28)',
-        alignItems: 'flex-end',
+        alignItems: 'center',
       },
     
     maintext: {
         fontSize: 30,
-        color: 'grey',
+        color: 'gray',
         textAlignVertical: 'bottom',
         marginLeft: 10,
-        fontFamily: 'roboto'
+        fontFamily: 'roboto',
+        textAlign: 'center',
       },
 })
 

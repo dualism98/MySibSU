@@ -25,10 +25,17 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginTop: 15,
         marginRight: w * 0.03,
-        borderWidth: 2,
-        borderColor: 'gray',
         borderRadius: 10,
         textAlignVertical: 'bottom',
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 6,
+	        height: 6,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+
+        elevation: 4,
     },
 
     text: {

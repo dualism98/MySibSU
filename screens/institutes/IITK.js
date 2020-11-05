@@ -1,7 +1,6 @@
 import React, { PureComponent, Component } from 'react'
-import { View, Text, StyleSheet, Image, TouchableWithoutFeedback, Linking } from 'react-native'
+import { View, Text, StyleSheet, Image, Linking , TouchableOpacity} from 'react-native'
 import call from 'react-native-phone-call'
-import Tab from '../../modules/Tab'
 import { h, w } from '../../modules/constants'
 import Header from '../../modules/Header'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -11,32 +10,36 @@ import Swiper from 'react-native-swiper'
 const Information = ({ number, info }) => {
     if (number == 1){
         return(
-            <View>
-            <Text style={{fontFamily: 'roboto', fontSize: 30, color: '#006AB3', marginLeft: 20, marginTop: 25}}>ОБЩАЯ ИНФОРМАЦИЯ</Text>
-            <View style={{flexDirection:'row', flexWrap: 'wrap', marginBottom: 15}}>
-                <Image style={{width: w*0.4, height: w*0.4, resizeMode: 'stretch', marginTop: 25, marginLeft: 15,}} source={info[0][1].photo} ></Image>
-                <Text style={{width: w/2, marginTop: 40, marginLeft: 10, color: '#006AB3', fontSize: 15, fontFamily: 'roboto'}}>{info[0][1].rector} {'\n'}{info[0][1].pos}{'\n'}{info[0][1].rank}</Text>
-                
+            <View style={{ minHeight: h}}>
+            <View style={styles.general}>
+                <Text style={styles.generalText}>ОБЩАЯ ИНФОРМАЦИЯ</Text>
             </View>
-            <View style={{flexDirection:'row', marginBottom: 20}}>
+            
+            <View style={styles.dekan}>
+                <Image style={{width: w*0.4, height: w*0.4, resizeMode: 'stretch', marginLeft: 15,}} source={info[0][1].photo} ></Image>
+                <View>
+                <Text style={styles.dekanText}>{info[0][1].rector} {'\n'}{info[0][1].pos}{'\n'}{info[0][1].rank}</Text>
+                </View>
+            </View>
+            
+            <View style={styles.info}>
                 <Image style={{width: w*0.1, height: w * 0.12, resizeMode:"stretch", marginLeft: 15, marginRight: 10}} source={require('../../assets/adress.png')}></Image>
-                <Text style={{height: 'auto', maxWidth: w * 0.6, color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center'}}>{info[0][1].address}</Text>
+                <Text style={{height: 'auto', maxWidth: w * 0.6, color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', marginBottom: 5, marginTop: 5}}>{info[0][1].address}</Text>
             </View>
-            <View style={{flexDirection: 'column', justifyContent: 'space-evenly', marginTop: 10, width: w/2, marginLeft: 10}}>
-            <TouchableWithoutFeedback onPress={() => call({number: info[0][1].telefon, prompt: false})}>
-                <View style={{flexDirection: 'row', height: w * 0.1, marginBottom: 10, textAlignVertical: 'center' }}>
-                    <Image style={{width: w*0.08, height:w*0.08, resizeMode:"stretch", marginLeft: 10, marginRight: 10 }} source={require('../../assets/telefon.png')}></Image>
+            
+            <TouchableOpacity onPress={() => call({number: info[0][1].telefon, prompt: false})}>
+                <View style={styles.info}>
+                    <Image style={{width: w*0.08, height:w*0.08, resizeMode:"stretch", marginLeft: 15, marginRight: 10 }} source={require('../../assets/telefon.png')}></Image>
                     <Text style={{ fontFamily: 'roboto', color: '#006AB3', fontSize: 18, textAlignVertical: 'center'}}>Позвонить</Text>
                 </View>
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
 
-            <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${info[0][1].email}?subject==&`)}>
-                <View style={{flexDirection: 'row', height: w * 0.1, marginBottom: 10}}>
-                    <Image style={{width: w*0.08, height:w*0.08, resizeMode:"stretch", marginLeft: 10, marginRight: 10}} source={require('../../assets/mail.png')}></Image>
+            <TouchableOpacity onPress={() => Linking.openURL(`mailto:${info[0][1].email}?subject==&`)}>
+                <View style={styles.info}>
+                    <Image style={{width: w*0.08, height:w*0.08, resizeMode:"stretch", marginLeft: 15, marginRight: 10}} source={require('../../assets/mail.png')}></Image>
                     <Text style={{ fontFamily: 'roboto', color: '#006AB3', fontSize: 18, textAlignVertical: 'center'}}>Написать письмо</Text>
                 </View>
-            </TouchableWithoutFeedback>
-            </View>
+            </TouchableOpacity>
             </View>
         )
     }
@@ -65,20 +68,20 @@ const Information = ({ number, info }) => {
                 <Text style={{height: 'auto', maxWidth: w * 0.6, color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center'}}>{info[0][3].address}</Text>
             </View>
             <View style={{flexDirection: 'column', justifyContent: 'space-evenly', marginTop: 10, width: w/2, marginLeft: 10}}>
-            <TouchableWithoutFeedback onPress={() => call({number: info[0][3].telefon, prompt: false})}>
+            <TouchableOpacity onPress={() => call({number: info[0][3].telefon, prompt: false})}>
                 <View style={{flexDirection: 'row', height: w * 0.1, marginBottom: 10}}>
                     <Image style={{width: w*0.08, height:w*0.08, resizeMode:"stretch", marginLeft: 10, marginRight: 10}} source={require('../../assets/telefon_.png')}></Image>
                     <Text style={{ fontFamily: 'roboto', color: '#006AB3', fontSize: 18, textAlignVertical: 'center'}}>Позвонить</Text>
                 </View>
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
 
-            <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${info[0][3].email}?subject==&`)}>
+            <TouchableOpacity onPress={() => Linking.openURL(`mailto:${info[0][3].email}?subject==&`)}>
                 {(info[0][3].email === undefined ? <View></View> : 
                 <View  style={{flexDirection: 'row', height: w * 0.1, marginBottom: 10}}>
                     <Image style={{width: w*0.08, height:w*0.08, resizeMode:"stretch", marginLeft: 10, marginRight: 10}} source={require('../../assets/mail_.png')}></Image>
                     <Text style={{ fontFamily: 'roboto', color: '#006AB3', fontSize: 18, textAlignVertical: 'center'}}>Написать письмо</Text>
                 </View>)}
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
             </View>
             </View>
         )}
@@ -131,7 +134,68 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        fontSize: 24
+        fontSize: 24,
     },
+
+    general: {
+        width: w * 0.9,
+        alignSelf: 'center',
+        marginTop: 25,
+        borderRadius: 15,
+    },
+
+    generalText: {
+        fontFamily: 'roboto',
+        fontSize: 30,
+        color: '#006AB3', 
+        textAlign: 'center',
+    },
+
+    dekan:{
+        width: w * 0.9,
+        height: w * 0.5,
+        flexDirection: 'row',
+        marginTop: 20,
+        borderRadius: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 6,
+	        height: 6,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+
+        elevation: 4,
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginBottom: 10,
+    },
+
+    dekanText: {
+        width: '80%',
+        alignSelf: 'center',
+        color: '#006AB3', 
+        fontSize: 15, 
+        fontFamily: 'roboto',
+    },
+
+    info: {
+        minHeight: w * 0.15,
+        width: w * 0.9,
+        flexDirection: 'row',
+        marginTop: 10,
+        borderRadius: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 6,
+	        height: 6,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+
+        elevation: 4,
+        alignItems: 'center',
+        alignSelf: 'center',
+    }
 
 })
