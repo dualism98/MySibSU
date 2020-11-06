@@ -20,7 +20,7 @@ export default class ActiveScreen extends PureComponent {
             <View style={container}>
                 <MainHeader title={'Мои объединения'} onPress={() => this.props.navigation.goBack()}/>
                 <ScrollView>
-                <Text style={text}>Студенческие объединения</Text>
+                {/*<Text style={text}>Студенческие объединения</Text>*/}
                 <View style={{flexDirection: 'row'}}>
                     <View style={main}>
                         {unions.map( item => {
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        fontSize: 30,
+        fontSize: 25,
         color: '#006AB3',
         fontFamily: 'roboto',
         marginTop: 10,

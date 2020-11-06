@@ -13,7 +13,6 @@ import { LinearGradient } from 'expo-linear-gradient'
 const groupURL = 'https://timetable.mysibsau.ru/groups/'
 const secondGroupURL = 'http://185.228.233.243/groups/'
 const weekURL = 'http://185.228.233.243/CurrentWeek/'
-const secondWeekURL = 'http://185.228.233.243/CurrentWeek/'
 
 const storeData = async (value, name) => {
     try {
@@ -38,12 +37,11 @@ export default class TimetableScreen extends PureComponent {
         groupList: [],
         timetable: [{even_week: [], odd_week: []}],
         loading: true,
-        width: 0,
-        height: 0,
         similar: [],
         shown: [],
         x: 0,
         y: 0,
+        index: 1
     }
 
     async getInfo(){
@@ -52,7 +50,7 @@ export default class TimetableScreen extends PureComponent {
         const name = await AsyncStorage.getItem('@name').then((name) => this.setState({ textGroup: name}))
         const weekApiCall = await fetch(weekURL, {method: 'GET'})
             const week = await weekApiCall.json()
-            await this.setState({ week: week.week, currentWeek: week.week })
+            await this.setState({ week: week.week, currentWeek: week.week, index: week.week - 1})
 
         this.getTimetable(this.state.group)
         return currentWeek
@@ -176,17 +174,14 @@ export default class TimetableScreen extends PureComponent {
                 
                 <View style={styles.container}>
                     <View style={{ height: StatusBar.currentHeight, width: w, backgroundColor: 'white', position: 'absolute', zIndex: 2}}></View>
-                    <TimetableHeader title={this.state.textGroup} week={'1 неделя'} onPress={() => {
+                    <TimetableHeader title={this.state.textGroup} week={this.state.index} onPress={() => {
                         AsyncStorage.removeItem('@key')
                         AsyncStorage.removeItem('@group')
                         this.setState({ group: null, textGroup: '', shown: [], timetable: [{even_week: [], odd_week: []}]})
                         }}/>
 
-                    <Swiper style={styles.wrapper} loop={false} index={this.getIndex() - 1} showsPagination={false}>
+                    <Swiper style={styles.wrapper} loop={false} index={this.getIndex() - 1} showsPagination={false} onIndexChanged={(index) => this.setState({index: index})}>
                         <ScrollView ref={"_ScrollView1"}>
-                            <View style={styles.week}>
-                                <Text style={styles.changeText}>1 неделя</Text>
-                            </View>
                         {this.state.loading === true ? <Text style={styles.loading}>Подождите, идёт загрузка...</Text> :
                         this.state.timetable[0].odd_week.map(item => {
                             return(
@@ -203,9 +198,6 @@ export default class TimetableScreen extends PureComponent {
                         )})}
                         </ScrollView>
                         <ScrollView ref={"_ScrollView2"}>
-                        <View style={styles.week}>
-                                <Text style={styles.changeText}>2 неделя</Text>
-                            </View>
                         {this.state.loading === true ? <Text style={styles.loading}>Подождите, идёт загрузка...</Text> :
                         this.state.timetable[0].even_week.map(item => {
                             return(<View onLayout={(event) => {
@@ -291,28 +283,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
 
-    week: {
-        width: 100,
-        alignItems: 'center',
-        paddingLeft: 5,
-        paddingRight: 5,
-        paddingTop: 3,
-        paddingBottom: 3,
-        borderRadius: 15,
-        backgroundColor: 'white',
-        shadowColor: "#000",
-        shadowOffset: {
-	        width: 6,
-	        height: 6,
-        },
-        shadowOpacity: 0.30,
-        shadowRadius: 4.65,
-
-        elevation: 4,
-        marginTop: 10,
-        marginRight: w * 0.05,
-        alignSelf: 'flex-end',
-    },
+    
 
 })
 

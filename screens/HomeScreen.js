@@ -86,6 +86,7 @@ type Props = {
   iconName: string;
   isCurrent?: boolean;
 };
+
 const BottomMenuItem = ({ iconName, isCurrent }: Props) => {
   const images = {
       'События': <Image source={isCurrent ? require('../assets/events.png') : require('../assets/events-outline.png')} style={{ width: 25, height: 25}}/>, 
@@ -93,6 +94,7 @@ const BottomMenuItem = ({ iconName, isCurrent }: Props) => {
       'Расписание': <Image source={isCurrent ? require('../assets/timetable.png') : require('../assets/timetable-outline.png')} style={{ width: 25, height: 25, }}/>, 
       'Институты': <Image source={isCurrent ? require('../assets/institutes.png') : require('../assets/institutes-outline.png')} style={{ width: 25, height: 25}}/>,
       'Объединения': <Image source={isCurrent ? require('../assets/active.png') : require('../assets/active-outline.png')} style={{ width: 25, height: 25}}/>}
+  const color = isCurrent ? '#5575A7' : 'gray'
   return (
     <View
       style={{
@@ -102,7 +104,7 @@ const BottomMenuItem = ({ iconName, isCurrent }: Props) => {
       }}
     >
       {images[iconName]}
-      <Text style={{ fontFamily: 'roboto', fontSize: 10,color: 'gray' }}>{iconName}</Text>
+      <Text style={{ fontFamily: 'roboto', fontSize: 10, color: color }}>{iconName}</Text>
     </View>
   );
 };
@@ -111,7 +113,7 @@ const BottomMenuItem = ({ iconName, isCurrent }: Props) => {
 const TabBar = ({state, descriptors, navigation}: BottomTabBarProps) => {
   const totalWidth = Dimensions.get("window").width;
   const tabWidth = totalWidth / state.routes.length;
-  const [translateValue] = useState(new Animated.Value(state.index));
+  const [translateValue] = useState(new Animated.Value(tabWidth * state.index));
   console.log(translateValue)
   return (
     <View style={[style.tabContainer, { width: totalWidth }]}>
@@ -122,9 +124,9 @@ const TabBar = ({state, descriptors, navigation}: BottomTabBarProps) => {
                   style.slider,
                   {
                       transform: [{ translateX: translateValue }],
-                      width: tabWidth - 40,
+                      width: tabWidth - 30,
                       height: 3,
-                      marginLeft: 10
+                      marginLeft: 5
                   },
               ]}
           />
@@ -205,7 +207,7 @@ const style = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 10,
-    backgroundColor: 'lightblue',
+    backgroundColor: '#5575A7',
     borderRadius: 10,
     width: 50
 },

@@ -1,39 +1,14 @@
 import React, {useState} from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { h, w } from '../constants'
-import { LinearGradient } from 'expo-linear-gradient'
+
 
 const types = ['', 'Лекция', 'Лабораторная работа', 'Практика']
 const subgroups = ['', 'I подгруппа', 'II подгруппа']
 
 const Subject = (data) =>{
-    const [height, setHeight] = useState(0)
-    const [width, setWidth] = useState(0)
-
     return(
-        <View style={styles.container} onLayout={(event) =>{
-            var {x, y, width, height} = event.nativeEvent.layout;
-            setHeight(height)
-            setWidth(width)
-        }}>
-            <LinearGradient
-                colors={['white', 'lightgray']}
-                style={{
-                position: 'absolute',
-                left: 3,
-                right: 0,
-                top: 4,
-                height: height - 4,
-                width: w * 0.89 - 3,
-                borderRadius: 20,
-                opacity: 0.4,
-                alignSelf: 'center',
-                }}
-
-                start={{x: 0, y: 0}}
-                end={{x: 1, y: 1}}
-            />
-            
+        <View style={[styles.box, styles.centerContent, styles.shadow2]}>
             <Text style={styles.time}>{data.data.time}</Text>
             {data.data.subgroups.map(item => {
                 return(
@@ -56,8 +31,19 @@ const Subject = (data) =>{
     )
 }
 
+function elevationShadowStyle(elevation) {
+    return {
+      elevation,
+      shadowColor: 'black',
+      shadowOffset: { width: 0, height: 0.5 * elevation },
+      shadowOpacity: 0.3,
+      shadowRadius: 0.8 * elevation
+    };
+  }
+
 const styles = StyleSheet.create({
     container: {
+        height: 200,
         width: w * 0.9,
         paddingLeft: 15,
         paddingRight: 5,
@@ -65,15 +51,8 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
         marginTop: 8,
         borderRadius: 20,
-        shadowColor: "#000",
-        shadowOffset: {
-	        width: 6,
-	        height: 6,
-        },
-        shadowOpacity: 0.30,
-        shadowRadius: 4.65,
-
-        elevation: 4,
+        backgroundColor: 'white',
+        shadowRadius: 4,
         alignItems: 'center'
     },
 
@@ -117,7 +96,20 @@ const styles = StyleSheet.create({
         width: w * 0.82,
         textAlign: 'right',
         marginBottom: 3
-    }
+    },
+
+    shadow2: elevationShadowStyle(10),
+  box: {
+    borderRadius: 15,
+    backgroundColor: 'white',
+    padding: 10,
+    width: w * 0.9,
+    marginTop: 10,
+  },
+  centerContent: {
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
 })
 
 export default Subject

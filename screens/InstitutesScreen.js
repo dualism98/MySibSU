@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignSelf: 'flex-end',
         flex: 1,
-        marginBottom: 100,
+        marginBottom: 150,
     },
 
     back: {

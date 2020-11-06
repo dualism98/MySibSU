@@ -27,8 +27,6 @@ const Day = ({day, week, currentWeek, weekDay}) => {
                     let index = day.lessons.indexOf(item)
                     return(<Subject data={item} key={index}/>)
                 })}
-                
-                <View style={{borderBottomLeftRadius: 14, borderBottomRightRadius: 14}}></View>
             </View>
         )
     }
@@ -40,20 +38,9 @@ const Day = ({day, week, currentWeek, weekDay}) => {
 const styles = StyleSheet.create({
 
     container: {
-        //backgroundColor: 'white',
         alignItems: 'center',
-        marginBottom: 30,
-        //width: w * 0.9,
+        marginBottom: 60,
         alignSelf: 'center',
-        /*shadowColor: "#000",
-        shadowOffset: {
-	        width: 0,
-	        height: 3,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-        elevation: 6,*/
-        //borderRadius: 14
     },
 
     dayname: {

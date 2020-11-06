@@ -37,7 +37,7 @@ export default class EventsScreen extends PureComponent {
         return(
             <View style={container}>
                 <MainHeader title={'Мои события'} onPress={() => this.props.navigation.goBack()}/>
-                <ScrollView>
+                <ScrollView nestedScrollEnabled = {true}>
                         {
                             (loading === true) ? <Text style={text}>Подождите, идет загрузка...</Text> :
                             eventList.map(item =>           

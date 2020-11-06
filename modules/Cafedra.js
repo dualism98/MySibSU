@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native'
 import { h, w } from './constants'
 
-
 class Cafedra extends Component{
     state = {
         show: false

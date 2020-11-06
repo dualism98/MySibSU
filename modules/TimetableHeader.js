@@ -12,8 +12,12 @@ const MainHeader = ({title, onPress, week}) => {
             <TouchableWithoutFeedback style={{ zIndex: 4}} onPress={onPress}>
                 <AntDesign name="logout" size={24} color="gray" style={{ position: 'absolute', left: 20, top: 45, transform:[{rotate: '180deg'}] }}/>
             </TouchableWithoutFeedback>
+            
             <Text style={maintext}>{title}</Text>
-            {/*<Text style={styles.week}>{week}</Text>*/}
+            <View style={styles.week}>
+                <Text style={styles.week_text}>{week+1} неделя</Text>
+            </View>
+            
         </View>
     )
 }
@@ -39,16 +43,34 @@ const styles = StyleSheet.create({
         left: w * 0.3,
         top: 35,
       },
-    
-    week: {
+
+      week: {
+        width: 100,
+        alignItems: 'center',
+        paddingLeft: 5,
+        paddingRight: 5,
+        paddingTop: 3,
+        paddingBottom: 3,
+        borderRadius: 15,
+        backgroundColor: 'white',
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 6,
+	        height: 6,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+
+        elevation: 4,
         position: 'absolute',
-        right: 20,
-        bottom: 8,
+        right: 10,
+        bottom: 10,
+    },
+    
+    week_text: {
         fontFamily: 'roboto',
-        textAlignVertical: 'bottom',
         fontSize: 17,
         color: 'gray'
-
     }
 })
 
