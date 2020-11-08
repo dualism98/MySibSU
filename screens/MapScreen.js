@@ -38,8 +38,10 @@ export default class MapScreen extends PureComponent {
                                 <Text style={head}>Учебные объекты (правый берег):</Text>
                                 {maps[0].map( map => {
                                     return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.url)} key={map.name}>
-                                            <View style={{borderBottomWidth: 2, borderBottomColor: '#006CB5', marginBottom: 10,}}>
-                                            <Text style={text}>{map.name}{'\n'}{map.address}</Text>
+                                            <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                                                <View style={{borderLeftWidth: 2, borderLeftColor: '#006AB3',}}>
+                                                    <Text style={text}>{map.name}{'\n'}{map.address}</Text>
+                                                </View>
                                             </View>
                                             </TouchableWithoutFeedback>)
                                 })}
@@ -48,8 +50,8 @@ export default class MapScreen extends PureComponent {
                                 <Text style={head}>Учебные объекты (левый берег):</Text>
                                 {maps[1].map( map => {
                                     return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.url)} key={map.name}>
-                                            <View style={{borderBottomWidth: 2, borderBottomColor: 'rgb(125, 199, 28)', marginBottom: 10}}>
-                                            <Text style={text}>{map.name}{'\n'}{map.address}</Text>
+                                            <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                                            <Text style={text_left}>{map.name}{'\n'}{map.address}</Text>
                                             </View>
                                             </TouchableWithoutFeedback>)
                                 })}    
@@ -59,6 +61,16 @@ export default class MapScreen extends PureComponent {
                 </View>)
     }
 }
+
+function elevationShadowStyle(elevation) {
+    return {
+      elevation,
+      shadowColor: 'black',
+      shadowOffset: { width: 0, height: 0.5 * elevation },
+      shadowOpacity: 0.3,
+      shadowRadius: 0.8 * elevation
+    };
+  }
 
 const styles = StyleSheet.create({
     container: {
@@ -73,9 +85,9 @@ const styles = StyleSheet.create({
     right: {
         width: w * 0.94,
         marginBottom: 10,
-        borderLeftWidth: 3,
-        borderLeftColor: '#006CB5',
-        paddingLeft: 7,
+        //borderLeftWidth: 3,
+        //borderLeftColor: '#006CB5',
+        //paddingLeft: 7,
         flex: 1
     },
 
@@ -83,9 +95,9 @@ const styles = StyleSheet.create({
         width: w * 0.94,
         marginBottom: 10,
         marginTop: 10,
-        borderLeftWidth: 3,
-        borderLeftColor: 'rgb(125, 199, 28)',
-        paddingLeft: 7,
+        //borderLeftWidth: 3,
+        //borderLeftColor: 'rgb(125, 199, 28)',
+        //paddingLeft: 7,
     },
 
     head: {
@@ -94,55 +106,48 @@ const styles = StyleSheet.create({
         color: 'grey',
         width: w * 0.94,
         marginBottom: 8,
+        marginLeft: 7
     },
 
     text: {
-        width: w * 0.90,
-        fontSize: 16,
+        height: '100%',
+        fontSize: 13,
         fontFamily: 'roboto',
         alignSelf: 'flex-start',
         color: 'black',
-        paddingBottom: 4,
-        
+        paddingBottom: 0,
+        paddingLeft: 11,
     },
 
     text_left: {
-        width: w * 0.90,
-        fontSize: 16,
+        height: '100%',
+        borderLeftWidth: 2,
+        borderLeftColor: 'rgb(125, 199, 28)',
+        fontSize: 13,
         fontFamily: 'roboto',
         alignSelf: 'flex-start',
         color: 'black',
-        paddingBottom: 4,
-        borderBottomWidth: 2,
-        borderBottomColor: 'rgb(125, 199, 28)',
-        marginBottom: 10,
-    },
-
-    changeView: {
-        height: w * 0.1,
-        flexDirection: 'row',
-        alignSelf: 'center',
-        borderTopWidth: 2,
-        borderBottomWidth: 2,
-        borderColor: '#006AB3',
-    },
-
-    changeButton: {
-        width: w * 0.5,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    changeButtonChoosen: {
-        width: w * 0.5,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'lightgray',
+        paddingBottom: 0,
+        paddingLeft: 11,
+        textAlignVertical: 'center'
     },
 
     changeText: {
         fontSize: 20,
         fontFamily: 'roboto',
         color: '#006AB3',
+    },
+
+    shadow2: elevationShadowStyle(5),
+    box: {
+        flex: 1,
+        borderRadius: 15,
+        backgroundColor: 'white',
+        width: w * 0.9, 
+        marginTop: 10,
+        flexDirection: 'column',
+        paddingRight: 19,
+        paddingLeft: 15,
+        alignSelf: 'center'
     },
 })

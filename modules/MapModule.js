@@ -71,17 +71,17 @@ function elevationShadowStyle(elevation) {
 
 const styles = StyleSheet.create({
     shadow2: elevationShadowStyle(10),
-  box: {
-    borderRadius: 15,
-    backgroundColor: 'white',
-    width: w * 0.9, 
-    marginTop: 10,
-    flexDirection: 'column',
-    paddingBottom: 10,
-  },
-  centerContent: {
-    alignItems: 'center'
-  },
+    box: {
+        borderRadius: 15,
+        backgroundColor: 'white',
+        width: w * 0.9, 
+        marginTop: 10,
+        flexDirection: 'column',
+        paddingBottom: 10,
+    },
+    centerContent: {
+        alignItems: 'center'
+    },
 })
 
 export default MapModule

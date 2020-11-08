@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View, Text, Image, Linking, StyleSheet, TouchableWithoutFeedback, Modal, TextInput, Alert, ScrollView, BackHandler } from 'react-native'
+import { View, Text, Image, Linking, StyleSheet, TouchableWithoutFeedback, Modal, TextInput, Alert, ScrollView, Platform } from 'react-native'
 import call from 'react-native-phone-call'
 import Header from '../../modules/Header'
 import { h, w } from '../../modules/constants'
@@ -48,32 +48,39 @@ export default class Ermak extends PureComponent{
         return(
         <View style={container}>
             <Header title={name} onPress={() => this.props.navigation.goBack()}/>
-            <View style={{flexDirection:'row', flexWrap: 'wrap', marginBottom: 15}}>
-                <Image style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'rgb(125, 199, 28)', marginTop: 25, marginLeft: 25,}} source={info[0][1].photo} ></Image>
-                <Text style={{width: w/2, marginTop: 40, marginLeft: 10, color: '#006AB3', fontFamily: 'roboto', fontSize: 15}}>{info[0][1].rank}{'\n'}{info[0][1].fio}</Text>
+            <ScrollView>
+            <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
+                <Image source={info[0][1].logo}  style={{ width: w, height: w / 2, resizeMode: 'cover'}} blurRadius={Platform.OS === 'android' ? 0.5 : 1}/>
             </View>
-            <View style={{flexDirection:'row', marginBottom: 20}}>
-                <Image style={{width: w*0.1, height: w * 0.12, resizeMode:"stretch", marginLeft: 10, marginRight: 10}} source={require('../../assets/adress.png')}></Image>
-                <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', maxWidth: w * 0.6}}>{info[0][1].address}</Text>
+            <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
+                <Image source={info[0][1].photo} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
             </View>
-            <View style={{flexDirection: 'column', justifyContent: 'space-evenly', marginTop: 10, width: w/2, marginLeft: 10}}>
+            <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{info[0][1].rank}</Text>
+            <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{info[0][1].fio}</Text>
+            </View>
+            <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../assets/adress.png')}></Image>
+                <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{info[0][1].address}</Text>
+            </View>
+            <View style={{flexDirection: 'column', paddingBottom: 180}}>
             <TouchableWithoutFeedback onPress={() => call({number: info[0][1].telefon, prompt: false})}>
-                <View style={button}>
-                    <Image style={icons} source={require('../../assets/telefon.png')}></Image>
+                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                    <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/telefon.png')}></Image>
                     <Text style={buttonText}>Позвонить</Text>
                 </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => Linking.openURL(info[0][1].vk)}>
-                <View style={button}>
-                    <Image style={icons} source={require('../../assets/vk.png')}></Image>
+                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                    <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/vk.png')}></Image>
                     <Text style={buttonText}>Группа VK</Text>
                 </View>
             </TouchableWithoutFeedback>
             {info[0][1].link !== '' ?
             <TouchableWithoutFeedback onPress={() => this.changeVisible()}>
-            <View style={button}>
-                <Image style={icons} source={require('../../assets/kafedra.png')}></Image>
+            <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/kafedra.png')}></Image>
                 <Text style={buttonText}>Подать заявку</Text>
             </View>
         </TouchableWithoutFeedback> : null}
@@ -81,7 +88,7 @@ export default class Ermak extends PureComponent{
 
             <Modal animationType="slide" transparent={true} visible={this.state.onVisible}>
                 <ScrollView>
-                <View style={modalView}>
+                <View style={[styles.modal, styles.centerContent, styles.shadow2]}>
                     <View style={{width: w * 0.8, height: 45}}>
                     <TouchableWithoutFeedback onPress={() => this.changeVisible()}>
                         <Text style={{color: '#006AB3', fontSize: 50, marginLeft: 6}}>˟</Text>
@@ -109,18 +116,26 @@ export default class Ermak extends PureComponent{
                 </ScrollView>
             </Modal>
             </View>
+            </ScrollView>
         </View>
         )
     }
 }
 
+function elevationShadowStyle(elevation) {
+    return {
+      elevation,
+      shadowColor: 'black',
+      shadowOffset: { width: 0, height: 0.5 * elevation },
+      shadowOpacity: 0.3,
+      shadowRadius: 0.8 * elevation
+    };
+  }
+
 const styles = StyleSheet.create({
 
     container:{
-        flex: 1,
-        alignContent: 'flex-start',
-        alignItems: 'flex-start',
-        flexGrow: 1, 
+        width: w,
         flexDirection: 'column',
         backgroundColor: 'white',
     },
@@ -136,7 +151,7 @@ const styles = StyleSheet.create({
     modalView: {
         borderColor: '#006AB3', 
         borderWidth: 1, 
-        borderRadius: 4, 
+        borderRadius: 15, 
         backgroundColor: 'white', 
         width: w * 0.8, 
         alignSelf: 'center', 
@@ -163,9 +178,48 @@ const styles = StyleSheet.create({
     },
 
     buttonText: {
+        width: w * 0.9,
+        paddingLeft: w * 0.14,
+        textAlign: 'left',
         fontFamily: 'roboto',
         color: '#006AB3',
         fontSize: 18,
         textAlignVertical: 'center'
-    }
+    },
+    shadow1: elevationShadowStyle(30),
+    shadow2: elevationShadowStyle(10),
+
+    profile: {
+        borderRadius: w * 0.2,
+        backgroundColor: 'white',
+        width: w * 0.4,
+        height: w * 0.4,
+        alignSelf: 'center',
+        position: 'absolute',
+        top: w / 2 - 75,
+    },
+
+    modal: {
+        borderRadius: 30,
+        backgroundColor: 'white',
+        padding: 10,
+        width: w * 0.9,
+        marginTop: Platform.OS === 'android' ? 50 : 100,
+        alignSelf: 'center',
+        justifyContent: 'center',
+        marginBottom: 20,
+    },
+
+    box: {
+        borderRadius: 30,
+        backgroundColor: 'white',
+        padding: 10,
+        width: w * 0.9,
+        marginTop: 10,
+        alignSelf: 'center',
+        justifyContent: 'center'
+    },
+    centerContent: {
+        alignItems: 'center'
+    },
 })

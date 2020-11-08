@@ -1,5 +1,5 @@
 import React, { PureComponent, Component } from 'react'
-import { View, Text, StyleSheet, Image, Linking , TouchableOpacity} from 'react-native'
+import { View, Text, StyleSheet, Image, Linking , TouchableOpacity, TouchableWithoutFeedback} from 'react-native'
 import call from 'react-native-phone-call'
 import { h, w } from '../../modules/constants'
 import Header from '../../modules/Header'
@@ -11,41 +11,42 @@ const Information = ({ number, info }) => {
     if (number == 1){
         return(
             <View style={{ minHeight: h}}>
-            <View style={styles.general}>
-                <Text style={styles.generalText}>ОБЩАЯ ИНФОРМАЦИЯ</Text>
-            </View>
-            
-            <View style={styles.dekan}>
-                <Image style={{width: w*0.4, height: w*0.4, resizeMode: 'stretch', marginLeft: 15,}} source={info[0][1].photo} ></Image>
-                <View>
-                <Text style={styles.dekanText}>{info[0][1].rector} {'\n'}{info[0][1].pos}{'\n'}{info[0][1].rank}</Text>
+            <ScrollView>
+                <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
+                    <Image source={require('../../assets/back.png')}  style={{ width: w * 0.8, height: w / 2, resizeMode: 'cover', alignSelf: 'center'}}/>
                 </View>
-            </View>
-            
-            <View style={styles.info}>
-                <Image style={{width: w*0.1, height: w * 0.12, resizeMode:"stretch", marginLeft: 15, marginRight: 10}} source={require('../../assets/adress.png')}></Image>
-                <Text style={{height: 'auto', maxWidth: w * 0.6, color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', marginBottom: 5, marginTop: 5}}>{info[0][1].address}</Text>
-            </View>
-            
-            <TouchableOpacity onPress={() => call({number: info[0][1].telefon, prompt: false})}>
-                <View style={styles.info}>
-                    <Image style={{width: w*0.08, height:w*0.08, resizeMode:"stretch", marginLeft: 15, marginRight: 10 }} source={require('../../assets/telefon.png')}></Image>
-                    <Text style={{ fontFamily: 'roboto', color: '#006AB3', fontSize: 18, textAlignVertical: 'center'}}>Позвонить</Text>
+                <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
+                    <Image source={info[0][1].photo} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
                 </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => Linking.openURL(`mailto:${info[0][1].email}?subject==&`)}>
-                <View style={styles.info}>
-                    <Image style={{width: w*0.08, height:w*0.08, resizeMode:"stretch", marginLeft: 15, marginRight: 10}} source={require('../../assets/mail.png')}></Image>
-                    <Text style={{ fontFamily: 'roboto', color: '#006AB3', fontSize: 18, textAlignVertical: 'center'}}>Написать письмо</Text>
+                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{info[0][1].pos}</Text>
+                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                    <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{info[0][1].rector}</Text>
                 </View>
-            </TouchableOpacity>
+                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                    <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../assets/adress.png')}></Image>
+                    <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{info[0][1].address}</Text>
+                </View>
+                <View style={{flexDirection: 'column', paddingBottom: 180}}>
+                    <TouchableWithoutFeedback onPress={() => call({number: info[0][1].telefon, prompt: false})}>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                            <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/telefon.png')}></Image>
+                            <Text style={styles.buttonText}>Позвонить</Text>
+                        </View>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${info[0][1].email}?subject==&`)}>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                            <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/mail.png')}></Image>
+                            <Text style={styles.buttonText}>Написать письмо</Text>
+                        </View>
+                    </TouchableWithoutFeedback>
+                </View>
+            </ScrollView>
             </View>
         )
     }
     else if(number == 2){
         return(
-            <View style={{}}>
+            <View style={{ minHeight: h, paddingBottom: 150}}>
                 <Text style={{fontFamily: 'roboto', fontSize: 30, color: '#006AB3', marginLeft: 20, marginTop: 25, marginBottom: 20}}>КАФЕДРЫ</Text>
                 {info[0][2].chairs.map( item => {
                     return( 
@@ -58,31 +59,36 @@ const Information = ({ number, info }) => {
         if (info[0][3].pred !== 'none'){
         return(
             <View>
-            <Text style={{fontFamily: 'roboto', fontSize: 30, color: '#006AB3', marginLeft: 20, marginTop: 25}}>СТУДЕНЧЕСКИЙ СОВЕТ</Text>
-            <View style={{flexDirection:'row', flexWrap: 'wrap', marginBottom: 15}}>
-                <Image style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'rgb(125, 199, 28)', marginTop: 25, marginLeft: 15,}} source={info[0][3].photo} ></Image>
-                <Text style={{width: w/2, marginTop: 40, marginLeft: 10, color: '#006AB3', fontFamily: 'roboto', fontSize: 15}}>Председатель{'\n'}{info[0][3].pred}</Text>
-            </View>
-            <View style={{flexDirection:'row', marginBottom: 20}}>
-                <Image style={{width: w*0.1, height: w * 0.12, resizeMode:"stretch", marginLeft: 15, marginRight: 10}} source={require('../../assets/address_.png')}></Image>
-                <Text style={{height: 'auto', maxWidth: w * 0.6, color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center'}}>{info[0][3].address}</Text>
-            </View>
-            <View style={{flexDirection: 'column', justifyContent: 'space-evenly', marginTop: 10, width: w/2, marginLeft: 10}}>
-            <TouchableOpacity onPress={() => call({number: info[0][3].telefon, prompt: false})}>
-                <View style={{flexDirection: 'row', height: w * 0.1, marginBottom: 10}}>
-                    <Image style={{width: w*0.08, height:w*0.08, resizeMode:"stretch", marginLeft: 10, marginRight: 10}} source={require('../../assets/telefon_.png')}></Image>
-                    <Text style={{ fontFamily: 'roboto', color: '#006AB3', fontSize: 18, textAlignVertical: 'center'}}>Позвонить</Text>
+            <ScrollView>
+                <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
+                    <Image source={require('../../assets/back.png')}  style={{ width: w * 0.8, height: w / 2, resizeMode: 'cover', alignSelf: 'center'}}/>
                 </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => Linking.openURL(`mailto:${info[0][3].email}?subject==&`)}>
-                {(info[0][3].email === undefined ? <View></View> : 
-                <View  style={{flexDirection: 'row', height: w * 0.1, marginBottom: 10}}>
-                    <Image style={{width: w*0.08, height:w*0.08, resizeMode:"stretch", marginLeft: 10, marginRight: 10}} source={require('../../assets/mail_.png')}></Image>
-                    <Text style={{ fontFamily: 'roboto', color: '#006AB3', fontSize: 18, textAlignVertical: 'center'}}>Написать письмо</Text>
-                </View>)}
-            </TouchableOpacity>
-            </View>
+                <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
+                    <Image source={info[0][3].photo} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
+                </View>
+                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{info[0][3].rank}</Text>
+                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                    <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{info[0][3].pred}</Text>
+                </View>
+                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                    <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../assets/adress.png')}></Image>
+                    <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{info[0][3].address}</Text>
+                </View>
+                <View style={{flexDirection: 'column', paddingBottom: 180}}>
+                    <TouchableWithoutFeedback onPress={() => call({number: info[0][3].telefon, prompt: false})}>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                            <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/telefon.png')}></Image>
+                            <Text style={styles.buttonText}>Позвонить</Text>
+                        </View>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${info[0][3].email}?subject==&`)}>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                            <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/mail.png')}></Image>
+                            <Text style={styles.buttonText}>Написать письмо</Text>
+                        </View>
+                    </TouchableWithoutFeedback>
+                </View>
+            </ScrollView>
             </View>
         )}
         else{
@@ -121,6 +127,15 @@ export default class IITK extends PureComponent{
     }
 }
 
+function elevationShadowStyle(elevation) {
+    return {
+      elevation,
+      shadowColor: 'black',
+      shadowOffset: { width: 0, height: 0.5 * elevation },
+      shadowOpacity: 0.3,
+      shadowRadius: 0.8 * elevation
+    };
+  }
 
 const styles = StyleSheet.create({
     container:{
@@ -196,6 +211,53 @@ const styles = StyleSheet.create({
         elevation: 4,
         alignItems: 'center',
         alignSelf: 'center',
-    }
+    },
+
+    buttonText: {
+        width: w * 0.9,
+        paddingLeft: w * 0.14,
+        textAlign: 'left',
+        fontFamily: 'roboto',
+        color: '#006AB3',
+        fontSize: 18,
+        textAlignVertical: 'center'
+    },
+
+    shadow1: elevationShadowStyle(30),
+    shadow2: elevationShadowStyle(10),
+
+    profile: {
+        borderRadius: w * 0.2,
+        backgroundColor: 'white',
+        width: w * 0.4,
+        height: w * 0.4,
+        alignSelf: 'center',
+        position: 'absolute',
+        top: w / 2 - 75,
+    },
+
+    modal: {
+        borderRadius: 30,
+        backgroundColor: 'white',
+        padding: 10,
+        width: w * 0.9,
+        marginTop: Platform.OS === 'android' ? 50 : 100,
+        alignSelf: 'center',
+        justifyContent: 'center',
+        marginBottom: 20,
+    },
+
+    box: {
+        borderRadius: 30,
+        backgroundColor: 'white',
+        padding: 10,
+        width: w * 0.9,
+        marginTop: 10,
+        alignSelf: 'center',
+        justifyContent: 'center'
+    },
+    centerContent: {
+        alignItems: 'center'
+    },
 
 })

@@ -7,7 +7,7 @@ import { AntDesign } from '@expo/vector-icons'
 const MainHeader = ({title, onPress, week}) => {
     const {container, maintext } = styles
     return(
-        <View style={container}>
+        <View style={[styles.box, styles.shadow2]}>
             {/*<Image style={{width: 45, height: 45, marginLeft: 31}} source={require('../assets/logo.jpeg')}/>*/}
             <TouchableWithoutFeedback style={{ zIndex: 4}} onPress={onPress}>
                 <AntDesign name="logout" size={24} color="gray" style={{ position: 'absolute', left: 20, top: 45, transform:[{rotate: '180deg'}] }}/>
@@ -21,6 +21,16 @@ const MainHeader = ({title, onPress, week}) => {
         </View>
     )
 }
+
+function elevationShadowStyle(elevation) {
+    return {
+      elevation,
+      shadowColor: 'black',
+      shadowOffset: { width: 0, height: 0.5 * elevation },
+      shadowOpacity: 0.3,
+      shadowRadius: 0.8 * elevation
+    };
+  }
 
 const styles = StyleSheet.create({
     container: {
@@ -71,7 +81,21 @@ const styles = StyleSheet.create({
         fontFamily: 'roboto',
         fontSize: 17,
         color: 'gray'
-    }
+    },
+
+    shadow2: elevationShadowStyle(5),
+      box: {
+          backgroundColor: 'white',
+          height: 80,
+          width: w,
+          paddingLeft: 10,
+          paddingTop: 30,
+          elevation: 10,
+          position: 'relative',
+          flexDirection: 'row',
+          alignItems: 'center',
+          zIndex: 4,
+        },
 })
 
 export default MainHeader
