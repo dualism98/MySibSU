@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View, Text, StyleSheet, TouchableWithoutFeedback, TextInput, ScrollView, StatusBar, TouchableHighlight } from 'react-native'
+import { View, Text, StyleSheet, TouchableWithoutFeedback, TextInput, ScrollView, StatusBar, TouchableHighlight, Dimensions } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { h, w } from '../modules/constants'
 import Choose from '../modules/timetableFolder/Choose'
@@ -8,7 +8,8 @@ import TimetableHeader from '../modules/TimetableHeader'
 import Day from '../modules/timetableFolder/Day'
 import Swiper from 'react-native-swiper'
 import Help from '../modules/timetableFolder/Help'
-import { LinearGradient } from 'expo-linear-gradient'
+import { Ionicons } from '@expo/vector-icons'; 
+
 
 const groupURL = 'https://timetable.mysibsau.ru/groups/'
 const secondGroupURL = 'http://185.228.233.243/groups/'
@@ -41,7 +42,8 @@ export default class TimetableScreen extends PureComponent {
         shown: [],
         x: 0,
         y: 0,
-        index: 1
+        index: 1,
+        dates: []
     }
 
     async getInfo(){
@@ -49,8 +51,8 @@ export default class TimetableScreen extends PureComponent {
         const id = await AsyncStorage.getItem('@key').then((id) => this.setState({ group: id}))
         const name = await AsyncStorage.getItem('@name').then((name) => this.setState({ textGroup: name}))
         const weekApiCall = await fetch(weekURL, {method: 'GET'})
-            const week = await weekApiCall.json()
-            await this.setState({ week: week.week, currentWeek: week.week, index: week.week - 1})
+        const week = await weekApiCall.json()
+        await this.setState({ week: week.week, currentWeek: week.week, index: week.week - 1})
 
         this.getTimetable(this.state.group)
         return currentWeek
@@ -74,6 +76,9 @@ export default class TimetableScreen extends PureComponent {
             let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 
             this.setState({ weekDay:days[date.getDay()] })
+            .then(() => {
+
+            })
         } catch(err) {
             const groupsApiCall = await fetch(secondGroupURL, {method: 'GET'})
             const groups = await groupsApiCall.json()
@@ -157,13 +162,18 @@ export default class TimetableScreen extends PureComponent {
                     <TextInput style={styles.input} onChangeText={text => this.similarGroup(text)} placeholder={'Введите название группы...'} />
                     <TouchableHighlight style={{borderTopRightRadius: 7, borderBottomRightRadius: 7}} onPress={() => this.setGroup(this.state.textGroup)}>
                         <View style={styles.button}>
-                            <Text>🔍</Text>
+                            <Ionicons name="ios-search" size={24} color="#006AB3" />
                         </View>
                     </TouchableHighlight>
                 </View>
-                {this.state.shown.map(item => {
-                    return(<Help info={item} onPress={() => this.setGroup(item)} />)
-                })}
+                {this.state.shown.length !== 0 ?
+                <View style={{ marginTop: 10, borderRadius: 15, borderWidth: 1, borderColor: 'lightgray', paddingTop: 15, paddingBottom: 15, maxHeight: Dimensions.get('window').height * 0.6, backgroundColor: 'white'}}>
+                    <ScrollView>
+                        {this.state.shown.map(item => {
+                            return(<Help info={item} onPress={() => this.setGroup(item)} />)
+                        })}
+                    </ScrollView>
+                </View> : null}
                 <Choose />
                 </View>
             )
@@ -230,10 +240,9 @@ const styles = StyleSheet.create({
     },
 
     input: {
-        width: w * 0.75,
+        width: w * 0.745,
         height: h * 0.06,
-        borderTopLeftRadius: 7,
-        borderBottomLeftRadius: 7,
+        borderRadius: 7,
         backgroundColor: 'white',
         paddingLeft: 10,
         fontSize: 20,
@@ -246,17 +255,16 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.30,
         shadowRadius: 4.65,
 
-        elevation: 4,
+        elevation: 5,
+        marginRight: w * 0.01
     },
 
     button: {
         height: h * 0.06,
-        width: w * 0.15,
+        width: w * 0.145,
         alignItems: 'center',
         justifyContent: 'center',
-        borderLeftWidth: 0,
-        borderTopRightRadius: 7,
-        borderBottomRightRadius: 7,
+        borderRadius: 7,
         backgroundColor: 'white',
         shadowColor: "#000",
         shadowOffset: {
@@ -266,7 +274,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.30,
         shadowRadius: 4.65,
 
-        elevation: 4,
+        elevation: 10,
+        zIndex: 1,
     },
 
     changeText: {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableWithoutFeedback, StatusBar } from 'react-native'
 import { h, w } from './constants'
 
 
@@ -7,7 +7,6 @@ const MainHeader = ({title}) => {
     const {container, maintext} = styles
     return(
         <View style={[styles.box, styles.shadow2]}>
-            {/*<Image style={{width: 45, height: 45, marginLeft: 31}} source={require('../assets/logo.jpeg')}/>*/}
             <Text style={maintext}>{title}</Text>
         </View>
     )

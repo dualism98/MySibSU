@@ -28,7 +28,8 @@
     },
     "android": {
       "package": "com.SibSU.MySibSU",
-      "versionCode": 11
+      "versionCode": 11,
+      "permissions": []
     }
   }
 }

@@ -20,7 +20,6 @@ export default class ActiveScreen extends PureComponent {
             <View style={container}>
                 <MainHeader title={'Мои объединения'} onPress={() => this.props.navigation.goBack()}/>
                 <ScrollView>
-                {/*<Text style={text}>Студенческие объединения</Text>*/}
                     <View style={main}>
                         {unions.map( item => {
                             return(<ActiveElement onPress={() => navigate('Ermak', {unions: item[2], data: data})} title={item[1]} source={item[3]} key={item[0]} />)

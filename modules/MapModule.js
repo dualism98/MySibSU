@@ -9,7 +9,7 @@ const MapModule = (name) => {
     const info = name.inf.split('|')
     return(
         
-        <View style={{ width: w, minHeight: h, paddingBottom: 100, backgroundColor: 'white', alignItems: 'center'}}>
+        <View style={{ width: w, backgroundColor: 'white', alignItems: 'center', marginBottom: 20}}>
             <View style={[styles.box, styles.centerContent, styles.shadow2]}> 
                 <ScrollView nestedScrollEnabled = {true}>
                 <Image style={{width: w * 0.9, height: h/2, borderRadius: 15}}
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         backgroundColor: 'white',
         width: w * 0.9, 
-        marginTop: 10,
+        marginTop: 20,
         flexDirection: 'column',
         paddingBottom: 10,
     },

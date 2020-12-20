@@ -1,3 +1,5 @@
+
+
 const Unions = [['«Ермак»', {rank: 'Председатель', fio: 'Сурженко Кирилл Романович ', link: '209342469', photo: require('../assets/surzhenko.jpg'), address: 'г. Красноярск, проспект Мира, 82',
                 telefon: '+7 983 403 33 05', vk: 'https://vk.com/vpksibguermak', logo: require('../assets/ermak.png')}],
                 ['Союз студентов', {rank: 'Председатель', fio: 'Плескач Дмитрий Иванович', link: '140607546', photo: require('../assets/pleskach.jpg'), address: 'г. Красноярск, проспект им. газеты Красноярский рабочий, 31, Корпус "А", каб. 409/2',

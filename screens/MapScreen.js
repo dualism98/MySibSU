@@ -32,7 +32,6 @@ export default class MapScreen extends PureComponent {
                 
                     <MainHeader title="Мои корпуса" onPress={() => this.props.navigation.goBack()}/>  
                     <ScrollView>
-                        <Text style={{width: w, marginTop: 25, marginLeft: 20, marginBottom: 10, fontSize: 30, color: '#006CB5', fontFamily: 'roboto' }}>CПИСОК КОРПУСОВ</Text>
                         <View style={container}>               
                             <View style={right}>
                                 <Text style={head}>Учебные объекты (правый берег):</Text>

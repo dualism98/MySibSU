@@ -23,6 +23,7 @@ export default class InstitutesScreen extends PureComponent {
                             ['IKIVT', 'ИКИВТ', 'Институт космических исследований и высоких технологий'], ['AK', 'АК', 'Аэрокосмический колледж']]
 
         const info = Info
+        console.log(info)
         return(
             
             

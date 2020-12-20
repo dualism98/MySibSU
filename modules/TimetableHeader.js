@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableWithoutFeedback, StatusBar } from 'react-native'
 import { h, w } from './constants'
 import { AntDesign } from '@expo/vector-icons'
 

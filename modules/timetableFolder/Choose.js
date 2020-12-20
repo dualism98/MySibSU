@@ -7,50 +7,50 @@ function Choose(){
     return(
         <View style={styles.container}>
             <View style={styles.table}>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={styles.cell}><Text style={styles.cellText}>#</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>Время</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>Перерыв</Text></View>
+                <View style={styles.cell}>
+                    <Text style={styles.cellText}>#</Text>
+                    <Text style={styles.cellText}>Время</Text>
+                    <Text style={styles.cellText}>Перерыв</Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={styles.cell}><Text style={styles.cellText}>1 лента</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>08:00-09:30</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>10 мин.</Text></View>
+                <View style={styles.cell}>
+                    <Text style={styles.cellText}>1 лента</Text>
+                    <Text style={styles.cellText}>08:00-09:30</Text>
+                    <Text style={styles.cellText}>10 мин.</Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={styles.cell}><Text style={styles.cellText}>2 лента</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>09:40-11:10</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>20 мин.</Text></View>
+                <View style={styles.cell}>
+                    <Text style={styles.cellText}>2 лента</Text>
+                    <Text style={styles.cellText}>09:40-11:10</Text>
+                    <Text style={styles.cellText}>20 мин.</Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={styles.cell}><Text style={styles.cellText}>3 лента</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>11:30-13:00</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>30 мин.</Text></View>
+                <View style={styles.cell}>
+                    <Text style={styles.cellText}>3 лента</Text>
+                    <Text style={styles.cellText}>11:30-13:00</Text>
+                    <Text style={styles.cellText}>30 мин.</Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={styles.cell}><Text style={styles.cellText}>4 лента</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>13:30-15:00</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>10 мин.</Text></View>
+                <View style={styles.cell}>
+                    <Text style={styles.cellText}>4 лента</Text>
+                    <Text style={styles.cellText}>13:30-15:00</Text>
+                    <Text style={styles.cellText}>10 мин.</Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={styles.cell}><Text style={styles.cellText}>5 лента</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>15:10-16:40</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>10 мин.</Text></View>
+                <View style={styles.cell}>
+                    <Text style={styles.cellText}>5 лента</Text>
+                    <Text style={styles.cellText}>15:10-16:40</Text>
+                    <Text style={styles.cellText}>10 мин.</Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={styles.cell}><Text style={styles.cellText}>6 лента</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>16:50-18:20</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>10 мин.</Text></View>
+                <View style={styles.cell}>
+                    <Text style={styles.cellText}>6 лента</Text>
+                    <Text style={styles.cellText}>16:50-18:20</Text>
+                    <Text style={styles.cellText}>10 мин.</Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={styles.cell}><Text style={styles.cellText}>7 лента</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>18:30-20:00</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>10 мин.</Text></View>
+                <View style={styles.cell}>
+                    <Text style={styles.cellText}>7 лента</Text>
+                    <Text style={styles.cellText}>18:30-20:00</Text>
+                    <Text style={styles.cellText}>10 мин.</Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={styles.cell}><Text style={styles.cellText}>8 лента</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>20:10-21:40</Text></View>
-                    <View style={styles.cell}><Text style={styles.cellText}>-</Text></View>
+                <View style={styles.cell}>
+                    <Text style={styles.cellText}>8 лента</Text>
+                    <Text style={styles.cellText}>20:10-21:40</Text>
+                    <Text style={styles.cellText}>-</Text>
                 </View>
             </View>
         </View>
@@ -67,15 +67,14 @@ const styles = StyleSheet.create({
 
     table: {
         marginTop: 20,
-        borderRadius: 20,
     },
 
     cell: {
-        width: w * 0.3,
+        width: w * 0.9,
         height: h * 0.06,
-        borderRadius: 3,
-        justifyContent: 'center',
-        paddingLeft: 10,
+        borderRadius: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
         shadowColor: "#000",
         shadowOffset: {
 	        width: 2,
@@ -83,14 +82,18 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.30,
         shadowRadius: 4.65,
-
+        marginTop: 3,
         elevation: 2,
     },
 
     cellText: {
+        height: h * 0.06,
+        width: w * 0.3,
+        textAlign: 'center',
+        textAlignVertical: 'center',
         fontFamily: 'roboto',
         fontSize: 16,
-        color: '#006AB3'
+        color: 'black'
     }
 
 })

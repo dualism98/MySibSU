@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     line: {
         height: 1,
         width: w * 0.7,
-        backgroundColor: 'gray',
+        backgroundColor: 'rgb(154,158,159)',
         alignSelf: 'center'
     },
 

@@ -17,12 +17,13 @@ export default class Ermak extends PureComponent{
     }
 
     changeVisible(){
-        if (this.state.onVisible === false){
-            this.setState({onVisible: true})
-        }
-        else{
-            this.setState({onVisible: false})
-        }
+        // if (this.state.onVisible === false){
+        //     this.setState({onVisible: true})
+        // }
+        // else{
+        //     this.setState({onVisible: false})
+        // }
+        this.setState({ onVisible: !this.state.onVisible })
     }
 
     async sendMessage(link){
