@@ -3,29 +3,10 @@ import { View, Text, StyleSheet, Dimensions, TouchableWithoutFeedback, Linking, 
 import MainHeader from '../modules/MainHeader'
 import Maps from '../modules/maps'
 import { h, w } from '../modules/constants'
-//import MapView, {Marker} from 'react-native-maps'
-
-const { width, height } = Dimensions.get('window');
-
-const ASPECT_RATIO = width / height;
-const LATITUDE = 56.007676;
-const LONGITUDE = 92.871994;
-const LATITUDE_DELTA = 0.0522;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class MapScreen extends PureComponent {
-    state = {
-        mapView: 0,
-        region: {
-            latitude: LATITUDE,
-            longitude: LONGITUDE,
-            latitudeDelta: LATITUDE_DELTA,
-            longitudeDelta: LONGITUDE_DELTA,
-          },
-    }
-
     render(){
-        const { container, right, left, head, text, text_left, changeView, changeButton, changeButtonChoosen, changeText } = styles
+        const { container, right, left, head, text, number, text_left } = styles
         const maps = Maps
             return(
                 <View style={{backgroundColor:'white', flex: 1, paddingBottom: 0}}> 
@@ -38,8 +19,9 @@ export default class MapScreen extends PureComponent {
                                 {maps[0].map( map => {
                                     return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.url)} key={map.name}>
                                             <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                                                <Text style={number}>{map.name.split('\"')[1]}</Text>
                                                 <View style={{borderLeftWidth: 2, borderLeftColor: '#006AB3',}}>
-                                                    <Text style={text}>{map.name}{'\n'}{map.address}</Text>
+                                                    <Text style={text}>{map.name.split('\"')[0]}{'\n'}{map.address}</Text>
                                                 </View>
                                             </View>
                                             </TouchableWithoutFeedback>)
@@ -50,7 +32,8 @@ export default class MapScreen extends PureComponent {
                                 {maps[1].map( map => {
                                     return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.url)} key={map.name}>
                                             <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                                            <Text style={text_left}>{map.name}{'\n'}{map.address}</Text>
+                                            <Text style={number}>{map.name.split('\"')[1]}</Text>
+                                            <Text style={text_left}>{map.name.split('\"')[0]}{'\n'}{map.address}</Text>
                                             </View>
                                             </TouchableWithoutFeedback>)
                                 })}    
@@ -84,9 +67,6 @@ const styles = StyleSheet.create({
     right: {
         width: w * 0.94,
         marginBottom: 10,
-        //borderLeftWidth: 3,
-        //borderLeftColor: '#006CB5',
-        //paddingLeft: 7,
         flex: 1
     },
 
@@ -94,9 +74,6 @@ const styles = StyleSheet.create({
         width: w * 0.94,
         marginBottom: 10,
         marginTop: 10,
-        //borderLeftWidth: 3,
-        //borderLeftColor: 'rgb(125, 199, 28)',
-        //paddingLeft: 7,
     },
 
     head: {
@@ -117,6 +94,16 @@ const styles = StyleSheet.create({
         paddingBottom: 0,
         paddingLeft: 11,
     },
+
+    number: {
+        height: '100%',
+        width: 25,
+        fontSize: 15,
+        fontFamily: 'roboto',
+        color: 'black',
+        textAlignVertical: 'center',
+        textAlign: 'center'
+    },  
 
     text_left: {
         height: '100%',
@@ -140,11 +127,11 @@ const styles = StyleSheet.create({
     shadow2: elevationShadowStyle(5),
     box: {
         flex: 1,
+        flexDirection: 'row',
         borderRadius: 15,
         backgroundColor: 'white',
         width: w * 0.9, 
         marginTop: 10,
-        flexDirection: 'column',
         paddingRight: 19,
         paddingLeft: 15,
         alignSelf: 'center'

@@ -35,7 +35,7 @@ function elevationShadowStyle(elevation) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
-        height: 80,
+        height: 60,
         width: w,
         paddingTop: 30,
         elevation: 8,

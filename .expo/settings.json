@@ -4,5 +4,6 @@
   "dev": true,
   "minify": false,
   "urlRandomness": "s9-hzr",
-  "https": false
+  "https": false,
+  "scheme": null
 }

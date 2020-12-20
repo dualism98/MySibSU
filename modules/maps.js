@@ -11,10 +11,10 @@ const Maps = [[{name: 'Корпус "А"', address: 'пр.им. газеты "К
             {name: 'Корпус "П"', address: 'пр.им. газеты "Красноярский рабочий", 31, стр. 5', url: 'https://go.2gis.com/b1hxs', ld: 56.012074, lg: 92.974335},
             {name: 'Корпус "Р"', address: 'ул. Рейдовая, 69', url: 'https://go.2gis.com/s27v5', ld: 56.042789, lg: 93.027839},
             {name: 'Корпус "C"', address: 'ул. Семафорная, 433/1', url: 'https://go.2gis.com/fh0ln', ld: 55.999201, lg: 92.950081},
-            {name: 'Аэрокосмический колледж', address: 'пр.им. газеты "Красноярский рабочий", 31', url: 'https://go.2gis.com/7v46y', ld: 56.011680, lg: 92.974581},
-            {name: 'Общежитие №1', address: 'пр. Машиностроителей, 54', url: 'https://go.2gis.com/rkvp4zi', ld: 55.985461, lg: 93.004991},
-            {name: 'Общежитие №2', address: 'ул. Инструментальная, 1', url: 'https://go.2gis.com/fpdnv', ld: 56.014782, lg: 92.974549},
-            {name: 'Общежитие №3', address: 'ул. Волгоградская, 35', url: 'https://go.2gis.com/61in2', ld: 56.006907, lg: 92.969005}],
+            {name: 'Колледж "К"', address: 'пр.им. газеты "Красноярский рабочий", 31', url: 'https://go.2gis.com/7v46y', ld: 56.011680, lg: 92.974581},
+            {name: 'Общежитие "№1"', address: 'пр. Машиностроителей, 54', url: 'https://go.2gis.com/rkvp4zi', ld: 55.985461, lg: 93.004991},
+            {name: 'Общежитие "№2"', address: 'ул. Инструментальная, 1', url: 'https://go.2gis.com/fpdnv', ld: 56.014782, lg: 92.974549},
+            {name: 'Общежитие "№3"', address: 'ул. Волгоградская, 35', url: 'https://go.2gis.com/61in2', ld: 56.006907, lg: 92.969005}],
             [{name: 'Корпус "Гл"', address: 'пр. Мира, 82', url: 'https://go.2gis.com/pds1f', ld: 56.012159, lg: 92.869056},
             {name: 'Корпус "Цл"', address: 'пр. Мира, 82', url: 'https://go.2gis.com/pds1f', ld: 56.012510, lg: 92.868990},
             {name: 'Корпус "СК"', address: 'пр. Мира, 82', url: 'https://go.2gis.com/sa7az', ld: 56.013169, lg: 92.868876},
@@ -26,10 +26,10 @@ const Maps = [[{name: 'Корпус "А"', address: 'пр.им. газеты "К
             {name: 'Корпус "Вл"', address: 'ул. Марковского, 57', url: 'https://go.2gis.com/j4sgct', ld: 56.014024, lg: 92.867605},
             {name: 'Корпус "Сл"', address: 'ул. Робеспьера, 2', url: 'https://go.2gis.com/7jypdf', ld: 56.005528, lg: 92.843286},
             {name: 'Научная библиотека', address: 'пр. Мира, 82', url: 'https://go.2gis.com/r0ukt6', ld: 56.012588, lg: 92.870395},
-            {name: 'Общежитие №2', address: 'ул. Ленина, 32', url: 'https://go.2gis.com/zu82cn', ld: 56.014297, lg: 92.881776},
-            {name: 'Общежитие №3', address: 'ул. Ленина, 61', url: 'https://go.2gis.com/c0nier', ld: 56.013269, lg: 92.872818},
-            {name: 'Общежитие №4', address: 'ул. Ленина, 63', url: 'https://go.2gis.com/qn9iv', ld: 56.013209, lg: 92.872103},
-            {name: 'Общежитие №5', address: 'ул. Марковского, 70', url: 'https://go.2gis.com/du14k', ld: 56.015490, lg: 92.869496},
-            {name: 'Общежитие №6', address: 'ул. Марковского, 72', url: 'https://go.2gis.com/fd0k7b', ld: 56.015145, lg: 92.868749},]]
+            {name: 'Общежитие "№2"', address: 'ул. Ленина, 32', url: 'https://go.2gis.com/zu82cn', ld: 56.014297, lg: 92.881776},
+            {name: 'Общежитие "№3"', address: 'ул. Ленина, 61', url: 'https://go.2gis.com/c0nier', ld: 56.013269, lg: 92.872818},
+            {name: 'Общежитие "№4"', address: 'ул. Ленина, 63', url: 'https://go.2gis.com/qn9iv', ld: 56.013209, lg: 92.872103},
+            {name: 'Общежитие "№5"', address: 'ул. Марковского, 70', url: 'https://go.2gis.com/du14k', ld: 56.015490, lg: 92.869496},
+            {name: 'Общежитие "№6"', address: 'ул. Марковского, 72', url: 'https://go.2gis.com/fd0k7b', ld: 56.015145, lg: 92.868749},]]
 
 export default Maps
