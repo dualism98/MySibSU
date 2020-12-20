@@ -5,7 +5,6 @@ import Subject from './Subject'
 
 const weekday = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
 const Day = ({day, week, currentWeek, weekDay}) => {
-    if (day.lessons.length !== 0){
         return(
             <View style={styles.container}>
                 <View style={styles.dayname}>
@@ -22,18 +21,18 @@ const Day = ({day, week, currentWeek, weekDay}) => {
                                 <Text style={{ fontSize: 18, color: 'white', fontFamily: 'roboto'}}>cегодня</Text></View> : null
                             }
                     </View>
-                    <Text>{(new Date().setDate()).toString()}</Text>
+                    {/* <Text>{(new Date().setDate()).toString()}</Text> */}
                 </View>
+                {
+                    day.lessons.length === 0 ?
+                    <Subject data={'Нет пар'}/> : null
+                }
                 {day.lessons.map(item => {
                     let index = day.lessons.indexOf(item)
                     return(<Subject data={item} key={index}/>)
                 })}
             </View>
         )
-    }
-    else{
-        return(null)
-    }
 }
 
 const styles = StyleSheet.create({

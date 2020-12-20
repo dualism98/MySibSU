@@ -3,30 +3,36 @@ import { View, Text, StyleSheet } from 'react-native'
 import { h, w } from '../constants'
 
 
-const types = ['', 'Лекция', 'Лабораторная работа', 'Практика']
-const subgroups = ['', 'I подгруппа', 'II подгруппа']
+const types = ['', ['Лекция', '#ef8531'], 
+                ['Лабораторная работа', 'rgb(190, 175, 85)'], 
+                ['Практика', 'rgb(49, 151, 39)']]
+const subgroups = ['', '[1 подгруппа]', '[2 подгруппа]']
 
 const Subject = (data) =>{
     return(
         <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-            <Text style={styles.time}>{data.data.time}</Text>
-            {data.data.subgroups.map(item => {
-                return(
-                    <View key={item.teacher + item.place}>
-                        <View style={styles.line}></View>
-                        {
-                            (item.num !== 0) ? <Text style={{fontSize: 14,
-                                fontFamily: 'roboto',
-                                color: 'rgb(154,158,159)',
-                                marginBottom: -5, marginRight: 10}}>{subgroups[Number(item.num)]}</Text> : <View></View>
-                        }
-                        <Text style={styles.subject}>{item.name}</Text>
-                        <Text style={styles.type}>{types[Number(item.type)]}</Text>
-                        <Text style={styles.professor}>{item.teacher}</Text>
-                        <Text style={styles.place}>{item.place}</Text>
-                    </View>
-                )
-            })}
+            {data.data !== 'Нет пар' ? 
+            <View>
+                <Text style={styles.time}>{data.data.time}</Text>
+                {data.data.subgroups.map(item => {
+                    return(
+                        <View key={item.teacher + item.place}>
+                            <View style={styles.line}></View>
+                            {
+                                (item.num !== 0) ? <Text style={{fontSize: 12,
+                                    fontFamily: 'roboto',
+                                    color: 'rgb(154,158,159)',
+                                    marginBottom: -5, marginRight: 10}}>{subgroups[Number(item.num)]}</Text> : <View></View>
+                            }
+                            <Text style={styles.subject}>{item.name}</Text>
+                            <Text style={styles.type, {color: String(types[Number(item.type)][1])}}>{types[Number(item.type)][0]}</Text>
+                            <Text style={styles.professor}>{item.teacher}</Text>
+                            <Text style={styles.place}>{item.place}</Text>
+                        </View>
+                    )
+                })} 
+            </View>: 
+            <Text style={styles.time}>Занятий нет</Text>}
         </View>
     )
 }
@@ -58,7 +64,7 @@ const styles = StyleSheet.create({
 
     time: {
         fontFamily: 'roboto',
-        fontSize: 20,
+        fontSize: 18,
         alignSelf: 'center'
     },
 
@@ -71,7 +77,7 @@ const styles = StyleSheet.create({
 
     subject: {
         marginTop: 4,
-        fontSize: 18,
+        fontSize: 15,
         color: '#5575A7',
         fontFamily: 'roboto'
     },
@@ -83,14 +89,14 @@ const styles = StyleSheet.create({
     },
 
     professor: {
-        fontSize: 18,
+        fontSize: 15,
         fontFamily: 'roboto',
         color: 'rgb(154,158,159)',
         marginBottom: -5
     },
 
     place: {
-        fontSize: 18,
+        fontSize: 15,
         color: 'gray',
         fontFamily: 'roboto',
         width: w * 0.82,

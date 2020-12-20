@@ -102,11 +102,19 @@ export default class TimetableScreen extends PureComponent {
         var firstURL = 'https://timetable.mysibsau.ru/timetable/' + String(id)
         var secondURL = 'http://185.228.233.243/timetable/' + String(id)
 
+        var days = []
+
+        for (var i = 0; i < 14; i++){
+            days.push(new Date().setDate(new Date().getDate() + i))
+            days[i] = new Date(days[i])
+        }
+
+        console.log(days)
+
         try {
 
             const timetableApiCall = await fetch(firstURL, {method: 'GET'})
             const timetable = await timetableApiCall.json()
-
             this.setState({ timetable: timetable, loading: false })
         } catch(err) {
             try{
