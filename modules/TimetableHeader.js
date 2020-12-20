@@ -5,15 +5,13 @@ import { AntDesign } from '@expo/vector-icons'
 
 
 const MainHeader = ({title, onPress, week}) => {
-    const {container, maintext } = styles
     return(
         <View style={[styles.box, styles.shadow2]}>
-            {/*<Image style={{width: 45, height: 45, marginLeft: 31}} source={require('../assets/logo.jpeg')}/>*/}
             <TouchableWithoutFeedback style={{ zIndex: 4}} onPress={onPress}>
-                <AntDesign name="logout" size={24} color="gray" style={{ position: 'absolute', left: 20, top: 45, transform:[{rotate: '180deg'}] }}/>
+                <AntDesign name="logout" size={20} color="gray" style={{ position: 'absolute', left: 20, top: 35, transform:[{rotate: '180deg'}] }}/>
             </TouchableWithoutFeedback>
             
-            <Text style={maintext}>{title}</Text>
+            <Text style={styles.maintext}>{title}</Text>
             <View style={styles.week}>
                 <Text style={styles.week_text}>{week+1} неделя</Text>
             </View>
@@ -33,25 +31,14 @@ function elevationShadowStyle(elevation) {
   }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'white',
-        height: 60,
-        width: w,
-        paddingTop: 30,
-        elevation: 8,
-        position: 'relative',
-        flexDirection: 'row',
-      },
-    
     maintext: {
-        fontSize: 30,
+        fontSize: 25,
         color: 'grey',
         textAlignVertical: 'bottom',
         fontFamily: 'roboto',
-        alignSelf: 'center',
         position: 'absolute',
-        left: w * 0.3,
-        top: 35,
+        left: w * 0.15,
+        top: 28,
       },
 
       week: {
@@ -74,7 +61,7 @@ const styles = StyleSheet.create({
         elevation: 4,
         position: 'absolute',
         right: 10,
-        bottom: 10,
+        bottom: 6,
     },
     
     week_text: {
@@ -86,7 +73,7 @@ const styles = StyleSheet.create({
     shadow2: elevationShadowStyle(5),
       box: {
           backgroundColor: 'white',
-          height: 80,
+          height: 65,
           width: w,
           paddingLeft: 10,
           paddingTop: 30,
