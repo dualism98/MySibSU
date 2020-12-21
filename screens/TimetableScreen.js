@@ -40,10 +40,9 @@ export default class TimetableScreen extends PureComponent {
         loading: true,
         similar: [],
         shown: [],
-        x: 0,
-        y: 0,
         index: 1,
-        dates: []
+        first_dates: [],
+        second_dates: [],
     }
 
     async getInfo(){
@@ -103,13 +102,51 @@ export default class TimetableScreen extends PureComponent {
         var secondURL = 'http://185.228.233.243/timetable/' + String(id)
 
         var days = []
-
         for (var i = 0; i < 14; i++){
             days.push(new Date().setDate(new Date().getDate() + i))
             days[i] = new Date(days[i])
+            days[i] = days[i].getDate() + '.' + (days[i].getMonth() + 1)
         }
 
-        console.log(days)
+        var first = []
+        var second = []
+        
+        if (this.state.currentWeek === 1) {
+            for (var i = 0; i <= new Date().getDay() - 1; i++){
+                first.push(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1 - i)))
+                first[i] = new Date(first[i])
+                // first[i] = first[i].getDate() + '.' + (first[i].getMonth() + 1)
+            }
+            for (var i = new Date().getDay(); i < 6; i++){
+                first.push(new Date().setDate(new Date().getDate() + (i - new Date().getDay() + 1)))
+                first[i] = new Date(first[i])
+                // first[i] = first[i].getDate() + '.' + (first[i].getMonth() + 1)
+            }
+            for (var i = 0; i < 6; i++){
+                var tmp = new Date(first[i])
+                second.push(tmp.setDate(tmp.getDate() + 7))
+                second[i] = new Date(second[i])
+            }
+        }
+        else{
+            for (var i = 0; i <= new Date().getDay() - 1; i++){
+                second.push(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1 - i)))
+                second[i] = new Date(second[i])
+                // second[i] = second[i].getDate() + '.' + (second[i].getMonth() + 1)
+            }
+            for (var i = new Date().getDay(); i < 6; i++){
+                second.push(new Date().setDate(new Date().getDate() + (i - new Date().getDay() + 1)))
+                second[i] = new Date(second[i])
+                // second[i] = second[i].getDate() + '.' + (second[i].getMonth() + 1)
+            }
+            for (var i = 0; i < 6; i++){
+                var tmp = new Date(second[i])
+                first.push(tmp.setDate(tmp.getDate() + 7))
+                first[i] = new Date(first[i])
+            }
+        }
+        
+        this.setState({ first_dates: first, second_dates: second})
 
         try {
 
@@ -202,6 +239,7 @@ export default class TimetableScreen extends PureComponent {
                         <ScrollView ref={"_ScrollView1"}>
                         {this.state.loading === true ? <Text style={styles.loading}>Подождите, идёт загрузка...</Text> :
                         this.state.timetable[0].odd_week.map(item => {
+                            const index = this.state.timetable[0].odd_week.indexOf(item)
                             return(
                                 <View onLayout={(event) => {
                                     var date = new Date()
@@ -211,13 +249,14 @@ export default class TimetableScreen extends PureComponent {
                                         this.refs._ScrollView1.scrollTo({x: 0, y: y - 20, animated: true})
                                     }
                                 }}>
-                                <Day day={item} key={item.day} week={1} currentWeek={this.getIndex()} weekDay={this.state.weekDay} />
+                                <Day day={item} key={item.day} date={this.state.first_dates[index]} week={1} currentWeek={this.getIndex()} weekDay={this.state.weekDay} />
                                 </View>
                         )})}
                         </ScrollView>
                         <ScrollView ref={"_ScrollView2"}>
                         {this.state.loading === true ? <Text style={styles.loading}>Подождите, идёт загрузка...</Text> :
                         this.state.timetable[0].even_week.map(item => {
+                            const index = this.state.timetable[0].even_week.indexOf(item)
                             return(<View onLayout={(event) => {
                                 var date = new Date()
                                 if(date.getDay() - 1 === item.day && this.getIndex() === 2){
@@ -226,7 +265,7 @@ export default class TimetableScreen extends PureComponent {
                                     this.refs._ScrollView2.scrollTo({x: 0, y: y - 20, animated: true})
                                 }
                             }}>
-                            <Day day={item} key={item.day} week={2} currentWeek={this.getIndex()} weekDay={this.state.weekDay}/>
+                            <Day day={item} key={item.day} date={this.state.second_dates[index]} week={2} currentWeek={this.getIndex()} weekDay={this.state.weekDay}/>
                             </View>) })}
                     
                         </ScrollView>

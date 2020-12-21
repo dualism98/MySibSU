@@ -4,7 +4,9 @@ import { h, w } from '../constants'
 import Subject from './Subject'
 
 const weekday = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
-const Day = ({day, week, currentWeek, weekDay}) => {
+const Day = ({day, date, week, currentWeek, weekDay}) => {
+        date = date.getDate() + '.' + (date.getMonth() + 1)
+
         return(
             <View style={styles.container}>
                 <View style={styles.dayname}>
@@ -21,7 +23,7 @@ const Day = ({day, week, currentWeek, weekDay}) => {
                                 <Text style={{ fontSize: 18, color: 'white', fontFamily: 'roboto'}}>cегодня</Text></View> : null
                             }
                     </View>
-                    {/* <Text>{(new Date().setDate()).toString()}</Text> */}
+                    <Text style={{minHeight: h * 0.05, fontFamily: 'roboto', textAlignVertical: 'center', marginTop: h * 0.015, maxHeight: h * 0.05, fontSize: 15, color: 'gray', position: 'absolute', right: 20}}>{date}</Text>
                 </View>
                 {
                     day.lessons.length === 0 ?
