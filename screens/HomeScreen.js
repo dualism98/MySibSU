@@ -3,14 +3,22 @@ import { Text, StyleSheet, View, Image, Dimensions, Animated, TouchableOpacity }
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { LinearGradient } from 'expo-linear-gradient';
+import MenuScreen from './MenuScreen'
 import EventsScreen from './EventsScreen'
+import ServiceScreen from './ServiceScreen'
 import MapScreen from './MapScreen'
 import TimetableScreen from './TimetableScreen'
 import InstitutesScreen from './InstitutesScreen'
 import ActiveScreen from './ActiveScreen'
 import IITK from './institutes/IITK'
 import Ermak from './unions/Ermak'
+import { MaterialIcons } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'; 
+import PersonScreen from './PersonScreen'
+
+
 
 const Tabs = createBottomTabNavigator();
 
@@ -27,7 +35,7 @@ export default class HomeScreen extends PureComponent{
         options={{
           headerShown: false,
         }}/>
-        <Tabs.Screen name='Корпуса' component={MapScreen} 
+        <Tabs.Screen name='Меню' component={MenuScreen} 
         options={{
           headerShown: false,
         }}/>
@@ -35,11 +43,11 @@ export default class HomeScreen extends PureComponent{
         options={{
           headerShown: false,
         }}/>
-        <Tabs.Screen name='Институты' component={InstituteStackScreen} 
+        <Tabs.Screen name='Сервисы' component={ServiceScreen} 
         options={{
           headerShown: false,
         }}/>
-        <Tabs.Screen name='Объединения' component={ActiveStackScreen}
+        <Tabs.Screen name='Личный кабинет' component={PersonScreen}
         options={{
           headerShown: false,
         }}/>
@@ -89,11 +97,11 @@ type Props = {
 
 const BottomMenuItem = ({ iconName, isCurrent }: Props) => {
   const images = {
-      'События': <Image source={isCurrent ? require('../assets/events.png') : require('../assets/events-outline.png')} style={{ width: 25, height: 25}}/>, 
-      'Корпуса': <Image source={isCurrent ? require('../assets/map.png') : require('../assets/map-outline.png')} style={{ width: 25, height: 25}}/>, 
-      'Расписание': <Image source={isCurrent ? require('../assets/timetable.png') : require('../assets/timetable-outline.png')} style={{ width: 25, height: 25, }}/>, 
-      'Институты': <Image source={isCurrent ? require('../assets/institutes.png') : require('../assets/institutes-outline.png')} style={{ width: 25, height: 25}}/>,
-      'Объединения': <Image source={isCurrent ? require('../assets/active.png') : require('../assets/active-outline.png')} style={{ width: 25, height: 25}}/>}
+      'События': <MaterialCommunityIcons name="timetable" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'}  />, 
+      'Меню': <MaterialIcons name="restaurant-menu" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
+      'Расписание': <MaterialCommunityIcons name="calendar-text" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
+      'Сервисы': <AntDesign name="appstore-o" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />,
+      'Личный кабинет': <Ionicons name='md-person' size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />}
   const color = isCurrent ? '#5575A7' : 'gray'
   return (
     <View

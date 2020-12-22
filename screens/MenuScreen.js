@@ -6,9 +6,6 @@ import MenuElement from '../modules/MenuElement'
 import Header from '../modules/Header'
 import moment from 'moment'
 
-const test = [
-    
-]
 
 const url = 'https://api.mysibsau.ru/api/day_food/'
 
