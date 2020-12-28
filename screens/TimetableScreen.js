@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View, Text, StyleSheet, TouchableWithoutFeedback, TextInput, ScrollView, StatusBar, TouchableHighlight, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator, TextInput, ScrollView, StatusBar, TouchableHighlight, Dimensions } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { h, w } from '../modules/constants'
 import Choose from '../modules/timetableFolder/Choose'
@@ -96,17 +96,11 @@ export default class TimetableScreen extends PureComponent {
             this.setState({ weekDay:days[date.getDay()] })
         }
     }
+    
 
     async getTimetable(id){
         var firstURL = 'https://timetable.mysibsau.ru/timetable/' + String(id)
         var secondURL = 'http://185.228.233.243/timetable/' + String(id)
-
-        var days = []
-        for (var i = 0; i < 14; i++){
-            days.push(new Date().setDate(new Date().getDate() + i))
-            days[i] = new Date(days[i])
-            days[i] = days[i].getDate() + '.' + (days[i].getMonth() + 1)
-        }
 
         var first = []
         var second = []
@@ -115,12 +109,10 @@ export default class TimetableScreen extends PureComponent {
             for (var i = 0; i <= new Date().getDay() - 1; i++){
                 first.push(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1 - i)))
                 first[i] = new Date(first[i])
-                // first[i] = first[i].getDate() + '.' + (first[i].getMonth() + 1)
             }
             for (var i = new Date().getDay(); i < 6; i++){
                 first.push(new Date().setDate(new Date().getDate() + (i - new Date().getDay() + 1)))
                 first[i] = new Date(first[i])
-                // first[i] = first[i].getDate() + '.' + (first[i].getMonth() + 1)
             }
             for (var i = 0; i < 6; i++){
                 var tmp = new Date(first[i])
@@ -132,12 +124,10 @@ export default class TimetableScreen extends PureComponent {
             for (var i = 0; i <= new Date().getDay() - 1; i++){
                 second.push(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1 - i)))
                 second[i] = new Date(second[i])
-                // second[i] = second[i].getDate() + '.' + (second[i].getMonth() + 1)
             }
             for (var i = new Date().getDay(); i < 6; i++){
                 second.push(new Date().setDate(new Date().getDate() + (i - new Date().getDay() + 1)))
                 second[i] = new Date(second[i])
-                // second[i] = second[i].getDate() + '.' + (second[i].getMonth() + 1)
             }
             for (var i = 0; i < 6; i++){
                 var tmp = new Date(second[i])
@@ -237,7 +227,10 @@ export default class TimetableScreen extends PureComponent {
 
                     <Swiper style={styles.wrapper} loop={false} index={this.getIndex() - 1} showsPagination={false} onIndexChanged={(index) => this.setState({index: index})}>
                         <ScrollView ref={"_ScrollView1"}>
-                        {this.state.loading === true ? <Text style={styles.loading}>Подождите, идёт загрузка...</Text> :
+                        {this.state.loading === true ? 
+                            <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
+                                <ActivityIndicator size='large' color={"#0060B3"}/>
+                            </View> :
                         this.state.timetable[0].odd_week.map(item => {
                             const index = this.state.timetable[0].odd_week.indexOf(item)
                             return(
@@ -254,7 +247,10 @@ export default class TimetableScreen extends PureComponent {
                         )})}
                         </ScrollView>
                         <ScrollView ref={"_ScrollView2"}>
-                        {this.state.loading === true ? <Text style={styles.loading}>Подождите, идёт загрузка...</Text> :
+                        {this.state.loading === true ?  
+                            <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
+                                <ActivityIndicator size='large' color={"#0060B3"}/>
+                            </View> :
                         this.state.timetable[0].even_week.map(item => {
                             const index = this.state.timetable[0].even_week.indexOf(item)
                             return(<View onLayout={(event) => {

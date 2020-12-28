@@ -6,12 +6,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MenuScreen from './MenuScreen'
 import EventsScreen from './EventsScreen'
 import ServiceScreen from './ServiceScreen'
-import MapScreen from './MapScreen'
+import MapScreen from './services/MapScreen'
 import TimetableScreen from './TimetableScreen'
-import InstitutesScreen from './InstitutesScreen'
-import ActiveScreen from './ActiveScreen'
-import IITK from './institutes/IITK'
-import Ermak from './unions/Ermak'
+import InstitutesScreen from './services/Institutes/InstitutesScreen'
+import ActiveScreen from './services/Unions/ActiveScreen'
+import IITK from './services/Institutes/Institute'
+import Ermak from './services/Unions/Union'
+import ShopScreen from './services/shop/ShopScreen'
+import ProductScreen from './services/shop/ProductScreen'
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -30,7 +32,7 @@ export default class HomeScreen extends PureComponent{
   render(){
     return (
       <NavigationContainer>
-      <Tabs.Navigator initialRouteName={'Расписание'} tabBar={(props: BottomTabBarProps) => <TabBar {...props} />}>
+      <Tabs.Navigator initialRouteName={'Расписание'} tabBar={(props) => <TabBar {...props} />}>
         <Tabs.Screen name="События" component={EventsScreen}
         options={{
           headerShown: false,
@@ -43,11 +45,11 @@ export default class HomeScreen extends PureComponent{
         options={{
           headerShown: false,
         }}/>
-        <Tabs.Screen name='Сервисы' component={ServiceScreen} 
+        <Tabs.Screen name='Сервисы' component={ServiceStackScreen} 
         options={{
           headerShown: false,
         }}/>
-        <Tabs.Screen name='Личный кабинет' component={PersonScreen}
+        <Tabs.Screen name='Профиль' component={PersonScreen}
         options={{
           headerShown: false,
         }}/>
@@ -57,51 +59,54 @@ export default class HomeScreen extends PureComponent{
   }
 }
 
-const ActiveStack = createStackNavigator();
+const ServiceStack = createStackNavigator();
 
-function ActiveStackScreen(){
+function ServiceStackScreen(){
   return(
-    <ActiveStack.Navigator>
-      <ActiveStack.Screen name="Active" component={ActiveScreen} 
+    <ServiceStack.Navigator>
+      <ServiceStack.Screen name="Service" component={ServiceScreen} 
         options={{
           headerShown: false,
       }}/>
-      <ActiveStack.Screen name='Ermak' component={Ermak}
+      <ServiceStack.Screen name="Active" component={ActiveScreen} 
+        options={{
+          headerShown: false,
+      }}/>
+      <ServiceStack.Screen name='Ermak' component={Ermak}
       options={{
         headerShown: false,
       }}/>
-    </ActiveStack.Navigator>
-  )
-}
-
-const InstituteStack = createStackNavigator();
-
-function InstituteStackScreen(){
-  return(
-    <InstituteStack.Navigator>
-      <InstituteStack.Screen name="Institutes" component={InstitutesScreen} 
+      <ServiceStack.Screen name="Institutes" component={InstitutesScreen} 
         options={{
           headerShown: false,
-          }}/>
-      <InstituteStack.Screen name="IITK" component={IITK}
-        options={{ title: 'ИИТК', headerShown: false
-        }}/>
-    </InstituteStack.Navigator>
+      }}/>
+      <ServiceStack.Screen name="IITK" component={IITK} 
+        options={{
+          headerShown: false,
+      }}/>
+      <ServiceStack.Screen name="Map" component={MapScreen} 
+        options={{
+          headerShown: false,
+      }}/>
+      <ServiceStack.Screen name='Shop' component={ShopScreen}
+        options={{
+          headerShown: false,
+      }}/>
+      <ServiceStack.Screen name='Product' component={ProductScreen}
+        options={{
+          headerShown: false,
+      }}/>
+    </ServiceStack.Navigator>
   )
 }
 
-type Props = {
-  iconName: string;
-  isCurrent?: boolean;
-};
-
-const BottomMenuItem = ({ iconName, isCurrent }: Props) => {
+const BottomMenuItem = ({ iconName, isCurrent }) => {
   const images = {
       'События': <MaterialCommunityIcons name="timetable" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'}  />, 
       'Меню': <MaterialIcons name="restaurant-menu" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
       'Расписание': <MaterialCommunityIcons name="calendar-text" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
       'Сервисы': <AntDesign name="appstore-o" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />,
-      'Личный кабинет': <Ionicons name='md-person' size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />}
+      'Профиль': <Ionicons name='md-person' size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />}
   const color = isCurrent ? '#5575A7' : 'gray'
   return (
     <View

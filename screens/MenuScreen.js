@@ -1,17 +1,17 @@
 import React, { PureComponent } from 'react'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator} from 'react-native'
 import { ScrollView, TapGestureHandler } from 'react-native-gesture-handler'
 import { h, w } from '../modules/constants' 
 import MenuElement from '../modules/MenuElement'
-import Header from '../modules/Header'
+import MainHeader from '../modules/MainHeader'
 import moment from 'moment'
 
 
-const url = 'https://api.mysibsau.ru/api/day_food/'
+const url = 'http://185.228.233.193/api/day_food/'
 
 function food(count){
     if (count == 0){
-        return(<Text style={{fontSize: 20, fontFamily: 'roboto'}}>Меню на сегодня нет</Text>)
+        return(<Text style={{fontSize: 20, fontFamily: 'roboto', marginTop: 20}}>Меню на сегодня нет</Text>)
     }
 }
 
@@ -26,6 +26,7 @@ export default class MenuScreen extends PureComponent {
         try {
             const foodApiCall = await fetch(url, {method: 'GET'});
             const day_food = await foodApiCall.json();
+            console.log(day_food)
             this.setState({dayList: day_food, loading: false});
         } catch(err) {
             console.log("Error fetching data-----------", err);
@@ -39,28 +40,30 @@ export default class MenuScreen extends PureComponent {
     }
     
     render(){
-        const { container, text, image, head, back } = styles
-        const { dayList, loading, date } = this.state
         var count = 0
         return(
             
             <View>
-                <Header title={'Моё меню'} onPress={() => this.props.navigation.goBack()}/>
+                <MainHeader title={'Моё меню'}/>
                 <ScrollView>
-                <View style={container}>
+                <View style={styles.container}>
                     <View>
                         {
-                            dayList.map(item => {
-                                if (item.day === date){
+                            this.state.dayList.map(item => {
+                                if (item.day === this.state.date){
                                     count++
                                     return(
-                                        <MenuElement data={item} date={date} key={item.id}/>
+                                        <MenuElement data={item} date={this.state.date} key={item.id}/>
                                     )
                                 }
                             })
                         }
                     </View>
-                    <View>{food(count)}</View>
+                    {this.state.loading === true ?
+                        <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
+                            <ActivityIndicator size='large' color='#0060B3' />
+                        </View> :
+                        food(count)}
                 </View>
                 </ScrollView>
             </View>

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View, Text, ScrollView, StyleSheet } from 'react-native'
+import { View, ActivityIndicator, ScrollView, StyleSheet } from 'react-native'
 import MainHeader from '../modules/MainHeader'
 import { h, w } from '../modules/constants'
 import MapModule from '../modules/MapModule'
@@ -39,7 +39,10 @@ export default class EventsScreen extends PureComponent {
                 <MainHeader title={'Мои события'} onPress={() => this.props.navigation.goBack()}/>
                 <ScrollView nestedScrollEnabled = {true}>
                         {
-                            (loading === true) ? <Text style={text}>Подождите, идет загрузка...</Text> :
+                            (loading === true) ? 
+                                <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
+                                    <ActivityIndicator size='large' color='#0060B3' />
+                                </View> :
                             eventList.map(item =>           
                                 <MapModule key={item.name} name={item.name} inf={item.inf} />                              
                             )

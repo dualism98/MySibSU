@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import { View, Text, Image, Linking, StyleSheet, TouchableWithoutFeedback, Modal, TextInput, Alert, ScrollView, Platform } from 'react-native'
 import call from 'react-native-phone-call'
-import Header from '../../modules/Header'
-import { h, w } from '../../modules/constants'
+import Header from '../../../modules/Header'
+import { h, w } from '../../../modules/constants'
 
 export default class Ermak extends PureComponent{
 
@@ -17,12 +17,6 @@ export default class Ermak extends PureComponent{
     }
 
     changeVisible(){
-        // if (this.state.onVisible === false){
-        //     this.setState({onVisible: true})
-        // }
-        // else{
-        //     this.setState({onVisible: false})
-        // }
         this.setState({ onVisible: !this.state.onVisible })
     }
 
@@ -61,27 +55,27 @@ export default class Ermak extends PureComponent{
                 <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{info[0][1].fio}</Text>
             </View>
             <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../assets/adress.png')}></Image>
+                <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../../assets/adress.png')}></Image>
                 <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{info[0][1].address}</Text>
             </View>
             <View style={{flexDirection: 'column', paddingBottom: 180}}>
             <TouchableWithoutFeedback onPress={() => call({number: info[0][1].telefon, prompt: false})}>
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                    <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/telefon.png')}></Image>
+                    <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/telefon.png')}></Image>
                     <Text style={buttonText}>Позвонить</Text>
                 </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => Linking.openURL(info[0][1].vk)}>
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                    <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/vk.png')}></Image>
+                    <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/vk.png')}></Image>
                     <Text style={buttonText}>Группа VK</Text>
                 </View>
             </TouchableWithoutFeedback>
             {info[0][1].link !== '' ?
             <TouchableWithoutFeedback onPress={() => this.changeVisible()}>
             <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/kafedra.png')}></Image>
+                <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/kafedra.png')}></Image>
                 <Text style={buttonText}>Подать заявку</Text>
             </View>
         </TouchableWithoutFeedback> : null}

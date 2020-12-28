@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react'
 import { ScrollView, View, Text, StyleSheet, ImageBackground, Image } from 'react-native'
-import ListElement from '../modules/ListElement'
-import MainHeader from '../modules/MainHeader'
-import { h, w } from '../modules/constants'
-import Info from '../modules/information'
+import ListElement from '../../../modules/ListElement'
+import Header from '../../../modules/Header'
+import { h, w } from '../../../modules/constants'
+import Info from '../../../modules/information'
 
 
 export default class InstitutesScreen extends PureComponent {
@@ -28,9 +28,9 @@ export default class InstitutesScreen extends PureComponent {
             
             
             <View style={{flex: 1, backgroundColor: 'white', flexDirection: 'column' }} >
-                <MainHeader title={'Мой институт'} onPress={() => this.props.navigation.goBack()}/>
+                <Header title={'Мой институт'} onPress={() => this.props.navigation.goBack()}/>
                 <View style={{flexDirection: 'row'}}>
-                <Image style={back} source={require('../assets/rocket.png')} />
+                <Image style={back} source={require('../../../assets/rocket.png')} />
                 <ScrollView style={{}}>
                     <View style={container}>
                         {institutes.map( institute => {

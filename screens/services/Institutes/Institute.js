@@ -1,10 +1,10 @@
 import React, { PureComponent, Component } from 'react'
 import { View, Text, StyleSheet, Image, Linking , TouchableOpacity, TouchableWithoutFeedback} from 'react-native'
 import call from 'react-native-phone-call'
-import { h, w } from '../../modules/constants'
-import Header from '../../modules/Header'
+import { h, w } from '../../../modules/constants'
+import Header from '../../../modules/Header'
 import { ScrollView } from 'react-native-gesture-handler'
-import Cafedra from '../../modules/Cafedra'
+import Cafedra from '../../../modules/Cafedra'
 import Swiper from 'react-native-swiper'
 
 const Information = ({ number, info }) => {
@@ -13,7 +13,7 @@ const Information = ({ number, info }) => {
             <View style={{ minHeight: h}}>
             <ScrollView>
                 <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
-                    <Image source={require('../../assets/back.png')}  style={{ width: w * 0.8, height: w / 2, resizeMode: 'cover', alignSelf: 'center'}}/>
+                    <Image source={require('../../../assets/back.png')}  style={{ width: w * 0.8, height: w / 2, resizeMode: 'cover', alignSelf: 'center'}}/>
                 </View>
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
                     <Image source={info[0][1].photo} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
@@ -23,19 +23,19 @@ const Information = ({ number, info }) => {
                     <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{info[0][1].rector}</Text>
                 </View>
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                    <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../assets/adress.png')}></Image>
+                    <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../../assets/adress.png')}></Image>
                     <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{info[0][1].address}</Text>
                 </View>
                 <View style={{flexDirection: 'column', paddingBottom: 180}}>
                     <TouchableWithoutFeedback onPress={() => call({number: info[0][1].telefon, prompt: false})}>
                         <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                            <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/telefon.png')}></Image>
+                            <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/telefon.png')}></Image>
                             <Text style={styles.buttonText}>Позвонить</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${info[0][1].email}?subject==&`)}>
                         <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                            <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/mail.png')}></Image>
+                            <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/mail.png')}></Image>
                             <Text style={styles.buttonText}>Написать письмо</Text>
                         </View>
                     </TouchableWithoutFeedback>
@@ -61,7 +61,7 @@ const Information = ({ number, info }) => {
             <View>
             <ScrollView>
                 <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
-                    <Image source={require('../../assets/back.png')}  style={{ width: w * 0.8, height: w / 2, resizeMode: 'cover', alignSelf: 'center'}}/>
+                    <Image source={require('../../../assets/back.png')}  style={{ width: w * 0.8, height: w / 2, resizeMode: 'cover', alignSelf: 'center'}}/>
                 </View>
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
                     <Image source={info[0][3].photo} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
@@ -71,19 +71,19 @@ const Information = ({ number, info }) => {
                     <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{info[0][3].pred}</Text>
                 </View>
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                    <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../assets/adress.png')}></Image>
+                    <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../../assets/adress.png')}></Image>
                     <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{info[0][3].address}</Text>
                 </View>
                 <View style={{flexDirection: 'column', paddingBottom: 180}}>
                     <TouchableWithoutFeedback onPress={() => call({number: info[0][3].telefon, prompt: false})}>
                         <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                            <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/telefon.png')}></Image>
+                            <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/telefon.png')}></Image>
                             <Text style={styles.buttonText}>Позвонить</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${info[0][3].email}?subject==&`)}>
                         <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                            <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../assets/mail.png')}></Image>
+                            <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/mail.png')}></Image>
                             <Text style={styles.buttonText}>Написать письмо</Text>
                         </View>
                     </TouchableWithoutFeedback>

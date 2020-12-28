@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import { View, Text, StyleSheet, Dimensions, TouchableWithoutFeedback, Linking, ScrollView, Image } from 'react-native'
-import MainHeader from '../modules/MainHeader'
-import Maps from '../modules/maps'
-import { h, w } from '../modules/constants'
+import Header from '../../modules/Header'
+import Maps from '../../modules/maps'
+import { h, w } from '../../modules/constants'
 
 export default class MapScreen extends PureComponent {
     render(){
@@ -11,7 +11,7 @@ export default class MapScreen extends PureComponent {
             return(
                 <View style={{backgroundColor:'white', flex: 1, paddingBottom: 0}}> 
                 
-                    <MainHeader title="Мои корпуса" onPress={() => this.props.navigation.goBack()}/>  
+                    <Header title="Мои корпуса" onPress={() => this.props.navigation.goBack()}/>  
                     <ScrollView>
                         <View style={container}>               
                             <View style={right}>

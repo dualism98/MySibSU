@@ -4,8 +4,9 @@ import { h, w } from '../constants'
 import Subject from './Subject'
 
 const weekday = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
+const month = ['янв.', 'фев.', 'мар.', 'апр.', 'мая', 'июня', 'июля', 'авг.', 'сен.', 'окт.', 'нояб.', 'дек.']
 const Day = ({day, date, week, currentWeek, weekDay}) => {
-        date = date.getDate() + '.' + (date.getMonth() + 1)
+        date = date.getDate() + ' ' + month[date.getMonth()]
 
         return(
             <View style={styles.container}>

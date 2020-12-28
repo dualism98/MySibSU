@@ -4,22 +4,41 @@ import { h, w } from './constants';
 
 
 const MenuElement = ({data, date}) => {
-    const { container, sub, h1, cover, down, downtext } = styles
+    const { sub, h1, down, downtext } = styles
     var { day, food } = data
 
     day = day.split('-')
 
     return(
-        <View style={container}>
+        <View style={{ alignItems: 'center'}}>
             <View style={sub}>
-                <ImageBackground style={cover} source={require('../assets/menu_back.png')}>
                 <Text style={h1}>{day[2]}.{day[1]}.{day[0]}</Text>
-                </ImageBackground>
+            </View>
+            <View style={[styles.box, {flexDirection: 'row', heigth: 20, marginTop: 10, backgroundColor: 'rgb(240,240,240)', marginBottom: 10}]}>
+                <View style={{ height: 20, width: '55%', }}>
+                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'left', textAlignVertical: 'center' }}>Блюдо</Text>
+                </View>
+                <View style={{ height: 20, width: '15%',}}>
+                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center' }}>Вес</Text>
+                </View>
+                <View style={{ height: 20, width: '30%', }}>
+                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center' }}>Стоимость</Text>
+                </View>
             </View>
             <View style={down}>
                 {
                     food.map(item => (
-                        <Text style={downtext}>{item.name} - {item.mass} г. - {item.price} р.</Text>
+                        <View style={[styles.box, styles.shadow2, {flexDirection: 'row', heigth: 20}]}>
+                            <View style={{ height: 20, width: '55%', }}>
+                                <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'left', textAlignVertical: 'center' }}>{item.name}</Text>
+                            </View>
+                            <View style={{ height: 20, width: '15%', }}>
+                                <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center' }}>{item.mass}г.</Text>
+                            </View>
+                            <View style={{ height: 20, width: '30%',}}>
+                                <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center' }}>{item.price}₽</Text>
+                            </View>
+                        </View>
                     ))
                 }
             </View>  
@@ -27,28 +46,28 @@ const MenuElement = ({data, date}) => {
     );
 }
 
+function elevationShadowStyle(elevation) {
+    return {
+      elevation,
+      shadowColor: 'black',
+      shadowOffset: { width: 0, height: 0.5 * elevation },
+      shadowOpacity: 0.3,
+      shadowRadius: 0.8 * elevation
+    };
+  }
+
 const styles = StyleSheet.create({
-    container: {
-        width: w * 0.8,
-        marginBottom: 20,
-        marginTop: 20,
-    },
-
     sub: {
-        height: w/9,
-    },
-
-    cover:{
-        flex: 1,
-        resizeMode: "cover",
-        justifyContent: "center"
+        height: 30,
+        width: '100%',
+        marginTop: 20,
+        marginLeft: 20
     },
 
     h1: {
-        color: 'white',
-        fontSize: w/12,
-        alignSelf: 'center',
-        fontFamily: 'roboto'
+        color: '#5575A7',
+        fontSize: 22,
+        fontFamily: 'roboto',
     },
 
     downtext:{
@@ -60,7 +79,16 @@ const styles = StyleSheet.create({
         borderColor: '#518E90',
         fontSize: 20,
         fontFamily: 'roboto'
-    }
+    },
+
+    shadow2: elevationShadowStyle(6),
+    box: {
+      borderRadius: 15,
+      backgroundColor: 'white',
+      padding: 10,
+      width: w * 0.9,
+      marginTop: 10,
+    },
 
 })
 
