@@ -1,43 +1,46 @@
 import React, { PureComponent } from 'react'
-import { ScrollView, View, Text, StyleSheet, ImageBackground, Image } from 'react-native'
+import { ScrollView, View, Text, StyleSheet, ActivityIndicator, Image } from 'react-native'
 import ListElement from '../../../modules/ListElement'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
-import Info from '../../../modules/information'
 
 
 export default class InstitutesScreen extends PureComponent {
-    constructor(route, navigation){
-        super(route, navigation)
 
-        console.log(this.props)
+    state = {
+        institutes: [],
+        loaded: false
+    }
+
+    async componentDidMount(){
+        try{
+            let institutesRequest = await fetch('http://193.187.174.224/v2/campus/institute/', {method: 'GET'})
+            let institutes = await institutesRequest.json()
+            this.setState({ institutes: institutes, loaded: true})
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
     render(){
         const { container, back } = styles
         const { navigate } = this.props.navigation
-        const institutes = [['IITK', 'ИИТК', 'Институт информатики и телекоммуникаций'], ['IKT', 'ИКТ', 'Институт космической техники'],
-                            ['IHT', 'ИХТ', 'Институт химических технологий'], ['ILT', 'ИЛТ', 'Институт лесных технологий'], 
-                            ['ISI', 'ИСИ', 'Институт социального инжиниринга'], ['IEI', 'ИЭИ', 'Инженерно-экономический институт'],
-                            ['IMM', 'ИММ', 'Институт машиноведения и мехатроники'], ['IGAITD', 'ИГАиТД', 'Институт гражданской авиации и таможенного дела'], 
-                            ['IKIVT', 'ИКИВТ', 'Институт космических исследований и высоких технологий'], ['AK', 'АК', 'Аэрокосмический колледж']]
-
-        const info = Info
-        console.log(info)
         return(
-            
-            
             <View style={{flex: 1, backgroundColor: 'white', flexDirection: 'column' }} >
                 <Header title={'Мой институт'} onPress={() => this.props.navigation.goBack()}/>
                 <View style={{flexDirection: 'row'}}>
                 <Image style={back} source={require('../../../assets/rocket.png')} />
                 <ScrollView style={{}}>
+                    {this.state.loaded ? 
                     <View style={container}>
-                        {institutes.map( institute => {
-                            return( <ListElement onPress={() => navigate('IITK', {data: info, institute: institute[1]})} title={institute[1]} prop={institute[2]} key={institute[1]}/>)
+                        {this.state.institutes.map( institute => {
+                            return( <ListElement onPress={() => navigate('IITK', {data: institute})} title={institute.short_name} prop={institute.name} key={institute.short_name}/>)
                         })}
-                    </View> 
-                    
+                    </View> :
+                    <View style={{ height: h, paddingBottom: 120, justifyContent: 'center'}}>
+                        <ActivityIndicator size='large' color='#0060B3' />
+                    </View>}
                 </ScrollView> 
                 </View>
             </View>
@@ -52,6 +55,8 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         flex: 1,
         marginBottom: 150,
+        minHeight: h,
+        justifyContent: 'center'
     },
 
     back: {

@@ -9,11 +9,11 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons'; 
 
 
-
 const services = [{name: 'Корпуса', path: 'Map', image: <Entypo name="map" size={44} color="#0060B3" />},
                     {name: 'Объединения', path: 'Active', image: <MaterialIcons name="people-outline" size={44} color="rgb(76, 174, 50)" />},
                     {name: 'Институты', path: 'Institutes', image: <FontAwesome5 name="university" size={42.5} color="gray" />}, 
-                    {name: 'Интернет-каталог', path: 'Shop', image: <AntDesign name="shoppingcart" size={42} color="#ef8531" />}]
+                    {name: 'Интернет-каталог', path: 'Shop', image: <AntDesign name="shoppingcart" size={42} color="#ef8531" />},
+                    {name: 'Обратная связь', path: 'Poll', image: <MaterialIcons name="poll" size={42} color="rgb(49, 151, 39)"/>}]
 
 export default class EventsScreen extends PureComponent {
     render(){

@@ -14,6 +14,8 @@ import IITK from './services/Institutes/Institute'
 import Ermak from './services/Unions/Union'
 import ShopScreen from './services/shop/ShopScreen'
 import ProductScreen from './services/shop/ProductScreen'
+import TopicsScreen from './services/poll/TopicsScreen'
+import PollScreen from './services/poll/PollScreen'
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -93,6 +95,14 @@ function ServiceStackScreen(){
           headerShown: false,
       }}/>
       <ServiceStack.Screen name='Product' component={ProductScreen}
+        options={{
+          headerShown: false,
+      }}/>
+      <ServiceStack.Screen name='Topics' component={TopicsScreen}
+        options={{
+          headerShown: false,
+      }}/>
+      <ServiceStack.Screen name='Poll' component={PollScreen}
         options={{
           headerShown: false,
       }}/>

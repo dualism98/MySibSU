@@ -4,6 +4,8 @@ import call from 'react-native-phone-call'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
 
+const url = 'http://193.187.174.224'
+
 export default class Ermak extends PureComponent{
 
     state = {
@@ -37,42 +39,42 @@ export default class Ermak extends PureComponent{
 
     render(){
         const { container, icons, modalView, input, button, buttonText } = styles
-        const name = this.props.route.params.unions
-        const info = this.props.route.params.data.filter( item => item[0] === name)
+        const data = this.props.route.params.data
+        console.log(data)
 
         return(
         <View style={container}>
-            <Header title={name} onPress={() => this.props.navigation.goBack()}/>
+            <Header title={data.short_name} onPress={() => this.props.navigation.goBack()}/>
             <ScrollView>
             <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
-                <Image source={info[0][1].logo}  style={{ width: w, height: w / 2, resizeMode: 'cover'}} blurRadius={Platform.OS === 'android' ? 0.5 : 1}/>
+                <Image source={{uri: url + data.logo}}  style={{ width: w, height: w / 2, resizeMode: 'cover'}} blurRadius={Platform.OS === 'android' ? 0.5 : 1}/>
             </View>
             <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
-                <Image source={info[0][1].photo} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
+                <Image source={{uri: url + data.photo}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
             </View>
-            <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{info[0][1].rank}</Text>
+            <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank}</Text>
             <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{info[0][1].fio}</Text>
+                <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.fio}</Text>
             </View>
             <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                 <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../../assets/adress.png')}></Image>
-                <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{info[0][1].address}</Text>
+                <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{data.address}</Text>
             </View>
             <View style={{flexDirection: 'column', paddingBottom: 180}}>
-            <TouchableWithoutFeedback onPress={() => call({number: info[0][1].telefon, prompt: false})}>
+            <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                     <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/telefon.png')}></Image>
                     <Text style={buttonText}>Позвонить</Text>
                 </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => Linking.openURL(info[0][1].vk)}>
+            <TouchableWithoutFeedback onPress={() => Linking.openURL(data.group_vk)}>
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                     <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/vk.png')}></Image>
                     <Text style={buttonText}>Группа VK</Text>
                 </View>
             </TouchableWithoutFeedback>
-            {info[0][1].link !== '' ?
+            {data.page_vk.split('id')[1] !== '' ?
             <TouchableWithoutFeedback onPress={() => this.changeVisible()}>
             <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                 <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/kafedra.png')}></Image>

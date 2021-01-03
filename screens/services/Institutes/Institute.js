@@ -1,5 +1,5 @@
 import React, { PureComponent, Component } from 'react'
-import { View, Text, StyleSheet, Image, Linking , TouchableOpacity, TouchableWithoutFeedback} from 'react-native'
+import { View, Text, StyleSheet, Image, Linking , TouchableWithoutFeedback} from 'react-native'
 import call from 'react-native-phone-call'
 import { h, w } from '../../../modules/constants'
 import Header from '../../../modules/Header'
@@ -7,7 +7,9 @@ import { ScrollView } from 'react-native-gesture-handler'
 import Cafedra from '../../../modules/Cafedra'
 import Swiper from 'react-native-swiper'
 
-const Information = ({ number, info }) => {
+const url = 'http://193.187.174.224'
+
+const Information = ({ number, data }) => {
     if (number == 1){
         return(
             <View style={{ minHeight: h}}>
@@ -16,24 +18,24 @@ const Information = ({ number, info }) => {
                     <Image source={require('../../../assets/back.png')}  style={{ width: w * 0.8, height: w / 2, resizeMode: 'cover', alignSelf: 'center'}}/>
                 </View>
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
-                    <Image source={info[0][1].photo} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
+                    <Image source={{uri: url + data.image}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
                 </View>
-                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{info[0][1].pos}</Text>
+                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>Директор</Text>
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                    <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{info[0][1].rector}</Text>
+                    <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.name}</Text>
                 </View>
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                     <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../../assets/adress.png')}></Image>
-                    <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{info[0][1].address}</Text>
+                    <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{data.address}</Text>
                 </View>
                 <View style={{flexDirection: 'column', paddingBottom: 180}}>
-                    <TouchableWithoutFeedback onPress={() => call({number: info[0][1].telefon, prompt: false})}>
+                    <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
                         <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                             <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/telefon.png')}></Image>
                             <Text style={styles.buttonText}>Позвонить</Text>
                         </View>
                     </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${info[0][1].email}?subject==&`)}>
+                    <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${data.mail}?subject==&`)}>
                         <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                             <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/mail.png')}></Image>
                             <Text style={styles.buttonText}>Написать письмо</Text>
@@ -48,15 +50,14 @@ const Information = ({ number, info }) => {
         return(
             <View style={{ minHeight: h, paddingBottom: 150}}>
                 <Text style={{fontFamily: 'roboto', fontSize: 30, color: '#006AB3', marginLeft: 20, marginTop: 25, marginBottom: 20}}>КАФЕДРЫ</Text>
-                {info[0][2].chairs.map( item => {
+                {data.map( item => {
                     return( 
-                        <Cafedra name={item[0]} fio={item[1]} address={item[2]} phone={item[3]} email={item[4]} key={item[0]}/>
+                        <Cafedra name={item.name} fio={item.fio} address={item.address} phone={item.phone} email={item.mail} key={item.name}/>
                     )})}
             </View>
         )
     }
     else{
-        if (info[0][3].pred !== 'none'){
         return(
             <View>
             <ScrollView>
@@ -64,24 +65,24 @@ const Information = ({ number, info }) => {
                     <Image source={require('../../../assets/back.png')}  style={{ width: w * 0.8, height: w / 2, resizeMode: 'cover', alignSelf: 'center'}}/>
                 </View>
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
-                    <Image source={info[0][3].photo} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
+                    <Image source={{ uri: url + data.image}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
                 </View>
-                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{info[0][3].rank}</Text>
+                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>Председатель</Text>
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                    <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{info[0][3].pred}</Text>
+                    <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.fio}</Text>
                 </View>
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                     <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../../assets/adress.png')}></Image>
-                    <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{info[0][3].address}</Text>
+                    <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{data.address}</Text>
                 </View>
                 <View style={{flexDirection: 'column', paddingBottom: 180}}>
-                    <TouchableWithoutFeedback onPress={() => call({number: info[0][3].telefon, prompt: false})}>
+                    <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
                         <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                             <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/telefon.png')}></Image>
                             <Text style={styles.buttonText}>Позвонить</Text>
                         </View>
                     </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${info[0][3].email}?subject==&`)}>
+                    <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${data.mail}?subject==&`)}>
                         <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                             <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/mail.png')}></Image>
                             <Text style={styles.buttonText}>Написать письмо</Text>
@@ -90,10 +91,7 @@ const Information = ({ number, info }) => {
                 </View>
             </ScrollView>
             </View>
-        )}
-        else{
-            return(<View><Text style={{fontFamily: 'roboto', textAlign: 'center', marginTop: 10, color: '#006AB3'}}>Студ. Совета нет :с</Text></View>)
-        }
+        )
     }
 }
 
@@ -101,24 +99,25 @@ export default class IITK extends PureComponent{
     state = {choice : 1}
     
     render(){
-        const info = this.props.route.params.data.filter(item => item[0] === this.props.route.params.institute)
+        const data = this.props.route.params.data
+        console.log(data.soviet)
         return(
             <View style={styles.container}>
-                <Header title={this.props.route.params.institute} onPress={() => this.props.navigation.goBack()}/>
-                <Swiper style={styles.wrapper} showsButtons={false}>
+                <Header title={data.short_name} onPress={() => this.props.navigation.goBack()}/>
+                <Swiper showsButtons={false} >
                     <View>
                         <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-between', flexDirection: 'column' }}>  
-                            <Information number={1} info={info} />
+                            <Information number={1} data={data.director} />
                         </ScrollView>
                     </View>
                     <View>
                         <ScrollView>
-                            <Information number={2} info={info} />
+                            <Information number={2} data={data.departments} />
                         </ScrollView>
                     </View>
                     <View>
                         <ScrollView>
-                            <Information number={3} info={info} />
+                            <Information number={3} data={data.soviet} />
                         </ScrollView>
                     </View>
                 </Swiper>
