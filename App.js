@@ -1,12 +1,30 @@
-import React, { useState, setState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {AsyncStorage} from 'react-native'
 import HomeScreen from './screens/HomeScreen'
-import { AppLoading } from 'expo'
+import AppLoading from 'expo-app-loading'
 import { useFonts } from '@use-expo/font'
-// import * as Random from 'expo-random';
+import * as Notifications from 'expo-notifications';
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
+
+async function notify(){
+  const token = (await Notifications.getDevicePushTokenAsync()).data
+  console.log(token)
+}
 
 
 function App(){
+
+  let [notification, setNotification] = useState({})
+
+  notify()
 
   let [fontsLoaded] = useFonts({
     'roboto': require('./assets/fonts/18811.ttf'),

@@ -137,7 +137,6 @@ const TabBar = ({state, descriptors, navigation}: BottomTabBarProps) => {
   const totalWidth = Dimensions.get("window").width;
   const tabWidth = totalWidth / state.routes.length;
   const [translateValue] = useState(new Animated.Value(tabWidth * state.index));
-  console.log(translateValue)
   return (
     <View style={[style.tabContainer, { width: totalWidth }]}>
       

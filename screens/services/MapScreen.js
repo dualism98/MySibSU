@@ -36,7 +36,9 @@ export default class MapScreen extends PureComponent {
                                     if (map.coast === 1){
                                     return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.link)} key={map.name}>
                                             <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                                                <Text style={number}>{map.name}</Text>
+                                                <View style={{ width: w * 0.1}}>
+                                                    <Text style={number}>{map.name}</Text>
+                                                </View>
                                                 <View style={{borderLeftWidth: 2, borderLeftColor: '#006AB3',}}>
                                                     <Text style={text}>{map.type}{'\n'}{map.address}</Text>
                                                 </View>
@@ -50,8 +52,10 @@ export default class MapScreen extends PureComponent {
                                     if (map.coast === 0){
                                     return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.link)} key={map.name}>
                                             <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                                            <Text style={number}>{map.name}</Text>
-                                            <Text style={text_left}>{map.type}{'\n'}{map.address}</Text>
+                                                <View style={{ width: w * 0.1}}>
+                                                    <Text style={number}>{map.name}</Text>
+                                                </View>
+                                                <Text style={text_left}>{map.type}{'\n'}{map.address}</Text>
                                             </View>
                                             </TouchableWithoutFeedback>)
                                 }})}    
@@ -118,13 +122,11 @@ const styles = StyleSheet.create({
 
     number: {
         height: '100%',
-        width: 25,
         fontSize: 15,
         fontFamily: 'roboto',
         color: 'black',
         textAlignVertical: 'center',
         textAlign: 'center',
-        marginRight: 3
     },  
 
     text_left: {
@@ -155,7 +157,6 @@ const styles = StyleSheet.create({
         width: w * 0.9, 
         marginTop: 10,
         paddingRight: 19,
-        paddingLeft: 15,
         alignSelf: 'center'
     },
 })

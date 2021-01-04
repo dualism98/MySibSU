@@ -3,6 +3,9 @@ import { View, Text, Image, Linking, StyleSheet, TouchableWithoutFeedback, Modal
 import call from 'react-native-phone-call'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons'; 
+
 
 const url = 'http://193.187.174.224'
 
@@ -46,39 +49,68 @@ export default class Ermak extends PureComponent{
         <View style={container}>
             <Header title={data.short_name} onPress={() => this.props.navigation.goBack()}/>
             <ScrollView>
+                
             <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
                 <Image source={{uri: url + data.logo}}  style={{ width: w, height: w / 2, resizeMode: 'cover'}} blurRadius={Platform.OS === 'android' ? 0.5 : 1}/>
             </View>
+
             <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
                 <Image source={{uri: url + data.photo}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
             </View>
-            <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank}</Text>
+
+            <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>Описание</Text>
+            <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10}]}>
+                <Text style={{fontFamily: 'roboto', fontSize: 13, color: '#5575A7', paddingLeft: 5}}>{data.about}</Text>
+            </View>
+
+            <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: 15, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank}</Text>
+            {data.fio !== '-' ? 
             <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                 <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.fio}</Text>
+            </View> : null}
+
+            <View style={[styles.box, styles.shadow2, {flexDirection: 'row'}]}>
+                <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                    <MaterialCommunityIcons name="map-marker" size={24} color="rgb(115, 182, 28)" />
+                </View>
+                <View style={{ justifyContent: 'center'}}>
+                    <Text style={buttonText}>{data.address}</Text>
+                </View>
             </View>
-            <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../../assets/adress.png')}></Image>
-                <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{data.address}</Text>
-            </View>
+
             <View style={{flexDirection: 'column', paddingBottom: 180}}>
             <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
-                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                    <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/telefon.png')}></Image>
-                    <Text style={buttonText}>Позвонить</Text>
+                <View style={[styles.box, styles.shadow2, {flexDirection: 'row'}]}>
+                    <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                        <MaterialCommunityIcons name="phone" size={24} color="rgb(115, 182, 28)" />
+                    </View>
+                    <View style={{ justifyContent: 'center'}}>
+                        <Text style={buttonText}>Позвонить</Text>
+                    </View>
+                    
                 </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => Linking.openURL(data.group_vk)}>
-                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                    <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/vk.png')}></Image>
-                    <Text style={buttonText}>Группа VK</Text>
+                <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                    <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                        <Entypo name="vk-with-circle" size={24} color="rgb(115, 182, 28)" />
+                    </View>
+                    <View style={{ justifyContent: 'center'}}>
+                        <Text style={buttonText}>Группа VK</Text>
+                    </View>
                 </View>
             </TouchableWithoutFeedback>
-            {data.page_vk.split('id')[1] !== '' ?
+
+            {data.page_vk ?
             <TouchableWithoutFeedback onPress={() => this.changeVisible()}>
-            <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/kafedra.png')}></Image>
-                <Text style={buttonText}>Подать заявку</Text>
+            <View style={[styles.box, styles.centerContent, styles.shadow2, { flexDirection: 'row'}]}>
+                <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                    <Entypo name="circle-with-plus" size={24} color="rgb(115, 182, 28)" />
+                </View>
+                <View style={{ justifyContent: 'center'}}>
+                    <Text style={buttonText}>Подать заявку</Text>
+                </View> 
             </View>
         </TouchableWithoutFeedback> : null}
             
@@ -102,7 +134,7 @@ export default class Ermak extends PureComponent{
                     <TextInput style={input} onChangeText={text => this.setState({why: text})} placeholder={'Почему хотите вступить?'} multiline scrollEnabled={true} selectTextOnFocus={true}/>
 
                     <TouchableWithoutFeedback onPress={() => 
-                        {this.sendMessage(info[0][1].link)
+                        {this.sendMessage(data.page_vk.split('id')[1])
                         this.changeVisible()
                     }}>
                     <View style={{borderWidth: 1, borderColor: '#006AB3', borderRadius: 4, paddingBottom: 3, paddingTop: 3, paddingLeft: 5, paddingRight: 5, marginBottom: 10}}>
@@ -175,13 +207,12 @@ const styles = StyleSheet.create({
     },
 
     buttonText: {
-        width: w * 0.9,
-        paddingLeft: w * 0.14,
-        textAlign: 'left',
-        fontFamily: 'roboto',
-        color: '#006AB3',
-        fontSize: 18,
-        textAlignVertical: 'center'
+        width: w * 0.8,
+        color: '#006AB3', 
+        fontFamily: 'roboto', 
+        fontSize: 15,
+        paddingTop: 10,
+        paddingBottom: 10, 
     },
     shadow1: elevationShadowStyle(30),
     shadow2: elevationShadowStyle(10),
@@ -208,9 +239,9 @@ const styles = StyleSheet.create({
     },
 
     box: {
-        borderRadius: 30,
+        borderRadius: 15,
         backgroundColor: 'white',
-        padding: 10,
+        minHeight: 55,
         width: w * 0.9,
         marginTop: 10,
         alignSelf: 'center',

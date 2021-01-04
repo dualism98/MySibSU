@@ -29,7 +29,9 @@
     "android": {
       "package": "com.SibSU.MySibSU",
       "versionCode": 11,
-      "permissions": []
+      "permissions": [],
+      "googleServicesFile": "./google-services.json",
+      "useNextNotificationsApi": true
     }
   }
 }

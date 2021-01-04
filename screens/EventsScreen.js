@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react'
 import { View, ActivityIndicator, ScrollView, StyleSheet } from 'react-native'
 import MainHeader from '../modules/MainHeader'
 import { h, w } from '../modules/constants'
-import MapModule from '../modules/MapModule'
+import EventModule from '../modules/EventModule'
 
-const url = 'https://api.mysibsau.ru/api/event/'
+const url = 'http://193.187.174.224/v2/events/all/'
 const secondURL = 'http://185.228.233.193/api/event/'
 
 export default class EventsScreen extends PureComponent {
@@ -44,7 +44,7 @@ export default class EventsScreen extends PureComponent {
                                     <ActivityIndicator size='large' color='#0060B3' />
                                 </View> :
                             eventList.map(item =>           
-                                <MapModule key={item.name} name={item.name} inf={item.inf} />                              
+                                <EventModule key={item.name} data={item} />                              
                             )
                         }
                 </ScrollView>

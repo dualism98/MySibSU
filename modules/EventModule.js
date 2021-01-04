@@ -3,27 +3,30 @@ import { View, Text, Image, TouchableWithoutFeedback, Linking, StyleSheet} from 
 import { ScrollView } from 'react-native-gesture-handler'
 import { h, w } from './constants'
 
+url = 'http://193.187.174.224'
 
-const MapModule = (name) => {
+const EventModule = ({data}) => {
     const [mode, setMode] = useState(false)
-    const info = name.inf.split('|')
+    const [height, setHeight] = useState(0)
+    const [width, setWidth] = useState(0)
+
+    Image.getSize(url + data.logo, (width, height) => {
+        setHeight(height)
+        setWidth(width)})
+
     return(
-        
         <View style={{ width: w, backgroundColor: 'white', alignItems: 'center', marginBottom: 20}}>
             <View style={[styles.box, styles.centerContent, styles.shadow2]}> 
                 <ScrollView nestedScrollEnabled = {true}>
-                <Image style={{width: w * 0.9, height: h/2, borderRadius: 15}}
-                source={{ uri: name.name }} />
+                <Image style={{width: w * 0.9, height: w * 0.9 * height/width,  borderRadius: 15}}
+                    source={{ uri: url + data.logo }} />
                 <View> 
-                        {String(info[0]).length + String(info[1]).length + String(info[2]).length >= 100 && mode === false ? 
+                        {String(data.text).length >= 100 && mode === false ? 
                         <View>
-                        <Text style={{width: w * 0.85, padding: 15, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16, color: '#006AB3'}}>{info[0].slice(0, 100)}...</Text>
+                        <Text style={{width: w * 0.85, padding: 15, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16, color: '#006AB3'}}>{data.text.slice(0, 100)}...</Text>
                         <View>
                             <TouchableWithoutFeedback onPress={() => {
-                                if (mode === true)
-                                    setMode(false)
-                                else
-                                    setMode(true)
+                                setMode(!mode)
                             }}>
                                 <Text style={{ fontFamily: 'roboto', fontSize: 16, color: '#006AB3', marginLeft: 25}}>[Читать далее]</Text>
                             </TouchableWithoutFeedback>
@@ -31,21 +34,17 @@ const MapModule = (name) => {
                         </View>
                         : 
                         <View>
-                        <Text style={{width: w * 0.85, padding: 15, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16, color: '#006AB3'}}>{info[0]}</Text>
-                        {info[1] !== '' && info.length > 1 ?
-                            <TouchableWithoutFeedback onPress={() => Linking.openURL(info[1])}>
-                                <Text style={{width: w * 0.85, padding: 15, paddingTop: 0, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16, color: '#006AB3', textDecorationLine: 'underline'}}>Ссылка на регистрацию</Text>
-                            </TouchableWithoutFeedback> : null}
-                        {info[2] !== '' && info.length > 1  ? 
-                            <TouchableWithoutFeedback onPress={() => Linking.openURL(info[2])}>
-                                <Text style={{width: w * 0.85, padding: 15, paddingTop: 0, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16, color: '#006AB3', textDecorationLine: 'underline'}}>Связаться с организатором</Text>
-                        </TouchableWithoutFeedback>: null}
+                            <Text style={{width: w * 0.85, padding: 15, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16, color: '#006AB3'}}>{data.text}</Text>
+                            {data.links.map(item => {
+                                return(
+                                    <TouchableWithoutFeedback onPress={() => Linking.openURL(item.link)}>
+                                        <Text style={{width: w * 0.85, padding: 15, paddingTop: 0, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16, color: '#006AB3', textDecorationLine: 'underline'}}>{item.name}</Text>
+                                    </TouchableWithoutFeedback>
+                                )
+                            })}
                         <View>
                             <TouchableWithoutFeedback onPress={() => {
-                                if (mode === true)
-                                    setMode(false)
-                                else
-                                    setMode(true)
+                                setMode(!mode)
                             }}>
                                 <Text style={{ fontFamily: 'roboto', fontSize: 16, color: '#006AB3', marginLeft: 25}}>[Свернуть]</Text>
                             </TouchableWithoutFeedback>
@@ -84,4 +83,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default MapModule
+export default EventModule

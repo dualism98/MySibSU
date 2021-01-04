@@ -10,7 +10,7 @@ const subgroups = ['', '[1 подгруппа]', '[2 подгруппа]']
 
 const Subject = (data) =>{
     return(
-        <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+        <View style={[styles.box, styles.shadow2]}>
             {data.data !== 'Нет пар' ? 
             <View>
                 <Text style={styles.time}>{data.data.time}</Text>
@@ -32,7 +32,7 @@ const Subject = (data) =>{
                     )
                 })} 
             </View>: 
-            <Text style={styles.time}>Занятий нет</Text>}
+            <Text style={[styles.time, {color: 'gray'}]}>Занятий нет</Text>}
         </View>
     )
 }

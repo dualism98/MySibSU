@@ -6,6 +6,9 @@ import Header from '../../../modules/Header'
 import { ScrollView } from 'react-native-gesture-handler'
 import Cafedra from '../../../modules/Cafedra'
 import Swiper from 'react-native-swiper'
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons'; 
+
 
 const url = 'http://193.187.174.224'
 
@@ -24,20 +27,26 @@ const Information = ({ number, data }) => {
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                     <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.name}</Text>
                 </View>
-                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                    <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../../assets/adress.png')}></Image>
-                    <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{data.address}</Text>
+                <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                    <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                        <MaterialCommunityIcons name="map-marker" size={24} color="rgb(115, 182, 28)" />
+                    </View>
+                    <Text style={{ width: w * 0.8, color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center'}}>{data.address}</Text>
                 </View>
                 <View style={{flexDirection: 'column', paddingBottom: 180}}>
                     <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
-                        <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                            <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/telefon.png')}></Image>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                            <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                                <MaterialCommunityIcons name="phone" size={24} color="rgb(115, 182, 28)" />
+                            </View>
                             <Text style={styles.buttonText}>Позвонить</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${data.mail}?subject==&`)}>
-                        <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                            <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/mail.png')}></Image>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                            <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                                <Ionicons name="mail" size={24} color="rgb(115, 182, 28)" />
+                            </View>
                             <Text style={styles.buttonText}>Написать письмо</Text>
                         </View>
                     </TouchableWithoutFeedback>
@@ -71,20 +80,26 @@ const Information = ({ number, data }) => {
                 <View style={[styles.box, styles.centerContent, styles.shadow2]}>
                     <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.fio}</Text>
                 </View>
-                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                    <Image style={{width: w*0.1, height: w * 0.1, resizeMode:'contain', position: 'absolute', left: 4 }} source={require('../../../assets/adress.png')}></Image>
-                    <Text style={{color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center', paddingLeft: w * 0.1}}>{data.address}</Text>
+                <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                    <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                        <MaterialCommunityIcons name="map-marker" size={24} color="rgb(115, 182, 28)" />
+                    </View>
+                    <Text style={{ width: w * 0.8, color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center'}}>{data.address}</Text>
                 </View>
                 <View style={{flexDirection: 'column', paddingBottom: 180}}>
                     <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
-                        <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                            <Image style={{width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/telefon.png')}></Image>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                            <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                                <MaterialCommunityIcons name="phone" size={24} color="rgb(115, 182, 28)" />
+                            </View>
                             <Text style={styles.buttonText}>Позвонить</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${data.mail}?subject==&`)}>
-                        <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                            <Image style={{ width: w*0.08, height: w * 0.08, resizeMode:'contain', position: 'absolute', left: 6 }} source={require('../../../assets/mail.png')}></Image>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                            <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                                <Ionicons name="mail" size={24} color="rgb(115, 182, 28)" />
+                            </View>
                             <Text style={styles.buttonText}>Написать письмо</Text>
                         </View>
                     </TouchableWithoutFeedback>
@@ -96,17 +111,28 @@ const Information = ({ number, data }) => {
 }
 
 export default class IITK extends PureComponent{
-    state = {choice : 1}
-    
+    state={
+        page: 0
+    }
+
+    showPagination(index){
+        return(
+            <View style={{ position: 'absolute', flexDirection: 'row', bottom: 60, alignSelf: 'center'}}>
+                {[0,1,2].map(item =>{
+                    return(<View style={{backgroundColor: index === item ? 'rgba(0, 122, 255, .5)' : 'rgba(0,0,0,.2)', width: 8, height: 8,borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />)
+                })}
+            </View>
+        )
+    }
+
     render(){
         const data = this.props.route.params.data
-        console.log(data.soviet)
         return(
             <View style={styles.container}>
                 <Header title={data.short_name} onPress={() => this.props.navigation.goBack()}/>
-                <Swiper showsButtons={false} >
+                <Swiper style={styles.wrapper} onIndexChanged={index => this.setState({ page: index})}>
                     <View>
-                        <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-between', flexDirection: 'column' }}>  
+                        <ScrollView>  
                             <Information number={1} data={data.director} />
                         </ScrollView>
                     </View>
@@ -121,6 +147,7 @@ export default class IITK extends PureComponent{
                         </ScrollView>
                     </View>
                 </Swiper>
+                {this.showPagination(this.state.page)}
             </View>
         )
     }
@@ -213,9 +240,7 @@ const styles = StyleSheet.create({
     },
 
     buttonText: {
-        width: w * 0.9,
-        paddingLeft: w * 0.14,
-        textAlign: 'left',
+        width: w * 0.8,
         fontFamily: 'roboto',
         color: '#006AB3',
         fontSize: 18,
@@ -247,7 +272,7 @@ const styles = StyleSheet.create({
     },
 
     box: {
-        borderRadius: 30,
+        borderRadius: 15,
         backgroundColor: 'white',
         padding: 10,
         width: w * 0.9,
@@ -259,4 +284,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
+    wrapper: {
+    }
 })
