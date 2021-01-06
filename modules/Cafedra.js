@@ -1,36 +1,25 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native'
+import { useTheme } from '../themes/ThemeManager'
 import { h, w } from './constants'
 
-class Cafedra extends Component{
-    state = {
-        show: false
-    }
+const Cafedra = (props) => {
+    const {mode, theme, toggle} = useTheme()
+    const [show, setShow] = useState(false)
 
-    changeView(){
-        if (this.state.show === false){
-            this.setState({show: true})
-        }
-        else{
-            this.setState({show: false})
-        }
-    }
-
-    render(){
-        return(
-            <TouchableWithoutFeedback onPress={() => this.changeView()}>
-                <View style={[styles.box, styles.shadow2]}>  
-                    <View style={{ flex: 1, minHeight: 50, justifyContent: 'center'}}>
-                        <Text style={styles.view}>{this.props.name}</Text>
-                    </View>
-                    {this.state.show === true ? 
-                    <View style={{ borderLeftWidth: 2, borderLeftColor: '#006AB3', paddingLeft: 10, marginLeft: 10 }}>
-                    <Text style={styles.text}>Зав. кафедрой: {this.props.fio}{'\n'}Адрес: {this.props.address}{'\n'}Телефон: {this.props.phone}{'\n'}Email: {this.props.email}</Text>
-                    </View> : null}
+    return(
+        <TouchableWithoutFeedback onPress={() => setShow(!show)}>
+            <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>  
+                <View style={{ flex: 1, minHeight: 50, justifyContent: 'center'}}>
+                    <Text style={styles.view}>{props.name}</Text>
                 </View>
-            </TouchableWithoutFeedback>
-        )
-    }
+                {show ? 
+                    <View style={{ borderLeftWidth: 2, borderLeftColor: '#006AB3', paddingLeft: 10, marginLeft: 10 }}>
+                        <Text style={styles.text}>Зав. кафедрой: {this.props.fio}{'\n'}Адрес: {this.props.address}{'\n'}Телефон: {this.props.phone}{'\n'}Email: {this.props.email}</Text>
+                    </View> : null}
+            </View>
+        </TouchableWithoutFeedback>
+    )
 }
 
 function elevationShadowStyle(elevation) {

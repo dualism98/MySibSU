@@ -1,72 +1,73 @@
-import React, { PureComponent } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator, TouchableWithoutFeedback, Linking, ScrollView, Image } from 'react-native'
 import Header from '../../modules/Header'
 import { h, w } from '../../modules/constants'
+import i18n from '../../locale/locale'
+import {useTheme} from '../../themes/ThemeManager'
 
-export default class MapScreen extends PureComponent {
+export default function MapScreen(props){
+    const {mode, theme, toggle} = useTheme()
+    const [buildings, setBuilding] = useState([])
+    const [loaded, setLoaded] = useState(false)
 
-    state = {
-        buildings: [],
-        loaded: false
-    }
-
-    async componentDidMount(){
-        try{
-            let buildingRequest = await fetch('http://193.187.174.224/v2/campus/buildings/', {method: 'GET'})
-            let buildings = await buildingRequest.json()
-            this.setState({ buildings: buildings, loaded: true})
+    useEffect(() => {
+        async function fetchData(){
+            try{
+                let buildingRequest = await fetch('http://193.187.174.224/v2/campus/buildings/', {method: 'GET'})
+                let buildings = await buildingRequest.json()
+                setBuilding(buildings)
+                setLoaded(true)
+            }
+            catch(err){
+                console.log(err)
+            }
         }
-        catch(err){
-            console.log(err)
-        }
-    }
 
-    render(){
-        const { container, right, left, head, text, number, text_left } = styles
-            return(
-                <View style={{backgroundColor:'white', flex: 1, paddingBottom: 0}}> 
-                
-                    <Header title="Мои корпуса" onPress={() => this.props.navigation.goBack()}/>  
-                    <ScrollView>
-                        {this.state.loaded ?
-                        <View style={container}>               
-                            <View style={right}>
-                                <Text style={head}>Учебные объекты (правый берег):</Text>
-                                {this.state.buildings.map( map => {
-                                    if (map.coast === 1){
-                                    return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.link)} key={map.name}>
-                                            <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                                                <View style={{ width: w * 0.1}}>
-                                                    <Text style={number}>{map.name}</Text>
-                                                </View>
-                                                <View style={{borderLeftWidth: 2, borderLeftColor: '#006AB3',}}>
-                                                    <Text style={text}>{map.type}{'\n'}{map.address}</Text>
-                                                </View>
+        fetchData()
+    }, [])
+
+    return(
+        <View style={{backgroundColor:'white', flex: 1, paddingBottom: 0}}>         
+            <Header title={i18n.t('buildings')} onPress={() => props.navigation.goBack()}/>  
+            <ScrollView>
+                {loaded ?
+                <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>               
+                    <View style={styles.right}>
+                        <Text style={[styles.head]}>{i18n.t('educational_facilities_r')}</Text>
+                        {buildings.map( map => {
+                            if (map.coast === 1){
+                            return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.link)} key={map.name}>
+                                        <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
+                                            <View style={{ width: w * 0.1}}>
+                                                <Text style={[styles.number, {color: theme.labelColor}]}>{map.name}</Text>
                                             </View>
-                                            </TouchableWithoutFeedback>)
-                                }})}
-                            </View>
-                            <View style={left}>
-                                <Text style={head}>Учебные объекты (левый берег):</Text>
-                                {this.state.buildings.map( map => {
-                                    if (map.coast === 0){
-                                    return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.link)} key={map.name}>
-                                            <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                                                <View style={{ width: w * 0.1}}>
-                                                    <Text style={number}>{map.name}</Text>
-                                                </View>
-                                                <Text style={text_left}>{map.type}{'\n'}{map.address}</Text>
+                                            <View style={{borderLeftWidth: 2, borderLeftColor: '#006AB3',}}>
+                                                <Text style={[styles.text, {color: theme.labelColor}]}>{map.type}{'\n'}{map.address}</Text>
                                             </View>
-                                            </TouchableWithoutFeedback>)
-                                }})}    
-                            </View>
-                        </View> : 
-                        <View style={[container, {justifyContent: 'center', height: h - 120}]}>
-                            <ActivityIndicator size='large' color='#0060B3' />
-                        </View>}
-                    </ScrollView>
-                </View>)
-    }
+                                        </View>
+                                    </TouchableWithoutFeedback>)
+                            }})}
+                    </View>
+                    <View style={styles.left}>
+                        <Text style={styles.head}>{i18n.t('educational_facilities_l')}</Text>
+                        {buildings.map( map => {
+                            if (map.coast === 0){
+                            return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.link)} key={map.name}>
+                                        <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
+                                            <View style={{ width: w * 0.1}}>
+                                                <Text style={[styles.number, {color: theme.labelColor}]}>{map.name}</Text>
+                                            </View>
+                                            <Text style={[styles.text_left, {color: theme.labelColor}]}>{map.type}{'\n'}{map.address}</Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>)
+                            }})}    
+                    </View>
+                </View> : 
+                <View style={[styles.container, {justifyContent: 'center', height: h, paddingBottom: 120, backgroundColor: theme.primaryBackground}]}>
+                    <ActivityIndicator size='large' color='#0060B3' />
+                </View>}
+            </ScrollView>
+    </View>)
 }
 
 function elevationShadowStyle(elevation) {

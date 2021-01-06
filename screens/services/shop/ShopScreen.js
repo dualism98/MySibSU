@@ -3,6 +3,7 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import ProductBlock from '../../../modules/ProductBlock'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
+import i18n from '../../../locale/locale'
 
 
 const tmp = [{name: 'Товар', image: 'https://cdn.shopify.com/s/files/1/0051/4802/products/Invertocat_2.0_Hoodie_Mock_GithubShop-1_1024x1024.jpg?v=1563301044', description: 'Описание товара, описание товара. Описание товара, описание товара. Описание товара, описание товара.', price: '1000.40'},
@@ -13,7 +14,7 @@ export default class ShopScreen extends PureComponent {
     render(){
         return(
             <View style={styles.container}>
-                <Header title={'Интернет-каталог'} onPress={() => this.props.navigation.goBack()}/>
+                <Header title={i18n.t('online_catalog')} onPress={() => this.props.navigation.goBack()}/>
                 <ScrollView>
                     <View style={styles.product_view}>
                         {tmp.map(item => {

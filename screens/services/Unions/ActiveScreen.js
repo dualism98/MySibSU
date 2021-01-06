@@ -1,47 +1,47 @@
-import React, { PureComponent } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import ActiveElement from '../../../modules/ActiveElement'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
+import i18n from '../../../locale/locale'
+import { useTheme } from '../../../themes/ThemeManager'
 
 
-export default class ActiveScreen extends PureComponent {
-    state = {
-        unions: [],
-        loaded: false
-    }
+export default function ActiveScreen(props){
+    const [unions, setUnions] = useState([])
+    const [loaded, setLoaded] = useState(false)
+    const {mode, theme, toggle} = useTheme()
 
-    async componentDidMount(){
-        try{
-            let unionRequest = await fetch('http://193.187.174.224/v2/campus/unions/', {method: 'GET'})
-            let unions = await unionRequest.json()
-            this.setState({ unions: unions, loaded: true})
+    useEffect(() => {
+        async function fetchData(){
+            try{
+                let unionRequest = await fetch('http://193.187.174.224/v2/campus/unions/', {method: 'GET'})
+                let unions = await unionRequest.json()
+                setUnions(unions)
+                setLoaded(true)
+            }
+            catch(err){
+                console.log(err)
+            }
         }
-        catch(err){
-            console.log(err)
-        }
-    }
 
+        fetchData()
+    }, [])
 
-    render(){
-        const { container, text, main } = styles
-        const { navigate } = this.props.navigation
-        return(
-            <View style={container}>
-                <Header title={'Мои объединения'} onPress={() => this.props.navigation.goBack()}/>
-                <ScrollView>
-                    <View style={main}>
-                        {this.state.loaded ? 
-                        this.state.unions.map( item => {
-                            return(<ActiveElement onPress={() => navigate('Ermak', {data: item})} title={item.name} source={item.logo} key={item[0]} />)
-                        }) : <ActivityIndicator size='large' color='#0060B3' />}
-                       
-                    </View>
-                </ScrollView>
-            </View>
-        )
-    }
+    return(
+        <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
+            <Header title={i18n.t('student_life')} onPress={() => props.navigation.goBack()}/>
+            <ScrollView>
+                <View style={styles.main}>
+                    {loaded ? 
+                    unions.map( item => {
+                        return(<ActiveElement onPress={() => props.navigation.navigate('Ermak', {data: item})} title={item.name} source={item.logo} key={item[0]} />)
+                    }) : <ActivityIndicator size='large' color='#0060B3' />}   
+                </View>
+            </ScrollView>
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({

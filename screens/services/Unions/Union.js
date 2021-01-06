@@ -1,154 +1,152 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, useState } from 'react'
 import { View, Text, Image, Linking, StyleSheet, TouchableWithoutFeedback, Modal, TextInput, Alert, ScrollView, Platform } from 'react-native'
 import call from 'react-native-phone-call'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
+import {useTheme} from '../../../themes/ThemeManager'
 
 
 const url = 'http://193.187.174.224'
 
-export default class Ermak extends PureComponent{
+export default function Ermak(props){
 
-    state = {
-        onVisible: false,
-        fio: '',
-        institute: '',
-        group: '',
-        vk: '',
-        hobby: '',
-        why: ''
-    }
+    const [onVisible, setVisible] = useState(false)
+    const [fio, setFio] = useState('')
+    const [institute, setInstitute] = useState('')
+    const [group, setGroup] = useState('')
+    const [vk, setVk] = useState('')
+    const [hobby, setHobby] = useState('')
+    const [reason, setReason] = useState('')
 
-    changeVisible(){
-        this.setState({ onVisible: !this.state.onVisible })
-    }
+    const {mode, theme, toggle} = useTheme()
 
-    async sendMessage(link){
-        var vk = this.state.vk.split('/')
-        if (this.state.fio === '' || this.state.institute === '' || this.state.group === '' || this.state.group === '' ||
-        this.state.vk === '' || this.state.hobby === '' || this.state.why === '' || this.state.fio === 'text' || this.state.institute === 'text' ||
-        this.state.group === 'text' || this.state.vk === 'text' || this.state.hobby === 'text' || this.state.why === 'text'){return null}
-        const request = 'http://185.228.233.193:5000/invite?fio=' + this.state.fio + '&institute=' + this.state.institute + '&group=' + this.state.group + '&vk=' + vk[vk.length - 1] + '&hobby=' + this.state.hobby + '&reason=' + this.state.why + '&linkID=' + link
-        const uri = encodeURI(request)
+    async function sendMessage(link){
+        const uri = 'http://193.187.174.224/v2/campus/unions/join/' + props.route.params.data.id + '/'
 
+        let vk_page = vk.split('/')
+        vk_page = vk_page[vk.length - 1]
+
+        let data = new FormData()
+        data.append('fio', fio)
+        data.append('institute', institute)
+        data.append('group', group)
+        data.append('vk', vk_page)
+        data.append('hobby', hobby)
+        data.append('reason', reason)
         try {
-            await fetch(uri, {method: 'GET'})
+            await fetch(uri, {method: 'POST', body: data})
         } catch(err) {
             console.log("Error fetching data-----------", err);
         }
     }
 
-    render(){
-        const { container, icons, modalView, input, button, buttonText } = styles
-        const data = this.props.route.params.data
-        console.log(data)
+    const data = props.route.params.data
 
-        return(
-        <View style={container}>
-            <Header title={data.short_name} onPress={() => this.props.navigation.goBack()}/>
+    return(
+        <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
+            <Header title={data.short_name} onPress={() => props.navigation.goBack()}/>
             <ScrollView>
                 
-            <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
-                <Image source={{uri: url + data.logo}}  style={{ width: w, height: w / 2, resizeMode: 'cover'}} blurRadius={Platform.OS === 'android' ? 0.5 : 1}/>
-            </View>
-
-            <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
-                <Image source={{uri: url + data.photo}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
-            </View>
-
-            <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>Описание</Text>
-            <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10}]}>
-                <Text style={{fontFamily: 'roboto', fontSize: 13, color: '#5575A7', paddingLeft: 5}}>{data.about}</Text>
-            </View>
-
-            <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: 15, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank}</Text>
-            {data.fio !== '-' ? 
-            <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.fio}</Text>
-            </View> : null}
-
-            <View style={[styles.box, styles.shadow2, {flexDirection: 'row'}]}>
-                <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
-                    <MaterialCommunityIcons name="map-marker" size={24} color="rgb(115, 182, 28)" />
+                <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
+                    <Image source={{uri: url + data.logo}}  style={{ width: w, height: w / 2, resizeMode: 'cover'}} blurRadius={Platform.OS === 'android' ? 0.5 : 1}/>
                 </View>
-                <View style={{ justifyContent: 'center'}}>
-                    <Text style={buttonText}>{data.address}</Text>
-                </View>
-            </View>
 
-            <View style={{flexDirection: 'column', paddingBottom: 180}}>
-            <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
-                <View style={[styles.box, styles.shadow2, {flexDirection: 'row'}]}>
+                <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
+                    <Image source={{uri: url + data.photo}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
+                </View>
+
+                <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>Описание</Text>
+                <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10, backgroundColor: theme.blockColor}]}>
+                    <Text style={{fontFamily: 'roboto', fontSize: 13, color: '#5575A7', paddingLeft: 5}}>{data.about}</Text>
+                </View>
+
+                <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: 15, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank}</Text>
+                {data.fio !== '-' ? 
+                    <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
+                        <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.fio}</Text>
+                    </View> : null}
+
+                <View style={[styles.box, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                     <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
-                        <MaterialCommunityIcons name="phone" size={24} color="rgb(115, 182, 28)" />
+                        <MaterialCommunityIcons name="map-marker" size={24} color="rgb(115, 182, 28)" />
                     </View>
                     <View style={{ justifyContent: 'center'}}>
-                        <Text style={buttonText}>Позвонить</Text>
+                        <Text style={styles.buttonText}>{data.address}</Text>
                     </View>
-                    
                 </View>
-            </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => Linking.openURL(data.group_vk)}>
-                <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
-                    <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
-                        <Entypo name="vk-with-circle" size={24} color="rgb(115, 182, 28)" />
-                    </View>
-                    <View style={{ justifyContent: 'center'}}>
-                        <Text style={buttonText}>Группа VK</Text>
-                    </View>
-                </View>
-            </TouchableWithoutFeedback>
+                <View style={{flexDirection: 'column', paddingBottom: 180}}>
+                    <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
+                        <View style={[styles.box, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
+                            <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                                <MaterialCommunityIcons name="phone" size={24} color="rgb(115, 182, 28)" />
+                            </View>
+                            <View style={{ justifyContent: 'center'}}>
+                                <Text style={styles.buttonText}>Позвонить</Text>
+                            </View>
+                            
+                        </View>
+                    </TouchableWithoutFeedback>
 
-            {data.page_vk ?
-            <TouchableWithoutFeedback onPress={() => this.changeVisible()}>
-            <View style={[styles.box, styles.centerContent, styles.shadow2, { flexDirection: 'row'}]}>
-                <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
-                    <Entypo name="circle-with-plus" size={24} color="rgb(115, 182, 28)" />
-                </View>
-                <View style={{ justifyContent: 'center'}}>
-                    <Text style={buttonText}>Подать заявку</Text>
-                </View> 
-            </View>
-        </TouchableWithoutFeedback> : null}
+                    <TouchableWithoutFeedback onPress={() => Linking.openURL(data.group_vk)}>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
+                            <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                                <Entypo name="vk-with-circle" size={24} color="rgb(115, 182, 28)" />
+                            </View>
+                            <View style={{ justifyContent: 'center'}}>
+                                <Text style={styles.buttonText}>Группа VK</Text>
+                            </View>
+                        </View>
+                    </TouchableWithoutFeedback>
+
+                    {data.page_vk ?
+                    <TouchableWithoutFeedback onPress={() => setVisible(!onVisible)}>
+                    <View style={[styles.box, styles.centerContent, styles.shadow2, { flexDirection: 'row', backgroundColor: theme.blockColor}]}>
+                        <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                            <Entypo name="circle-with-plus" size={24} color="rgb(115, 182, 28)" />
+                        </View>
+                        <View style={{ justifyContent: 'center'}}>
+                            <Text style={styles.buttonText}>Подать заявку</Text>
+                        </View> 
+                    </View>
+                    </TouchableWithoutFeedback> : null}
             
 
-            <Modal animationType="slide" transparent={true} visible={this.state.onVisible}>
-                <ScrollView>
-                <View style={[styles.modal, styles.centerContent, styles.shadow2]}>
-                    <View style={{width: w * 0.8, height: 45}}>
-                    <TouchableWithoutFeedback onPress={() => this.changeVisible()}>
-                        <Text style={{color: '#006AB3', fontSize: 50, marginLeft: 6}}>˟</Text>
-                    </TouchableWithoutFeedback>
-                    </View>
+                    <Modal animationType="slide" transparent={true} visible={onVisible}>
+                        <ScrollView>
+                        <View style={[styles.modal, styles.centerContent, styles.shadow2, {backgroundColor: theme.primaryBackground}]}>
+                            <View style={{width: w * 0.8, height: 45}}>
+                            <TouchableWithoutFeedback onPress={() => setVisible(!onVisible)}>
+                                <Text style={{color: '#006AB3', fontSize: 50, marginLeft: 6}}>˟</Text>
+                            </TouchableWithoutFeedback>
+                            </View>
 
-                    <Text style={{fontFamily: 'roboto', color: '#006AB3', fontSize: 24, marginBottom: 10}}>Заявка на вступление</Text>
+                            <Text style={{fontFamily: 'roboto', color: '#006AB3', fontSize: 24, marginBottom: 10}}>Заявка на вступление</Text>
 
-                    <TextInput style={input} onChangeText={text => this.setState({fio: text})} placeholder={'ФИО'}/>
-                    <TextInput style={input} onChangeText={text => this.setState({institute: text})} placeholder={'Институт'} />
-                    <TextInput style={input} onChangeText={text => this.setState({group: text})} placeholder={'Группа'} />
-                    <TextInput style={input} onChangeText={text => this.setState({vk: text})} placeholder={'ID в VK'} />
-                    <TextInput style={input} onChangeText={text => this.setState({hobby: text})} placeholder={'Какие у вас есть увлечения?'} multiline scrollEnabled={true}/>
-                    <TextInput style={input} onChangeText={text => this.setState({why: text})} placeholder={'Почему хотите вступить?'} multiline scrollEnabled={true} selectTextOnFocus={true}/>
+                            <TextInput style={[styles.input, {color: theme.headerTitle}]} placeholderTextColor={'gray'} onChangeText={text => setFio(text)} placeholder={'ФИО'}/>
+                            <TextInput style={[styles.input, {color: theme.headerTitle}]} placeholderTextColor={'gray'} onChangeText={text => setInstitute(text)} placeholder={'Институт'} />
+                            <TextInput style={[styles.input, {color: theme.headerTitle}]} placeholderTextColor={'gray'} onChangeText={text => setGroup(text)} placeholder={'Группа'} />
+                            <TextInput style={[styles.input, {color: theme.headerTitle}]} placeholderTextColor={'gray'} onChangeText={text => setVk(text)} placeholder={'ID в VK'} />
+                            <TextInput style={[styles.input, {color: theme.headerTitle}]} placeholderTextColor={'gray'} onChangeText={text => setHobby(text)} placeholder={'Какие у вас есть увлечения?'} multiline scrollEnabled={true}/>
+                            <TextInput style={[styles.input, {color: theme.headerTitle}]} placeholderTextColor={'gray'} onChangeText={text => setReason(text)} placeholder={'Почему хотите вступить?'} multiline scrollEnabled={true} selectTextOnFocus={true}/>
 
-                    <TouchableWithoutFeedback onPress={() => 
-                        {this.sendMessage(data.page_vk.split('id')[1])
-                        this.changeVisible()
-                    }}>
-                    <View style={{borderWidth: 1, borderColor: '#006AB3', borderRadius: 4, paddingBottom: 3, paddingTop: 3, paddingLeft: 5, paddingRight: 5, marginBottom: 10}}>
-                        <Text style={{fontFamily: 'roboto', color: '#006AB3', fontSize: 15}}>ОТПРАВИТЬ</Text>
-                    </View>
-                    </TouchableWithoutFeedback>
+                            <TouchableWithoutFeedback onPress={() => 
+                                {sendMessage(data.page_vk.split('id')[1])
+                                setVisible(false)
+                            }}>
+                            <View style={{borderWidth: 1, borderColor: '#006AB3', borderRadius: 4, paddingBottom: 3, paddingTop: 3, paddingLeft: 5, paddingRight: 5, marginBottom: 10}}>
+                                <Text style={{fontFamily: 'roboto', color: '#006AB3', fontSize: 15}}>ОТПРАВИТЬ</Text>
+                            </View>
+                            </TouchableWithoutFeedback>
+                        </View>
+                        </ScrollView>
+                    </Modal>
                 </View>
-                </ScrollView>
-            </Modal>
-            </View>
             </ScrollView>
         </View>
         )
-    }
 }
 
 function elevationShadowStyle(elevation) {
@@ -193,7 +191,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: w * 0.75,
         borderBottomWidth: 1,
-        borderColor: '#006AB3',
+        borderColor: '#5575A7',
         marginBottom: 15,
         fontFamily: 'roboto',
         fontSize: 18
@@ -208,7 +206,7 @@ const styles = StyleSheet.create({
 
     buttonText: {
         width: w * 0.8,
-        color: '#006AB3', 
+        color: '#5575A7', 
         fontFamily: 'roboto', 
         fontSize: 15,
         paddingTop: 10,

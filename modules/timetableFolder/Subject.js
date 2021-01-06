@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { h, w } from '../constants'
+import { useTheme } from '../../themes/ThemeManager'
 
 
 const types = ['', ['Лекция', '#ef8531'], 
@@ -9,11 +10,12 @@ const types = ['', ['Лекция', '#ef8531'],
 const subgroups = ['', '[1 подгруппа]', '[2 подгруппа]']
 
 const Subject = (data) =>{
+    const {mode, theme, toggle} = useTheme()
     return(
-        <View style={[styles.box, styles.shadow2]}>
+        <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>
             {data.data !== 'Нет пар' ? 
             <View>
-                <Text style={styles.time}>{data.data.time}</Text>
+                <Text style={[styles.time, {color: theme.labelColor}]}>{data.data.time}</Text>
                 {data.data.subgroups.map(item => {
                     return(
                         <View key={item.teacher + item.place}>

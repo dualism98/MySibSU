@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import {AsyncStorage} from 'react-native'
+import React, { useState, useEffect, setState } from 'react'
+import {AsyncStorage, StatusBar} from 'react-native'
 import HomeScreen from './screens/HomeScreen'
 import AppLoading from 'expo-app-loading'
 import { useFonts } from '@use-expo/font'
-import * as Notifications from 'expo-notifications';
+import * as Notifications from 'expo-notifications'
+import * as Localization from 'expo-localization'
+import { AppearanceProvider } from 'react-native-appearance'
+import { ThemeManager } from './themes/ThemeManager'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -13,27 +16,45 @@ Notifications.setNotificationHandler({
   }),
 });
 
-
-async function notify(){
-  const token = (await Notifications.getDevicePushTokenAsync()).data
-  console.log(token)
-}
+Notifications.setNotificationChannelAsync('default', {
+  name: 'default',
+  importance: Notifications.AndroidImportance.MAX,
+  vibrationPattern: [0, 250, 0],
+  lightColor: '#000000',
+});
 
 
 function App(){
 
   let [notification, setNotification] = useState({})
+  // Устанавливаем прослушивание событий на получение и нажатие пушей
+  React.useEffect(() => {
+    Notifications.addNotificationReceivedListener(_handleNotification);
+    Notifications.addNotificationResponseReceivedListener(_handleNotificationResponse);
+  })
 
-  notify()
+ // Ловит получение пушей
+  _handleNotification = notification => {
+    setNotification(notification)
+    console.log('Просто сработало')
+  };
 
+  // Ловит нажатия пушей
+  _handleNotificationResponse = response => {
+    console.log('Зашел через оповещение')
+  };
+
+  // Устанавливаем кастомный шрифт, который лежит в ./assets/fonts/
   let [fontsLoaded] = useFonts({
     'roboto': require('./assets/fonts/18811.ttf'),
   });
 
+  // Если шрифты еще не были установлены, продолжаем загружать приложение
   if (!fontsLoaded) {
     return <AppLoading />;
   }
 
+  // Проверяем наличие UUID в хранилище. Если его нет, то генерируем и записываем
   AsyncStorage.getItem('UUID')
   .then(res => {
     if (res === null){
@@ -46,8 +67,24 @@ function App(){
     }
   })
 
+  // Ставим дефолтный язык и сохраняем для дальнейшего использования
+  AsyncStorage.getItem('Locale')
+  .then(res => {
+    if (res === null){
+      AsyncStorage.setItem('Locale', Localization.locale)
+    }
+    else{
+      console.log(res)
+    }
+  })
+
+  // Если шрифты загружены и UUID существует, запускаем приложение
   return (
-    <HomeScreen />
+    <AppearanceProvider>
+      <ThemeManager>
+        <HomeScreen />
+      </ThemeManager>
+    </AppearanceProvider>  
   )
 }
 

@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react'
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
-import MainHeader from '../modules/MainHeader'
-import { h, w } from '../modules/constants'
+import MainHeader from '../../modules/MainHeader'
+import { h, w } from '../../modules/constants'
+import i18n from '../../locale/locale'
+
 
 export default class PersonScreen extends PureComponent {
     render(){
         return(
             <View style={styles.container}>
-                <MainHeader title={'Личный кабинет'} onPress={() => this.props.navigation.goBack()}/>
+                <MainHeader title={i18n.t('personal_account')} onPress={() => this.props.navigation.navigate('Settings')}/>
                 <ScrollView>
                     
                 </ScrollView>

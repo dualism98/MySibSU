@@ -1,4 +1,4 @@
-import React, { PureComponent, Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, Image, Linking , TouchableWithoutFeedback} from 'react-native'
 import call from 'react-native-phone-call'
 import { h, w } from '../../../modules/constants'
@@ -8,34 +8,36 @@ import Cafedra from '../../../modules/Cafedra'
 import Swiper from 'react-native-swiper'
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { Ionicons } from '@expo/vector-icons'; 
+import { useTheme } from '../../../themes/ThemeManager'
 
 
 const url = 'http://193.187.174.224'
 
 const Information = ({ number, data }) => {
+    const {mode, theme, toggle} = useTheme()
     if (number == 1){
         return(
             <View style={{ minHeight: h}}>
             <ScrollView>
-                <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
+                <View style={{ borderBottomWidth: 2, borderColor: 'gray', backgroundColor: 'white'}}>
                     <Image source={require('../../../assets/back.png')}  style={{ width: w * 0.8, height: w / 2, resizeMode: 'cover', alignSelf: 'center'}}/>
                 </View>
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
                     <Image source={{uri: url + data.image}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
                 </View>
                 <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>Директор</Text>
-                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
                     <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.name}</Text>
                 </View>
-                <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                     <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
                         <MaterialCommunityIcons name="map-marker" size={24} color="rgb(115, 182, 28)" />
                     </View>
-                    <Text style={{ width: w * 0.8, color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center'}}>{data.address}</Text>
+                    <Text style={{ width: w * 0.8, color: '#5575A7', fontFamily: 'roboto', fontSize: 15, justifyContent:'center'}}>{data.address}</Text>
                 </View>
                 <View style={{flexDirection: 'column', paddingBottom: 180}}>
                     <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
-                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
                                 <MaterialCommunityIcons name="phone" size={24} color="rgb(115, 182, 28)" />
                             </View>
@@ -43,7 +45,7 @@ const Information = ({ number, data }) => {
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${data.mail}?subject==&`)}>
-                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
                                 <Ionicons name="mail" size={24} color="rgb(115, 182, 28)" />
                             </View>
@@ -58,7 +60,7 @@ const Information = ({ number, data }) => {
     else if(number == 2){
         return(
             <View style={{ minHeight: h, paddingBottom: 150}}>
-                <Text style={{fontFamily: 'roboto', fontSize: 30, color: '#006AB3', marginLeft: 20, marginTop: 25, marginBottom: 20}}>КАФЕДРЫ</Text>
+                <Text style={{fontFamily: 'roboto', fontSize: 30, color: '#5575A7', marginLeft: 20, marginTop: 25, marginBottom: 20}}>КАФЕДРЫ</Text>
                 {data.map( item => {
                     return( 
                         <Cafedra name={item.name} fio={item.fio} address={item.address} phone={item.phone} email={item.mail} key={item.name}/>
@@ -70,25 +72,25 @@ const Information = ({ number, data }) => {
         return(
             <View>
             <ScrollView>
-                <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
+                <View style={{ borderBottomWidth: 2, borderColor: 'gray', backgroundColor: 'white'}}>
                     <Image source={require('../../../assets/back.png')}  style={{ width: w * 0.8, height: w / 2, resizeMode: 'cover', alignSelf: 'center'}}/>
                 </View>
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
                     <Image source={{ uri: url + data.image}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
                 </View>
                 <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>Председатель</Text>
-                <View style={[styles.box, styles.centerContent, styles.shadow2]}>
+                <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
                     <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.fio}</Text>
                 </View>
-                <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                     <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
                         <MaterialCommunityIcons name="map-marker" size={24} color="rgb(115, 182, 28)" />
                     </View>
-                    <Text style={{ width: w * 0.8, color: '#006AB3', fontFamily: 'roboto', fontSize: 15, justifyContent:'center'}}>{data.address}</Text>
+                    <Text style={{ width: w * 0.8, color: '#5575A7', fontFamily: 'roboto', fontSize: 15, justifyContent:'center'}}>{data.address}</Text>
                 </View>
                 <View style={{flexDirection: 'column', paddingBottom: 180}}>
                     <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
-                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
                                 <MaterialCommunityIcons name="phone" size={24} color="rgb(115, 182, 28)" />
                             </View>
@@ -96,7 +98,7 @@ const Information = ({ number, data }) => {
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${data.mail}?subject==&`)}>
-                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row'}]}>
+                        <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
                                 <Ionicons name="mail" size={24} color="rgb(115, 182, 28)" />
                             </View>
@@ -110,47 +112,40 @@ const Information = ({ number, data }) => {
     }
 }
 
-export default class IITK extends PureComponent{
-    state={
-        page: 0
-    }
 
-    showPagination(index){
-        return(
+export default function Institute(props){
+
+    const [page, setPage] = useState(0)
+    const {mode, theme, toggle} = useTheme()
+
+    const data = props.route.params.data
+    return(
+        <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
+            <Header title={data.short_name} onPress={() => props.navigation.goBack()}/>
+            <Swiper style={styles.wrapper} onIndexChanged={index => setPage(index)}>
+                <View>
+                    <ScrollView>  
+                        <Information number={1} data={data.director} />
+                    </ScrollView>
+                </View>
+                <View>
+                    <ScrollView>
+                        <Information number={2} data={data.departments} />
+                    </ScrollView>
+                </View>
+                <View>
+                    <ScrollView>
+                        <Information number={3} data={data.soviet} />
+                    </ScrollView>
+                </View>
+            </Swiper>
             <View style={{ position: 'absolute', flexDirection: 'row', bottom: 60, alignSelf: 'center'}}>
                 {[0,1,2].map(item =>{
-                    return(<View style={{backgroundColor: index === item ? 'rgba(0, 122, 255, .5)' : 'rgba(0,0,0,.2)', width: 8, height: 8,borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />)
+                    return(<View style={{backgroundColor: page === item ? 'rgba(0, 122, 255, .5)' : 'rgba(0,0,0,.2)', width: 8, height: 8,borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />)
                 })}
             </View>
-        )
-    }
-
-    render(){
-        const data = this.props.route.params.data
-        return(
-            <View style={styles.container}>
-                <Header title={data.short_name} onPress={() => this.props.navigation.goBack()}/>
-                <Swiper style={styles.wrapper} onIndexChanged={index => this.setState({ page: index})}>
-                    <View>
-                        <ScrollView>  
-                            <Information number={1} data={data.director} />
-                        </ScrollView>
-                    </View>
-                    <View>
-                        <ScrollView>
-                            <Information number={2} data={data.departments} />
-                        </ScrollView>
-                    </View>
-                    <View>
-                        <ScrollView>
-                            <Information number={3} data={data.soviet} />
-                        </ScrollView>
-                    </View>
-                </Swiper>
-                {this.showPagination(this.state.page)}
-            </View>
-        )
-    }
+        </View>
+    )
 }
 
 function elevationShadowStyle(elevation) {
@@ -215,7 +210,7 @@ const styles = StyleSheet.create({
     dekanText: {
         width: '80%',
         alignSelf: 'center',
-        color: '#006AB3', 
+        color: '#5575A7', 
         fontSize: 15, 
         fontFamily: 'roboto',
     },
@@ -242,7 +237,7 @@ const styles = StyleSheet.create({
     buttonText: {
         width: w * 0.8,
         fontFamily: 'roboto',
-        color: '#006AB3',
+        color: '#5575A7',
         fontSize: 18,
         textAlignVertical: 'center'
     },

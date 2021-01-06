@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react'
-import { View, Text, StyleSheet, ActivityIndicator, TextInput, ScrollView, StatusBar, TouchableHighlight, Dimensions } from 'react-native'
+import React, { useEffect, useState, useRef } from 'react'
+import { View, Text, StyleSheet, ActivityIndicator, TextInput, ScrollView, StatusBar, TouchableHighlight, FlatList } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { h, w } from '../modules/constants'
 import Choose from '../modules/timetableFolder/Choose'
@@ -9,11 +9,10 @@ import Day from '../modules/timetableFolder/Day'
 import Swiper from 'react-native-swiper'
 import Help from '../modules/timetableFolder/Help'
 import { Ionicons } from '@expo/vector-icons'; 
-
+import i18n from '../locale/locale'
+import {useTheme} from '../themes/ThemeManager'
 
 const groupURL = 'https://timetable.mysibsau.ru/groups/'
-const secondGroupURL = 'http://185.228.233.243/groups/'
-const weekURL = 'http://185.228.233.243/CurrentWeek/'
 
 const storeData = async (value, name) => {
     try {
@@ -23,89 +22,47 @@ const storeData = async (value, name) => {
     }
 }
 
+export default function TimetableScreen(props){
+    const [group, setGroup] = useState(null)
+    const [weekDay, setWeekDay] = useState('')
+    const [week, setWeek] = useState(1)
+    const [currentWeek, setCurrentWeek] = useState(1)
+    const [textGroup, setTextGroup] = useState('')
+    const [groupList, setGroupList] = useState([])
+    const [timetable, setTimetable] = useState([{even_week: [], odd_week: []}])
+    const [loaded, setLoaded] = useState(false)
+    const [similar, setSimilar] = useState([])
+    const [shown, setShown] = useState([])
+    const [index, setIndex] = useState(1)
+    const [first_dates, setFirstDates] = useState([])
+    const [second_dates, setSecondDates] = useState([])
 
-export default class TimetableScreen extends PureComponent {
-    constructor(props){
-        super(props)
-    }
+    const f_scrollViewRef = useRef()
+    const s_scrollViewRef = useRef()
 
-    state = {
-        group: null,
-        weekDay: '',
-        week: 1,
-        currentWeek: 1,
-        textGroup: '',
-        groupList: [],
-        timetable: [{even_week: [], odd_week: []}],
-        loading: true,
-        similar: [],
-        shown: [],
-        index: 1,
-        first_dates: [],
-        second_dates: [],
-    }
+    const {mode, theme, toggle} = useTheme()
 
-    async getInfo(){
-        var currentWeek = 0;
-        const id = await AsyncStorage.getItem('@key').then((id) => this.setState({ group: id}))
-        const name = await AsyncStorage.getItem('@name').then((name) => this.setState({ textGroup: name}))
-        const weekApiCall = await fetch(weekURL, {method: 'GET'})
-        const week = await weekApiCall.json()
-        await this.setState({ week: week.week, currentWeek: week.week, index: week.week - 1})
+    useEffect(() => {
+        console.log('Определение группы')
+        AsyncStorage.getItem('@key').then((id) => setGroup(id))
+        AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
+    }, [group])
 
-        this.getTimetable(this.state.group)
-        return currentWeek
-    }
+    useEffect(() => {
+        console.log('Получение расписания')
+        let uri = 'https://timetable.mysibsau.ru/timetable/' + String(group)
 
-    async componentDidMount(){
-        try {
-            this.getInfo()
-            const groupsApiCall = await fetch(groupURL, {method: 'GET'})
-            const groups = await groupsApiCall.json()
-            await this.setState({ groupList: groups })
-            
-            var array = []
-            groups.map(item => {
-                array.push(item.name)
-            })
+        fetch(uri, {method: 'GET'})
+            .then(response => response.json())
+            .then(json => setTimetable(json))
+    }, [group])
 
-            this.setState({similar: array})
-
-            let date = new Date()
-            let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-
-            this.setState({ weekDay:days[date.getDay()] })
-            .then(() => {
-
-            })
-        } catch(err) {
-            const groupsApiCall = await fetch(secondGroupURL, {method: 'GET'})
-            const groups = await groupsApiCall.json()
-            await this.setState({ groupList: groups })
-            
-            var array = []
-            groups.map(item => {
-                array.push(item.name)
-            })
-
-            this.setState({similar: array})
-
-            let date = new Date()
-            let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-
-            this.setState({ weekDay:days[date.getDay()] })
-        }
-    }
-    
-
-    async getTimetable(id){
-        var firstURL = 'https://timetable.mysibsau.ru/timetable/' + String(id)
-        var secondURL = 'http://185.228.233.243/timetable/' + String(id)
-
+    useEffect(() => {
+        console.log('Определение дат')
         var first = []
         var second = []
-        
-        if (this.state.currentWeek === 1) {
+            
+        if (currentWeek === 1) {
             for (var i = 0; i <= new Date().getDay() - 1; i++){
                 first.push(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1 - i)))
                 first[i] = new Date(first[i])
@@ -135,143 +92,141 @@ export default class TimetableScreen extends PureComponent {
                 first[i] = new Date(first[i])
             }
         }
+        setFirstDates(first)
+        setSecondDates(second)
+    }, [group])
+
+    useEffect(() => {
+        fetch(groupURL, {method: 'GET'})
+            .then(response => response.json())
+            .then(json => setGroupList(json))
         
-        this.setState({ first_dates: first, second_dates: second})
+        var array = []
+        groupList.map(item => {
+            array.push(item.name)
+        })
 
-        try {
+        setSimilar(array)
 
-            const timetableApiCall = await fetch(firstURL, {method: 'GET'})
-            const timetable = await timetableApiCall.json()
-            this.setState({ timetable: timetable, loading: false })
-        } catch(err) {
-            try{
-                const timetableApiCall = await fetch(secondURL, {method: 'GET'})
-                const timetable = await timetableApiCall.json()
+        let date = new Date()
+        let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
-                this.setState({ timetable: timetable, loading: false })
-            }
-            catch(err){
-                console.log('Не могу получить расписание')
-            }
-        }
-    }
+        setWeekDay(days[date.getDay()])
+        setLoaded(true)
+    }, [group])
 
-    setGroup(name){
+    function setCurrentGroup(name){
         var choosed = name
         .toUpperCase()
         .split(' ')[0]
 
-        this.state.groupList.map(group => {
-
+        groupList.map(group => {
             if (group.name === choosed){
-                this.setState({ textGroup: group.name})
-                this.setState({ group: group.id})
-                this.getTimetable(group.id)
+                setTextGroup(group.name)
+                setGroup(group.id)
                 storeData(group.id, group.name)
             }
         })
     }
 
-    similarGroup(text){
-        if(text.length >= 2){
-            this.setState({ shown: this.state.similar.filter(item => {
-                if(item.includes(text.toUpperCase()))
-                    return item
-        })})
-        }
+    function similarGroup(text){
+        setTextGroup(text)
+        text !== '' && text.length > 2 ?
+        setShown(similar.filter(item => {
+            if(item.includes(text.toUpperCase()))
+                return item
+        })) : setShown([])
     }
 
-    getIndex(){
+    function getIndex(){
         if (((new Date() - new Date(2020, 9, 12, 0, 0, 0, 0))/1000/60/60/24)%14 <= 7)
             return 1
         else
             return 2
     }
 
-    render(){
-        if (this.state.group === null){
-            return(
-                <View style={styles.container}>
-                <MainHeader title={'Моё расписание'} onPress={() => this.props.navigation.goBack()}/>
+    const renderHelp = ({ item }) => (
+        <Help title={item} onPress={() => setCurrentGroup(item)} />
+    )
+    
+    if (group === null){
+        return(
+            <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
+                <StatusBar backgroundColor={theme.blockColor} barStyle={mode === 'light' ? 'dark-content' : 'light-content'}/>
+                <MainHeader title={i18n.t('timetable')} onPress={() => props.navigation.goBack()}/>
                 <View style={{flexDirection: 'row', marginTop: 25}}>
-                    <TextInput style={styles.input} onChangeText={text => this.similarGroup(text)} placeholder={'Введите название группы...'} />
-                    <TouchableHighlight style={{borderTopRightRadius: 7, borderBottomRightRadius: 7}} onPress={() => this.setGroup(this.state.textGroup)}>
-                        <View style={styles.button}>
+                    <TextInput style={[styles.input, {backgroundColor: theme.blockColor, color: theme.labelColor}]} placeholderTextColor={'lightgray'} onChangeText={text => similarGroup(text)} placeholder={i18n.t('input_group_name')} />
+                    <TouchableHighlight style={{borderRadius: 7}} onPress={() => setCurrentGroup(textGroup)}>
+                        <View style={[styles.button, {backgroundColor: theme.blockColor}]}>
                             <Ionicons name="ios-search" size={24} color="#006AB3" />
                         </View>
                     </TouchableHighlight>
                 </View>
-                {this.state.shown.length !== 0 ?
-                <View style={{ marginTop: 10, borderRadius: 15, borderWidth: 1, borderColor: 'lightgray', paddingTop: 15, paddingBottom: 15, maxHeight: Dimensions.get('window').height * 0.6, backgroundColor: 'white'}}>
-                    <ScrollView>
-                        {this.state.shown.map(item => {
-                            return(<Help info={item} onPress={() => this.setGroup(item)} />)
-                        })}
-                    </ScrollView>
-                </View> : null}
-                <Choose />
+                <View style={{ height: 30 + shown.length * 30, marginTop: 10, flexDirection: 'column', borderRadius: 15, paddingTop: 15, paddingBottom: 15, backgroundColor: theme.blockColor}}>
+                    <FlatList 
+                        data={shown}
+                        renderItem={renderHelp}
+                        keyExtractor={item => item}
+                    />
                 </View>
-            )
-        }
-        else {
-            var y
-            return(
-                
-                <View style={styles.container}>
-                    <View style={{ height: StatusBar.currentHeight, width: w, backgroundColor: 'white', position: 'absolute', zIndex: 2}}></View>
-                    <TimetableHeader title={this.state.textGroup} week={this.state.index} onPress={() => {
+            </View>
+        )
+    }
+    else {
+        var y
+        return(
+            <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
+                    <StatusBar backgroundColor={theme.blockColor} barStyle={mode === 'light' ? 'dark-content' : 'light-content'}/>
+                    <TimetableHeader title={textGroup} week={index} onPress={() => {
                         AsyncStorage.removeItem('@key')
                         AsyncStorage.removeItem('@group')
-                        this.setState({ group: null, textGroup: '', shown: [], timetable: [{even_week: [], odd_week: []}]})
-                        }}/>
+                        setGroup(null); setTextGroup(''), setShown([]), setTimetable([{even_week: [], odd_week: []}])
+                    }}/>
 
-                    <Swiper style={styles.wrapper} loop={false} index={this.getIndex() - 1} showsPagination={false} onIndexChanged={(index) => this.setState({index: index})}>
-                        <ScrollView ref={"_ScrollView1"}>
-                        {this.state.loading === true ? 
+                    <Swiper style={styles.wrapper} loop={false} index={getIndex() - 1} showsPagination={false} onIndexChanged={(index) => setIndex(index)}>
+                    <ScrollView ref={f_scrollViewRef}>
+                    {!loaded ? 
                             <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
                                 <ActivityIndicator size='large' color={"#0060B3"}/>
                             </View> :
-                        this.state.timetable[0].odd_week.map(item => {
-                            const index = this.state.timetable[0].odd_week.indexOf(item)
+                        timetable[0].odd_week.map(item => {
+                            const index = timetable[0].odd_week.indexOf(item)
                             return(
                                 <View onLayout={(event) => {
                                     var date = new Date()
-                                    if(date.getDay() - 1 === item.day && this.getIndex() === 1){
+                                    if(date.getDay() - 1 === item.day && getIndex() === 1){
                                         const layout = event.nativeEvent.layout
                                         y = layout.y
-                                        this.refs._ScrollView1.scrollTo({x: 0, y: y - 20, animated: true})
+                                        f_scrollViewRef.current.scrollTo({x: 0, y: y - 20, animated: true})
                                     }
-                                }}>
-                                <Day day={item} key={item.day} date={this.state.first_dates[index]} week={1} currentWeek={this.getIndex()} weekDay={this.state.weekDay} />
-                                </View>
-                        )})}
-                        </ScrollView>
-                        <ScrollView ref={"_ScrollView2"}>
-                        {this.state.loading === true ?  
+                            }}>
+                            <Day day={item} key={item.day} date={first_dates[index]} week={1} currentWeek={getIndex()} weekDay={weekDay} />
+                        </View>
+                    )})}
+                    </ScrollView>
+                    <ScrollView ref={s_scrollViewRef}>
+                        {!loaded ?  
                             <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
                                 <ActivityIndicator size='large' color={"#0060B3"}/>
                             </View> :
-                        this.state.timetable[0].even_week.map(item => {
-                            const index = this.state.timetable[0].even_week.indexOf(item)
+                            timetable[0].even_week.map(item => {
+                            const index = timetable[0].even_week.indexOf(item)
                             return(<View onLayout={(event) => {
                                 var date = new Date()
-                                if(date.getDay() - 1 === item.day && this.getIndex() === 2){
+                                if(date.getDay() - 1 === item.day && getIndex() === 2){
                                     const layout = event.nativeEvent.layout
                                     y = layout.y
-                                    this.refs._ScrollView2.scrollTo({x: 0, y: y - 20, animated: true})
+                                    s_scrollViewRef.current.scrollTo({x: 0, y: y - 20, animated: true})
                                 }
                             }}>
-                            <Day day={item} key={item.day} date={this.state.second_dates[index]} week={2} currentWeek={this.getIndex()} weekDay={this.state.weekDay}/>
-                            </View>) })}
-                    
-                        </ScrollView>
-                    </Swiper>
-                       
-                </View>
+                            <Day day={item} key={item.day} date={second_dates[index]} week={2} currentWeek={getIndex()} weekDay={weekDay}/>
+                        </View>) })}
+                    </ScrollView>
+                </Swiper>
+            </View>
                 
-            )
-        }    
-    }
+        )
+    }   
 }
 
 const styles = StyleSheet.create({

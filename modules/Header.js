@@ -1,16 +1,17 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 import { h, w } from './constants'
 import { Ionicons } from '@expo/vector-icons'; 
-
+import { useTheme } from '../themes/ThemeManager'
 
 const Header = ({title, onPress}) => {
+    const {mode, theme, toggle} = useTheme()
     return(
-        <View style={[styles.box, styles.shadow2]}>
-            <TouchableWithoutFeedback onPress={onPress}>
-                <Ionicons name="ios-arrow-back" size={30} color="black" style={{ color: '#006AB3', paddingRight: 20, paddingLeft: 20, marginBottom: 8}}/>
-            </TouchableWithoutFeedback>
-            <Text style={styles.maintext}>{title}</Text>
+        <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>
+            <TouchableOpacity onPress={onPress}>
+                <Ionicons name="ios-arrow-back" size={30} color="black" style={{ color: '#006AB3', paddingRight: 10, paddingLeft: 15, marginBottom: 8}}/>
+            </TouchableOpacity>
+            <Text style={[styles.maintext, {color: theme.headerTitle}]}>{title}</Text>
         </View>
     )
 }
@@ -38,11 +39,8 @@ const styles = StyleSheet.create({
 
     shadow2: elevationShadowStyle(5),
     box: {
-        backgroundColor: 'white',
-        height: 65,
+        height: 40,
         width: w,
-        paddingLeft: 10,
-        paddingTop: 30,
         elevation: 10,
         position: 'relative',
         flexDirection: 'row',

@@ -1,13 +1,20 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 import { h, w } from './constants'
+import i18n from '../locale/locale'
+import { Octicons } from '@expo/vector-icons'; 
+import { useTheme } from '../themes/ThemeManager'
 
-
-const MainHeader = ({title}) => {
+const MainHeader = ({title, onPress}) => {
+    const {mode, theme, toggle} = useTheme() 
     return(
-        <View style={[styles.box, styles.shadow2]}>
-            <Image source={require('../assets/logo.jpeg')} style={{ width: 25, height: 25, marginBottom: 3, marginRight: 10, marginLeft: 10}} />
-            <Text style={styles.maintext}>{title}</Text>
+        <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>
+            <Image source={require('../assets/logo.png')} style={{ width: 25, height: 25, marginBottom: 3, marginRight: 10, marginLeft: 10}} />
+            <Text style={[styles.maintext, {color: theme.headerTitle}]}>{title}</Text>
+            {title === i18n.t('personal_account') ? 
+            <TouchableOpacity onPress={onPress}>
+              <Octicons name="gear" size={24} color={theme.headerTitle}/>
+            </TouchableOpacity> : null}
         </View>
     )
 }
@@ -24,7 +31,7 @@ function elevationShadowStyle(elevation) {
 
 const styles = StyleSheet.create({
     maintext: {
-        width: w,
+        width: w * 0.75,
         fontSize: 25,
         color: 'grey',
         textAlignVertical: 'bottom',
@@ -35,10 +42,9 @@ const styles = StyleSheet.create({
       shadow2: elevationShadowStyle(5),
       box: {
           backgroundColor: 'white',
-          height: 65,
+          height: 40,
           width: w,
           paddingLeft: 10,
-          paddingTop: 30,
           elevation: 10,
           position: 'relative',
           flexDirection: 'row',

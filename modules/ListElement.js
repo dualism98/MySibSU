@@ -1,16 +1,17 @@
 import React from 'react';
 import { TouchableOpacity, Image, View, StyleSheet, Text } from 'react-native';
 import { h, w } from './constants';
+import {useTheme} from '../themes/ThemeManager'
 
 
 const ListElement = ({onPress, title, prop}) => {
-    const { container, text, down } = styles
+    const {mode, theme, toggle} = useTheme()
 
     return(
         <TouchableOpacity onPress={onPress}>
-           <View style={[styles.box, styles.centerContent, styles.shadow2]}>
-                <Text style={text} >{title}</Text>
-                <Text style={down} >{prop}</Text>
+           <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
+                <Text style={styles.text} >{title}</Text>
+                <Text style={styles.down} >{prop}</Text>
             </View>
         </TouchableOpacity>
     );

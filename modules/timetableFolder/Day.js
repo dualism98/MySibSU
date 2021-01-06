@@ -2,8 +2,9 @@ import React from 'react'
 import { View, Text, StyleSheet, Platform } from 'react-native'
 import { h, w } from '../constants'
 import Subject from './Subject'
+import i18n from '../../locale/locale'
 
-const weekday = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
+const weekday = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
 const month = ['янв.', 'фев.', 'мар.', 'апр.', 'мая', 'июня', 'июля', 'авг.', 'сен.', 'окт.', 'нояб.', 'дек.']
 const Day = ({day, date, week, currentWeek, weekDay}) => {
         date = date.getDate() + ' ' + month[date.getMonth()]
@@ -12,7 +13,7 @@ const Day = ({day, date, week, currentWeek, weekDay}) => {
             <View style={styles.container}>
                 <View style={styles.dayname}>
                     <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.title}>{weekday[Number(day.day)]}</Text>
+                        <Text style={styles.title}>{i18n.t(weekday[Number(day.day)])}</Text>
                         {week === currentWeek && weekDay ===  weekday[Number(day.day)] ?
                                 <View style={{ minHeight: h * 0.05, justifyContent: 'center', marginTop: h * 0.013, maxHeight: h * 0.05, borderRadius: 14, backgroundColor: '#FF7575', opacity: 0.9, paddingLeft: 8, paddingRight: 8, shadowOffset: {
                                     width: 0,
@@ -21,7 +22,7 @@ const Day = ({day, date, week, currentWeek, weekDay}) => {
                                 shadowOpacity: 0.27,
                                 shadowRadius: 4.65,
                                 elevation: 10}}>
-                                <Text style={{ fontSize: 18, color: 'white', fontFamily: 'roboto'}}>cегодня</Text></View> : null
+                                <Text style={{ fontSize: 18, color: 'white', fontFamily: 'roboto'}}>{i18n.t('today')}</Text></View> : null
                             }
                     </View>
                     <Text style={{minHeight: h * 0.05, fontFamily: 'roboto', textAlignVertical: 'center', marginTop: h * 0.015, maxHeight: h * 0.05, fontSize: 15, color: 'gray', position: 'absolute', right: 20}}>{date}</Text>

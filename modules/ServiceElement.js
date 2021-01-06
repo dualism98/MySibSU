@@ -1,17 +1,15 @@
 import React from 'react'
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native'
 import {h, w} from './constants'
+import {useTheme} from '../themes/ThemeManager'
 
 const ServiceElement = ({name, image, onPress}) => {
+    const {mode, theme, toggle} = useTheme()
     return(
         <TouchableOpacity  onPress={onPress}>
-            {/* <View style={[styles.box1, styles.shadow1]}>
+            <View style={[styles.box2, styles.shadow2, {backgroundColor: theme.blockColor}]}>
                 {image}
-                <Text style={{fontFamily: 'roboto', fontSize: 16, marginTop: 3, marginBottom: 3}}>{name}</Text>
-            </View> */}
-            <View style={[styles.box2, styles.shadow2]}>
-                {image}
-                <Text style={{fontFamily: 'roboto', fontSize: 18, marginLeft: 20}}>{name}</Text>
+                <Text style={{fontFamily: 'roboto', fontSize: 18, marginLeft: 20, color: theme.headerTitle}}>{name}</Text>
             </View>
         </TouchableOpacity>
     )

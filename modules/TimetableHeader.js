@@ -2,18 +2,20 @@ import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableWithoutFeedback, StatusBar } from 'react-native'
 import { h, w } from './constants'
 import { AntDesign } from '@expo/vector-icons'
-
+import i18n from '../locale/locale'
+import {useTheme} from '../themes/ThemeManager'
 
 const MainHeader = ({title, onPress, week}) => {
+    const {mode, theme, toggle} = useTheme()
     return(
-        <View style={[styles.box, styles.shadow2]}>
+        <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>
             <TouchableWithoutFeedback style={{ zIndex: 4}} onPress={onPress}>
-                <AntDesign name="logout" size={20} color="gray" style={{ position: 'absolute', left: 20, top: 35, transform:[{rotate: '180deg'}] }}/>
+                <AntDesign name="logout" size={20} color={theme.headerTitle} style={{ position: 'absolute', left: 20, transform:[{rotate: '180deg'}] }}/>
             </TouchableWithoutFeedback>
             
-            <Text style={styles.maintext}>{title}</Text>
-            <View style={styles.week}>
-                <Text style={styles.week_text}>{week+1} неделя</Text>
+            <Text style={[styles.maintext, {color: theme.headerTitle}]}>{title}</Text>
+            <View style={[styles.week, {backgroundColor: theme.headerColor}]}>
+                <Text style={[styles.week_text, {color: theme.headerTitle}]}>{week+1} {i18n.t('week')}</Text>
             </View>
             
         </View>
@@ -38,7 +40,6 @@ const styles = StyleSheet.create({
         fontFamily: 'roboto',
         position: 'absolute',
         left: w * 0.15,
-        top: 28,
       },
 
       week: {
@@ -73,10 +74,9 @@ const styles = StyleSheet.create({
     shadow2: elevationShadowStyle(5),
       box: {
           backgroundColor: 'white',
-          height: 65,
+          height: 40,
           width: w,
           paddingLeft: 10,
-          paddingTop: 30,
           elevation: 10,
           position: 'relative',
           flexDirection: 'row',

@@ -1,24 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, Image, TouchableWithoutFeedback, Linking, StyleSheet} from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { h, w } from './constants'
+import {useTheme} from '../themes/ThemeManager'
 
 url = 'http://193.187.174.224'
 
 const EventModule = ({data}) => {
     const [mode, setMode] = useState(false)
-    const [height, setHeight] = useState(0)
-    const [width, setWidth] = useState(0)
+    const [coef, setCoef] = useState(1)
+    const [loaded, setLoaded] = useState(false)
 
-    Image.getSize(url + data.logo, (width, height) => {
-        setHeight(height)
-        setWidth(width)})
+    const {theme, toggle} = useTheme()
+
+    useEffect(() => {
+        Image.getSize(url + data.logo, (width, height) => {
+            setCoef(height/width)})
+        setLoaded(true)
+    }, [coef])
 
     return(
-        <View style={{ width: w, backgroundColor: 'white', alignItems: 'center', marginBottom: 20}}>
-            <View style={[styles.box, styles.centerContent, styles.shadow2]}> 
+        <View style={{ width: w, backgroundColor: 'transparent', alignItems: 'center', marginBottom: 40}}>
+            {loaded ?
+            <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}> 
                 <ScrollView nestedScrollEnabled = {true}>
-                <Image style={{width: w * 0.9, height: w * 0.9 * height/width,  borderRadius: 15}}
+                <Image style={{width: w * 0.9, height: w * 0.9 * coef,  borderRadius: 15}}
                     source={{ uri: url + data.logo }} />
                 <View> 
                         {String(data.text).length >= 100 && mode === false ? 
@@ -42,18 +48,17 @@ const EventModule = ({data}) => {
                                     </TouchableWithoutFeedback>
                                 )
                             })}
-                        <View>
-                            <TouchableWithoutFeedback onPress={() => {
-                                setMode(!mode)
-                            }}>
-                                <Text style={{ fontFamily: 'roboto', fontSize: 16, color: '#006AB3', marginLeft: 25}}>[Свернуть]</Text>
-                            </TouchableWithoutFeedback>
-                        </View>
+                            <View>
+                                {String(data.text).length >= 100 ? 
+                                <TouchableWithoutFeedback onPress={() => {setMode(!mode)}}>
+                                    <Text style={{ fontFamily: 'roboto', fontSize: 16, color: '#006AB3', marginLeft: 25}}>[Свернуть]</Text>
+                                </TouchableWithoutFeedback> : null}
+                            </View>
                         </View>
                         }
                 </View>
                 </ScrollView>
-            </View>
+            </View> : null}
         </View>
         
     )
@@ -74,7 +79,6 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         backgroundColor: 'white',
         width: w * 0.9, 
-        marginTop: 20,
         flexDirection: 'column',
         paddingBottom: 10,
     },

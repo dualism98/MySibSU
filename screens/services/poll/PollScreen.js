@@ -2,13 +2,14 @@ import React, { PureComponent } from 'react'
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
+import i18n from '../../../locale/locale'
 
 
 export default class PollScreen extends PureComponent {
     render(){
         return(
             <View style={styles.container}>
-                <Header title={'Обратная связь'} onPress={() => this.props.navigation.goBack()}/>
+                <Header title={i18n.t('feedback')} onPress={() => this.props.navigation.goBack()}/>
                 <ScrollView>
                     
                 </ScrollView>
