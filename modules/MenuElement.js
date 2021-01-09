@@ -2,10 +2,12 @@ import React from 'react';
 import { TouchableOpacity, ImageBackground, View, StyleSheet, Text } from 'react-native';
 import { h, w } from './constants';
 import {useTheme} from '../themes/ThemeManager'
+import {useLocale} from '../locale/LocaleManager'
 
 const MenuElement = ({data, date}) => {
     var { day, food } = data
     const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
     day = day.split('-')
 
     return(
@@ -15,13 +17,13 @@ const MenuElement = ({data, date}) => {
             </View>
             <View style={[styles.box, {flexDirection: 'row', heigth: 20, marginTop: 10, backgroundColor: mode === 'light' ? 'rgb(240,240,240)' : 'rgb(25,25,25)', marginBottom: 10}]}>
                 <View style={{ height: 20, width: '55%', }}>
-                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'left', textAlignVertical: 'center', color: theme.labelColor }}>Блюдо</Text>
+                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'left', textAlignVertical: 'center', color: theme.labelColor }}>{locale['dish']}</Text>
                 </View>
                 <View style={{ height: 20, width: '15%',}}>
-                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center', color: theme.labelColor }}>Вес</Text>
+                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center', color: theme.labelColor }}>{locale['weight']}</Text>
                 </View>
                 <View style={{ height: 20, width: '30%', }}>
-                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center', color: theme.labelColor }}>Стоимость</Text>
+                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center', color: theme.labelColor }}>{locale['price']}</Text>
                 </View>
             </View>
             <View style={styles.down}>

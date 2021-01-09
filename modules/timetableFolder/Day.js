@@ -2,41 +2,43 @@ import React from 'react'
 import { View, Text, StyleSheet, Platform } from 'react-native'
 import { h, w } from '../constants'
 import Subject from './Subject'
-import i18n from '../../locale/locale'
+import {useLocale} from '../../locale/LocaleManager'
 
 const weekday = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-const month = ['янв.', 'фев.', 'мар.', 'апр.', 'мая', 'июня', 'июля', 'авг.', 'сен.', 'окт.', 'нояб.', 'дек.']
+const month = {"ru": ['янв.', 'фев.', 'мар.', 'апр.', 'мая', 'июня', 'июля', 'авг.', 'сен.', 'окт.', 'нояб.', 'дек.'],
+                "en": ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'Jule', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']}
 const Day = ({day, date, week, currentWeek, weekDay}) => {
-        date = date.getDate() + ' ' + month[date.getMonth()]
+    const {localeMode, locale, toggleLang} = useLocale()
 
-        return(
-            <View style={styles.container}>
-                <View style={styles.dayname}>
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.title}>{i18n.t(weekday[Number(day.day)])}</Text>
-                        {week === currentWeek && weekDay ===  weekday[Number(day.day)] ?
-                                <View style={{ minHeight: h * 0.05, justifyContent: 'center', marginTop: h * 0.013, maxHeight: h * 0.05, borderRadius: 14, backgroundColor: '#FF7575', opacity: 0.9, paddingLeft: 8, paddingRight: 8, shadowOffset: {
-                                    width: 0,
-                                    height: 3,
-                                },
-                                shadowOpacity: 0.27,
-                                shadowRadius: 4.65,
-                                elevation: 10}}>
-                                <Text style={{ fontSize: 18, color: 'white', fontFamily: 'roboto'}}>{i18n.t('today')}</Text></View> : null
-                            }
-                    </View>
-                    <Text style={{minHeight: h * 0.05, fontFamily: 'roboto', textAlignVertical: 'center', marginTop: h * 0.015, maxHeight: h * 0.05, fontSize: 15, color: 'gray', position: 'absolute', right: 20}}>{date}</Text>
+    date = date.getDate() + ' ' + month[localeMode][date.getMonth()]
+    return(
+        <View style={styles.container}>
+            <View style={styles.dayname}>
+                <View style={{flexDirection: 'row'}}>
+                    <Text style={styles.title}>{locale[weekday[Number(day.day)]]}</Text>
+                    {week === currentWeek && weekDay ===  weekday[Number(day.day)] ?
+                            <View style={{ minHeight: h * 0.05, justifyContent: 'center', marginTop: h * 0.013, maxHeight: h * 0.05, borderRadius: 14, backgroundColor: '#FF7575', opacity: 0.9, paddingLeft: 8, paddingRight: 8, shadowOffset: {
+                                width: 0,
+                                height: 3,
+                            },
+                            shadowOpacity: 0.27,
+                            shadowRadius: 4.65,
+                            elevation: 10}}>
+                            <Text style={{ fontSize: 18, color: 'white', fontFamily: 'roboto'}}>{locale['today']}</Text></View> : null
+                        }
                 </View>
-                {
-                    day.lessons.length === 0 ?
-                    <Subject data={'Нет пар'}/> : null
-                }
-                {day.lessons.map(item => {
-                    let index = day.lessons.indexOf(item)
-                    return(<Subject data={item} key={index}/>)
-                })}
+                <Text style={{minHeight: h * 0.05, fontFamily: 'roboto', textAlignVertical: 'center', marginTop: h * 0.015, maxHeight: h * 0.05, fontSize: 15, color: 'gray', position: 'absolute', right: 20}}>{date}</Text>
             </View>
-        )
+            {
+                day.lessons.length === 0 ?
+                <Subject data={'Нет пар'}/> : null
+            }
+            {day.lessons.map(item => {
+                let index = day.lessons.indexOf(item)
+                return(<Subject data={item} key={index}/>)
+            })}
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({

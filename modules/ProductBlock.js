@@ -1,15 +1,18 @@
 import React from 'react'
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native'
 import { h, w } from './constants'
+import {useTheme} from '../themes/ThemeManager'
 
 const ProductBlock = ({name, image, price, onPress}) => {
+    const {mode, theme, toggle} = useTheme()
+
     return(
         <TouchableOpacity onPress={onPress}>
-            <View style={[styles.container, styles.shadow]}>
+            <View style={[styles.container, styles.shadow, {backgroundColor: theme.blockColor}]}>
                 <View>
                     <Image source={{uri: image}} style={styles.image} />
                 </View>
-                <Text style={styles.name}>{name.slice(0, 25)}{name.length > 25 ? '...' : null}</Text>
+                <Text style={[styles.name, {color: theme.labelColor}]}>{name.slice(0, 25)}{name.length > 25 ? '...' : null}</Text>
                 <Text style={styles.price}>{price}₽</Text>
             </View>
         </TouchableOpacity>

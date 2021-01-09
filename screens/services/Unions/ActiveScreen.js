@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import ActiveElement from '../../../modules/ActiveElement'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
-import i18n from '../../../locale/locale'
+import {useLocale} from '../../../locale/LocaleManager'
 import { useTheme } from '../../../themes/ThemeManager'
 
 
@@ -12,26 +12,21 @@ export default function ActiveScreen(props){
     const [unions, setUnions] = useState([])
     const [loaded, setLoaded] = useState(false)
     const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
 
     useEffect(() => {
-        async function fetchData(){
-            try{
-                let unionRequest = await fetch('http://193.187.174.224/v2/campus/unions/', {method: 'GET'})
-                let unions = await unionRequest.json()
-                setUnions(unions)
+        fetch('http://193.187.174.224/v2/campus/unions/', {method: 'GET'})
+            .then(response => response.json())
+            .then(json => {
+                setUnions(json)
                 setLoaded(true)
-            }
-            catch(err){
-                console.log(err)
-            }
-        }
-
-        fetchData()
-    }, [])
+            })
+            .catch(err => console.log(err))
+    }, [unions])
 
     return(
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
-            <Header title={i18n.t('student_life')} onPress={() => props.navigation.goBack()}/>
+            <Header title={locale['student_life']} onPress={() => props.navigation.goBack()}/>
             <ScrollView>
                 <View style={styles.main}>
                     {loaded ? 

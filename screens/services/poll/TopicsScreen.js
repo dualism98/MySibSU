@@ -1,28 +1,74 @@
-import React, { PureComponent } from 'react'
-import { View, Text, ScrollView, StyleSheet } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, Text, ScrollView, StyleSheet, ActivityIndicator, AsyncStorage, TouchableOpacity} from 'react-native'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
-import i18n from '../../../locale/locale'
+import {useTheme} from '../../../themes/ThemeManager'
+import {useLocale} from '../../../locale/LocaleManager'
 
 
-export default class TopicsScreen extends PureComponent {
-    render(){
-        return(
-            <View style={styles.container}>
-                <Header title={i18n.t('feedback')} onPress={() => this.props.navigation.goBack()}/>
-                <ScrollView>
-                    
-                </ScrollView>
+export default function TopicsScreen(props){
+    const [topics, setTopics] = useState([])
+    const [loaded, setLoaded] = useState(false)
+    const [UUID, setUUID] = useState('')
+    const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
+
+    useEffect(() => {
+        AsyncStorage.getItem('UUID')
+            .then(res => setUUID(res))
+
+
+        fetch('http://193.187.174.224/v2/surveys/all/?uuid=' + UUID, {
+            method: 'GET',
+        })
+            .then(response => response.json())
+            .then(json => {
+                setTopics(json)
+                setLoaded(true)
+            })
+            .catch(err => console.log(err))
+    }, [loaded])
+
+    return(
+        <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
+            <Header title={locale['feedback']} onPress={() => props.navigation.goBack()}/>
+            <ScrollView>
+                {!loaded ? 
+                <View style={{ height: h, width: w, justifyContent: 'center', paddingBottom: 120,}}>
+                    <ActivityIndicator size="large" color='#006AB3' />
+                </View> : 
+                <View style={{minHeight: h - 120, paddingBottom: 120}}>
+                    {Array.isArray(topics) ? 
+                    topics.map(item => {
+                        return(
+                            <TouchableOpacity onPress={() => props.navigation.navigate('Poll', {id: item.id, UUID: UUID})}>
+                                <View style={[styles.list, styles.shadow, {backgroundColor: theme.blockColor}]}>
+                                    <Text style={[styles.listText, {color: theme.labelColor}]}>{item.name.length > 30 ? item.name.slice(0,30) + '...' : item.name}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    }) : null}
+                </View>}
                 
-            </View>
-        )
-    }
+            </ScrollView>
+            
+        </View>
+    )
 }
+
+function elevationShadowStyle(elevation) {
+    return {
+      elevation,
+      shadowColor: 'black',
+      shadowOffset: { width: 0, height: 0.5 * elevation },
+      shadowOpacity: 0.3,
+      shadowRadius: 0.8 * elevation
+    };
+  }
 
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        backgroundColor: 'white',
         minHeight: h,
         width: w,
         paddingBottom: 40
@@ -39,5 +85,20 @@ const styles = StyleSheet.create({
         paddingBottom: 100,
         flexDirection: 'row',
         flexWrap: 'wrap',
+    },
+
+    shadow: elevationShadowStyle(6),
+    list: {
+        width: w * 0.9,
+        height: 50,
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 20,
+    },
+
+    listText: {
+        fontFamily: 'roboto',
+        fontSize: 15
     }
 })

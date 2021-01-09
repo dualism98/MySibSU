@@ -2,38 +2,33 @@ import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator, TouchableWithoutFeedback, Linking, ScrollView, Image } from 'react-native'
 import Header from '../../modules/Header'
 import { h, w } from '../../modules/constants'
-import i18n from '../../locale/locale'
+import {useLocale} from '../../locale/LocaleManager'
 import {useTheme} from '../../themes/ThemeManager'
 
 export default function MapScreen(props){
     const {mode, theme, toggle} = useTheme()
-    const [buildings, setBuilding] = useState([])
+    const {localeMode, locale, toggleLang} = useLocale()
+    const [buildings, setBuildings] = useState([])
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
-        async function fetchData(){
-            try{
-                let buildingRequest = await fetch('http://193.187.174.224/v2/campus/buildings/', {method: 'GET'})
-                let buildings = await buildingRequest.json()
-                setBuilding(buildings)
+        fetch('http://193.187.174.224/v2/campus/buildings/', {method: 'GET'})
+            .then(response => response.json())
+            .then(json => {
+                setBuildings(json)
                 setLoaded(true)
-            }
-            catch(err){
-                console.log(err)
-            }
-        }
-
-        fetchData()
-    }, [])
+            })
+            .catch(err => console.log(err))
+    }, [buildings])
 
     return(
         <View style={{backgroundColor:'white', flex: 1, paddingBottom: 0}}>         
-            <Header title={i18n.t('buildings')} onPress={() => props.navigation.goBack()}/>  
+            <Header title={locale['buildings']} onPress={() => props.navigation.goBack()}/>  
             <ScrollView>
                 {loaded ?
                 <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>               
                     <View style={styles.right}>
-                        <Text style={[styles.head]}>{i18n.t('educational_facilities_r')}</Text>
+                        <Text style={[styles.head]}>{locale['educational_facilities_r']}</Text>
                         {buildings.map( map => {
                             if (map.coast === 1){
                             return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.link)} key={map.name}>
@@ -49,7 +44,7 @@ export default function MapScreen(props){
                             }})}
                     </View>
                     <View style={styles.left}>
-                        <Text style={styles.head}>{i18n.t('educational_facilities_l')}</Text>
+                        <Text style={styles.head}>{locale['educational_facilities_l']}</Text>
                         {buildings.map( map => {
                             if (map.coast === 0){
                             return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.link)} key={map.name}>
@@ -98,7 +93,7 @@ const styles = StyleSheet.create({
 
     left: {
         width: w * 0.94,
-        marginBottom: 10,
+        paddingBottom: 120,
         marginTop: 10,
     },
 

@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native'
 import { useTheme } from '../themes/ThemeManager'
+import { useLocale } from '../locale/LocaleManager' 
 import { h, w } from './constants'
 
 const Cafedra = (props) => {
     const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
     const [show, setShow] = useState(false)
 
     return(
@@ -15,7 +17,7 @@ const Cafedra = (props) => {
                 </View>
                 {show ? 
                     <View style={{ borderLeftWidth: 2, borderLeftColor: '#006AB3', paddingLeft: 10, marginLeft: 10 }}>
-                        <Text style={styles.text}>Зав. кафедрой: {this.props.fio}{'\n'}Адрес: {this.props.address}{'\n'}Телефон: {this.props.phone}{'\n'}Email: {this.props.email}</Text>
+                        <Text style={styles.text}>{locale['head']}: {props.fio}{'\n'}{locale['address']}: {props.address}{'\n'}{locale['phone']}: {props.phone}{'\n'}{locale['email']}: {props.email}</Text>
                     </View> : null}
             </View>
         </TouchableWithoutFeedback>

@@ -22,38 +22,42 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons'; 
 import PersonScreen from './personPage/PersonScreen'
 import SettingsScreen from './personPage/SettingsScreen'
-import i18n from '../locale/locale'
 import { useTheme } from '../themes/ThemeManager'
+import { useLocale } from '../locale/LocaleManager'
 
 
 const Tabs = createBottomTabNavigator();
 
 export default function HomeScreen(){
-  const {mode, theme, toggle} = useTheme()
-
+  const {localeMode, locale, toggleLang} = useLocale()
+  
     return (
       <NavigationContainer>
-      <Tabs.Navigator initialRouteName={i18n.t('timetable')} tabBar={(props) => <TabBar {...props} />}>
-        <Tabs.Screen name={i18n.t('events')} component={EventsScreen}
+      <Tabs.Navigator initialRouteName={'Timetable'} tabBar={(props) => <TabBar {...props} />}>
+        <Tabs.Screen name={'Events'} component={EventsScreen}
         options={{
           headerShown: false,
-          tabBarIcon: (focused, color, size) => <MaterialCommunityIcons name="timetable" size={26} color={focused ? '#5575A7' : 'rgb(159, 165, 163)'}  />
+          title: locale['events']
         }}/>
-        <Tabs.Screen name={i18n.t('menu')} component={MenuScreen} 
+        <Tabs.Screen name={'Menu'} component={MenuScreen} 
         options={{
           headerShown: false,
+          title: locale['menu']
         }}/>
-        <Tabs.Screen name={i18n.t('timetable')} component={TimetableScreen}
+        <Tabs.Screen name={'Timetable'} component={TimetableScreen}
         options={{
           headerShown: false,
+          title: locale['timetable']
         }}/>
-        <Tabs.Screen name={i18n.t('services')} component={ServiceStackScreen} 
+        <Tabs.Screen name={'Services'} component={ServiceStackScreen} 
         options={{
           headerShown: false,
+          title: locale['services']
         }}/>
-        <Tabs.Screen name={i18n.t('profile')} component={PersonStackScreen}
+        <Tabs.Screen name={'Profile'} component={PersonStackScreen}
         options={{
           headerShown: false,
+          title: locale['profile']
         }}/>
       </Tabs.Navigator>
     </NavigationContainer>
@@ -65,15 +69,9 @@ const PersonStack = createStackNavigator();
 
 function PersonStackScreen(){
   return(
-    <PersonStack.Navigator>
-      <PersonStack.Screen name='Profile' component={PersonScreen}
-        options={{
-          headerShown: false
-      }}/>
-      <PersonStack.Screen name='Settings' component={SettingsScreen}
-        options={{
-          headerShown: false
-      }}/>
+    <PersonStack.Navigator initialRouteName='Account' headerMode='none'>
+      <PersonStack.Screen name='Account' component={PersonScreen} />
+      <PersonStack.Screen name='Settings' component={SettingsScreen} />
     </PersonStack.Navigator>
   )
 }
@@ -82,66 +80,29 @@ const ServiceStack = createStackNavigator();
 
 function ServiceStackScreen(){
   return(
-    <ServiceStack.Navigator>
-      <ServiceStack.Screen name="Service" component={ServiceScreen} 
-        options={{
-          headerShown: false,
-      }}/>
-      <ServiceStack.Screen name="Active" component={ActiveScreen} 
-        options={{
-          headerShown: false,
-      }}/>
-      <ServiceStack.Screen name='Ermak' component={Ermak}
-      options={{
-        headerShown: false,
-      }}/>
-      <ServiceStack.Screen name="Institutes" component={InstitutesScreen} 
-        options={{
-          headerShown: false,
-      }}/>
-      <ServiceStack.Screen name="IITK" component={IITK} 
-        options={{
-          headerShown: false,
-      }}/>
-      <ServiceStack.Screen name="Map" component={MapScreen} 
-        options={{
-          headerShown: false,
-      }}/>
-      <ServiceStack.Screen name='Shop' component={ShopScreen}
-        options={{
-          headerShown: false,
-      }}/>
-      <ServiceStack.Screen name='Product' component={ProductScreen}
-        options={{
-          headerShown: false,
-      }}/>
-      <ServiceStack.Screen name='Topics' component={TopicsScreen}
-        options={{
-          headerShown: false,
-      }}/>
-      <ServiceStack.Screen name='Poll' component={PollScreen}
-        options={{
-          headerShown: false,
-      }}/>
+    <ServiceStack.Navigator initialRouteName='Service' headerMode='none'>
+      <ServiceStack.Screen name="Service" component={ServiceScreen} />
+      <ServiceStack.Screen name="Active" component={ActiveScreen} />
+      <ServiceStack.Screen name='Ermak' component={Ermak} />
+      <ServiceStack.Screen name="Institutes" component={InstitutesScreen} />
+      <ServiceStack.Screen name="IITK" component={IITK} />
+      <ServiceStack.Screen name="Map" component={MapScreen} />
+      <ServiceStack.Screen name='Shop' component={ShopScreen} />
+      <ServiceStack.Screen name='Product' component={ProductScreen} />
+      <ServiceStack.Screen name='Topics' component={TopicsScreen} />
+      <ServiceStack.Screen name='Poll' component={PollScreen} />
     </ServiceStack.Navigator>
   )
 }
 
-const BottomMenuItem = ({ iconName, isCurrent }) => {
+const BottomMenuItem = ({ iconName, label, isCurrent }) => {
 
-  const images_ru = {
-      'События': <MaterialCommunityIcons name="timetable" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'}  />, 
-      'Меню': <MaterialIcons name="restaurant-menu" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
-      'Расписание': <MaterialCommunityIcons name="calendar-text" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
-      'Сервисы': <AntDesign name="appstore-o" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />,
-      'Профиль': <Ionicons name='md-person' size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />}
-  
-  const images_en = {
-      'Events': <MaterialCommunityIcons name="timetable" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'}  />, 
-      'Menu': <MaterialIcons name="restaurant-menu" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
-      'Timetable': <MaterialCommunityIcons name="calendar-text" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
-      'Services': <AntDesign name="appstore-o" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />,
-      'Profile': <Ionicons name='md-person' size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />}
+  const icons = {
+    'Events': <MaterialCommunityIcons name="timetable" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'}  />, 
+    'Menu': <MaterialIcons name="restaurant-menu" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
+    'Timetable': <MaterialCommunityIcons name="calendar-text" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
+    'Services': <AntDesign name="appstore-o" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />,
+    'Profile': <Ionicons name='md-person' size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />}
 
   const color = isCurrent ? '#5575A7' : 'gray'
   return (
@@ -152,8 +113,8 @@ const BottomMenuItem = ({ iconName, isCurrent }) => {
         alignItems: "center",
       }}
     >
-      {i18n.locale === 'en' ? images_en[iconName] : images_ru[iconName]}
-      <Text style={{ fontFamily: 'roboto', fontSize: 10, color: color }}>{iconName}</Text>
+      {icons[iconName]}
+      <Text style={{ fontFamily: 'roboto', fontSize: 10, color: color }}>{label}</Text>
     </View>
   );
 };
@@ -181,12 +142,6 @@ const TabBar = ({state, descriptors, navigation}) => {
           />
           {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
-          const label =
-            options.tabBarLabel !== undefined
-              ? options.tabBarLabel
-              : options.title !== undefined
-              ? options.title
-              : route.name;
           const isFocused = state.index === index;
           const onPress = () => {
             const event = navigation.emit({
@@ -224,7 +179,8 @@ return (
               key={index}
             >
               <BottomMenuItem
-                iconName={label.toString()}
+                iconName={route.name}
+                label={options.title}
                 isCurrent={isFocused}
               />
             </TouchableOpacity>

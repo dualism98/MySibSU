@@ -6,6 +6,7 @@ import { h, w } from '../../../modules/constants'
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
 import {useTheme} from '../../../themes/ThemeManager'
+import {useLocale} from '../../../locale/LocaleManager'
 
 
 const url = 'http://193.187.174.224'
@@ -21,6 +22,7 @@ export default function Ermak(props){
     const [reason, setReason] = useState('')
 
     const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
 
     async function sendMessage(link){
         const uri = 'http://193.187.174.224/v2/campus/unions/join/' + props.route.params.data.id + '/'
@@ -35,15 +37,12 @@ export default function Ermak(props){
         data.append('vk', vk_page)
         data.append('hobby', hobby)
         data.append('reason', reason)
-        try {
-            await fetch(uri, {method: 'POST', body: data})
-        } catch(err) {
-            console.log("Error fetching data-----------", err);
-        }
+
+        fetch(uri, {method: 'POST'})
+            .catch(err => console.log(err))
     }
 
     const data = props.route.params.data
-
     return(
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
             <Header title={data.short_name} onPress={() => props.navigation.goBack()}/>
@@ -57,7 +56,7 @@ export default function Ermak(props){
                     <Image source={{uri: url + data.photo}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
                 </View>
 
-                <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>Описание</Text>
+                <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{locale['description']}</Text>
                 <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10, backgroundColor: theme.blockColor}]}>
                     <Text style={{fontFamily: 'roboto', fontSize: 13, color: '#5575A7', paddingLeft: 5}}>{data.about}</Text>
                 </View>
@@ -84,7 +83,7 @@ export default function Ermak(props){
                                 <MaterialCommunityIcons name="phone" size={24} color="rgb(115, 182, 28)" />
                             </View>
                             <View style={{ justifyContent: 'center'}}>
-                                <Text style={styles.buttonText}>Позвонить</Text>
+                                <Text style={styles.buttonText}>{locale['call']}</Text>
                             </View>
                             
                         </View>
@@ -96,7 +95,7 @@ export default function Ermak(props){
                                 <Entypo name="vk-with-circle" size={24} color="rgb(115, 182, 28)" />
                             </View>
                             <View style={{ justifyContent: 'center'}}>
-                                <Text style={styles.buttonText}>Группа VK</Text>
+                                <Text style={styles.buttonText}>{locale['group_vk']}</Text>
                             </View>
                         </View>
                     </TouchableWithoutFeedback>
@@ -108,7 +107,7 @@ export default function Ermak(props){
                             <Entypo name="circle-with-plus" size={24} color="rgb(115, 182, 28)" />
                         </View>
                         <View style={{ justifyContent: 'center'}}>
-                            <Text style={styles.buttonText}>Подать заявку</Text>
+                            <Text style={styles.buttonText}>{locale['join']}</Text>
                         </View> 
                     </View>
                     </TouchableWithoutFeedback> : null}

@@ -4,24 +4,25 @@ import { h, w } from '../modules/constants'
 import MenuElement from '../modules/MenuElement'
 import MainHeader from '../modules/MainHeader'
 import moment from 'moment'
-import i18n from '../locale/locale'
+import {useLocale} from '../locale/LocaleManager'
 import {useTheme} from '../themes/ThemeManager'
 
 const url = 'http://185.228.233.193/api/day_food/'
 
-function food(count){
+function food(count, theme, locale){
     if (count == 0){
-        return(<Text style={{fontSize: 20, fontFamily: 'roboto', marginTop: 20}}>{i18n.t('no_menu')}</Text>)
+        return(<Text style={{ color: theme.labelColor,fontSize: 20, fontFamily: 'roboto', marginTop: 20}}>{locale}</Text>)
     }
 }
 
 export default function MenuScreen(props){
 
     const [dayList, setDayList] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [loaded, setLoaded] = useState(false)
     const [date, setDate] = useState('')
 
     const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
 
     useEffect(() => {
         setDate(moment().format('YYYY-MM-DD'))
@@ -29,7 +30,7 @@ export default function MenuScreen(props){
             .then(response => response.json())
             .then(json => {
                 setDayList(json)
-                setLoading(false)
+                setLoaded(true)
             })
             .catch(err => console.log(err))
     }, [dayList])
@@ -37,7 +38,7 @@ export default function MenuScreen(props){
     var count = 0
     return( 
         <View>
-            <MainHeader title={i18n.t('menu')}/>
+            <MainHeader title={locale['menu']}/>
             <ScrollView>
             <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
                 <View>
@@ -52,11 +53,11 @@ export default function MenuScreen(props){
                         })
                     }
                 </View>
-                {loading === true ?
+                {!loaded ?
                     <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
                         <ActivityIndicator size='large' color='#0060B3' />
                     </View> :
-                    food(count)}
+                    food(count, theme, locale['no_menu'])}
             </View>
             </ScrollView>
         </View>       

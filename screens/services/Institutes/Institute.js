@@ -9,12 +9,14 @@ import Swiper from 'react-native-swiper'
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { Ionicons } from '@expo/vector-icons'; 
 import { useTheme } from '../../../themes/ThemeManager'
+import { useLocale } from '../../../locale/LocaleManager'
 
 
 const url = 'http://193.187.174.224'
 
 const Information = ({ number, data }) => {
     const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
     if (number == 1){
         return(
             <View style={{ minHeight: h}}>
@@ -25,7 +27,7 @@ const Information = ({ number, data }) => {
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
                     <Image source={{uri: url + data.image}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
                 </View>
-                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>Директор</Text>
+                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{locale['director']}</Text>
                 <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
                     <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.name}</Text>
                 </View>
@@ -41,7 +43,7 @@ const Information = ({ number, data }) => {
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
                                 <MaterialCommunityIcons name="phone" size={24} color="rgb(115, 182, 28)" />
                             </View>
-                            <Text style={styles.buttonText}>Позвонить</Text>
+                            <Text style={styles.buttonText}>{locale['call']}</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${data.mail}?subject==&`)}>
@@ -49,7 +51,7 @@ const Information = ({ number, data }) => {
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
                                 <Ionicons name="mail" size={24} color="rgb(115, 182, 28)" />
                             </View>
-                            <Text style={styles.buttonText}>Написать письмо</Text>
+                            <Text style={styles.buttonText}>{locale['write_email']}</Text>
                         </View>
                     </TouchableWithoutFeedback>
                 </View>
@@ -60,7 +62,7 @@ const Information = ({ number, data }) => {
     else if(number == 2){
         return(
             <View style={{ minHeight: h, paddingBottom: 150}}>
-                <Text style={{fontFamily: 'roboto', fontSize: 30, color: '#5575A7', marginLeft: 20, marginTop: 25, marginBottom: 20}}>КАФЕДРЫ</Text>
+                <Text style={{fontFamily: 'roboto', fontSize: 30, color: '#5575A7', marginLeft: 20, marginTop: 25, marginBottom: 20}}>{locale['departments']}</Text>
                 {data.map( item => {
                     return( 
                         <Cafedra name={item.name} fio={item.fio} address={item.address} phone={item.phone} email={item.mail} key={item.name}/>
@@ -78,7 +80,7 @@ const Information = ({ number, data }) => {
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
                     <Image source={{ uri: url + data.image}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
                 </View>
-                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>Председатель</Text>
+                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{locale['chairperson']}</Text>
                 <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
                     <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.fio}</Text>
                 </View>
@@ -94,7 +96,7 @@ const Information = ({ number, data }) => {
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
                                 <MaterialCommunityIcons name="phone" size={24} color="rgb(115, 182, 28)" />
                             </View>
-                            <Text style={styles.buttonText}>Позвонить</Text>
+                            <Text style={styles.buttonText}>{locale['call']}</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${data.mail}?subject==&`)}>
@@ -102,7 +104,7 @@ const Information = ({ number, data }) => {
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
                                 <Ionicons name="mail" size={24} color="rgb(115, 182, 28)" />
                             </View>
-                            <Text style={styles.buttonText}>Написать письмо</Text>
+                            <Text style={styles.buttonText}>{locale['write_email']}</Text>
                         </View>
                     </TouchableWithoutFeedback>
                 </View>

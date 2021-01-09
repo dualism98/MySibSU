@@ -1,12 +1,15 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { StyleSheet, View, Text, Image, TouchableWithoutFeedback, StatusBar } from 'react-native'
 import { h, w } from './constants'
 import { AntDesign } from '@expo/vector-icons'
-import i18n from '../locale/locale'
+import {useLocale} from '../locale/LocaleManager'
 import {useTheme} from '../themes/ThemeManager'
 
 const MainHeader = ({title, onPress, week}) => {
+    const [index, setIndex] = useState(week)
     const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
+
     return(
         <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>
             <TouchableWithoutFeedback style={{ zIndex: 4}} onPress={onPress}>
@@ -15,7 +18,7 @@ const MainHeader = ({title, onPress, week}) => {
             
             <Text style={[styles.maintext, {color: theme.headerTitle}]}>{title}</Text>
             <View style={[styles.week, {backgroundColor: theme.headerColor}]}>
-                <Text style={[styles.week_text, {color: theme.headerTitle}]}>{week+1} {i18n.t('week')}</Text>
+                <Text style={[styles.week_text, {color: theme.headerTitle}]}>{index+1} {locale['week']}</Text>
             </View>
             
         </View>

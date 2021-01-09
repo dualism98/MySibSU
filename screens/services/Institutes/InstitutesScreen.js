@@ -3,8 +3,8 @@ import { ScrollView, View, Text, StyleSheet, ActivityIndicator, Image } from 're
 import ListElement from '../../../modules/ListElement'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
-import i18n from '../../../locale/locale'
 import {useTheme} from '../../../themes/ThemeManager'
+import {useLocale} from '../../../locale/LocaleManager'
 
 
 export default function InstitutesScreen(props){
@@ -13,28 +13,22 @@ export default function InstitutesScreen(props){
     const [loaded, setLoaded] = useState(false)
 
     const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
 
     useEffect(() => {
-        async function fetchData(){
-            try{
-                let institutesRequest = await fetch('http://193.187.174.224/v2/campus/institutes/', {method: 'GET'})
-                let institutes = await institutesRequest.json()
-                setInstitutes(institutes)
+        fetch('http://193.187.174.224/v2/campus/institutes/', {method: 'GET'})
+            .then(response => response.json())
+            .then(json => {
+                setInstitutes(json)
                 setLoaded(true)
-            }
-            catch(err){
-                console.log(err)
-            }
-        }
-
-        fetchData()
-    }, [])
+            })
+    }, [institutes])
 
     return(
         <View style={{flex: 1, backgroundColor: theme.primaryBackground, flexDirection: 'column' }} >
-            <Header title={i18n.t('institutes')} onPress={() => props.navigation.goBack()}/>
+            <Header title={locale['institutes']} onPress={() => props.navigation.goBack()}/>
             <View style={{flexDirection: 'row'}}>
-                <Image style={styles.back} source={require('../../../assets/rocket.png')} />
+                <Image style={styles.back} source={require('../../../assets/rocket.png')} tintColor='gray'/>
                 <ScrollView style={{}}>
                     {loaded ? 
                     <View style={styles.container}>

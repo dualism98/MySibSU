@@ -2,27 +2,27 @@ import React, { PureComponent } from 'react'
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
+import {useTheme} from '../../../themes/ThemeManager'
+import {useLocale} from '../../../locale/LocaleManager'
 
-export default class ProductScreen extends PureComponent {
-    state = {
+export default function ProductScreen(props){
+    const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
 
-    }
-
-    render(){
-        let item = this.props.route.params.item
-        return(
-            <View style={styles.container}>
-                <Header title={'Интернет-каталог'} onPress={() => this.props.navigation.goBack()}/>
-                <ScrollView>
-                    <Image source={{uri: item.image}} style={styles.image}/>
-                    <Text style={styles.name}>{item.name}</Text>
-                    <Text style={[styles.name, {marginTop: 10}]}>Цена: {item.price}₽</Text>
-                    <Text style={styles.name}>Описание:</Text>
-                    <Text style={styles.description}>{String(item.description)}</Text>
-                </ScrollView>
-            </View>
-        )
-    }
+    let item = props.route.params.item
+    return(
+        <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
+            <Header title={locale['online_catalog']} onPress={() => props.navigation.goBack()}/>
+            <ScrollView>
+                <Image source={{uri: item.image}} style={styles.image}/>
+                <Text style={styles.name}>{item.name}</Text>
+                <Text style={[styles.name, {marginTop: 10}]}>{locale['price']}: {item.price}₽</Text>
+                <Text style={styles.name}>{locale['description']}:</Text>
+                <Text style={styles.description}>{String(item.description)}</Text>
+            </ScrollView>
+        </View>
+    )
+    
 }
 
 const styles = StyleSheet.create({

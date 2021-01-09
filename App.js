@@ -7,6 +7,7 @@ import * as Notifications from 'expo-notifications'
 import * as Localization from 'expo-localization'
 import { AppearanceProvider } from 'react-native-appearance'
 import { ThemeManager } from './themes/ThemeManager'
+import { LocaleManager } from './locale/LocaleManager'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -67,23 +68,14 @@ function App(){
     }
   })
 
-  // Ставим дефолтный язык и сохраняем для дальнейшего использования
-  AsyncStorage.getItem('Locale')
-  .then(res => {
-    if (res === null){
-      AsyncStorage.setItem('Locale', Localization.locale)
-    }
-    else{
-      console.log(res)
-    }
-  })
-
   // Если шрифты загружены и UUID существует, запускаем приложение
   return (
     <AppearanceProvider>
-      <ThemeManager>
-        <HomeScreen />
-      </ThemeManager>
+      <LocaleManager>
+        <ThemeManager>
+          <HomeScreen />
+        </ThemeManager>
+      </LocaleManager>
     </AppearanceProvider>  
   )
 }

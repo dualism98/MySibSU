@@ -1,8 +1,5 @@
-import * as Localization from 'expo-localization';
-import { AsyncStorage } from 'react-native'
-import i18n from 'i18n-js';
-// Set the key-value pairs for the different languages you want to support.
-i18n.translations = {
+
+export const translations = {
   en: { timetable: 'Timetable', 
         menu: 'Menu',
         events: 'Events',
@@ -31,7 +28,22 @@ i18n.translations = {
         choose_theme: 'Select a theme',
         dark_theme: 'Dark',
         light_theme: 'Light',
-        default: 'Default'
+        default: 'Default',
+        dish: 'Dish',
+        weight: 'Weight',
+        price: 'Price',
+        call: "Call",
+        group_vk: 'VK group',
+        join: 'Join',
+        description: 'Description',
+        director: 'Director',
+        write_email: 'Write an email',
+        departments: 'DEPARTMENTS',
+        chairperson: 'Chairperson',
+        address: 'Address',
+        head: 'Head',
+        phone: 'Phone',
+        email: 'Email',
         },
   ru: { timetable: 'Расписание', 
         menu: 'Меню',
@@ -49,7 +61,7 @@ i18n.translations = {
         personal_account: 'Личный кабинет',
         buildings: 'Корпуса',
         student_life: 'Студенческая жизнь',
-        insitutes: 'Институты',
+        institutes: 'Институты',
         online_catalog: 'Интернет-каталог',
         feedback: 'Обратная связь',
         educational_facilities_r: 'Учебные объекты (правый берег)',
@@ -61,14 +73,30 @@ i18n.translations = {
         choose_theme: 'Выбрать тему',
         dark_theme: 'Тёмная',
         light_theme: 'Светлая',
-        default: 'По умолчанию'},
+        default: 'По умолчанию',
+        dish: 'Блюдо',
+        weight: 'Вес',
+        price: 'Цена',
+        call: "Позвонить",
+        group_vk: 'Группа ВК',
+        join: 'Присоединиться',
+        description: 'Описание',
+        director: 'Директор',
+        write_email: 'Написать письмо',
+        departments: 'Кафедры',
+        chairperson: 'Председатель',
+        address: 'Адрес',
+        head: 'Зав. кафедрой',
+        phone: 'Телефон',
+        email: 'Email',},
 };
 // Set the locale once at the beginning of your app.
-i18n.locale = 'en';
-AsyncStorage.getItem('Locale')
-.then(res => {
-    i18n.locale = res.split('-')[0] === 'en' ? 'en' : 'ru'
-})
 
-
-export default i18n
+export const getLocale = (mode) => {
+    let Locale = {}
+    for (let key in translations[mode]){
+        Locale[key] = translations[mode][key]
+    }
+    
+    return Locale
+}
