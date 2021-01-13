@@ -24,11 +24,12 @@ export default function Ermak(props){
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
 
+    console.log(theme)
+
     async function sendMessage(link){
         const uri = 'http://193.187.174.224/v2/campus/unions/join/' + props.route.params.data.id + '/'
-
         let vk_page = vk.split('/')
-        vk_page = vk_page[vk.length - 1]
+        vk_page = vk_page[vk_page.length - 1]
 
         let data = new FormData()
         data.append('fio', fio)
@@ -38,7 +39,7 @@ export default function Ermak(props){
         data.append('hobby', hobby)
         data.append('reason', reason)
 
-        fetch(uri, {method: 'POST'})
+        fetch(uri, {method: 'POST', body: data})
             .catch(err => console.log(err))
     }
 
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
     },
 
     input: {
-        height: 40,
+        // height: 40,
         width: w * 0.75,
         borderBottomWidth: 1,
         borderColor: '#5575A7',
@@ -226,7 +227,6 @@ const styles = StyleSheet.create({
 
     modal: {
         borderRadius: 30,
-        backgroundColor: 'white',
         padding: 10,
         width: w * 0.9,
         marginTop: Platform.OS === 'android' ? 50 : 100,

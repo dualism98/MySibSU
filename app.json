@@ -32,6 +32,6 @@
       "permissions": [],
       "googleServicesFile": "./google-services.json",
       "useNextNotificationsApi": true
-    },
+    }
   }
 }

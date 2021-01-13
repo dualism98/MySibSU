@@ -8,9 +8,13 @@ let osTheme = ''
 
 AsyncStorage.getItem('Theme')
   .then(res => {
+    console.log(res)
     switch(res){
       case 'Default':
         osTheme = Appearance.getColorScheme()
+        if (osTheme !== 'light' && osTheme !== 'dark'){
+          osTheme = 'light'
+        }
         break
       case 'Light':
         osTheme = 'light'
@@ -20,11 +24,15 @@ AsyncStorage.getItem('Theme')
         break
       default:
         osTheme = Appearance.getColorScheme()
+        if (osTheme !== 'light' && osTheme !== 'dark'){
+          osTheme = 'light'
+        }
         AsyncStorage.setItem('Theme', 'Default')
         break
     }
   })
-// const osTheme = Appearance.getColorScheme();
+
+console.log('osTheme: ', osTheme)
 
 // initiate context
 export const ManageThemeContext = React.createContext({

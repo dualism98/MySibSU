@@ -9,7 +9,9 @@ const Header = ({title, onPress}) => {
     return(
         <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>
             <TouchableOpacity onPress={onPress}>
-                <Ionicons name="ios-arrow-back" size={30} color="black" style={{ color: '#006AB3', paddingRight: 10, paddingLeft: 15, marginBottom: 8}}/>
+                <View style={{ height: w / 8 , justifyContent: 'center'}}>
+                  <Ionicons name="ios-arrow-back" size={30} color="black" style={{ color: '#006AB3', paddingRight: 10, paddingLeft: 15}}/>
+                </View>
             </TouchableOpacity>
             <Text style={[styles.maintext, {color: theme.headerTitle}]}>{title}</Text>
         </View>
@@ -28,18 +30,18 @@ function elevationShadowStyle(elevation) {
 
 const styles = StyleSheet.create({
     maintext: {
+        height: w / 8,
         fontSize: 25,
         color: 'gray',
-        textAlignVertical: 'bottom',
+        textAlignVertical: 'center',
         marginLeft: 10,
         fontFamily: 'roboto',
         textAlign: 'center',
-        paddingBottom: 6,
       },
 
     shadow2: elevationShadowStyle(5),
     box: {
-        height: 40,
+        height: w/8,
         width: w,
         elevation: 10,
         position: 'relative',

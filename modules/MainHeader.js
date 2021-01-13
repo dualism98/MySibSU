@@ -27,10 +27,11 @@ function elevationShadowStyle(elevation) {
 
 const styles = StyleSheet.create({
     maintext: {
+        height: w / 8,
         width: w * 0.75,
         fontSize: 25,
         color: 'grey',
-        textAlignVertical: 'bottom',
+        textAlignVertical: 'center',
         fontFamily: 'roboto',
         textAlign: 'left',
     },
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
       shadow2: elevationShadowStyle(5),
       box: {
           backgroundColor: 'white',
-          height: 40,
+          height: w/8,
           width: w,
           paddingLeft: 10,
           elevation: 10,

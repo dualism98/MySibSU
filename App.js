@@ -3,47 +3,19 @@ import {AsyncStorage, StatusBar} from 'react-native'
 import HomeScreen from './screens/HomeScreen'
 import AppLoading from 'expo-app-loading'
 import { useFonts } from '@use-expo/font'
-import * as Notifications from 'expo-notifications'
-import * as Localization from 'expo-localization'
 import { AppearanceProvider } from 'react-native-appearance'
 import { ThemeManager } from './themes/ThemeManager'
 import { LocaleManager } from './locale/LocaleManager'
+// import { NativeModules } from 'react-native';
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-  }),
-});
-
-Notifications.setNotificationChannelAsync('default', {
-  name: 'default',
-  importance: Notifications.AndroidImportance.MAX,
-  vibrationPattern: [0, 250, 0],
-  lightColor: '#000000',
-});
-
+// const SharedStorage = NativeModules.SharedStorage;
 
 function App(){
 
-  let [notification, setNotification] = useState({})
-  // Устанавливаем прослушивание событий на получение и нажатие пушей
-  React.useEffect(() => {
-    Notifications.addNotificationReceivedListener(_handleNotification);
-    Notifications.addNotificationResponseReceivedListener(_handleNotificationResponse);
-  })
-
- // Ловит получение пушей
-  _handleNotification = notification => {
-    setNotification(notification)
-    console.log('Просто сработало')
-  };
-
-  // Ловит нажатия пушей
-  _handleNotificationResponse = response => {
-    console.log('Зашел через оповещение')
-  };
+  console.disableYellowBox = true
+  // SharedStorage.set(
+  //   JSON.stringify({text: 'This is data from the React Native app'})
+  //  );
 
   // Устанавливаем кастомный шрифт, который лежит в ./assets/fonts/
   let [fontsLoaded] = useFonts({

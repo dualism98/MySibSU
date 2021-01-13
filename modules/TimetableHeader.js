@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     shadow2: elevationShadowStyle(5),
       box: {
           backgroundColor: 'white',
-          height: 40,
+          height: h / 6,
           width: w,
           paddingLeft: 10,
           elevation: 10,

@@ -135,8 +135,9 @@ export default function TimetableScreen(props){
                         let info = []
                         if (res !== null){
                             console.log("NOT NULL", res, group)
+                            info = JSON.parse(res)
                             info.includes(group) ? console.log('DOES NOT INCLUDE') : info.push(group)
-
+                            // console.log(res)
                             console.log('INFO: ', info)
                         }
                         else{
@@ -148,6 +149,24 @@ export default function TimetableScreen(props){
                     })
             }
         })
+    }
+
+    function removeGroup(group){
+        console.log(group)
+        let groups = []
+        AsyncStorage.getItem('LastGroups')
+            .then(res => {
+                groups = JSON.parse(res)
+                groups = groups.filter(item => {
+                    console.log(item.name === group.name)
+                    if(item.name !== group.name){
+                        return item
+                    }
+                })
+                setLastGroups(groups)
+                AsyncStorage.setItem('LastGroups', groups)
+            })
+
     }
 
     function similarGroup(text){
@@ -177,7 +196,7 @@ export default function TimetableScreen(props){
     const TimetableHeader = ({}) =>{
         return(
             <View style={[{backgroundColor: 'white',
-                            height: 40,
+                            height: w / 8,
                             width: w,
                             elevation: 10,
                             position: 'relative',
@@ -201,12 +220,12 @@ export default function TimetableScreen(props){
                         fontFamily: 'roboto',
                         color: theme.headerTitle}]}>{textGroup}</Text>
                 </View>
-                <View style={[{width: 100,
+                <View style={[{
+                                height: w / 12,
+                                width: 100,
                                 alignItems: 'center',
                                 paddingLeft: 5,
                                 paddingRight: 5,
-                                paddingTop: 3,
-                                paddingBottom: 3,
                                 borderRadius: 15,
                                 backgroundColor: 'white',
                                 shadowColor: "#000",
@@ -220,8 +239,8 @@ export default function TimetableScreen(props){
                                 elevation: 4,
                                 position: 'absolute',
                                 right: 10,
-                                bottom: 6,}, {backgroundColor: theme.headerColor}]}>
-                    <Text style={[{fontFamily: 'roboto',
+                                bottom: (w/8 - w/12)/2}, {backgroundColor: theme.headerColor}]}>
+                    <Text style={[{height: w/12, textAlignVertical: 'center', fontFamily: 'roboto',
                                 fontSize: 17,
                                 color: 'gray'}, {color: theme.headerTitle}]}>{index} {locale['week']}</Text>
                 </View>
@@ -243,41 +262,42 @@ export default function TimetableScreen(props){
                         </View>
                     </TouchableHighlight>
                 </View>
-                <View style={{ height: 30 + shown.length * 30, marginTop: 10, flexDirection: 'column', borderRadius: 15, paddingTop: 15, paddingBottom: 15, backgroundColor: theme.blockColor, zIndex: 3}}>
+                <View style={[{ position: 'absolute', top: 120, height: 30 + shown.length * 30, marginTop: 10, flexDirection: 'column', borderRadius: 15, paddingTop: 15, paddingBottom: 15, backgroundColor: theme.blockColor, zIndex: 3}, styles.shadow]}>
                     <FlatList 
                         data={shown}
                         renderItem={renderHelp}
                         keyExtractor={item => item}
                     />
                 </View>
+                {lastGroups.length !== 0 ?
                 <View style={[{ shadowColor: "#000",
                                 shadowOffset: {
                                     width: 6,
                                     height: 6,
                                 },
+                                zIndex: 0,
                                 shadowOpacity: 0.30,
                                 shadowRadius: 4.65,
 
                                 elevation: 5,}, styles.shadow, { flex: 1, backgroundColor: theme.blockColor, width: w * 0.9, position: 'absolute', top: 120, zIndex: 0, borderRadius: 15, paddingBottom: 10}]}>
                     {lastGroups.length !== 0 ? 
                     <Text style={{ fontFamily: 'roboto', width: w, paddingLeft: 20, fontSize: 20, marginTop: 10, color: '#5575A7'}}>Последние</Text> : null}
-                    {lastGroups.length !== 0 ? 
-                        lastGroups.map(item => {
+                        {lastGroups.map(item => {
                             return(
-                                <View style={{ height: 30, flexDirection: 'row', borderTopWidth: 1, borderColor: theme.labelColor, marginTop: 10}}>
+                                <View style={{ height: 30, flexDirection: 'row', marginTop: 5}}>
                                 <TouchableOpacity onPress={() => setCurrentGroup(item.name)}>
                                     <View style={{ height: 30, width: w * 0.8, paddingLeft: 20 }}>
-                                        <Text style={{ height: 30, textAlignVertical: 'center', fontFamily: 'roboto', fontSize: 15, color: theme.labelColor}}>{item.name}</Text>
+                                        <Text style={{ height: 30, textAlignVertical: 'center', fontFamily: 'roboto', fontSize: 15, color: 'gray'}}>{item.name}</Text>
                                     </View>
                                 </TouchableOpacity>
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={() => removeGroup(item)}>
                                     <View style={{height: 30, width: w * 0.1, alignItems: 'center', justifyContent: 'center'}}>
-                                        <FontAwesome name="trash-o" size={20} color={theme.labelColor} />
+                                        <FontAwesome name="trash-o" size={15} color={'gray'} />
                                     </View>
                                 </TouchableOpacity>
                                 </View>)
-                        }) : null}
-                </View>
+                        })}
+                </View> : null}
             </View>
         )
     }
@@ -358,9 +378,10 @@ const styles = StyleSheet.create({
         borderRadius: 7,
         backgroundColor: 'white',
         paddingLeft: 10,
-        fontSize: 20,
+        fontSize: 15,
         fontFamily: 'roboto',
         shadowColor: "#000",
+        textAlignVertical: 'center',
         shadowOffset: {
 	        width: 6,
 	        height: 6,

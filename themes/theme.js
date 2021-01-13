@@ -1,4 +1,3 @@
-import { ThemeColors as ReactNavigationThemeColors } from 'react-navigation'
 
 export const ThemeColors = {
     primaryText: {
@@ -6,7 +5,7 @@ export const ThemeColors = {
        dark: 'white',
     },
     primaryBackground: {
-       light: 'transparent',
+       light: 'white',
        dark: 'rgb(55,55,55)',
     },
     headerTitle: {

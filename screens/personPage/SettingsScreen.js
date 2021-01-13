@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import {View, Text, StyleSheet, ScrollView, AsyncStorage, ActivityIndicator} from 'react-native'
+import {View, Text, StyleSheet, ScrollView, AsyncStorage } from 'react-native'
 import Header from '../../modules/Header'
 import { h, w } from '../../modules/constants'
 import LangElem from '../../modules/LangElem'
 import { useTheme } from '../../themes/ThemeManager'
 import SwitchSelector from "react-native-switch-selector";
 import { Appearance } from 'react-native-appearance'
-import { useEffect } from 'react/cjs/react.development'
 import {useLocale} from '../../locale/LocaleManager'
 
 export default function SettingsScreen(props){ 
@@ -26,7 +25,10 @@ export default function SettingsScreen(props){
             case 'default':
                 AsyncStorage.setItem('Theme', 'Default')
                 const colorScheme = Appearance.getColorScheme()
-                mode === colorScheme ? null : toggle()
+                if (colorScheme !== 'light' && colorScheme !== 'dark'){
+                    mode === 'dark' ? toggle() : null
+                }
+                // mode === colorScheme ? null : toggle()
                 break
             case 'light':
                 AsyncStorage.setItem('Theme', 'Light')
