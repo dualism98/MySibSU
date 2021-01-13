@@ -1,0 +1,1066 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:2:1-63:12
+INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:2:1-63:12
+INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:2:1-63:12
+INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:2:1-63:12
+MERGED from [:unimodules-react-native-adapter] /Users/khramushin/Desktop/MySibSU/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-17:12
+MERGED from [:expo-splash-screen] /Users/khramushin/Desktop/MySibSU/node_modules/expo-splash-screen/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-updates] /Users/khramushin/Desktop/MySibSU/node_modules/expo-updates/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-13:12
+MERGED from [:react-native-community_async-storage] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-community_masked-view] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-45:12
+MERGED from [:react-native-firebase_app] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-random] /Users/khramushin/Desktop/MySibSU/node_modules/expo-random/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-appearance] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-appearance/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-gesture-handler] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-reanimated] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-safe-area-context] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-screens] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-screens/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-splash-screen] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-14:12
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-47:12
+MERGED from [com.facebook.react:react-native:0.63.4] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/9f11f3c68cbfec7f00888285e58dc75d/jetified-react-native-0.63.4/AndroidManifest.xml:2:1-13:12
+MERGED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-29:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4883f01017d33b45f01ebc0935327e22/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1f0a235ae29e4d15fb1b343a1f45cde2/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1b2f9e71a1b8d2a95d6716927f54f7e4/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [:expo-application] /Users/khramushin/Desktop/MySibSU/node_modules/expo-application/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-constants] /Users/khramushin/Desktop/MySibSU/node_modules/expo-constants/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-error-recovery] /Users/khramushin/Desktop/MySibSU/node_modules/expo-error-recovery/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-font] /Users/khramushin/Desktop/MySibSU/node_modules/expo-font/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-image-loader] /Users/khramushin/Desktop/MySibSU/node_modules/expo-image-loader/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-keep-awake] /Users/khramushin/Desktop/MySibSU/node_modules/expo-keep-awake/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-linear-gradient] /Users/khramushin/Desktop/MySibSU/node_modules/expo-linear-gradient/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-localization] /Users/khramushin/Desktop/MySibSU/node_modules/expo-localization/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-21:12
+MERGED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-37:12
+MERGED from [:expo-permissions] /Users/khramushin/Desktop/MySibSU/node_modules/expo-permissions/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-secure-store] /Users/khramushin/Desktop/MySibSU/node_modules/expo-secure-store/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-sqlite] /Users/khramushin/Desktop/MySibSU/node_modules/expo-sqlite/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-app-loader] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-app-loader/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-permissions-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-permissions-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-task-manager-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-task-manager-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-core] /Users/khramushin/Desktop/MySibSU/node_modules/@unimodules/core/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-barcode-scanner-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-barcode-scanner-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-camera-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-camera-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-constants-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-constants-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-face-detector-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-face-detector-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-file-system-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-file-system-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-font-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-font-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-image-loader-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-image-loader-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:unimodules-sensors-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-sensors-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [org.webkit:android-jsc:r245459] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b6d0fff04acd306c4ad360e4b40fd652/android-jsc-r245459/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:17:1-45:12
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/be6f43acf2e13712c0a0826019fc4401/firebase-datatransport-17.0.10/AndroidManifest.xml:15:1-34:12
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:15:1-38:12
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:15:1-41:12
+MERGED from [com.google.android.material:material:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c78f11bf2b22f272a00dff1a5b14cbaa/material-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/fe5be3fb0adf9b21c3624c35bb509a21/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/7ff4401941e3585ec7367c3f3d81fa49/fresco-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/9b892bf0af836b394b3cce7e73aa4830/imagepipeline-okhttp3-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1877b5dd38347a326cf11eb348db04c6/drawee-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1851430a2247da8973aa5a9c29be4d89/nativeimagefilters-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/44108529c33fc2d350ffc8892ac2f7a7/imagepipeline-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/9ab0a53d885e502b7d8613fdef62be4e/nativeimagetranscoder-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/795841c2f04565d1443541d08e3f32a2/imagepipeline-base-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f2cc36bcbb7935a979cb02adfd225bf1/soloader-0.9.0/AndroidManifest.xml:2:1-13:12
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/49eaa52777f0e30e03f73ae4a6f2dd9f/jetified-glide-4.9.0/AndroidManifest.xml:2:1-12:12
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/6c93e44453d5a7a05016fc3d6159a969/appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d14f84d413f780135ba3c8a29f69a635/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c5b68e18d4a3408c29c2cace65918de9/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/27a5573d222b47c0935d0405afbf6caf/lifecycle-process-2.2.0/AndroidManifest.xml:17:1-32:12
+MERGED from [androidx.room:room-runtime:2.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b4c5c01865ee84b5fda3272cefb9b8e1/room-runtime-2.1.0/AndroidManifest.xml:17:1-30:12
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4094822768aa8c8bc42737c5d4e41a58/jetified-play-services-location-16.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f2921f09efb7cd23cc29ee43fae505d9/play-services-auth-api-phone-17.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/505838eff4ee5343d74f0bad86b59ef8/play-services-auth-base-17.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:17:1-47:12
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/028ab810bb4dfc7083ce8075400975a5/firebase-iid-interop-17.0.0/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/87de111cf3e68002d567f5927fd9f327/play-services-base-17.1.0/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/36bba99d2214b5fa3835a8d05d138375/play-services-places-placereport-16.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:2:1-24:12
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:15:1-49:12
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e9984be33fc8a920c66b3ef9eb9e09e3/play-services-cloud-messaging-16.0.0/AndroidManifest.xml:2:1-13:12
+MERGED from [com.google.firebase:firebase-installations-interop:16.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b270b51fd29e2b2d40d7850f8073b455/firebase-installations-interop-16.0.1/AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c8e04542acade7e4ce5fe143cd1b16bb/play-services-tasks-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/852dd6f0f0d68108410438ba99197a27/play-services-stats-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d2c8d6fe24f9e7690b216225014b4ff4/firebase-measurement-connector-18.0.0/AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/aed25ec6204477314010601a587c5f85/jetified-play-services-basement-17.1.1/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/43fcf88b6f5b9ae1e111dc31632a964a/viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.2.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/299447664497c3dcaf9682fd3446398a/fragment-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/5ba71e12213b252dcb3fff0d2e24fa60/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media:media:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c48799e1fb62854e1f5bbe8f520a0920/media-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/79018c3ec0b373815da5c882b4dccb92/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/2cf426bf2e05f7c77c90769433c84aab/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/77888e421208257e71e7650affd97fb9/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3dfe36f0f53b354707fda61f444cbdd1/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/19209a88e01204eba97c7abe218b5277/activity-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/66cfa3a1048291dfa3cbaa4f06f760b8/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/ade874a4336da0be15bae05ea306c93b/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/2b15ece692f330c9911c21b57db58b22/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d1cc00a0724ae0e8efb528228f4fc05c/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d6836473df96f9ba6d8acc61302d5c6d/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/50d942cc0a2a26656ee1c344f3c337a8/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.3.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/223733be7303dfd0a85d927f1a4f2028/core-1.3.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/6e6de83ac9d4d6a93680ef267bdef5ec/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3026e069bea5639f3bb40097f8595c2a/jetified-gifdecoder-4.9.0/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d4f4fce4c79e0dad747b4a21f34cdc79/lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/6245e3abec295189ef7aba461c5b79c9/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cf1c6107e67dd65cd59d4159dc538323/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/892df1ed95254d76672c1aa2c414ea74/savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b271b6e47df39092a82f3590295a8043/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d7893c9ebbe4aac00b754d99000146b2/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-framework:2.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/38b3a5fefac53fe684d3782bdafa16fa/sqlite-framework-2.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f21355af587c141fab99c234e7f13926/sqlite-2.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f116c787301670c7d89ae42f20f1a8a7/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0b91682f19cc0fd1abff12829dbc3905/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c454e0c75ba68d8dd7ec0e760912d6d3/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e52f2cd80f891dd1b8b9803a98ba4f2e/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/af645f95e72281bc31473d4d979d4dc1/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/a2177237df624b4080fd50bbe3e1e2d7/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/8095c4bfccefa1737fa39ec01ea705af/jetified-firebase-components-16.1.0/AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/7913ac97ed3d6ab521415ed6edf4e02a/firebase-encoders-json-17.1.0/AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d0468b027530210d56c665a38fa96544/jetified-transport-api-2.2.1/AndroidManifest.xml:15:1-22:12
+MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/5c3a1808c1993f228de06677e28f84b7/jetified-installreferrer-1.0/AndroidManifest.xml:2:1-13:12
+MERGED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:2:1-30:12
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:2:1-52:12
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/85d0bf4ebbb8f643eb72570beacdbb7c/jetified-fbcore-2.0.0/AndroidManifest.xml:2:1-9:12
+INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:2:1-63:12
+INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:2:1-63:12
+INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:2:1-63:12
+	package
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:3:5-32
+		INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:2:1-63:12
+		INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:2:1-63:12
+		INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:5:5-67
+MERGED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-67
+MERGED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-67
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:5-67
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:5-67
+MERGED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-67
+MERGED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:11:5-67
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:11:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e9984be33fc8a920c66b3ef9eb9e09e3/play-services-cloud-messaging-16.0.0/AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e9984be33fc8a920c66b3ef9eb9e09e3/play-services-cloud-messaging-16.0.0/AndroidManifest.xml:8:5-67
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:6:5-78
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:6:22-75
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:7:5-75
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:7:22-72
+uses-permission#android.permission.USE_BIOMETRIC
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:8:5-72
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:8:22-69
+uses-permission#android.permission.VIBRATE
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:9:5-66
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:9:22-63
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:10:5-80
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:10:22-77
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:11:5-81
+MERGED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-81
+MERGED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-81
+MERGED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:12:5-81
+MERGED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:12:5-81
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:11:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:12:5-79
+MERGED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-79
+MERGED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-79
+MERGED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:14:5-79
+MERGED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:14:5-79
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:12:22-76
+uses-permission#android.permission.CAMERA
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:13:5-65
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:13:22-62
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:14:5-71
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:14:22-68
+uses-permission#android.permission.READ_CONTACTS
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:15:5-72
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:15:22-69
+uses-permission#android.permission.WRITE_CONTACTS
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:16:5-73
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:16:22-70
+uses-permission#android.permission.READ_CALENDAR
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:17:5-72
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:17:22-69
+uses-permission#android.permission.WRITE_CALENDAR
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:18:5-73
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:18:22-70
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:19:5-80
+MERGED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:5-80
+MERGED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:5-80
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:19:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:20:5-81
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:33:5-81
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:33:5-81
+MERGED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-81
+MERGED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:20:22-78
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:21:5-73
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:21:22-70
+application
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:23:5-61:19
+MERGED from [:unimodules-react-native-adapter] /Users/khramushin/Desktop/MySibSU/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-15:19
+MERGED from [:unimodules-react-native-adapter] /Users/khramushin/Desktop/MySibSU/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-15:19
+MERGED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:5-43:19
+MERGED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:5-43:19
+MERGED from [:react-native-splash-screen] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-12:19
+MERGED from [:react-native-splash-screen] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-12:19
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:35:5-45:19
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:35:5-45:19
+MERGED from [com.facebook.react:react-native:0.63.4] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/9f11f3c68cbfec7f00888285e58dc75d/jetified-react-native-0.63.4/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.63.4] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/9f11f3c68cbfec7f00888285e58dc75d/jetified-react-native-0.63.4/AndroidManifest.xml:11:5-20
+MERGED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:5-27:19
+MERGED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:5-27:19
+MERGED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:5-19:19
+MERGED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:5-19:19
+MERGED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-35:19
+MERGED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-35:19
+MERGED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:22:5-43:19
+MERGED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:22:5-43:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/be6f43acf2e13712c0a0826019fc4401/firebase-datatransport-17.0.10/AndroidManifest.xml:24:5-32:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/be6f43acf2e13712c0a0826019fc4401/firebase-datatransport-17.0.10/AndroidManifest.xml:24:5-32:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:25:5-39:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:25:5-39:19
+MERGED from [com.google.android.material:material:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c78f11bf2b22f272a00dff1a5b14cbaa/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c78f11bf2b22f272a00dff1a5b14cbaa/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [com.facebook.soloader:soloader:0.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f2cc36bcbb7935a979cb02adfd225bf1/soloader-0.9.0/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f2cc36bcbb7935a979cb02adfd225bf1/soloader-0.9.0/AndroidManifest.xml:11:5-20
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/49eaa52777f0e30e03f73ae4a6f2dd9f/jetified-glide-4.9.0/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/49eaa52777f0e30e03f73ae4a6f2dd9f/jetified-glide-4.9.0/AndroidManifest.xml:10:5-20
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/27a5573d222b47c0935d0405afbf6caf/lifecycle-process-2.2.0/AndroidManifest.xml:24:5-30:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/27a5573d222b47c0935d0405afbf6caf/lifecycle-process-2.2.0/AndroidManifest.xml:24:5-30:19
+MERGED from [androidx.room:room-runtime:2.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b4c5c01865ee84b5fda3272cefb9b8e1/room-runtime-2.1.0/AndroidManifest.xml:24:5-28:19
+MERGED from [androidx.room:room-runtime:2.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b4c5c01865ee84b5fda3272cefb9b8e1/room-runtime-2.1.0/AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4094822768aa8c8bc42737c5d4e41a58/jetified-play-services-location-16.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4094822768aa8c8bc42737c5d4e41a58/jetified-play-services-location-16.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/028ab810bb4dfc7083ce8075400975a5/firebase-iid-interop-17.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/028ab810bb4dfc7083ce8075400975a5/firebase-iid-interop-17.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/87de111cf3e68002d567f5927fd9f327/play-services-base-17.1.0/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/87de111cf3e68002d567f5927fd9f327/play-services-base-17.1.0/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/36bba99d2214b5fa3835a8d05d138375/play-services-places-placereport-16.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/36bba99d2214b5fa3835a8d05d138375/play-services-places-placereport-16.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:14:5-22:19
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:14:5-22:19
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:25:5-47:19
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:25:5-47:19
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c8e04542acade7e4ce5fe143cd1b16bb/play-services-tasks-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c8e04542acade7e4ce5fe143cd1b16bb/play-services-tasks-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/852dd6f0f0d68108410438ba99197a27/play-services-stats-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/852dd6f0f0d68108410438ba99197a27/play-services-stats-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d2c8d6fe24f9e7690b216225014b4ff4/firebase-measurement-connector-18.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d2c8d6fe24f9e7690b216225014b4ff4/firebase-measurement-connector-18.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/aed25ec6204477314010601a587c5f85/jetified-play-services-basement-17.1.1/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/aed25ec6204477314010601a587c5f85/jetified-play-services-basement-17.1.1/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.3.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/223733be7303dfd0a85d927f1a4f2028/core-1.3.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/223733be7303dfd0a85d927f1a4f2028/core-1.3.0/AndroidManifest.xml:24:5-89
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3026e069bea5639f3bb40097f8595c2a/jetified-gifdecoder-4.9.0/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3026e069bea5639f3bb40097f8595c2a/jetified-gifdecoder-4.9.0/AndroidManifest.xml:9:5-20
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f116c787301670c7d89ae42f20f1a8a7/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f116c787301670c7d89ae42f20f1a8a7/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/5c3a1808c1993f228de06677e28f84b7/jetified-installreferrer-1.0/AndroidManifest.xml:11:5-20
+MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/5c3a1808c1993f228de06677e28f84b7/jetified-installreferrer-1.0/AndroidManifest.xml:11:5-20
+MERGED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:18:5-28:19
+MERGED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:18:5-28:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.3.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/223733be7303dfd0a85d927f1a4f2028/core-1.3.0/AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:27:9-41
+	android:roundIcon
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:28:9-54
+	android:icon
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:26:9-43
+	android:allowBackup
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:25:9-36
+	android:theme
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:29:9-40
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:24:9-40
+receiver#com.SibSU.MySibSU.TimetableWidget
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:30:9-38:20
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:30:19-50
+intent-filter#action:name:android.appwidget.action.APPWIDGET_UPDATE
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:31:13-33:29
+action#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:32:17-84
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:32:25-81
+meta-data#android.appwidget.provider
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:35:13-37:65
+	android:resource
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:37:17-62
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:36:17-58
+meta-data#expo.modules.updates.EXPO_UPDATE_URL
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:40:9-42:49
+	android:value
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:42:13-46
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:41:13-64
+meta-data#expo.modules.updates.EXPO_SDK_VERSION
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:43:9-45:57
+	android:value
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:45:13-54
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:44:13-65
+activity#com.SibSU.MySibSU.MainActivity
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:47:9-59:20
+	android:label
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:50:13-45
+	android:launchMode
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:51:13-44
+	android:windowSoftInputMode
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:53:13-55
+	android:configChanges
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:49:13-90
+	android:theme
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:52:13-58
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:48:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:54:13-58:29
+action#android.intent.action.MAIN
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:55:17-69
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:55:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:57:17-77
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:57:27-74
+activity#com.facebook.react.devsupport.DevSettingsActivity
+ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:60:9-86
+	android:name
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml:60:19-83
+uses-sdk
+INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+MERGED from [:unimodules-react-native-adapter] /Users/khramushin/Desktop/MySibSU/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-react-native-adapter] /Users/khramushin/Desktop/MySibSU/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-splash-screen] /Users/khramushin/Desktop/MySibSU/node_modules/expo-splash-screen/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-splash-screen] /Users/khramushin/Desktop/MySibSU/node_modules/expo-splash-screen/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-updates] /Users/khramushin/Desktop/MySibSU/node_modules/expo-updates/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-updates] /Users/khramushin/Desktop/MySibSU/node_modules/expo-updates/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-community_async-storage] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_async-storage] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_masked-view] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_masked-view] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-firebase_app] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-firebase_app] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-random] /Users/khramushin/Desktop/MySibSU/node_modules/expo-random/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-random] /Users/khramushin/Desktop/MySibSU/node_modules/expo-random/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-appearance] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-appearance/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-appearance] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-appearance/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-safe-area-context] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-safe-area-context] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-screens] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-screens/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-screens] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-screens/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-splash-screen] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-splash-screen] /Users/khramushin/Desktop/MySibSU/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.63.4] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/9f11f3c68cbfec7f00888285e58dc75d/jetified-react-native-0.63.4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.63.4] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/9f11f3c68cbfec7f00888285e58dc75d/jetified-react-native-0.63.4/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:8:5-10:41
+MERGED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:8:5-10:41
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4883f01017d33b45f01ebc0935327e22/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4883f01017d33b45f01ebc0935327e22/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1f0a235ae29e4d15fb1b343a1f45cde2/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1f0a235ae29e4d15fb1b343a1f45cde2/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1b2f9e71a1b8d2a95d6716927f54f7e4/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1b2f9e71a1b8d2a95d6716927f54f7e4/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [:expo-application] /Users/khramushin/Desktop/MySibSU/node_modules/expo-application/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-application] /Users/khramushin/Desktop/MySibSU/node_modules/expo-application/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-constants] /Users/khramushin/Desktop/MySibSU/node_modules/expo-constants/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-constants] /Users/khramushin/Desktop/MySibSU/node_modules/expo-constants/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-error-recovery] /Users/khramushin/Desktop/MySibSU/node_modules/expo-error-recovery/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-error-recovery] /Users/khramushin/Desktop/MySibSU/node_modules/expo-error-recovery/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-font] /Users/khramushin/Desktop/MySibSU/node_modules/expo-font/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-font] /Users/khramushin/Desktop/MySibSU/node_modules/expo-font/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-image-loader] /Users/khramushin/Desktop/MySibSU/node_modules/expo-image-loader/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-image-loader] /Users/khramushin/Desktop/MySibSU/node_modules/expo-image-loader/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-keep-awake] /Users/khramushin/Desktop/MySibSU/node_modules/expo-keep-awake/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-keep-awake] /Users/khramushin/Desktop/MySibSU/node_modules/expo-keep-awake/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-linear-gradient] /Users/khramushin/Desktop/MySibSU/node_modules/expo-linear-gradient/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-linear-gradient] /Users/khramushin/Desktop/MySibSU/node_modules/expo-linear-gradient/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-localization] /Users/khramushin/Desktop/MySibSU/node_modules/expo-localization/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-localization] /Users/khramushin/Desktop/MySibSU/node_modules/expo-localization/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-permissions] /Users/khramushin/Desktop/MySibSU/node_modules/expo-permissions/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-permissions] /Users/khramushin/Desktop/MySibSU/node_modules/expo-permissions/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-secure-store] /Users/khramushin/Desktop/MySibSU/node_modules/expo-secure-store/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-secure-store] /Users/khramushin/Desktop/MySibSU/node_modules/expo-secure-store/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-sqlite] /Users/khramushin/Desktop/MySibSU/node_modules/expo-sqlite/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-sqlite] /Users/khramushin/Desktop/MySibSU/node_modules/expo-sqlite/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-app-loader] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-app-loader/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-app-loader] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-app-loader/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-permissions-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-permissions-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-permissions-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-permissions-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-task-manager-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-task-manager-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-task-manager-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-task-manager-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-core] /Users/khramushin/Desktop/MySibSU/node_modules/@unimodules/core/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-core] /Users/khramushin/Desktop/MySibSU/node_modules/@unimodules/core/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-barcode-scanner-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-barcode-scanner-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-barcode-scanner-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-barcode-scanner-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-camera-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-camera-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-camera-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-camera-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-constants-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-constants-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-constants-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-constants-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-face-detector-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-face-detector-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-face-detector-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-face-detector-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-file-system-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-file-system-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-file-system-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-file-system-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-font-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-font-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-font-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-font-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-image-loader-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-image-loader-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-image-loader-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-image-loader-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-sensors-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-sensors-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:unimodules-sensors-interface] /Users/khramushin/Desktop/MySibSU/node_modules/unimodules-sensors-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc:r245459] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b6d0fff04acd306c4ad360e4b40fd652/android-jsc-r245459/AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc:r245459] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b6d0fff04acd306c4ad360e4b40fd652/android-jsc-r245459/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/be6f43acf2e13712c0a0826019fc4401/firebase-datatransport-17.0.10/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/be6f43acf2e13712c0a0826019fc4401/firebase-datatransport-17.0.10/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.material:material:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c78f11bf2b22f272a00dff1a5b14cbaa/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c78f11bf2b22f272a00dff1a5b14cbaa/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/fe5be3fb0adf9b21c3624c35bb509a21/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/fe5be3fb0adf9b21c3624c35bb509a21/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/7ff4401941e3585ec7367c3f3d81fa49/fresco-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/7ff4401941e3585ec7367c3f3d81fa49/fresco-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/9b892bf0af836b394b3cce7e73aa4830/imagepipeline-okhttp3-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/9b892bf0af836b394b3cce7e73aa4830/imagepipeline-okhttp3-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1877b5dd38347a326cf11eb348db04c6/drawee-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1877b5dd38347a326cf11eb348db04c6/drawee-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1851430a2247da8973aa5a9c29be4d89/nativeimagefilters-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/1851430a2247da8973aa5a9c29be4d89/nativeimagefilters-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/44108529c33fc2d350ffc8892ac2f7a7/imagepipeline-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/44108529c33fc2d350ffc8892ac2f7a7/imagepipeline-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/9ab0a53d885e502b7d8613fdef62be4e/nativeimagetranscoder-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/9ab0a53d885e502b7d8613fdef62be4e/nativeimagetranscoder-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/795841c2f04565d1443541d08e3f32a2/imagepipeline-base-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/795841c2f04565d1443541d08e3f32a2/imagepipeline-base-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f2cc36bcbb7935a979cb02adfd225bf1/soloader-0.9.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f2cc36bcbb7935a979cb02adfd225bf1/soloader-0.9.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/49eaa52777f0e30e03f73ae4a6f2dd9f/jetified-glide-4.9.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/49eaa52777f0e30e03f73ae4a6f2dd9f/jetified-glide-4.9.0/AndroidManifest.xml:6:5-8:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/6c93e44453d5a7a05016fc3d6159a969/appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/6c93e44453d5a7a05016fc3d6159a969/appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d14f84d413f780135ba3c8a29f69a635/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d14f84d413f780135ba3c8a29f69a635/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c5b68e18d4a3408c29c2cace65918de9/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c5b68e18d4a3408c29c2cace65918de9/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/27a5573d222b47c0935d0405afbf6caf/lifecycle-process-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/27a5573d222b47c0935d0405afbf6caf/lifecycle-process-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b4c5c01865ee84b5fda3272cefb9b8e1/room-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b4c5c01865ee84b5fda3272cefb9b8e1/room-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4094822768aa8c8bc42737c5d4e41a58/jetified-play-services-location-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4094822768aa8c8bc42737c5d4e41a58/jetified-play-services-location-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f2921f09efb7cd23cc29ee43fae505d9/play-services-auth-api-phone-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f2921f09efb7cd23cc29ee43fae505d9/play-services-auth-api-phone-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/505838eff4ee5343d74f0bad86b59ef8/play-services-auth-base-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/505838eff4ee5343d74f0bad86b59ef8/play-services-auth-base-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/028ab810bb4dfc7083ce8075400975a5/firebase-iid-interop-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/028ab810bb4dfc7083ce8075400975a5/firebase-iid-interop-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/87de111cf3e68002d567f5927fd9f327/play-services-base-17.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/87de111cf3e68002d567f5927fd9f327/play-services-base-17.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/36bba99d2214b5fa3835a8d05d138375/play-services-places-placereport-16.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/36bba99d2214b5fa3835a8d05d138375/play-services-places-placereport-16.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e9984be33fc8a920c66b3ef9eb9e09e3/play-services-cloud-messaging-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e9984be33fc8a920c66b3ef9eb9e09e3/play-services-cloud-messaging-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-installations-interop:16.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b270b51fd29e2b2d40d7850f8073b455/firebase-installations-interop-16.0.1/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-installations-interop:16.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b270b51fd29e2b2d40d7850f8073b455/firebase-installations-interop-16.0.1/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c8e04542acade7e4ce5fe143cd1b16bb/play-services-tasks-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c8e04542acade7e4ce5fe143cd1b16bb/play-services-tasks-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/852dd6f0f0d68108410438ba99197a27/play-services-stats-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/852dd6f0f0d68108410438ba99197a27/play-services-stats-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d2c8d6fe24f9e7690b216225014b4ff4/firebase-measurement-connector-18.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d2c8d6fe24f9e7690b216225014b4ff4/firebase-measurement-connector-18.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/aed25ec6204477314010601a587c5f85/jetified-play-services-basement-17.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/aed25ec6204477314010601a587c5f85/jetified-play-services-basement-17.1.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/43fcf88b6f5b9ae1e111dc31632a964a/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/43fcf88b6f5b9ae1e111dc31632a964a/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/299447664497c3dcaf9682fd3446398a/fragment-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/299447664497c3dcaf9682fd3446398a/fragment-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/5ba71e12213b252dcb3fff0d2e24fa60/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/5ba71e12213b252dcb3fff0d2e24fa60/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c48799e1fb62854e1f5bbe8f520a0920/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c48799e1fb62854e1f5bbe8f520a0920/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/79018c3ec0b373815da5c882b4dccb92/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/79018c3ec0b373815da5c882b4dccb92/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/2cf426bf2e05f7c77c90769433c84aab/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/2cf426bf2e05f7c77c90769433c84aab/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/77888e421208257e71e7650affd97fb9/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/77888e421208257e71e7650affd97fb9/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3dfe36f0f53b354707fda61f444cbdd1/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3dfe36f0f53b354707fda61f444cbdd1/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/19209a88e01204eba97c7abe218b5277/activity-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/19209a88e01204eba97c7abe218b5277/activity-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/66cfa3a1048291dfa3cbaa4f06f760b8/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/66cfa3a1048291dfa3cbaa4f06f760b8/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/ade874a4336da0be15bae05ea306c93b/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/ade874a4336da0be15bae05ea306c93b/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/2b15ece692f330c9911c21b57db58b22/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/2b15ece692f330c9911c21b57db58b22/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d1cc00a0724ae0e8efb528228f4fc05c/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d1cc00a0724ae0e8efb528228f4fc05c/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d6836473df96f9ba6d8acc61302d5c6d/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d6836473df96f9ba6d8acc61302d5c6d/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/50d942cc0a2a26656ee1c344f3c337a8/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/50d942cc0a2a26656ee1c344f3c337a8/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.3.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/223733be7303dfd0a85d927f1a4f2028/core-1.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/223733be7303dfd0a85d927f1a4f2028/core-1.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/6e6de83ac9d4d6a93680ef267bdef5ec/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/6e6de83ac9d4d6a93680ef267bdef5ec/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3026e069bea5639f3bb40097f8595c2a/jetified-gifdecoder-4.9.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3026e069bea5639f3bb40097f8595c2a/jetified-gifdecoder-4.9.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d4f4fce4c79e0dad747b4a21f34cdc79/lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d4f4fce4c79e0dad747b4a21f34cdc79/lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/6245e3abec295189ef7aba461c5b79c9/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/6245e3abec295189ef7aba461c5b79c9/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cf1c6107e67dd65cd59d4159dc538323/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cf1c6107e67dd65cd59d4159dc538323/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/892df1ed95254d76672c1aa2c414ea74/savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/892df1ed95254d76672c1aa2c414ea74/savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b271b6e47df39092a82f3590295a8043/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b271b6e47df39092a82f3590295a8043/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d7893c9ebbe4aac00b754d99000146b2/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d7893c9ebbe4aac00b754d99000146b2/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/38b3a5fefac53fe684d3782bdafa16fa/sqlite-framework-2.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/38b3a5fefac53fe684d3782bdafa16fa/sqlite-framework-2.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f21355af587c141fab99c234e7f13926/sqlite-2.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f21355af587c141fab99c234e7f13926/sqlite-2.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f116c787301670c7d89ae42f20f1a8a7/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/f116c787301670c7d89ae42f20f1a8a7/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0b91682f19cc0fd1abff12829dbc3905/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0b91682f19cc0fd1abff12829dbc3905/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c454e0c75ba68d8dd7ec0e760912d6d3/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/c454e0c75ba68d8dd7ec0e760912d6d3/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e52f2cd80f891dd1b8b9803a98ba4f2e/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e52f2cd80f891dd1b8b9803a98ba4f2e/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/af645f95e72281bc31473d4d979d4dc1/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/af645f95e72281bc31473d4d979d4dc1/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/a2177237df624b4080fd50bbe3e1e2d7/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/a2177237df624b4080fd50bbe3e1e2d7/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/8095c4bfccefa1737fa39ec01ea705af/jetified-firebase-components-16.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/8095c4bfccefa1737fa39ec01ea705af/jetified-firebase-components-16.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/7913ac97ed3d6ab521415ed6edf4e02a/firebase-encoders-json-17.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/7913ac97ed3d6ab521415ed6edf4e02a/firebase-encoders-json-17.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d0468b027530210d56c665a38fa96544/jetified-transport-api-2.2.1/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d0468b027530210d56c665a38fa96544/jetified-transport-api-2.2.1/AndroidManifest.xml:18:5-20:41
+MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/5c3a1808c1993f228de06677e28f84b7/jetified-installreferrer-1.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/5c3a1808c1993f228de06677e28f84b7/jetified-installreferrer-1.0/AndroidManifest.xml:5:5-7:41
+MERGED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:8:5-10:41
+MERGED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:8:5-10:41
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:7:5-9:41
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/85d0bf4ebbb8f643eb72570beacdbb7c/jetified-fbcore-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/85d0bf4ebbb8f643eb72570beacdbb7c/jetified-fbcore-2.0.0/AndroidManifest.xml:5:5-7:41
+INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/khramushin/Desktop/MySibSU/android/app/src/main/AndroidManifest.xml
+meta-data#org.unimodules.core.AppLoader#react-native-headless
+ADDED from [:unimodules-react-native-adapter] /Users/khramushin/Desktop/MySibSU/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:9-14:91
+	android:value
+		ADDED from [:unimodules-react-native-adapter] /Users/khramushin/Desktop/MySibSU/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:13-88
+	android:name
+		ADDED from [:unimodules-react-native-adapter] /Users/khramushin/Desktop/MySibSU/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:13-79
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:expo-updates] /Users/khramushin/Desktop/MySibSU/node_modules/expo-updates/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-79
+MERGED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-79
+MERGED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-79
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:27:5-79
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:27:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:10:5-79
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:10:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e9984be33fc8a920c66b3ef9eb9e09e3/play-services-cloud-messaging-16.0.0/AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e9984be33fc8a920c66b3ef9eb9e09e3/play-services-cloud-messaging-16.0.0/AndroidManifest.xml:7:5-79
+MERGED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:13:5-79
+MERGED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:13:5-79
+	android:name
+		ADDED from [:expo-updates] /Users/khramushin/Desktop/MySibSU/node_modules/expo-updates/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-68
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:21:5-68
+MERGED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:21:5-68
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:24:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e9984be33fc8a920c66b3ef9eb9e09e3/play-services-cloud-messaging-16.0.0/AndroidManifest.xml:9:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e9984be33fc8a920c66b3ef9eb9e09e3/play-services-cloud-messaging-16.0.0/AndroidManifest.xml:9:5-68
+	android:name
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:22-65
+service#io.invertase.firebase.messaging.ReactNativeFirebaseMessagingHeadlessService
+ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:9-111
+	android:name
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:18-108
+service#io.invertase.firebase.messaging.ReactNativeFirebaseMessagingService
+ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:17:9-23:19
+	android:exported
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:19:13-37
+	android:name
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:18:13-95
+intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
+ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:20:13-22:29
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:21:17-78
+	android:name
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:21:25-75
+receiver#io.invertase.firebase.messaging.ReactNativeFirebaseMessagingReceiver
+ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:25:9-32:20
+	android:exported
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:27:13-36
+	android:permission
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:28:13-73
+	android:name
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:26:13-96
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
+ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:29:13-31:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:30:17-81
+	android:name
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:30:25-78
+meta-data#firebase_messaging_auto_init_enabled
+ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:34:9-36:36
+	android:value
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:36:13-33
+	android:name
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:35:13-64
+meta-data#com.google.firebase.messaging.default_notification_channel_id
+ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:37:9-39:32
+	android:value
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:39:13-29
+	android:name
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:38:13-89
+meta-data#com.google.firebase.messaging.default_notification_color
+ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:40:9-42:47
+	android:resource
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:42:13-44
+	android:name
+		ADDED from [:react-native-firebase_messaging] /Users/khramushin/Desktop/MySibSU/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:41:13-84
+uses-permission#com.android.vending.CHECK_LICENSE
+ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-73
+	android:name
+		ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:22-70
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:30:5-76
+	android:name
+		ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:30:22-73
+provider#com.RNFetchBlob.Utils.FileProvider
+ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:36:9-44:20
+	android:grantUriPermissions
+		ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:40:13-47
+	android:authorities
+		ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:38:13-60
+	android:exported
+		ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:39:13-37
+	android:name
+		ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:37:13-62
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:41:13-43:58
+	android:resource
+		ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:43:17-55
+	android:name
+		ADDED from [:rn-fetch-blob] /Users/khramushin/Desktop/MySibSU/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/release/AndroidManifest.xml:42:17-67
+provider#expo.modules.filesystem.FileSystemFileProvider
+ADDED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:17:9-26:20
+	android:grantUriPermissions
+		ADDED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:21:13-47
+	android:authorities
+		ADDED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:19:13-74
+	android:exported
+		ADDED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:20:13-37
+	tools:replace
+		ADDED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:22:13-48
+	android:name
+		ADDED from [:expo-file-system] /Users/khramushin/Desktop/MySibSU/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:18:13-74
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-77
+	android:name
+		ADDED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:22-74
+service#expo.modules.location.services.LocationTaskService
+ADDED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:9-18:40
+	android:exported
+		ADDED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:18:13-37
+	android:name
+		ADDED from [:expo-location] /Users/khramushin/Desktop/MySibSU/node_modules/expo-location/android/build/intermediates/library_manifest/release/AndroidManifest.xml:17:13-78
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:22-78
+service#expo.modules.notifications.service.ExpoFirebaseMessagingService
+ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:9-20:19
+	android:exported
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:13-37
+	android:name
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:13-91
+receiver#expo.modules.notifications.service.NotificationsService
+ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:22:9-34:20
+	android:enabled
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:24:13-35
+	android:exported
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:23:13-83
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED+action:name:android.intent.action.QUICKBOOT_POWERON+action:name:android.intent.action.REBOOT+action:name:com.htc.intent.action.QUICKBOOT_POWERON+action:name:expo.modules.notifications.NOTIFICATION_EVENT
+ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:26:13-33:29
+	android:priority
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:26:28-49
+action#expo.modules.notifications.NOTIFICATION_EVENT
+ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:27:17-88
+	android:name
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:27:25-85
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:28:17-79
+	android:name
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:28:25-76
+action#android.intent.action.REBOOT
+ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:29:17-71
+	android:name
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:29:25-68
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:30:17-82
+	android:name
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:30:25-79
+action#com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:31:17-82
+	android:name
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:31:25-79
+action#android.intent.action.MY_PACKAGE_REPLACED
+ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:32:17-84
+	android:name
+		ADDED from [:expo-notifications] /Users/khramushin/Desktop/MySibSU/node_modules/expo-notifications/android/build/intermediates/library_manifest/release/AndroidManifest.xml:32:25-81
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:28:9-35:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:31:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:30:13-43
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:29:13-82
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:36:9-42:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/be6f43acf2e13712c0a0826019fc4401/firebase-datatransport-17.0.10/AndroidManifest.xml:25:9-31:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/be6f43acf2e13712c0a0826019fc4401/firebase-datatransport-17.0.10/AndroidManifest.xml:25:9-31:19
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:15:9-21:19
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:15:9-21:19
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:33:9-46:19
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:33:9-46:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:38:13-37
+	tools:targetApi
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:37:13-32
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:35:13-43
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:37:13-84
+meta-data#com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar
+ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:39:13-41:85
+	android:value
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:41:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/cc354df385e05e7a18ba0576c61a9491/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:40:17-119
+meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
+ADDED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/be6f43acf2e13712c0a0826019fc4401/firebase-datatransport-17.0.10/AndroidManifest.xml:28:13-30:85
+	android:value
+		ADDED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/be6f43acf2e13712c0a0826019fc4401/firebase-datatransport-17.0.10/AndroidManifest.xml:30:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/be6f43acf2e13712c0a0826019fc4401/firebase-datatransport-17.0.10/AndroidManifest.xml:29:17-115
+service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
+ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:36:9-38:40
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:36:9-38:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
+meta-data#backend:com.google.android.datatransport.cct.CctBackendFactory
+ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
+	android:value
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/3fb1b7771e62dd1b3a427c19c7c7d44a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
+service#com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService
+ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:26:9-30:19
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:28:13-37
+	android:permission
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:29:13-69
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:27:13-117
+receiver#com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver
+ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:32:9-34:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:34:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/246bfb4318f73d9d3fd141f8f2bbe030/jetified-transport-runtime-2.2.5/AndroidManifest.xml:33:13-132
+provider#androidx.lifecycle.ProcessLifecycleOwnerInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/27a5573d222b47c0935d0405afbf6caf/lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+	android:authorities
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/27a5573d222b47c0935d0405afbf6caf/lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+	android:multiprocess
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/27a5573d222b47c0935d0405afbf6caf/lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+	android:exported
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/27a5573d222b47c0935d0405afbf6caf/lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/27a5573d222b47c0935d0405afbf6caf/lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b4c5c01865ee84b5fda3272cefb9b8e1/room-runtime-2.1.0/AndroidManifest.xml:25:9-27:40
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b4c5c01865ee84b5fda3272cefb9b8e1/room-runtime-2.1.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.room:room-runtime:2.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b4c5c01865ee84b5fda3272cefb9b8e1/room-runtime-2.1.0/AndroidManifest.xml:26:13-74
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:33:9-37:51
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:35:13-36
+	android:visibleToInstantApps
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:37:13-48
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/d84030a71d871493ee0e7644ea27c4a2/play-services-auth-19.0.0/AndroidManifest.xml:34:13-89
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:26:5-82
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e9984be33fc8a920c66b3ef9eb9e09e3/play-services-cloud-messaging-16.0.0/AndroidManifest.xml:11:5-82
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/e9984be33fc8a920c66b3ef9eb9e09e3/play-services-cloud-messaging-16.0.0/AndroidManifest.xml:11:5-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:26:22-79
+meta-data#com.google.firebase.components:com.google.firebase.iid.Registrar
+ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:32:13-34:85
+	android:value
+		ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:34:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:33:17-96
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:37:9-44:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:39:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:40:13-73
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/4d20c3f1742665b12402e1f42d19b9cb/firebase-iid-21.0.1/AndroidManifest.xml:38:13-78
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/87de111cf3e68002d567f5927fd9f327/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/87de111cf3e68002d567f5927fd9f327/play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/87de111cf3e68002d567f5927fd9f327/play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/87de111cf3e68002d567f5927fd9f327/play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+meta-data#com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar
+ADDED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:18:13-20:85
+	android:value
+		ADDED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:20:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-installations:16.3.5] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/26c2e1d5ac959a06f28454385aaa4ddc/firebase-installations-16.3.5/AndroidManifest.xml:19:17-127
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:26:9-31:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:28:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:30:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:29:13-43
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:31:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:27:13-77
+meta-data#com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar
+ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:43:13-45:85
+	android:value
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:45:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/b68b1aaff84925d4d29327dfe0093d6e/jetified-firebase-common-19.5.0/AndroidManifest.xml:44:17-121
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:17.1.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/aed25ec6204477314010601a587c5f85/jetified-play-services-basement-17.1.1/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:17.1.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/aed25ec6204477314010601a587c5f85/jetified-play-services-basement-17.1.1/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:17.1.1] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/aed25ec6204477314010601a587c5f85/jetified-play-services-basement-17.1.1/AndroidManifest.xml:24:13-58
+uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+ADDED from [com.android.installreferrer:installreferrer:1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/5c3a1808c1993f228de06677e28f84b7/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
+	android:name
+		ADDED from [com.android.installreferrer:installreferrer:1.0] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/5c3a1808c1993f228de06677e28f84b7/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107
+uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
+ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:15:5-98
+	android:name
+		ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:15:22-95
+uses-permission#com.google.android.gms.permission.ACTIVITY_RECOGNITION
+ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:16:5-94
+	android:name
+		ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:16:22-91
+service#io.nlopez.smartlocation.activity.providers.ActivityGooglePlayServicesProvider$ActivityRecognitionService
+ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:19:9-21:40
+	android:exported
+		ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:21:13-37
+	android:name
+		ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:20:13-132
+service#io.nlopez.smartlocation.geofencing.providers.GeofencingGooglePlayServicesProvider$GeofencingService
+ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:22:9-24:40
+	android:exported
+		ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:24:13-37
+	android:name
+		ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:23:13-127
+service#io.nlopez.smartlocation.geocoding.providers.AndroidGeocodingProvider$AndroidGeocodingService
+ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:25:9-27:40
+	android:exported
+		ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [io.nlopez.smartlocation:library:3.2.11] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/0c1917c0da34618040ea83e70759b7de/jetified-library-3.2.11/AndroidManifest.xml:26:13-120
+uses-permission#com.sec.android.provider.badge.permission.READ
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
+uses-permission#com.sec.android.provider.badge.permission.WRITE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
+uses-permission#com.htc.launcher.permission.READ_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
+uses-permission#com.htc.launcher.permission.UPDATE_SHORTCUT
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
+uses-permission#com.sonyericsson.home.permission.BROADCAST_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
+uses-permission#com.sonymobile.home.permission.PROVIDER_INSERT_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
+uses-permission#com.anddoes.launcher.permission.UPDATE_COUNT
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
+uses-permission#com.majeur.launcher.permission.UPDATE_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
+uses-permission#com.huawei.android.launcher.permission.CHANGE_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
+uses-permission#com.huawei.android.launcher.permission.READ_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
+uses-permission#com.huawei.android.launcher.permission.WRITE_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
+uses-permission#android.permission.READ_APP_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
+uses-permission#com.oppo.launcher.permission.READ_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
+uses-permission#com.oppo.launcher.permission.WRITE_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
+uses-permission#me.everything.badger.permission.BADGE_COUNT_READ
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
+uses-permission#me.everything.badger.permission.BADGE_COUNT_WRITE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/khramushin/.gradle/caches/transforms-2/files-2.1/894d04ea376411d68a9ac4ab579020fb/ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86

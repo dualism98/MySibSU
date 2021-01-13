@@ -44,6 +44,15 @@ export const translations = {
         head: 'Head',
         phone: 'Phone',
         email: 'Email',
+        read_more: '[Read more]',
+        hide: '[Hide]',
+        last_groups: 'Last',
+        no_classes: 'There are no classes',
+        lecture: 'Lecture',
+        laboratory_work: 'Laboratory work',
+        practice: 'Practice',
+        first_subgroup: '[1st subgroup]',
+        second_subgroup: '[2nd subgroup]'
         },
   ru: { timetable: 'Расписание', 
         menu: 'Меню',
@@ -88,7 +97,16 @@ export const translations = {
         address: 'Адрес',
         head: 'Зав. кафедрой',
         phone: 'Телефон',
-        email: 'Email',},
+        email: 'Email',
+        read_more: '[Читать далее]',
+        hide: '[Свернуть]',
+        last_groups: 'Последние',
+        no_classes: 'Занятий нет',
+        lecture: 'Лекция',
+        laboratory_work: 'Лабораторная работа',
+        practice: 'Практика',
+        first_subgroup: '[1 подгруппа]',
+        second_subgroup: '[2 подгруппа]'},
 };
 // Set the locale once at the beginning of your app.
 

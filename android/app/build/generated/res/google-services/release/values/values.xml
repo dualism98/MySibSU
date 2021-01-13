@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">662671085297-0k6uacn5t7ibjt2idtn8ef9di8lr1315.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">662671085297</string>
+    <string name="google_api_key" translatable="false">AIzaSyC0_Rsf-LhPZa0VVUMQG3N9FQqJ2aphX4s</string>
+    <string name="google_app_id" translatable="false">1:662671085297:android:a7ad668848b8844328e350</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC0_Rsf-LhPZa0VVUMQG3N9FQqJ2aphX4s</string>
+    <string name="google_storage_bucket" translatable="false">my-sibsu.appspot.com</string>
+    <string name="project_id" translatable="false">my-sibsu</string>
+</resources>

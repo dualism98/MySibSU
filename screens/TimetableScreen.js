@@ -31,7 +31,6 @@ export default function TimetableScreen(props){
     const [groupList, setGroupList] = useState([])
     const [timetable, setTimetable] = useState([{even_week: [], odd_week: []}])
     const [loaded, setLoaded] = useState(false)
-    const [similar, setSimilar] = useState([])
     const [shown, setShown] = useState([])
     const [index, setIndex] = useState(getIndex())
     const [first_dates, setFirstDates] = useState([])
@@ -43,12 +42,12 @@ export default function TimetableScreen(props){
 
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
-
+    
     useEffect(() => {
         console.log('Определение группы')
         AsyncStorage.getItem('@key').then((id) => setGroup(id))
         AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
-        AsyncStorage.getItem('LastGroups').then((res) => res === null ? setLastGroups([]) : setLastGroups(JSON.parse(res)))
+        getLastGroups()
     }, [group])
 
     useEffect(() => {
@@ -110,8 +109,6 @@ export default function TimetableScreen(props){
             array.push(item.name)
         })
 
-        setSimilar(array)
-
         let date = new Date()
         let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
@@ -120,35 +117,58 @@ export default function TimetableScreen(props){
     }, [group])
 
     function setCurrentGroup(name){
-        console.log(name)
+        setTextGroup(name)
         var choosed = name
         .toUpperCase()
         .split(' ')[0]
 
         groupList.map(group => {
             if (group.name === choosed){
-                setTextGroup(group.name)
+                
                 setGroup(group.id)
                 storeData(group.id, group.name)
                 AsyncStorage.getItem("LastGroups")
                     .then(res => {
-                        let info = []
+                        let groups = []
+                        let there_is = false
                         if (res !== null){
-                            console.log("NOT NULL", res, group)
-                            info = JSON.parse(res)
-                            info.includes(group) ? console.log('DOES NOT INCLUDE') : info.push(group)
+                            console.log('NOT NULL')
+                            groups = JSON.parse(res)
+                            groups.map(item => {
+                                if(item.name === group.name){
+                                    there_is = true
+                                }
+                            })
+                            // info.includes(group) ? console.log('DOES NOT INCLUDE') : info.push(group)
+                            if (!there_is){
+                                groups.push(group)
+                            }
                             // console.log(res)
-                            console.log('INFO: ', info)
+                            // console.log('INFO: ', info)
                         }
                         else{
                             console.log('NULL')
-                            info.push(group)
+                            groups.push(group)
                         }
-                        AsyncStorage.setItem('LastGroups', JSON.stringify(info))
-                        setLastGroups(info)
+                        
+                        if (groups.length > 10){
+                            groups = groups.slice(1, 11)
+                        }
+                        console.log('GROUPS: ', groups)
+                        AsyncStorage.setItem('LastGroups', JSON.stringify(groups))
                     })
             }
         })
+    }
+
+    function getLastGroups(){
+        AsyncStorage.getItem('LastGroups')
+            .then(res => {
+                if (res !== null){
+                    let groups = JSON.parse(res).reverse()
+                    setLastGroups(groups)
+                }
+            })
     }
 
     function removeGroup(group){
@@ -164,18 +184,31 @@ export default function TimetableScreen(props){
                     }
                 })
                 setLastGroups(groups)
-                AsyncStorage.setItem('LastGroups', groups)
+                AsyncStorage.setItem('LastGroups', JSON.stringify(groups))
             })
 
     }
 
+    const fil = (fn, a) => {
+        const f = []; //final
+        for (let i = 0; i < a.length; i++) {
+          if (fn(a[i])) {
+            f.push(a[i]);
+          }
+        }
+        return f;
+      };
+
     function similarGroup(text){
-        setTextGroup(text)
-        text !== '' && text.length > 2 ?
-        setShown(similar.filter(item => {
-            if(item.includes(text.toUpperCase()))
-                return item
-        })) : setShown([])
+        console.log('Ищем')
+        if(text !== '' && text.length > 1){
+            setTextGroup(text)
+            setShown(fil(e => e.name.slice(0, text.length) === text.toUpperCase(), groupList))
+        }
+        else{
+            setShown([])
+        }
+        
     }
 
     function getIndex(){
@@ -186,7 +219,7 @@ export default function TimetableScreen(props){
     }
 
     const renderHelp = ({ item }) => (
-        <Help title={item} onPress={() => setCurrentGroup(item)} />
+        <Help group={item} onPress={() => setCurrentGroup(item.name)} />
     )
 
     function changeIndex(){
@@ -208,6 +241,9 @@ export default function TimetableScreen(props){
                         <TouchableOpacity onPress={() => {
                             AsyncStorage.removeItem('@key')
                             AsyncStorage.removeItem('@group')
+                            getLastGroups()
+                            AsyncStorage.removeItem('@key')
+                            AsyncStorage.removeItem('@name')
                             setGroup(null); setTextGroup(''), setShown([]), setTimetable([{even_week: [], odd_week: []}])
                         }}>
                             <AntDesign name="logout" size={20} color={theme.headerTitle} style={{transform:[{rotate: '180deg'}] }}/>
@@ -262,7 +298,7 @@ export default function TimetableScreen(props){
                         </View>
                     </TouchableHighlight>
                 </View>
-                <View style={[{ position: 'absolute', top: 120, height: 30 + shown.length * 30, marginTop: 10, flexDirection: 'column', borderRadius: 15, paddingTop: 15, paddingBottom: 15, backgroundColor: theme.blockColor, zIndex: 3}, styles.shadow]}>
+                <View style={[{ position: 'absolute', top: 120, height: 30 + shown.length * 30, maxHeight: h / 2, marginTop: 10, flexDirection: 'column', borderRadius: 15, paddingTop: 15, paddingBottom: 15, backgroundColor: theme.blockColor, zIndex: 3}, styles.shadow]}>
                     <FlatList 
                         data={shown}
                         renderItem={renderHelp}
@@ -281,7 +317,7 @@ export default function TimetableScreen(props){
 
                                 elevation: 5,}, styles.shadow, { flex: 1, backgroundColor: theme.blockColor, width: w * 0.9, position: 'absolute', top: 120, zIndex: 0, borderRadius: 15, paddingBottom: 10}]}>
                     {lastGroups.length !== 0 ? 
-                    <Text style={{ fontFamily: 'roboto', width: w, paddingLeft: 20, fontSize: 20, marginTop: 10, color: '#5575A7'}}>Последние</Text> : null}
+                    <Text style={{ fontFamily: 'roboto', width: w, paddingLeft: 20, fontSize: 20, marginTop: 10, color: '#5575A7'}}>{locale['last_groups']}</Text> : null}
                         {lastGroups.map(item => {
                             return(
                                 <View style={{ height: 30, flexDirection: 'row', marginTop: 5}}>

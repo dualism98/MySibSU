@@ -6,16 +6,9 @@ import { useFonts } from '@use-expo/font'
 import { AppearanceProvider } from 'react-native-appearance'
 import { ThemeManager } from './themes/ThemeManager'
 import { LocaleManager } from './locale/LocaleManager'
-// import { NativeModules } from 'react-native';
-
-// const SharedStorage = NativeModules.SharedStorage;
 
 function App(){
 
-  console.disableYellowBox = true
-  // SharedStorage.set(
-  //   JSON.stringify({text: 'This is data from the React Native app'})
-  //  );
 
   // Устанавливаем кастомный шрифт, который лежит в ./assets/fonts/
   let [fontsLoaded] = useFonts({

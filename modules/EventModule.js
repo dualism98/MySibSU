@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableWithoutFeedback, Linking, StyleSheet} from 
 import { ScrollView } from 'react-native-gesture-handler'
 import { h, w } from './constants'
 import {useTheme} from '../themes/ThemeManager'
+import {useLocale} from '../locale/LocaleManager'
 
 url = 'http://193.187.174.224'
 
@@ -12,6 +13,7 @@ const EventModule = ({data}) => {
     const [loaded, setLoaded] = useState(false)
 
     const {theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
 
     useEffect(() => {
         Image.getSize(url + data.logo, (width, height) => {
@@ -34,7 +36,7 @@ const EventModule = ({data}) => {
                             <TouchableWithoutFeedback onPress={() => {
                                 setMode(!mode)
                             }}>
-                                <Text style={{ fontFamily: 'roboto', fontSize: 16, color: '#006AB3', marginLeft: 25}}>[Читать далее]</Text>
+                                <Text style={{ fontFamily: 'roboto', fontSize: 16, color: '#006AB3', marginLeft: 25}}>{locale['read_more']}</Text>
                             </TouchableWithoutFeedback>
                         </View>
                         </View>
@@ -51,7 +53,7 @@ const EventModule = ({data}) => {
                             <View>
                                 {String(data.text).length >= 100 ? 
                                 <TouchableWithoutFeedback onPress={() => {setMode(!mode)}}>
-                                    <Text style={{ fontFamily: 'roboto', fontSize: 16, color: '#006AB3', marginLeft: 25}}>[Свернуть]</Text>
+                                    <Text style={{ fontFamily: 'roboto', fontSize: 16, color: '#006AB3', marginLeft: 25}}>{locale['hide']}</Text>
                                 </TouchableWithoutFeedback> : null}
                             </View>
                         </View>
