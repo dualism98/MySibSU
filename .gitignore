@@ -1,3 +1,11 @@
 node_modules/
 android/app/build/
-
+android/app/build/generated/
+android/app/build/intermediates/
+android/app/build/outputs/
+android/app/build/reports/
+android/app/build/tmp/
+android/.idea/
+android/.gradle/
+android/.settings/
+android/build/

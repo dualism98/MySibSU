@@ -52,7 +52,9 @@ export const translations = {
         laboratory_work: 'Laboratory work',
         practice: 'Practice',
         first_subgroup: '[1st subgroup]',
-        second_subgroup: '[2nd subgroup]'
+        second_subgroup: '[2nd subgroup]',
+        news: 'News',
+        feed: 'Feed'
         },
   ru: { timetable: 'Расписание', 
         menu: 'Меню',
@@ -106,7 +108,9 @@ export const translations = {
         laboratory_work: 'Лабораторная работа',
         practice: 'Практика',
         first_subgroup: '[1 подгруппа]',
-        second_subgroup: '[2 подгруппа]'},
+        second_subgroup: '[2 подгруппа]',
+        news: 'Новости',
+        feed: 'Лента'},
 };
 // Set the locale once at the beginning of your app.
 

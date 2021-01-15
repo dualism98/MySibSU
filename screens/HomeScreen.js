@@ -1,10 +1,11 @@
-import React, { Component, PureComponent, useState, setState } from 'react'
-import { Text, StyleSheet, View, Image, Dimensions, Animated, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
+import { Text, StyleSheet, View,  Dimensions, TouchableOpacity, Animated } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MenuScreen from './MenuScreen'
 import EventsScreen from './EventsScreen'
+import NewsScreen from './NewsScreen'
 import ServiceScreen from './ServiceScreen'
 import MapScreen from './services/MapScreen'
 import TimetableScreen from './TimetableScreen'
@@ -16,15 +17,46 @@ import ShopScreen from './services/shop/ShopScreen'
 import ProductScreen from './services/shop/ProductScreen'
 import TopicsScreen from './services/poll/TopicsScreen'
 import PollScreen from './services/poll/PollScreen'
-import { MaterialIcons } from '@expo/vector-icons'; 
-import { AntDesign } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons'; 
+import { MaterialIcons } from '@expo/vector-icons'
+import { AntDesign } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'
 import PersonScreen from './personPage/PersonScreen'
 import SettingsScreen from './personPage/SettingsScreen'
 import { useTheme } from '../themes/ThemeManager'
 import { useLocale } from '../locale/LocaleManager'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
+const Tab = createMaterialTopTabNavigator();
+
+function FeedTabs() {
+  const {localeMode, locale, toggleLang} = useLocale()
+  const {mode, theme, toggle} = useTheme()
+  return (
+    <Tab.Navigator tabBarOptions={{
+      labelStyle: {
+        fontFamily: 'roboto',
+        fontSize: 13,
+      },
+      tabStyle: {
+        height: Dimensions.get('window').width / 8,
+        width: Dimensions.get('window').width / 4,
+      },
+      style: {
+        backgroundColor: theme.blockColor,
+        paddingLeft: Dimensions.get('window').width / 4,
+        elevation: 6
+      },
+      indicatorStyle: {
+        marginLeft: Dimensions.get('window').width / 4
+      },
+      activeTintColor: theme.labelColor,
+    }}>
+      <Tab.Screen  options={{ title: locale['events'] }} name="Events" component={EventsScreen} />
+      <Tab.Screen options={{ title: locale['news'] }} name="News" component={NewsScreen} />
+    </Tab.Navigator>
+  );
+}
 
 const Tabs = createBottomTabNavigator();
 
@@ -33,11 +65,11 @@ export default function HomeScreen(){
   
     return (
       <NavigationContainer>
-      <Tabs.Navigator initialRouteName={'Timetable'} tabBar={(props) => <TabBar {...props} />}>
-        <Tabs.Screen name={'Events'} component={EventsScreen}
+      <Tabs.Navigator initialRouteName={'Timetable'} tabBar={(props) => <MainTabBar {...props} />}>
+        <Tabs.Screen name={'Feed'} component={FeedTabs}
         options={{
           headerShown: false,
-          title: locale['events']
+          title: locale['feed']
         }}/>
         <Tabs.Screen name={'Menu'} component={MenuScreen} 
         options={{
@@ -98,7 +130,7 @@ function ServiceStackScreen(){
 const BottomMenuItem = ({ iconName, label, isCurrent }) => {
 
   const icons = {
-    'Events': <MaterialCommunityIcons name="timetable" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'}  />, 
+    'Feed': <MaterialCommunityIcons name="timetable" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'}  />, 
     'Menu': <MaterialIcons name="restaurant-menu" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
     'Timetable': <MaterialCommunityIcons name="calendar-text" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
     'Services': <AntDesign name="appstore-o" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />,
@@ -120,7 +152,7 @@ const BottomMenuItem = ({ iconName, label, isCurrent }) => {
 };
 
 
-const TabBar = ({state, descriptors, navigation}) => {
+const MainTabBar = ({state, descriptors, navigation}) => {
   const {mode, theme, toggle} = useTheme()
   const totalWidth = Dimensions.get("window").width;
   const tabWidth = totalWidth / state.routes.length;
