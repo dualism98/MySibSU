@@ -5,7 +5,7 @@ import { h, w } from './constants'
 import {useTheme} from '../themes/ThemeManager'
 import {useLocale} from '../locale/LocaleManager'
 
-const url = 'http://193.187.174.224'
+const url = 'http://mysibsau.ru'
 
 const NewsModule = ({data}) => {
     const [mode, setMode] = useState(false)
@@ -15,15 +15,32 @@ const NewsModule = ({data}) => {
     const stringLinkRegex = 'https?://(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,4}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)'
     const regex = '\\[(.*?)\\]\\(\(stringLinkRegex)\\)'.replace('stringLinkRegex', stringLinkRegex)
     
-    // let text = data.text
-    // let links = []
-    // while(text.match(regex)){
-    //     links.push({name: text.match(regex)[1], link: text.match(regex)[2]})
-    //     text.replace(text.match(regex), text.match(regex)[1])
-    // }
+    let text = data.text
+    let links = []
 
-    // console.log('LINKS', links)
+    while(text.match(regex) !== null){
+        let link = text.match(regex)[0]
+        links.push({name: text.match(regex)[1], link: text.match(regex)[2]})
+        text = text.replace(link, text.match(regex)[2])
+    }
 
+    function setLink(url){
+        let there_is = false
+        let link = ''
+        links.map(item => {
+            if(item.link === url)
+            {
+                there_is = true
+                link = item.name
+            }
+        })
+
+        if(there_is)
+            return link
+        else
+            return url
+    }
+    
     let coef = 1
     if (data.images.length !== 0)
         coef = data.images[0].height/data.images[0].width

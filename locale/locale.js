@@ -54,7 +54,10 @@ export const translations = {
         first_subgroup: '[1st subgroup]',
         second_subgroup: '[2nd subgroup]',
         news: 'News',
-        feed: 'Feed'
+        feed: 'Feed',
+        groups: 'Groups',
+        professors: 'Professors',
+        places: 'Places'
         },
   ru: { timetable: 'Расписание', 
         menu: 'Меню',
@@ -110,7 +113,10 @@ export const translations = {
         first_subgroup: '[1 подгруппа]',
         second_subgroup: '[2 подгруппа]',
         news: 'Новости',
-        feed: 'Лента'},
+        feed: 'Лента',
+        groups: 'Группы',
+        professors: 'Преподаватели',
+        places: 'Места'},
 };
 // Set the locale once at the beginning of your app.
 

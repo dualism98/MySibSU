@@ -16,13 +16,13 @@ export default function InstitutesScreen(props){
     const {localeMode, locale, toggleLang} = useLocale()
 
     useEffect(() => {
-        fetch('http://193.187.174.224/v2/campus/institutes/', {method: 'GET'})
+        fetch('http://mysibsau.ru/v2/campus/institutes/?language=' + String(localeMode), {method: 'GET'})
             .then(response => response.json())
             .then(json => {
                 setInstitutes(json)
                 setLoaded(true)
             })
-    }, [institutes])
+    }, [loaded])
 
     return(
         <View style={{flex: 1, backgroundColor: theme.primaryBackground, flexDirection: 'column' }} >

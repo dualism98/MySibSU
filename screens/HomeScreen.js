@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, StyleSheet, View,  Dimensions, TouchableOpacity, Animated } from 'react-native'
+import { Text, StyleSheet, View,  Dimensions, TouchableOpacity, Animated, AsyncStorage } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -8,7 +8,6 @@ import EventsScreen from './EventsScreen'
 import NewsScreen from './NewsScreen'
 import ServiceScreen from './ServiceScreen'
 import MapScreen from './services/MapScreen'
-import TimetableScreen from './TimetableScreen'
 import InstitutesScreen from './services/Institutes/InstitutesScreen'
 import ActiveScreen from './services/Unions/ActiveScreen'
 import IITK from './services/Institutes/Institute'
@@ -16,6 +15,8 @@ import Ermak from './services/Unions/Union'
 import ShopScreen from './services/shop/ShopScreen'
 import ProductScreen from './services/shop/ProductScreen'
 import TopicsScreen from './services/poll/TopicsScreen'
+import SearchScreen from './Timetable/SearchScreen'
+import TimetableScreen from './Timetable/TimetableScreen'
 import PollScreen from './services/poll/PollScreen'
 import { MaterialIcons } from '@expo/vector-icons'
 import { AntDesign } from '@expo/vector-icons'
@@ -26,6 +27,7 @@ import SettingsScreen from './personPage/SettingsScreen'
 import { useTheme } from '../themes/ThemeManager'
 import { useLocale } from '../locale/LocaleManager'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import { useEffect } from 'react'
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -76,7 +78,7 @@ export default function HomeScreen(){
           headerShown: false,
           title: locale['menu']
         }}/>
-        <Tabs.Screen name={'Timetable'} component={TimetableScreen}
+        <Tabs.Screen name={'Timetable'} component={TimetableStackScreen}
         options={{
           headerShown: false,
           title: locale['timetable']
@@ -95,6 +97,54 @@ export default function HomeScreen(){
     </NavigationContainer>
   )
   
+}
+
+const TimetableStack = createStackNavigator();
+
+
+function TimetableStackScreen(){
+  const [screen, setScreen] = useState('')
+  const [mode, setMode] = useState({})
+  
+
+  const Layout = (initialName) => {
+    if(initialName === '')
+      return(<View></View>)
+    else
+      if(initialName === 'TimetableScreen'){
+        fetch()
+      }
+      return(
+        <TimetableStack.Navigator initialRouteName={initialName} headerMode='none'>
+          <TimetableStack.Screen name='SearchScreen' options={({route}) => ({mode: mode})} component={SearchScreen} />
+          <TimetableStack.Screen name='TimetableScreen' component={TimetableScreen} />
+        </TimetableStack.Navigator>
+      )
+  }
+
+  useEffect(() => {
+    AsyncStorage.getItem('@key')
+    .then(res => {
+      console.log("RES: ", res)
+      if (res !== null)
+        setScreen('TimetableScreen')
+      else
+        setScreen('SearchScreen')
+    })
+    .then(() => {
+      AsyncStorage.getItem('@mode')
+        .then(res => {
+          if (res !== null)
+            setMode(res)
+          else
+            setMode(0)
+        })
+    })
+  }, [])
+
+  return(
+    Layout(screen)
+  )
 }
 
 const PersonStack = createStackNavigator();

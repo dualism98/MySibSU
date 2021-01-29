@@ -13,21 +13,29 @@ export default function TopicsScreen(props){
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
 
-    useEffect(() => {
-        AsyncStorage.getItem('UUID')
-            .then(res => setUUID(res))
 
-
-        fetch('http://193.187.174.224/v2/surveys/all/?uuid=' + UUID, {
-            method: 'GET',
-        })
-            .then(response => response.json())
-            .then(json => {
-                setTopics(json)
-                setLoaded(true)
+    React.useEffect(() => {
+        const unsubscribe = props.navigation.addListener('focus', () => {
+            let uuid = ''
+            AsyncStorage.getItem('UUID')
+            .then(res => {
+                setUUID(res)
+                uuid = res})
+            .then(() => {
+                fetch('http://193.187.174.224/v2/surveys/all/?uuid=' + uuid, {
+                    method: 'GET',
+                })
+                    .then(response => response.json())
+                    .then(json => {
+                        setTopics(json)
+                        setLoaded(true)
+                    })
+                    .catch(err => console.log(err))
             })
-            .catch(err => console.log(err))
-    }, [loaded])
+        });
+    
+        return unsubscribe;
+      }, [props.navigation]);
 
     return(
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
@@ -37,11 +45,15 @@ export default function TopicsScreen(props){
                 <View style={{ height: h, width: w, justifyContent: 'center', paddingBottom: 120,}}>
                     <ActivityIndicator size="large" color='#006AB3' />
                 </View> : 
-                <View style={{minHeight: h - 120, paddingBottom: 120}}>
+                <View style={{minHeight: h - 120, width: w, alignItems: 'center', paddingBottom: 120}}>
                     {Array.isArray(topics) ? 
                     topics.map(item => {
                         return(
-                            <TouchableOpacity onPress={() => props.navigation.navigate('Poll', {id: item.id, UUID: UUID})}>
+                            <TouchableOpacity  onPress={() => props.navigation.navigate('Poll',{
+                                id: item.id, 
+                                uuid: UUID,
+                                onBack: () => console.log('FSDF')
+                            })}>
                                 <View style={[styles.list, styles.shadow, {backgroundColor: theme.blockColor}]}>
                                     <Text style={[styles.listText, {color: theme.labelColor}]}>{item.name.length > 30 ? item.name.slice(0,30) + '...' : item.name}</Text>
                                 </View>

@@ -33,6 +33,12 @@ function App(){
     }
   })
 
+  AsyncStorage.getItem('@mode')
+    .then(res => {
+      if (res === null)
+        AsyncStorage.setItem('@mode', '0')
+    })
+
   // Если шрифты загружены и UUID существует, запускаем приложение
   return (
     <AppearanceProvider>

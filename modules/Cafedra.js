@@ -12,7 +12,7 @@ const Cafedra = (props) => {
     return(
         <TouchableWithoutFeedback onPress={() => setShow(!show)}>
             <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>  
-                <View style={{ flex: 1, minHeight: 50, justifyContent: 'center'}}>
+                <View style={{ minHeight: 50, justifyContent: 'center'}}>
                     <Text style={styles.view}>{props.name}</Text>
                 </View>
                 {show ? 
@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
 
     shadow2: elevationShadowStyle(5),
     box: {
-        flex: 1,
         borderRadius: 15,
         backgroundColor: 'white',
         width: w * 0.9, 
