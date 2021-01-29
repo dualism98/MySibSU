@@ -13,16 +13,15 @@ export default function ActiveScreen(props){
     const [loaded, setLoaded] = useState(false)
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
-
     useEffect(() => {
-        fetch('http://193.187.174.224/v2/campus/unions/', {method: 'GET'})
+        fetch('http://mysibsau.ru/v2/campus/unions/?language=' + String(localeMode), {method: 'GET'})
             .then(response => response.json())
             .then(json => {
                 setUnions(json)
                 setLoaded(true)
             })
             .catch(err => console.log(err))
-    }, [unions])
+    }, [loaded])
 
     return(
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>

@@ -5,18 +5,27 @@ import Subject from './Subject'
 import {useLocale} from '../../locale/LocaleManager'
 
 const weekday = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-const month = {"ru": ['янв.', 'фев.', 'мар.', 'апр.', 'мая', 'июня', 'июля', 'авг.', 'сен.', 'окт.', 'нояб.', 'дек.'],
-                "en": ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'Jule', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']}
+
+function get(date){
+    var dd = date.getDate()
+    if (dd < 10) dd = '0' + dd;
+
+    var mm = date.getMonth() + 1;
+    if (mm < 10) mm = '0' + mm;
+
+    return dd + '.' + mm
+}
+
+
 const Day = ({day, date, week, currentWeek, weekDay}) => {
     const {localeMode, locale, toggleLang} = useLocale()
-
-    date = date.getDate() + ' ' + month[localeMode][date.getMonth()]
+    date = get(date)
     return(
         <View style={styles.container}>
             <View style={styles.dayname}>
                 <View style={{flexDirection: 'row'}}>
                     <Text style={styles.title}>{locale[weekday[Number(day.day)]]}</Text>
-                    {week === currentWeek && weekDay ===  weekday[Number(day.day)] ?
+                    {week === currentWeek && weekDay ===  locale[weekday[Number(day.day)]] ?
                             <View style={{ minHeight: h * 0.05, justifyContent: 'center', marginTop: h * 0.013, maxHeight: h * 0.05, borderRadius: 14, backgroundColor: '#FF7575', opacity: 0.9, paddingLeft: 8, paddingRight: 8, shadowOffset: {
                                 width: 0,
                                 height: 3,

@@ -7,9 +7,9 @@ const ServiceElement = ({name, image, onPress}) => {
     const {mode, theme, toggle} = useTheme()
     return(
         <TouchableOpacity  onPress={onPress}>
-            <View style={[styles.box2, styles.shadow2, {backgroundColor: theme.blockColor}]}>
+            <View style={[styles.box, styles.shadow, {backgroundColor: theme.blockColor}]}>
                 {image}
-                <Text style={{fontFamily: 'roboto', fontSize: 18, marginLeft: 20, color: theme.headerTitle}}>{name}</Text>
+                <Text style={{height: w * 0.15, width: w * 0.2, paddingTop: 10, fontFamily: 'roboto', alignSelf: 'center', position: 'absolute', top: 0, textAlignVertical: 'center', textAlign: 'center', fontSize: 15, color: theme.headerTitle}}>{name}</Text>
             </View>
         </TouchableOpacity>
     )
@@ -26,30 +26,16 @@ function elevationShadowStyle(elevation) {
   }
 
 const styles = StyleSheet.create({
-    shadow1: elevationShadowStyle(6),
-    box1: {
+    shadow: elevationShadowStyle(6),
+    box: {
       borderRadius: 15,
-      alignItems: 'center',
       backgroundColor: 'white',
-      width: w * 0.29,
-      marginTop: 10,
-      marginLeft: 5,
-      marginRight: 5
-    },
-
-    shadow2: elevationShadowStyle(6),
-    box2: {
-      borderRadius: 15,
-      flexDirection: 'row',
-      alignSelf: 'center',
-      alignItems: 'center',
-      backgroundColor: 'white',
-      width: w * 0.8,
-      height: 55,
-      marginTop: 10,
-      marginLeft: 5,
-      marginRight: 5,
-      paddingLeft: 10,
+      justifyContent: 'flex-end',
+      width: w * 0.25,
+      height: w * 0.3,
+      marginTop: w * 0.25 / 4,
+      overflow: 'hidden',
+      marginLeft: w * 0.25 / 4,
     },
 })
 

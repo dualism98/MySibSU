@@ -15,7 +15,7 @@ messaging()
   .subscribeToTopic('allUsers_android')
   .then(() => console.log('Subscribed to topic!'));
 
-AppRegistry.registerComponent('app', () => App);
+AppRegistry.registerComponent('main', () => App);
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in the Expo client or in a native build,

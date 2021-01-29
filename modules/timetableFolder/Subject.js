@@ -2,15 +2,23 @@ import React, {useState} from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { h, w } from '../constants'
 import { useTheme } from '../../themes/ThemeManager'
+import { useLocale } from '../../locale/LocaleManager'
 
 
-const types = ['', ['Лекция', '#ef8531'], 
-                ['Лабораторная работа', 'rgb(190, 175, 85)'], 
-                ['Практика', 'rgb(49, 151, 39)']]
-const subgroups = ['', '[1 подгруппа]', '[2 подгруппа]']
+
+
 
 const Subject = (data) =>{
     const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
+
+    const types = ['', [locale['lecture'], '#ef8531'], 
+                [locale['laboratory_work'], 'rgb(190, 175, 85)'], 
+                [locale['practice'], 'rgb(49, 151, 39)']]
+    
+    const subgroups = ['', locale['first_subgroup'], locale['second_subgroup']]
+    
+    
     return(
         <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>
             {data.data !== 'Нет пар' ? 
@@ -34,7 +42,7 @@ const Subject = (data) =>{
                     )
                 })} 
             </View>: 
-            <Text style={[styles.time, {color: 'gray'}]}>Занятий нет</Text>}
+            <Text style={[styles.time, {color: 'gray'}]}>{locale['no_classes']}</Text>}
         </View>
     )
 }

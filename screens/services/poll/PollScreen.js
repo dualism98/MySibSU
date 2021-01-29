@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { View, Text, ScrollView, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, ToastAndroid, ActivityIndicator, TouchableOpacity, AsyncStorage } from 'react-native'
 import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
 
@@ -20,14 +20,14 @@ export default function PollScreen(props){
     const [answers, setAnswers] = useState([])
 
     useEffect(() => {
-        fetch('http://193.187.174.224/v2/surveys/' + props.route.params.id + '/?uuid=' + props.route.params.UUID, {method: 'GET'})
+        fetch('http://193.187.174.224/v2/surveys/' + props.route.params.id + '/?uuid=' + props.route.params.uuid, {method: 'GET'})
             .then(response => response.json())
             .then(json => {
                 setPoll(json)
                 setLoaded(true)
             })
             .catch(err => console.log(err))
-    }, [props.route.params.UUID])
+    }, [props.route.params.uuid])
 
     function setResponses(id, data, type){
         let array = []
@@ -42,7 +42,7 @@ export default function PollScreen(props){
             }
         })
 
-        if (there_is){
+        if (there_is && data.length !== 0){
             if (type === 2){
                 array[index] = {"id": id, "text": data}
             }
@@ -50,7 +50,7 @@ export default function PollScreen(props){
                 array[index] = {"id": id, "answers": data}
             }
         }
-        else{
+        else if(data.length !== 0){
             if (type === 2){
                 array.push({"id": id, "text": data})
             }
@@ -60,6 +60,28 @@ export default function PollScreen(props){
         }
 
         setAnswers(array)
+    }
+
+    function sendAnswers(){
+        fetch('http://mysibsau.ru/v2/surveys/' + String(props.route.params.id) + '/set_answer', {
+            method: 'POST',
+            body: JSON.stringify({
+                "uuid": String(props.route.params.uuid),
+                "questions": answers
+            })
+        })
+        .then(response => {
+            console.log(response['status'])
+            if(response['status'] === 405)
+            ToastAndroid.showWithGravity(
+                "Заполните все необходимые ответы",
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER
+              );
+            else if(response['status'] === 200)
+                props.navigation.goBack()
+                })
+        .catch(err => console.log(err))
     }
 
     function renderItem(id, type, options){
@@ -83,17 +105,19 @@ export default function PollScreen(props){
                 <View style={{ minHeight: h, paddingBottom: 120}}>
                     <Text style={[styles.name]}>{poll.name}</Text>
                     {poll.questions.map(item => {
+                    
                         return(
                         <View style={[styles.question, styles.shadow, {backgroundColor: theme.blockColor}]}>
                             <View style={{ flexDirection: 'row'}}>
-                                <Text style={{color: theme.labelColor, fontSize: 15, fontFamily: 'roboto'}}>{item.name}{!item.necessarily ? '\t(необязательно)' : null}</Text>
+                                <Text style={{color: theme.labelColor, fontSize: 15, fontFamily: 'roboto'}}>{item.name}</Text>
+                                {item.necessarily ? <Text style={{ position: 'absolute', right: 10, top: 0, color: 'red'}}>*</Text> : null}
                             </View>
                             {renderItem(item.id, item.type, item.responses)}
 
                         </View>
                         )
                     })}
-                    <TouchableOpacity onPress={() => console.log(answers)}>
+                    <TouchableOpacity onPress={() => sendAnswers()}>
                         <View style={[styles.shadow, {alignSelf: 'center', width: w / 4, height: w / 8, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: theme.blockColor, marginTop: 20}]}>
                             <Text style={{color: theme.labelColor}}>Отправить</Text>
                         </View>

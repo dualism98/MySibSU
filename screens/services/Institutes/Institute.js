@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Image, Linking , TouchableWithoutFeedback} from 'react-native'
+import { View, Text, StyleSheet, Image, Linking , TouchableWithoutFeedback, StatusBar} from 'react-native'
 import call from 'react-native-phone-call'
 import { h, w } from '../../../modules/constants'
 import Header from '../../../modules/Header'
@@ -12,7 +12,7 @@ import { useTheme } from '../../../themes/ThemeManager'
 import { useLocale } from '../../../locale/LocaleManager'
 
 
-const url = 'http://193.187.174.224'
+const url = 'http://mysibsau.ru'
 
 const Information = ({ number, data }) => {
     const {mode, theme, toggle} = useTheme()
@@ -114,37 +114,32 @@ const Information = ({ number, data }) => {
     }
 }
 
-
 export default function Institute(props){
 
-    const [page, setPage] = useState(0)
+    
     const {mode, theme, toggle} = useTheme()
 
-    const data = props.route.params.data
     return(
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
-            <Header title={data.short_name} onPress={() => props.navigation.goBack()}/>
-            <Swiper style={styles.wrapper} onIndexChanged={index => setPage(index)}>
+            <Header title={props.route.params.data.short_name} onPress={() => props.navigation.goBack()}/>
+            <View style={{height: h - w/8 - 35 - StatusBar.currentHeight}}>
+            <Swiper style={styles.wrapper} showsHorizontalScrollIndicator={true}>
                 <View>
                     <ScrollView>  
-                        <Information number={1} data={data.director} />
+                        <Information number={1} data={props.route.params.data.director} />
                     </ScrollView>
                 </View>
                 <View>
                     <ScrollView>
-                        <Information number={2} data={data.departments} />
+                        <Information number={2} data={props.route.params.data.departments} />
                     </ScrollView>
                 </View>
                 <View>
                     <ScrollView>
-                        <Information number={3} data={data.soviet} />
+                        <Information number={3} data={props.route.params.data.soviet} />
                     </ScrollView>
                 </View>
             </Swiper>
-            <View style={{ position: 'absolute', flexDirection: 'row', bottom: 60, alignSelf: 'center'}}>
-                {[0,1,2].map(item =>{
-                    return(<View style={{backgroundColor: page === item ? 'rgba(0, 122, 255, .5)' : 'rgba(0,0,0,.2)', width: 8, height: 8,borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />)
-                })}
             </View>
         </View>
     )
@@ -280,7 +275,4 @@ const styles = StyleSheet.create({
     centerContent: {
         alignItems: 'center'
     },
-
-    wrapper: {
-    }
 })
