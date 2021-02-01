@@ -4,6 +4,7 @@ import Header from '../../../modules/Header'
 import { h, w } from '../../../modules/constants'
 import {useTheme} from '../../../themes/ThemeManager'
 import {useLocale} from '../../../locale/LocaleManager'
+// import {API_URL} from '@env'
 
 
 export default function TopicsScreen(props){
@@ -15,6 +16,7 @@ export default function TopicsScreen(props){
 
 
     React.useEffect(() => {
+        console.log(process.env.NODE_ENV)
         const unsubscribe = props.navigation.addListener('focus', () => {
             let uuid = ''
             AsyncStorage.getItem('UUID')
@@ -22,7 +24,7 @@ export default function TopicsScreen(props){
                 setUUID(res)
                 uuid = res})
             .then(() => {
-                fetch('http://193.187.174.224/v2/surveys/all/?uuid=' + uuid, {
+                fetch('https://mysibsau.ru/v2/surveys/all/?uuid=' + uuid, {
                     method: 'GET',
                 })
                     .then(response => response.json())

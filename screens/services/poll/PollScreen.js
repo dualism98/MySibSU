@@ -20,7 +20,7 @@ export default function PollScreen(props){
     const [answers, setAnswers] = useState([])
 
     useEffect(() => {
-        fetch('http://193.187.174.224/v2/surveys/' + props.route.params.id + '/?uuid=' + props.route.params.uuid, {method: 'GET'})
+        fetch('https://mysibsau.ru/v2/surveys/' + props.route.params.id + '/?uuid=' + props.route.params.uuid, {method: 'GET'})
             .then(response => response.json())
             .then(json => {
                 setPoll(json)
@@ -63,7 +63,7 @@ export default function PollScreen(props){
     }
 
     function sendAnswers(){
-        fetch('http://mysibsau.ru/v2/surveys/' + String(props.route.params.id) + '/set_answer', {
+        fetch('https://mysibsau.ru/v2/surveys/' + String(props.route.params.id) + '/set_answer', {
             method: 'POST',
             body: JSON.stringify({
                 "uuid": String(props.route.params.uuid),

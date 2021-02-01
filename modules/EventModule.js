@@ -6,7 +6,7 @@ import {useTheme} from '../themes/ThemeManager'
 import {useLocale} from '../locale/LocaleManager'
 import Hyperlink from 'react-native-hyperlink'
 
-const url = 'http://mysibsau.ru'
+const url = 'https://mysibsau.ru'
 
 const EventModule = ({data}) => {
     const [mode, setMode] = useState(false)

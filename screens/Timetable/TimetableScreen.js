@@ -16,11 +16,11 @@ const URLs = ['group', 'teacher', 'place']
 export default function TimetableScreen(props){
     const [group, setGroup] = useState(null)
     const [weekDay, setWeekDay] = useState('')
-    const [currentWeek, setCurrentWeek] = useState(getIndex())
+    const [currentWeek, setCurrentWeek] = useState(global.week)
     const [textGroup, setTextGroup] = useState('')
     const [timetable, setTimetable] = useState({even_week: [], odd_week: []})
     const [loaded, setLoaded] = useState(false)
-    const [index, setIndex] = useState(getIndex())
+    const [index, setIndex] = useState(global.week)
     const [first_dates, setFirstDates] = useState([])
     const [second_dates, setSecondDates] = useState([])
     const [timetableMode, setMode] = useState(0)
@@ -109,7 +109,7 @@ export default function TimetableScreen(props){
 
     function getIndex(){
         if (((new Date() - new Date(2020, 9, 12, 0, 0, 0, 0))/1000/60/60/24)%14 <= 7)
-            return 2
+            return 1
         else
             return 2
     }

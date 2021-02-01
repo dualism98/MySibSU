@@ -9,7 +9,7 @@ const LangElem = ({name, current, first, onPress}) => {
         <TouchableOpacity onPress={onPress}>
             <View style={[{ width: w * 0.8, height: 35 }, !first ? {borderTopWidth: 1, borderColor: 'lightgray'} : null]}>
                 <Text style={styles.small_text}>{name}</Text>
-                {current ? <AntDesign name="check" size={20} color="#5575A7" style={styles.check}/> : null}
+                {current ? <AntDesign name="check" size={20} color="#006AB3" style={styles.check}/> : null}
             </View>
         </TouchableOpacity>
     )
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         height: 35,
         fontFamily: 'roboto',
         fontSize: 18,
-        color: '#0060B3',
+        color: '#006AB3',
         textAlignVertical: 'center'
     },
 

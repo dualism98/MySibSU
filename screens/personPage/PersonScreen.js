@@ -13,7 +13,7 @@ export default function PersonScreen(props){
     return(
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
             <View style={[styles.box, styles.shadow, {backgroundColor: theme.blockColor}]}>
-                <Image source={require('../../assets/logo.png')} style={{ width: 25, height: 25, marginBottom: 3, marginRight: 10, marginLeft: 10}} />
+                <Image source={require('../../assets/header_logo.png')} style={{ width: 25, height: 25, marginBottom: 3, marginRight: 10, marginLeft: 10}} />
                 <Text style={[styles.maintext, {color: theme.headerTitle}]}>{locale['personal_account']}</Text>
                 <TouchableOpacity onPress={() => {
                     const modes = {"Default": 0, "Light": 1, "Dark": 2, null: 0}

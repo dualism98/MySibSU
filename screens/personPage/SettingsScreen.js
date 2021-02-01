@@ -71,7 +71,7 @@ export default function SettingsScreen(props){
                         options={themes}
                         initial={scheme}
                         borderRadius={15}
-                        buttonColor={'#0060B3'}
+                        buttonColor={'#006AB3'}
                         textStyle={{fontFamily: 'roboto', color: theme.headerTitle}}
                         selectedTextStyle={{fontFamily: 'roboto'}}
                         backgroundColor={theme.blockColor}
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     large_text: {
         fontFamily: 'roboto',
         fontSize: 20,
-        color: '#0060B3', 
+        color: '#006AB3', 
         marginLeft: w * 0.05,
         marginTop: 20,
         marginBottom: 5
@@ -119,6 +119,6 @@ const styles = StyleSheet.create({
         height: 30,
         fontFamily: 'roboto',
         fontSize: 18,
-        color: '#0060B3',
+        color: '#006AB3',
     }
 })

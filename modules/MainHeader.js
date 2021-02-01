@@ -9,7 +9,7 @@ const MainHeader = ({title, onPress}) => {
     const {localeMode, locale, toggleLang} = useLocale()
     return(
         <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>
-            <Image source={require('../assets/logo.png')} style={{ width: 25, height: 25, marginBottom: 3, marginRight: 10, marginLeft: 10}} />
+            <Image source={require('../assets/header_logo.png')} style={{ width: 25, height: 25, marginBottom: 3, marginRight: 10, marginLeft: 10}} />
             <Text style={[styles.maintext, {color: theme.headerTitle}]}>{title}</Text>
         </View>
     )

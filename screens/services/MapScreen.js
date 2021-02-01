@@ -12,7 +12,7 @@ export default function MapScreen(props){
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
-        fetch('http://193.187.174.224/v2/campus/buildings/', {method: 'GET'})
+        fetch('https://mysibsau.ru/v2/campus/buildings/', {method: 'GET'})
             .then(response => response.json())
             .then(json => {
                 setBuildings(json)

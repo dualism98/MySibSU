@@ -16,7 +16,7 @@ export default function InstitutesScreen(props){
     const {localeMode, locale, toggleLang} = useLocale()
 
     useEffect(() => {
-        fetch('http://mysibsau.ru/v2/campus/institutes/?language=' + String(localeMode), {method: 'GET'})
+        fetch('https://mysibsau.ru/v2/campus/institutes/?language=' + String(localeMode), {method: 'GET'})
             .then(response => response.json())
             .then(json => {
                 setInstitutes(json)

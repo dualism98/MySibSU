@@ -10,7 +10,7 @@ const ListElement = ({onPress, title, source}) => {
         <TouchableOpacity onPress={onPress}>
             <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor, flexDirection: 'row', justifyContent: 'space-between'}]}>
                 <View style={{ height: 50, width: 50, borderRadius: 25, marginLeft: 5}}>
-                    <Image style={{ height: 50, width: 50, borderRadius: 25,resizeMode: 'cover', borderWidth: 1, borderColor: 'gray'}} source={{ uri:'http://193.187.174.224' + source }}/>
+                    <Image style={{ height: 50, width: 50, borderRadius: 25,resizeMode: 'cover', borderWidth: 1, borderColor: 'gray'}} source={{ uri:'https://mysibsau.ru' + source }}/>
                 </View>
                 <Text style={styles.text} >{title}</Text>
             </View>

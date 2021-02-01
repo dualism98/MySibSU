@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
         marginTop: 4,
         fontSize: 15,
         color: '#5575A7',
-        fontFamily: 'roboto'
+        fontFamily: 'roboto',
+        fontWeight: 'bold'
     },
 
     type: {

@@ -4,7 +4,7 @@ import { h, w } from '../modules/constants'
 import EventModule from '../modules/EventModule'
 import {useTheme} from '../themes/ThemeManager'
 
-const url = 'http://193.187.174.224/v2/informing/all_events/?uuid='
+const url = 'https://mysibsau.ru/v2/informing/all_events/?uuid='
 
 export default function EventsScreen(props){
     const [eventList, setEventList] = useState([])
@@ -51,6 +51,7 @@ export default function EventsScreen(props){
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
+        minHeight: h,
         width: w,
     },
 

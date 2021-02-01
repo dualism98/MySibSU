@@ -9,7 +9,7 @@ import {useTheme} from '../../../themes/ThemeManager'
 import {useLocale} from '../../../locale/LocaleManager'
 
 
-const url = 'http://mysibsau.ru'
+const url = 'https://mysibsau.ru'
 
 export default function Ermak(props){
 
@@ -27,7 +27,7 @@ export default function Ermak(props){
     console.log(theme)
 
     async function sendMessage(link){
-        const uri = 'http://mysibsau.ru/v2/campus/unions/join/' + props.route.params.data.id + '/'
+        const uri = 'https://mysibsau.ru/v2/campus/unions/join/' + props.route.params.data.id + '/'
         let vk_page = vk.split('/')
         vk_page = vk_page[vk_page.length - 1]
 

@@ -9,6 +9,14 @@ import { LocaleManager } from './locale/LocaleManager'
 
 function App(){
 
+  const [week, setWeek] = useState(0)
+
+  useEffect(() => {
+    console.log('Определяем номер недели')
+    fetch("https://mysibsau.ru/CurrentWeek/", {method: "GET"})
+      .then(response => response.json())
+      .then(json => global.week = json.week)
+  }, [])
 
   // Устанавливаем кастомный шрифт, который лежит в ./assets/fonts/
   let [fontsLoaded] = useFonts({
@@ -38,6 +46,10 @@ function App(){
       if (res === null)
         AsyncStorage.setItem('@mode', '0')
     })
+
+  
+  
+  console.log("GLOBAL: ", global.week)
 
   // Если шрифты загружены и UUID существует, запускаем приложение
   return (

@@ -14,7 +14,7 @@ export default function ActiveScreen(props){
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
     useEffect(() => {
-        fetch('http://mysibsau.ru/v2/campus/unions/?language=' + String(localeMode), {method: 'GET'})
+        fetch('https://mysibsau.ru/v2/campus/unions/?language=' + String(localeMode), {method: 'GET'})
             .then(response => response.json())
             .then(json => {
                 setUnions(json)

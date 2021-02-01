@@ -104,19 +104,14 @@ const TimetableStack = createStackNavigator();
 
 function TimetableStackScreen(){
   const [screen, setScreen] = useState('')
-  const [mode, setMode] = useState({})
-  
 
   const Layout = (initialName) => {
     if(initialName === '')
       return(<View></View>)
     else
-      if(initialName === 'TimetableScreen'){
-        fetch()
-      }
       return(
         <TimetableStack.Navigator initialRouteName={initialName} headerMode='none'>
-          <TimetableStack.Screen name='SearchScreen' options={({route}) => ({mode: mode})} component={SearchScreen} />
+          <TimetableStack.Screen name='SearchScreen' component={SearchScreen} />
           <TimetableStack.Screen name='TimetableScreen' component={TimetableScreen} />
         </TimetableStack.Navigator>
       )
@@ -130,15 +125,6 @@ function TimetableStackScreen(){
         setScreen('TimetableScreen')
       else
         setScreen('SearchScreen')
-    })
-    .then(() => {
-      AsyncStorage.getItem('@mode')
-        .then(res => {
-          if (res !== null)
-            setMode(res)
-          else
-            setMode(0)
-        })
     })
   }, [])
 

@@ -5,7 +5,7 @@ import { h, w } from './constants'
 import {useTheme} from '../themes/ThemeManager'
 import {useLocale} from '../locale/LocaleManager'
 
-const url = 'http://mysibsau.ru'
+const url = 'https://mysibsau.ru'
 
 const NewsModule = ({data}) => {
     const [mode, setMode] = useState(false)

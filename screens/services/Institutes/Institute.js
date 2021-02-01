@@ -12,7 +12,7 @@ import { useTheme } from '../../../themes/ThemeManager'
 import { useLocale } from '../../../locale/LocaleManager'
 
 
-const url = 'http://mysibsau.ru'
+const url = 'https://mysibsau.ru'
 
 const Information = ({ number, data }) => {
     const {mode, theme, toggle} = useTheme()

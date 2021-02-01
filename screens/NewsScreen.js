@@ -5,14 +5,13 @@ import NewsModule from '../modules/NewsModule'
 import {useLocale} from '../locale/LocaleManager'
 import {useTheme} from '../themes/ThemeManager'
 
-const url = 'http://193.187.174.224/v2/informing/all_news/?uuid='
+const url = 'https://mysibsau.ru/v2/informing/all_news/?uuid='
 
 export default function NewsScreen(props){
     const [newsList, setNewsList] = useState([])
     const [loaded, setLoaded] = useState(false)
 
     const {mode, theme, toggle} = useTheme()
-    const {localeMode, locale, toggleLang} = useLocale()
 
     useEffect(() => {
         AsyncStorage.getItem('UUID')
@@ -54,6 +53,7 @@ export default function NewsScreen(props){
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
+        minHeight: h,
         width: w,
     },
 
