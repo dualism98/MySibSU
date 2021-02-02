@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { View, Text, ActivityIndicator, ScrollView, AsyncStorage, StyleSheet, StatusBar, Image, FlatList } from 'react-native'
+import { View, Text, ActivityIndicator, ScrollView, AsyncStorage, StyleSheet, RefreshControl, FlatList } from 'react-native'
 import { h, w } from '../modules/constants'
 import NewsModule from '../modules/NewsModule'
 import {useLocale} from '../locale/LocaleManager'
@@ -9,11 +9,12 @@ const url = 'https://mysibsau.ru/v2/informing/all_news/?uuid='
 
 export default function NewsScreen(props){
     const [newsList, setNewsList] = useState([])
-    const [loaded, setLoaded] = useState(false)
+    const [refreshing, setRefreshing] = useState(true)
 
     const {mode, theme, toggle} = useTheme()
 
     useEffect(() => {
+        console.log("Получение новостей")
         AsyncStorage.getItem('UUID')
             .then(res => 
                 {
@@ -21,54 +22,24 @@ export default function NewsScreen(props){
                         .then(response => response.json())
                         .then(json => {
                             setNewsList(json)
-                            setLoaded(true)
+                            setRefreshing(false)
                         })
                         .catch(err => console.log(err))
                 })
-        
-    }, [loaded])
+    }, [refreshing])
 
-    const renderNews = ({ item }) => (
-        <NewsModule data={item} />
-    )
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+      }, [refreshing]);
 
     return(
-        <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
-            <View style={{ paddingBottom: 10}}>
-                {    !loaded ? 
-                        <View style={{ height: h - 140, width: w, alignSelf: 'center', justifyContent: 'center', backgroundColor: 'transparent'}}>
-                            <ActivityIndicator color='#006AB3' size={'large'}/>
-                        </View> : 
-                        <FlatList 
-                            data={newsList}
-                            renderItem={renderNews}
-                            keyExtractor={item => item.text}
-                            initialNumToRender={4}/>
-                }
-            </View>
+        <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
+            <FlatList 
+                refreshControl={<RefreshControl colors={['#006AB3', '#7DC71C']} refreshing={refreshing} onRefresh={onRefresh} />}
+                data={newsList}
+                renderItem={({ item }) => <NewsModule data={item} />}
+                keyExtractor={item => item.text}
+                initialNumToRender={4}/>
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        minHeight: h,
-        width: w,
-    },
-
-    text: {
-        marginTop: 30,
-        fontSize: 20,
-        fontFamily: 'roboto',
-        color: '#006AB3'
-    },
-
-    header: {
-        height: w / 8,
-        width: w,
-        elevation: 6
-    },
-
-    wrapper: {}
-})
