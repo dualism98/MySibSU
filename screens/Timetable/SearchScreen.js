@@ -97,6 +97,7 @@ export default function SearchScreen(props){
     function similarGroup(text){
         setGroup(text)
         if(text !== '' && text.length > 1){
+            console.log(shown)
             timetableMode === 0 ? 
             setShown(fil(e => e.name.slice(0, text.length) === text.toUpperCase(), lists[timetableMode])) :
             setShown(fil(e => e.name.slice(0, text.length) === text, lists[timetableMode]))
@@ -199,12 +200,12 @@ export default function SearchScreen(props){
                     </View>
                 </TouchableHighlight>
             </View>
-            <View style={[{ position: 'absolute', top: 115, alignSelf: 'center', elevation: 6, height: 30 + shown.length * 30, maxHeight: h / 2, flexDirection: 'column', borderRadius: 15, paddingTop: 15, paddingBottom: 15, backgroundColor: theme.blockColor, zIndex: 3}, styles.shadow]}>
+            <View style={[{ position: 'absolute', top: 120, height: 30 + 7 * 30, maxHeight: h / 2, marginTop: 10, flexDirection: 'column', borderRadius: 15, paddingTop: 15, paddingBottom: 15, backgroundColor: 'white', zIndex: 3, elevation: 6}]}>
                 <FlatList 
                     data={shown}
                     renderItem={renderHelp}
                     initialNumToRender={15}
-                    keyExtractor={item => item}
+                    keyExtractor={item => item.name}
                 />
             </View>
             {lastGroups.length !== 0 ?

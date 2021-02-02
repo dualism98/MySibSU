@@ -53,6 +53,7 @@ function FeedTabs() {
         marginLeft: Dimensions.get('window').width / 4
       },
       activeTintColor: theme.labelColor,
+      allowFontScaling: false,
     }}>
       <Tab.Screen  options={{ title: locale['events'] }} name="Events" component={EventsScreen} />
       <Tab.Screen options={{ title: locale['news'] }} name="News" component={NewsScreen} />

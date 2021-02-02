@@ -1,5 +1,5 @@
 import React, { useState, useEffect, setState } from 'react'
-import {AsyncStorage, StatusBar} from 'react-native'
+import {AsyncStorage, StatusBar, Text} from 'react-native'
 import HomeScreen from './screens/HomeScreen'
 import AppLoading from 'expo-app-loading'
 import { useFonts } from '@use-expo/font'
@@ -17,6 +17,9 @@ function App(){
       .then(response => response.json())
       .then(json => global.week = json.week)
   }, [])
+
+  Text.defaultProps = Text.defaultProps || {};
+  Text.defaultProps.allowFontScaling = false; 
 
   // Устанавливаем кастомный шрифт, который лежит в ./assets/fonts/
   let [fontsLoaded] = useFonts({
