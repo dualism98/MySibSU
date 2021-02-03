@@ -31,11 +31,11 @@ const styles = StyleSheet.create({
       borderRadius: 15,
       backgroundColor: 'white',
       justifyContent: 'flex-end',
-      width: w * 0.25,
+      width: w * 0.28,
       height: w * 0.3,
-      marginTop: w * 0.25 / 4,
+      marginTop: w * 0.16 / 4,
       overflow: 'hidden',
-      marginLeft: w * 0.25 / 4,
+      marginLeft: w * 0.16 / 4,
     },
 })
 

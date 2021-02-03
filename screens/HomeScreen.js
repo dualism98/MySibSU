@@ -14,6 +14,7 @@ import IITK from './services/Institutes/Institute'
 import Ermak from './services/Unions/Union'
 import ShopScreen from './services/shop/ShopScreen'
 import ProductScreen from './services/shop/ProductScreen'
+import FAQScreen from './services/FAQScreen'
 import TopicsScreen from './services/poll/TopicsScreen'
 import SearchScreen from './Timetable/SearchScreen'
 import TimetableScreen from './Timetable/TimetableScreen'
@@ -160,6 +161,7 @@ function ServiceStackScreen(){
       <ServiceStack.Screen name='Product' component={ProductScreen} />
       <ServiceStack.Screen name='Topics' component={TopicsScreen} />
       <ServiceStack.Screen name='Poll' component={PollScreen} />
+      <ServiceStack.Screen name='FAQ' component={FAQScreen} />
     </ServiceStack.Navigator>
   )
 }
