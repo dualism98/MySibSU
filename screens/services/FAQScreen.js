@@ -29,25 +29,32 @@ export default function FAQScreen(props){
 
 
     return(
-        <View style={{ height: '100%', backgroundColor: theme.primaryBackground}}>
+        <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
             <Header title={'FAQ'} onPress={() => props.navigation.goBack()}/>
             <Modal animationType="slide" transparent={true} visible={visible}>
-                <View style={{borderRadius: 30, backgroundColor: theme.blockColor, borderWidth: 1, borderColor: '#0060B3', borderRadius: 15, elevation: 5, marginTop: 100, padding: 10, width: w * 0.9, alignSelf: 'center', justifyContent: 'center', marginBottom: 20,}}>
-                    <View style={{width: w * 0.8, height: 45}}>
+                <View style={[styles.modal, {backgroundColor: theme.blockColor}]}>
+                    <View style={styles.cancel}>
                         <TouchableOpacity onPress={() => setVisible(false)}>
                             <Text style={{color: '#006AB3', fontSize: 50, marginLeft: 6}}>˟</Text>
                         </TouchableOpacity>
                     </View>
 
-                    <TextInput placeholderTextColor={'gray'} onChangeText={text => setOwnQuestion(text)} placeholder={locale['input_question']} multiline numberOfLines={5} style={{textAlignVertical: 'top', color: theme.labelColor, borderWidth: 1, borderColor: '#0060B3', borderRadius: 15, padding: 10}} scrollEnabled={true}/>
+                    <TextInput 
+                        placeholderTextColor={'gray'} 
+                        onChangeText={text => setOwnQuestion(text)} 
+                        placeholder={locale['input_question']} 
+                        multiline 
+                        numberOfLines={5} 
+                        style={[styles.input, {color: theme.labelColor}]} 
+                        scrollEnabled={true}/>
                     <TouchableOpacity onPress={() => {
                         fetch('https://mysibsau.ru/v2/support/ask/', {
                             method: 'POST',
                             body: JSON.stringify({question: ownQuestion})})
                         setVisible(false)
                     }}>
-                        <View style={{ width: w * 0.4, alignItems: 'center', borderWidth: 1, borderColor: '#006AB3', borderRadius: 15, padding: 10, margin: 10, alignSelf: 'center'}}>
-                            <Text style={{fontFamily: 'roboto', color: '#006AB3', fontSize: 15}}>{locale['send']}</Text>
+                        <View style={styles.send_button}>
+                            <Text style={styles.send_text}>{locale['send']}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -60,7 +67,7 @@ export default function FAQScreen(props){
                     })}
                     </View>
                     <TouchableOpacity onPress={() => setVisible(true)}>
-                        <View style={{width: w * 0.6, padding: 10, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 4, alignSelf: 'center', marginBottom: 140, alignItems: 'center'}}>
+                        <View style={[styles.ask, {backgroundColor: theme.blockColor}]}>
                             <Text style={{fontFamily: 'roboto', fontSize: 18, color: '#0060B3'}}>{locale['ask']}</Text>
                         </View>
                     </TouchableOpacity>
@@ -72,3 +79,64 @@ export default function FAQScreen(props){
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        height: '100%', 
+    },
+
+    modal: {
+        borderRadius: 30, 
+        borderWidth: 1, 
+        borderColor: '#0060B3', 
+        borderRadius: 15, 
+        elevation: 5, 
+        marginTop: 100, 
+        padding: 10, 
+        width: w * 0.9, 
+        alignSelf: 'center', 
+        justifyContent: 'center', 
+        marginBottom: 20,
+    },
+
+    cancel: {
+        width: w * 0.8, 
+        height: 45
+    },
+
+    input: {
+        textAlignVertical: 'top', 
+        borderWidth: 1, 
+        borderColor: '#0060B3', 
+        borderRadius: 15, 
+        padding: 10
+    },
+
+    send_button: {
+        width: w * 0.4, 
+        alignItems: 'center', 
+        borderWidth: 1, 
+        borderColor: '#006AB3', 
+        borderRadius: 15, 
+        padding: 10, 
+        margin: 10, 
+        alignSelf: 'center'
+    },
+
+    send_text: {
+        fontFamily: 'roboto', 
+        color: '#006AB3', 
+        fontSize: 15
+    },
+
+    ask: {
+        width: w * 0.6, 
+        padding: 10, 
+        borderRadius: 15, 
+        elevation: 4, 
+        alignSelf: 'center', 
+        marginBottom: 140, 
+        alignItems: 'center'
+    }
+
+})

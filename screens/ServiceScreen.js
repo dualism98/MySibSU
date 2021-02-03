@@ -16,7 +16,7 @@ const services = (locale) => {return [{name: locale['buildings'], path: 'Map', i
                     {name: locale['institutes'], path: 'Institutes', image: <FontAwesome5 name="university" style={{alignSelf: 'flex-end', marginBottom: -5, marginRight: -5, opacity: 0.6}} size={60} color="gray" />}, 
                     {name: locale['online_catalog'], path: 'Shop', image: <AntDesign name="shoppingcart" style={{alignSelf: 'flex-end', marginBottom: -5, marginRight: -5, opacity: 0.6}} size={60} color="#ef8531" />},
                     {name: locale['feedback'], path: 'Topics', image: <MaterialIcons name="poll" style={{alignSelf: 'flex-end', marginBottom: -8, marginRight: -7, opacity: 0.6}} size={60} color="rgb(49, 151, 39)"/>},
-                    {name: "FAQ", path: 'FAQ', image: <MaterialIcons name="help-center" style={{alignSelf: 'flex-end', marginBottom: -7, marginRight: -7, opacity: 0.6}} size={60} color="#0060B3" />}] }
+                    {name: "FAQ", path: 'FAQ', image: <MaterialIcons name="help-center" style={{alignSelf: 'flex-end', marginBottom: -8, marginRight: -7, opacity: 0.6}} size={60} color="#0060B3" />}] }
 
 export default function EventsScreen(props){
     const {mode, theme, toggle} = useTheme()
