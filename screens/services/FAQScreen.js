@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import {View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, TextInput, ScrollView, Modal} from 'react-native'
+import {View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, TextInput, ScrollView, Modal, ToastAndroid} from 'react-native'
 import Header from '../../modules/Header'
 import {useTheme} from '../../themes/ThemeManager'
 import {useLocale} from '../../locale/LocaleManager'
@@ -48,9 +48,12 @@ export default function FAQScreen(props){
                         style={[styles.input, {color: theme.labelColor}]} 
                         scrollEnabled={true}/>
                     <TouchableOpacity onPress={() => {
+                        ownQuestion.length !== 0 ?
                         fetch('https://mysibsau.ru/v2/support/ask/', {
                             method: 'POST',
                             body: JSON.stringify({question: ownQuestion})})
+                        :
+                        ToastAndroid.show('Текстовое поле пусто', ToastAndroid.LONG)
                         setVisible(false)
                     }}>
                         <View style={styles.send_button}>
