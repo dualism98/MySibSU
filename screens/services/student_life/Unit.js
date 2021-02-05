@@ -52,15 +52,18 @@ export default function Ermak(props){
                 <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
                     <Image source={{uri: url + data.logo}}  style={{ width: w, height: w / 2, resizeMode: 'cover'}} blurRadius={Platform.OS === 'android' ? 0.5 : 1}/>
                 </View>
-
+                {data.photo ?
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
                     <Image source={{uri: url + data.photo}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
-                </View>
+                </View> : null}
 
-                <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{locale['description']}</Text>
-                <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10, backgroundColor: theme.blockColor}]}>
-                    <Text style={{fontFamily: 'roboto', fontSize: 13, color: '#5575A7', paddingLeft: 5}}>{data.about}</Text>
-                </View>
+                {data.about ?
+                <View>
+                    <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{locale['description']}</Text>
+                    <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10, backgroundColor: theme.blockColor}]}>
+                        <Text style={{fontFamily: 'roboto', fontSize: 13, color: '#5575A7', paddingLeft: 5}}>{data.about}</Text>
+                    </View>
+                </View> : null}
 
                 <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: 15, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank}</Text>
                 {data.fio !== '-' ? 
@@ -90,6 +93,7 @@ export default function Ermak(props){
                         </View>
                     </TouchableWithoutFeedback>
 
+                    {data.group_vk ? 
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(data.group_vk)}>
                         <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
@@ -99,7 +103,7 @@ export default function Ermak(props){
                                 <Text style={styles.buttonText}>{locale['group_vk']}</Text>
                             </View>
                         </View>
-                    </TouchableWithoutFeedback>
+                    </TouchableWithoutFeedback> : null}
 
                     {data.page_vk ?
                     <TouchableWithoutFeedback onPress={() => setVisible(!onVisible)}>

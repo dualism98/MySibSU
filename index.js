@@ -17,10 +17,7 @@ messaging()
 
 AppRegistry.registerComponent('main', () => App);
 
-    fetch("https://mysibsau.ru/CurrentWeek/", {method: "GET"})
-      .then(response => response.json())
-      .then(json => global.week = json.week)
-      .finally(() => registerRootComponent(App))
+registerRootComponent(App)
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in the Expo client or in a native build,

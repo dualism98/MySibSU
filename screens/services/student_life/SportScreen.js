@@ -8,13 +8,13 @@ import {useLocale} from '../../../locale/LocaleManager'
 import { useTheme } from '../../../themes/ThemeManager'
 
 
-export default function ActiveScreen(props){
+export default function SportScreen(props){
     const [unions, setUnions] = useState([])
     const [loaded, setLoaded] = useState(false)
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
     useEffect(() => {
-        fetch('https://mysibsau.ru/v2/campus/unions/?language=' + String(localeMode), {method: 'GET'})
+        fetch('https://mysibsau.ru/v2/campus/sport_clubs/?language=' + String(localeMode), {method: 'GET'})
             .then(response => response.json())
             .then(json => {
                 setUnions(json)
@@ -24,10 +24,9 @@ export default function ActiveScreen(props){
     }, [loaded])
 
     return(
-        <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
-            <Header title={locale['student_life']} onPress={() => props.navigation.goBack()}/>
+        <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
             <ScrollView>
-                <View style={styles.main}>
+                <View style={[styles.main, {}]}>
                     {loaded ? 
                     unions.map( item => {
                         return(<ActiveElement onPress={() => props.navigation.navigate('Ermak', {data: item})} title={item.name} source={item.logo} key={item[0]} />)
@@ -42,8 +41,7 @@ const styles = StyleSheet.create({
     main: {
         paddingBottom: 150, 
         width: w,
-        minHeight: h,
-        justifyContent: 'center'
+        flex: 1,
     },
 
     text: {

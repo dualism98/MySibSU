@@ -6,11 +6,31 @@ import { useFonts } from '@use-expo/font'
 import { AppearanceProvider } from 'react-native-appearance'
 import { ThemeManager } from './themes/ThemeManager'
 import { LocaleManager } from './locale/LocaleManager'
+import WeekManager from './week/WeekManager'
+
+// async function getWeek(){
+//   fetch("https://mysibsau.ru/CurrentWeek/", {method: "GET"})
+//     .then(response => JSON.parse(response))
+//     .then(json => {
+//       console.log("JSON: ", json.week)
+//       global.week = 2})
+//     .then(res => {
+//       console.log("RESPONSE: ", res)
+//       console.log("GLOBAL: ", global.week)
+
+      
+//       })
+
+//   return Promise.all(global.week)
+// }
 
 function App(){
 
   Text.defaultProps = Text.defaultProps || {};
   Text.defaultProps.allowFontScaling = false; 
+
+  // const [loaded, setLoaded] = useState(false)
+
 
   // Устанавливаем кастомный шрифт, который лежит в ./assets/fonts/
   let [fontsLoaded] = useFonts({
@@ -19,7 +39,14 @@ function App(){
 
   // Если шрифты еще не были установлены, продолжаем загружать приложение
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return <AppLoading 
+            // startAsync={getWeek}
+            // onFinish={() => setLoaded(true)}
+            // onError={() =>{
+            //   console.log('error')
+            //   global.week = (((new Date() - new Date(2020, 9, 12, 0, 0, 0, 0))/1000/60/60/24)%14 <= 7) ? 1 : 2
+            // }}
+            />;
   }
 
   // Проверяем наличие UUID в хранилище. Если его нет, то генерируем и записываем
@@ -42,17 +69,17 @@ function App(){
     })
 
   
-  
-  console.log("GLOBAL: ", global.week)
 
   return (
-    <AppearanceProvider>
-      <LocaleManager>
-        <ThemeManager>
-          <HomeScreen />
-        </ThemeManager>
-      </LocaleManager>
-    </AppearanceProvider>  
+    <WeekManager>
+      <AppearanceProvider>
+        <LocaleManager>
+          <ThemeManager>
+            <HomeScreen />
+          </ThemeManager>
+        </LocaleManager>
+      </AppearanceProvider> 
+    </WeekManager> 
   )
 }
 

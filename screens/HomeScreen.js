@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, StyleSheet, View,  Dimensions, TouchableOpacity, Animated, AsyncStorage } from 'react-native'
+import { Text, StyleSheet, View,  Dimensions, TouchableOpacity, AsyncStorage } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -9,9 +9,11 @@ import NewsScreen from './NewsScreen'
 import ServiceScreen from './ServiceScreen'
 import MapScreen from './services/MapScreen'
 import InstitutesScreen from './services/Institutes/InstitutesScreen'
-import ActiveScreen from './services/Unions/ActiveScreen'
+import ActiveScreen from './services/student_life/ActiveScreen'
+import SportScreen from './services/student_life/SportScreen'
+import DesignScreen from './services/student_life/DesignScreen'
 import IITK from './services/Institutes/Institute'
-import Ermak from './services/Unions/Union'
+import Ermak from './services/student_life/Unit'
 import ShopScreen from './services/shop/ShopScreen'
 import ProductScreen from './services/shop/ProductScreen'
 import FAQScreen from './services/FAQScreen'
@@ -29,14 +31,15 @@ import { useTheme } from '../themes/ThemeManager'
 import { useLocale } from '../locale/LocaleManager'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { useEffect } from 'react'
+import Animated, {Easing} from 'react-native-reanimated'
 
-const Tab = createMaterialTopTabNavigator();
+const FeedTab = createMaterialTopTabNavigator();
 
 function FeedTabs() {
   const {localeMode, locale, toggleLang} = useLocale()
   const {mode, theme, toggle} = useTheme()
   return (
-    <Tab.Navigator tabBarOptions={{
+    <FeedTab.Navigator tabBarOptions={{
       labelStyle: {
         fontFamily: 'roboto',
         fontSize: 13,
@@ -56,10 +59,105 @@ function FeedTabs() {
       activeTintColor: theme.labelColor,
       allowFontScaling: false,
     }}>
-      <Tab.Screen  options={{ title: locale['events'] }} name="Events" component={EventsScreen} />
-      <Tab.Screen options={{ title: locale['news'] }} name="News" component={NewsScreen} />
-    </Tab.Navigator>
+      <FeedTab.Screen  options={{ title: locale['events'] }} name="Events" component={EventsScreen} />
+      <FeedTab.Screen options={{ title: locale['news'] }} name="News" component={NewsScreen} />
+    </FeedTab.Navigator>
   );
+}
+
+function MyTabBar({ state, descriptors, navigation, position }) {
+  const {mode, theme, toggle} = useTheme()
+  const inputRange = state.routes.map((_, i) => i);
+  const translateX = Animated.interpolate(position, {
+    inputRange,
+    outputRange: inputRange.map(i => i * Dimensions.get('window').width / 4)
+  })
+  
+  return (
+    <View style={{ flexDirection: 'row', backgroundColor: theme.blockColor, elevation: 6}}>
+      <TouchableOpacity onPress={() => navigation.navigate('Service')}>
+        <View style={{ height: Dimensions.get('window').width / 8, width: Dimensions.get('window').width / 8 , justifyContent: 'center'}}>
+          <Ionicons name="ios-arrow-back" size={30} color="black" style={{ color: '#006AB3', paddingRight: 10, paddingLeft: 15}}/>
+        </View>
+      </TouchableOpacity>
+      <Animated.View
+        style={[
+            style.slider,
+            {
+                transform: [{translateX}],
+                width: Dimensions.get('window').width / 4,
+                height: 2,
+            },
+        ]}
+          />
+      {state.routes.map((route, index) => {
+        const { options } = descriptors[route.key];
+        const label = route.name
+
+        const isFocused = state.index === index;
+
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+            canPreventDefault: true,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
+
+        const onLongPress = () => {
+          navigation.emit({
+            type: 'tabLongPress',
+            target: route.key,
+          });
+        };
+
+        const inputRange = state.routes.map((_, i) => i);
+        const opacity = Animated.interpolate(position, {
+          inputRange,
+          outputRange: inputRange.map(i => (i === index ? 1 : 0.5)),
+        });
+
+        return (
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            style={{ width: Dimensions.get('window').width / 4, alignItems: 'center', justifyContent: 'center' }}
+          >
+            <Animated.Text style={{ textTransform: 'uppercase', fontFamily: 'roboto', color: theme.labelColor, fontSize: 13, opacity }}>
+              {label}
+            </Animated.Text>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
+}
+
+const StudentLifeTab = createMaterialTopTabNavigator();
+
+function StudentLifeTabs(){
+  const {localeMode, locale, toggleLang} = useLocale()
+  const {mode, theme, toggle} = useTheme()
+  return(
+    <StudentLifeTab.Navigator tabBar={props => <MyTabBar {...props} />} tabBarOptions={{
+      indicatorStyle: {
+        marginLeft: Dimensions.get('window').width / 8
+      },
+      activeTintColor: theme.labelColor,
+    }}>
+      <StudentLifeTab.Screen options={{ title: 'Объедин.'}} name="Unions" component={ActiveScreen} />
+      <StudentLifeTab.Screen options={{ title: 'Спорт'}} name="Sport" component={SportScreen} />
+      <StudentLifeTab.Screen options={{ title: 'СКБ'}} name="Design" component={DesignScreen} />
+    </StudentLifeTab.Navigator>
+  )
 }
 
 const Tabs = createBottomTabNavigator();
@@ -122,7 +220,6 @@ function TimetableStackScreen(){
   useEffect(() => {
     AsyncStorage.getItem('@key')
     .then(res => {
-      console.log("RES: ", res)
       if (res !== null)
         setScreen('TimetableScreen')
       else
@@ -152,7 +249,7 @@ function ServiceStackScreen(){
   return(
     <ServiceStack.Navigator initialRouteName='Service' headerMode='none'>
       <ServiceStack.Screen name="Service" component={ServiceScreen} />
-      <ServiceStack.Screen name="Active" component={ActiveScreen} />
+      <ServiceStack.Screen name="Active" component={StudentLifeTabs} />
       <ServiceStack.Screen name='Ermak' component={Ermak} />
       <ServiceStack.Screen name="Institutes" component={InstitutesScreen} />
       <ServiceStack.Screen name="IITK" component={IITK} />
@@ -194,23 +291,9 @@ const BottomMenuItem = ({ iconName, label, isCurrent }) => {
 const MainTabBar = ({state, descriptors, navigation}) => {
   const {mode, theme, toggle} = useTheme()
   const totalWidth = Dimensions.get("window").width;
-  const tabWidth = totalWidth / state.routes.length;
-  const [translateValue] = useState(new Animated.Value(tabWidth * state.index));
   return (
     <View style={[style.tabContainer, { width: totalWidth, backgroundColor: theme.blockColor}]}>
-      
       <View style={{ flexDirection: "row" }}>
-          <Animated.View
-              style={[
-                  style.slider,
-                  {
-                      transform: [{ translateX: translateValue }],
-                      width: tabWidth - 30,
-                      height: 3,
-                      marginLeft: 5
-                  },
-              ]}
-          />
           {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
           const isFocused = state.index === index;
@@ -223,12 +306,6 @@ const MainTabBar = ({state, descriptors, navigation}) => {
           if (!isFocused && !event.defaultPrevented) {
               navigation.navigate(route.name);
           }
-
-          Animated.spring(translateValue, {
-              toValue: index * tabWidth,
-              velocity: 10,
-              useNativeDriver: true,
-            }).start();
           }
 
           const onLongPress = () => {
@@ -279,12 +356,10 @@ const style = StyleSheet.create({
     bottom: 0,
   },
   slider: {
-    height: 5,
     position: "absolute",
-    top: 0,
-    left: 10,
-    backgroundColor: '#5575A7',
+    bottom: 0,
+    left: Dimensions.get('window').width / 8,
+    backgroundColor: '#006AB3',
     borderRadius: 10,
-    width: 50
 },
 });
