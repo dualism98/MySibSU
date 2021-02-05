@@ -92,7 +92,7 @@ function MyTabBar({ state, descriptors, navigation, position }) {
           />
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
-        const label = route.name
+        const label = options.title
 
         const isFocused = state.index === index;
 
@@ -153,9 +153,9 @@ function StudentLifeTabs(){
       },
       activeTintColor: theme.labelColor,
     }}>
-      <StudentLifeTab.Screen options={{ title: 'Объедин.'}} name="Unions" component={ActiveScreen} />
-      <StudentLifeTab.Screen options={{ title: 'Спорт'}} name="Sport" component={SportScreen} />
-      <StudentLifeTab.Screen options={{ title: 'СКБ'}} name="Design" component={DesignScreen} />
+      <StudentLifeTab.Screen options={{ title: locale['unions']}} name="Unions" component={ActiveScreen} />
+      <StudentLifeTab.Screen options={{ title: locale['sport']}} name="Sport" component={SportScreen} />
+      <StudentLifeTab.Screen options={{ title: locale['sdo']}} name="Design" component={DesignScreen} />
     </StudentLifeTab.Navigator>
   )
 }

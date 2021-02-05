@@ -60,7 +60,10 @@ export const translations = {
         places: 'Places',
         ask: 'Ask another question',
         send: 'Send',
-        input_question: 'Enter your question...'
+        input_question: 'Enter your question...',
+        unions: 'Unions',
+        sport: 'Sport',
+        sdo: 'SDO'
         },
   ru: { timetable: 'Расписание', 
         menu: 'Меню',
@@ -122,7 +125,10 @@ export const translations = {
         places: 'Места',
         ask: 'Задать другой вопрос',
         send: 'Отправить',
-        input_question: 'Введите свой вопрос...'},
+        input_question: 'Введите свой вопрос...',
+        unions: 'Объединения',
+        sport: 'Спорт',
+        sdo: 'СКБ'},
 };
 // Set the locale once at the beginning of your app.
 
