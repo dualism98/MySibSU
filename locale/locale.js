@@ -63,7 +63,8 @@ export const translations = {
         input_question: 'Enter your question...',
         unions: 'Unions',
         sport: 'Sport',
-        sdo: 'SDO'
+        sdo: 'SDO',
+        active_head: 'Head'
         },
   ru: { timetable: 'Расписание', 
         menu: 'Меню',
@@ -128,7 +129,8 @@ export const translations = {
         input_question: 'Введите свой вопрос...',
         unions: 'Объединения',
         sport: 'Спорт',
-        sdo: 'СКБ'},
+        sdo: 'СКБ',
+        active_head: 'Руководитель'},
 };
 // Set the locale once at the beginning of your app.
 

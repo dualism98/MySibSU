@@ -50,9 +50,9 @@ export default function Ermak(props){
             <Header title={data.short_name ? data.short_name : 
                 data.name.length > 30 ? data.name.slice(0, 20) + '..' : data.name} onPress={() => props.navigation.goBack()}/>
             <ScrollView>
-                
+
                 <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
-                    <Image source={{uri: url + data.logo}}  style={{ width: w, height: w / 2, resizeMode: 'cover'}} blurRadius={Platform.OS === 'android' ? 0.5 : 1}/>
+                    <Image source={data.logo ? {uri: url + data.logo} : require('../../../assets/back.png')}  style={{ width: w, height: w / 2, resizeMode: 'cover'}} blurRadius={data.logo ? 0.5 : 0}/>
                 </View>
                 {data.photo ?
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
@@ -67,7 +67,8 @@ export default function Ermak(props){
                     </View>
                 </View> : null}
 
-                <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: 15, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank}</Text>
+                
+                <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: 15, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank ? data.leader_rank : locale['active_head']}</Text>
                 {data.fio !== '-' ? 
                     <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
                         <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.fio}</Text>
