@@ -28,9 +28,9 @@ const fil = (fn, a) => {
 
 const storeData = async (value, name, mode) => {
     try {
-      await AsyncStorage.setItem('@key', String(value))
-      await AsyncStorage.setItem('@name', String(name))
-      await AsyncStorage.setItem('@mode', String(mode))
+      AsyncStorage.setItem('@key', String(value))
+      AsyncStorage.setItem('@name', String(name))
+      AsyncStorage.setItem('@mode', String(mode))
     } catch (e) {
     }
 }
@@ -97,7 +97,6 @@ export default function SearchScreen(props){
     function similarGroup(text){
         setGroup(text)
         if(text !== '' && text.length > 1){
-            console.log(shown)
             timetableMode === 0 ? 
             setShown(fil(e => e.name.slice(0, text.length) === text.toUpperCase(), lists[timetableMode])) :
             setShown(fil(e => e.name.slice(0, text.length) === text, lists[timetableMode]))

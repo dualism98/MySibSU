@@ -46,7 +46,8 @@ export default function Ermak(props){
     const data = props.route.params.data
     return(
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
-            <Header title={data.short_name} onPress={() => props.navigation.goBack()}/>
+            <Header title={data.short_name ? data.short_name : 
+                data.name.length > 30 ? data.name.slice(0, 20) + '..' : data.name} onPress={() => props.navigation.goBack()}/>
             <ScrollView>
                 
                 <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>

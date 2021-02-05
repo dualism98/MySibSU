@@ -30,7 +30,7 @@ export default function SportScreen(props){
                     {loaded ? 
                     unions.map( item => {
                         return(<ActiveElement onPress={() => props.navigation.navigate('Ermak', {data: item})} title={item.name} source={item.logo} key={item[0]} />)
-                    }) : <ActivityIndicator size='large' color='#0060B3' />}   
+                    }) : <View style={{height: h, justifyContent: 'center', paddingBottom: 120}}><ActivityIndicator size='large' color='#0060B3' /></View>}   
                 </View>
             </ScrollView>
         </View>

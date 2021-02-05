@@ -33,18 +33,23 @@ export default function TimetableScreen(props){
     const f_scrollViewRef = useRef()
     const s_scrollViewRef = useRef()
     
-    
+    const didBlurSubscription = props.navigation.addListener(
+        'focus',
+        payload => {
+            console.log('Определение группы')
+            AsyncStorage.getItem('@mode').then((mode) => setMode(mode))
+            AsyncStorage.getItem('@key').then((id) => setGroup(id))
+            AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
+        }
+      );
     
     useEffect(() => {
-        console.log('Определение группы')
-        AsyncStorage.getItem('@mode').then((mode) => setMode(mode))
-        AsyncStorage.getItem('@key').then((id) => setGroup(id))
-        AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
+        
     }, [group])
 
     useEffect(() => {
         if(group !== null){
-            console.log('Получение расписания')
+            console.log('Получение расписания группы ' + textGroup )
             let uri = 'https://mysibsau.ru/v2/timetable/' + URLs[Number(timetableMode)] + '/' + String(group) + '/'
             console.log(uri)
             fetch(uri, {method: 'GET'})
@@ -135,6 +140,7 @@ export default function TimetableScreen(props){
                 <View style={{flexDirection: 'row'}}>
                     <View style={{ width: 60, height: 40, alignItems: 'center', justifyContent: 'center'}}>
                         <TouchableOpacity onPress={() => {
+                            setTextGroup(''); setTimetable({even_week: [], odd_week: []}); setLoaded(false); setGroup(null)
                             AsyncStorage.removeItem('@key')
                             AsyncStorage.removeItem('@group')
                             props.navigation.navigate('SearchScreen')
