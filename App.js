@@ -1,5 +1,5 @@
 import React, { useState, useEffect, setState } from 'react'
-import {AsyncStorage, StatusBar, Text} from 'react-native'
+import {AsyncStorage, View, Text} from 'react-native'
 import HomeScreen from './screens/HomeScreen'
 import AppLoading from 'expo-app-loading'
 import { useFonts } from '@use-expo/font'
@@ -8,15 +8,6 @@ import { ThemeManager } from './themes/ThemeManager'
 import { LocaleManager } from './locale/LocaleManager'
 
 function App(){
-
-  const [week, setWeek] = useState(0)
-
-  useEffect(() => {
-    console.log('Определяем номер недели')
-    fetch("https://mysibsau.ru/CurrentWeek/", {method: "GET"})
-      .then(response => response.json())
-      .then(json => global.week = json.week)
-  }, [])
 
   Text.defaultProps = Text.defaultProps || {};
   Text.defaultProps.allowFontScaling = false; 
@@ -54,7 +45,6 @@ function App(){
   
   console.log("GLOBAL: ", global.week)
 
-  // Если шрифты загружены и UUID существует, запускаем приложение
   return (
     <AppearanceProvider>
       <LocaleManager>

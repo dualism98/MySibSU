@@ -57,7 +57,10 @@ export const translations = {
         feed: 'Feed',
         groups: 'Groups',
         professors: 'Professors',
-        places: 'Places'
+        places: 'Places',
+        ask: 'Ask another question',
+        send: 'Send',
+        input_question: 'Enter your question...'
         },
   ru: { timetable: 'Расписание', 
         menu: 'Меню',
@@ -116,7 +119,10 @@ export const translations = {
         feed: 'Лента',
         groups: 'Группы',
         professors: 'Преподаватели',
-        places: 'Места'},
+        places: 'Места',
+        ask: 'Задать другой вопрос',
+        send: 'Отправить',
+        input_question: 'Введите свой вопрос...'},
 };
 // Set the locale once at the beginning of your app.
 
