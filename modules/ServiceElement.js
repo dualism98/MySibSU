@@ -9,7 +9,7 @@ const ServiceElement = ({name, image, onPress}) => {
         <TouchableOpacity  onPress={onPress}>
             <View style={[styles.box, styles.shadow, {backgroundColor: theme.blockColor}]}>
                 {image}
-                <Text style={{height: w * 0.15, width: w * 0.2, paddingTop: 10, fontFamily: 'roboto', alignSelf: 'center', position: 'absolute', top: 0, textAlignVertical: 'center', textAlign: 'center', fontSize: 15, color: theme.headerTitle}}>{name}</Text>
+                <Text style={{height: w * 0.15, width: w * 0.28, paddingLeft: 5, paddingRight: 5, paddingTop: 10, fontFamily: 'roboto', alignSelf: 'center', position: 'absolute', top: 0, textAlignVertical: 'center', textAlign: 'center', fontSize: 15, color: theme.headerTitle}}>{name}</Text>
             </View>
         </TouchableOpacity>
     )

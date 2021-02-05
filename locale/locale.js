@@ -82,7 +82,7 @@ export const translations = {
         buildings: 'Корпуса',
         student_life: 'Студенческая жизнь',
         institutes: 'Институты',
-        online_catalog: 'Интернет-каталог',
+        online_catalog: 'Интернет-\nкаталог',
         feedback: 'Обратная связь',
         educational_facilities_r: 'Учебные объекты (правый берег)',
         educational_facilities_l: 'Учебные объекты (левый берег)',

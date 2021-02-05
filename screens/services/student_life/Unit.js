@@ -7,6 +7,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
 import {useTheme} from '../../../themes/ThemeManager'
 import {useLocale} from '../../../locale/LocaleManager'
+import { Ionicons } from '@expo/vector-icons'; 
 
 
 const url = 'https://mysibsau.ru'
@@ -60,7 +61,7 @@ export default function Ermak(props){
 
                 {data.about ?
                 <View>
-                    <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{locale['description']}</Text>
+                    <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: data.photo ? w * 0.2 + 20 : 20, marginLeft: 20, color: '#5575A7',}}>{locale['description']}</Text>
                     <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10, backgroundColor: theme.blockColor}]}>
                         <Text style={{fontFamily: 'roboto', fontSize: 13, color: '#5575A7', paddingLeft: 5}}>{data.about}</Text>
                     </View>
@@ -82,6 +83,7 @@ export default function Ermak(props){
                 </View>
 
                 <View style={{flexDirection: 'column', paddingBottom: 180}}>
+                    {data.phone ?
                     <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
                         <View style={[styles.box, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
@@ -92,7 +94,7 @@ export default function Ermak(props){
                             </View>
                             
                         </View>
-                    </TouchableWithoutFeedback>
+                    </TouchableWithoutFeedback> : null}
 
                     {data.group_vk ? 
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(data.group_vk)}>
@@ -105,6 +107,16 @@ export default function Ermak(props){
                             </View>
                         </View>
                     </TouchableWithoutFeedback> : null}
+
+                    {data.email ?
+                    <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${data.email}?subject==&`)}>
+                    <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
+                        <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                            <Ionicons name="mail" size={24} color="rgb(115, 182, 28)" />
+                        </View>
+                        <Text style={styles.buttonText}>{locale['write_email']}</Text>
+                    </View>
+                </TouchableWithoutFeedback> : null}
 
                     {data.page_vk ?
                     <TouchableWithoutFeedback onPress={() => setVisible(!onVisible)}>
