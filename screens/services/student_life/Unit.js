@@ -48,7 +48,7 @@ export default function Ermak(props){
     return(
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
             <Header title={data.short_name ? data.short_name : 
-                data.name.length > 30 ? data.name.slice(0, 20) + '..' : data.name} onPress={() => props.navigation.goBack()}/>
+                data.name.length > 25 ? data.name.slice(0, 25) + '..' : data.name} onPress={() => props.navigation.goBack()}/>
             <ScrollView>
 
                 <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
@@ -67,6 +67,13 @@ export default function Ermak(props){
                     </View>
                 </View> : null}
 
+                {data.dates ? 
+                <View>
+                    <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: data.photo ? w * 0.2 + 20 : 20, marginLeft: 20, color: '#5575A7',}}>{locale['training_days']}</Text>
+                    <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10, backgroundColor: theme.blockColor}]}>
+                        <Text style={{fontFamily: 'roboto', fontSize: 16, color: '#5575A7', paddingLeft: 5}}>{data.dates}</Text>
+                    </View>
+                </View> : null}
                 
                 <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: 15, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank ? data.leader_rank : locale['active_head']}</Text>
                 {data.fio !== '-' ? 

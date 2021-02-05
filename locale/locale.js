@@ -64,7 +64,8 @@ export const translations = {
         unions: 'Unions',
         sport: 'Sport',
         sdo: 'SDO',
-        active_head: 'Head'
+        active_head: 'Head',
+        training_days: 'Training days'
         },
   ru: { timetable: 'Расписание', 
         menu: 'Меню',
@@ -130,7 +131,8 @@ export const translations = {
         unions: 'Объединения',
         sport: 'Спорт',
         sdo: 'СКБ',
-        active_head: 'Руководитель'},
+        active_head: 'Руководитель',
+        training_days: 'Дни тренировок'},
 };
 // Set the locale once at the beginning of your app.
 
