@@ -2,16 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { View, Text, Image, TouchableWithoutFeedback, Linking, StyleSheet} from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { h, w } from './constants'
-import {useTheme} from '../themes/ThemeManager'
-import {useLocale} from '../locale/LocaleManager'
 import Hyperlink from 'react-native-hyperlink'
 
 const url = 'https://mysibsau.ru'
 
 const EventModule = ({data}) => {
     const [mode, setMode] = useState(false)
-    const {theme, toggle} = useTheme()
-    const {localeMode, locale, toggleLang} = useLocale()
 
     const stringLinkRegex = 'https?://(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,4}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)'
     const regex = '\\[(.*?)\\]\\(\(stringLinkRegex)\\)'.replace('stringLinkRegex', stringLinkRegex)
@@ -36,13 +32,16 @@ const EventModule = ({data}) => {
             }
         })
 
-        return link
+        if(there_is)
+            return link
+        else
+            return url
     }
 
     const coef = data.logo.height/data.logo.width
     return(
         <View style={{ width: w, backgroundColor: 'transparent', alignItems: 'center', marginBottom: 20, marginTop: 20}}>
-            <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}> 
+            <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: 'white'}]}> 
                 <ScrollView nestedScrollEnabled = {true}>
                 <Image style={{width: w * 0.9, height: w * 0.9 * coef,  borderRadius: 15}}
                     source={{ uri: url + data.logo.url }} />
@@ -55,9 +54,11 @@ const EventModule = ({data}) => {
                             </Hyperlink>
                         <View>
                             <TouchableWithoutFeedback onPress={() => {
+                                fetch('https://mysibsau.ru/v2/informing/view/' + data.id + '')
+                                    .then(res => console.log(res))
                                 setMode(!mode)
                             }}>
-                                <Text style={{ fontFamily: 'roboto', fontSize: 16, color: 'gray', marginLeft: 25}}>{locale['read_more']}</Text>
+                                <Text style={{ fontFamily: 'roboto', fontSize: 16, color: 'gray', marginLeft: 25}}>{'[Р§РёС‚Р°С‚СЊ РґР°Р»РµРµ]'}</Text>
                             </TouchableWithoutFeedback>
                         </View>
                         </View>
@@ -72,7 +73,7 @@ const EventModule = ({data}) => {
                             <View>
                                 {String(text).length >= 100 ? 
                                 <TouchableWithoutFeedback onPress={() => {setMode(!mode)}}>
-                                    <Text style={{ fontFamily: 'roboto', fontSize: 16, color: 'gray', marginLeft: 25}}>{locale['hide']}</Text>
+                                    <Text style={{ fontFamily: 'roboto', fontSize: 16, color: 'gray', marginLeft: 25}}>{'[РЎРІРµСЂРЅСѓС‚СЊ]'}</Text>
                                 </TouchableWithoutFeedback> : null}
                             </View>
                         </View>
