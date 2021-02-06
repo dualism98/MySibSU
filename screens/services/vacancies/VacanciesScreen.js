@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import {View, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet, ActivityIndicator, TouchableOpacity, FlatList} from 'react-native'
 import Header from '../../../modules/Header'
+import { h, w } from '../../../modules/constants'
 import {useTheme} from '../../../themes/ThemeManager'
 import {useLocale} from '../../../locale/LocaleManager'
 
@@ -26,7 +27,38 @@ export default function VacanciesScreen(props){
     return(
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
             <Header title={locale['vacancies']} onPress={() => props.navigation.goBack()} />
-
+            {!loaded ? 
+            <View style={{flex: 1, justifyContent: 'center', paddingBottom: 120}}>
+                <ActivityIndicator color='#006AB3' size='large' />
+            </View> : 
+            <FlatList
+                data={vacanciesList}
+                renderItem={item => 
+                    <TouchableOpacity  onPress={() => props.navigation.navigate('Vacancy',{data: item.item})}>
+                        <View style={[styles.list,{backgroundColor: theme.blockColor}]}>
+                            <Text style={[styles.listText, {color: theme.labelColor}]}>{item.item.name}</Text>
+                        </View>
+                    </TouchableOpacity>}
+                keyExtractor={item => item.id}
+                contentContainerStyle={{alignItems: 'center'}} 
+                style={{width: w}}/>}
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    list: {
+        width: w * 0.9,
+        borderRadius: 15,
+        minHeight: 50,
+        padding: 10,
+        justifyContent: 'center',
+        marginTop: 20,
+        elevation: 6,
+    },
+
+    listText: {
+        fontFamily: 'roboto',
+        fontSize: 15
+    }
+})
