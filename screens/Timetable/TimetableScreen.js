@@ -33,7 +33,7 @@ export default function TimetableScreen(props){
     const f_scrollViewRef = useRef()
     const s_scrollViewRef = useRef()
     
-    const didBlurSubscription = props.navigation.addListener(
+    const didFocusSubscription = props.navigation.addListener(
         'focus',
         payload => {
             console.log('Определение группы')
@@ -42,10 +42,6 @@ export default function TimetableScreen(props){
             AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
         }
       );
-    
-    useEffect(() => {
-        
-    }, [group])
 
     useEffect(() => {
         if(group !== null){

@@ -8,6 +8,7 @@ import { h, w } from '../../modules/constants'
 import SwitchSelector from "react-native-switch-selector";
 import { Ionicons } from '@expo/vector-icons'; 
 import { FontAwesome } from '@expo/vector-icons';
+import { getPixelSizeForLayoutSize } from 'react-native/Libraries/Utilities/PixelRatio'
 
 const URLs = ['https://mysibsau.ru/v2/timetable/all_groups/',
                 'https://mysibsau.ru/v2/timetable/all_teachers/',
@@ -75,20 +76,39 @@ export default function SearchScreen(props){
 
     useEffect(() => {
         console.log('Получаем группы/преподавателей/места')
-        fetch(URLs[0], {method: 'GET'})
-            .then(response => response.json())
-            .then(json => setGroupList(json))
-        
-        fetch(URLs[1], {method: 'GET'})
-            .then(response => response.json())
-            .then(json => setTeacherList(json))    
-
-        fetch(URLs[2], {method: 'GET'})
-            .then(response => response.json())
-            .then(json => setPlaceList(json))
+        getList('Groups', 'GroupsHash', 0, 'https://mysibsau.ru/v2/timetable/hash/groups/', setGroupList)
+        getList('Teachers', 'TeachersHash', 1, 'https://mysibsau.ru/v2/timetable/hash/teachers/', setTeacherList)
+        getList('Places', 'PlacesHash', 2, 'https://mysibsau.ru/v2/timetable/hash/places', setPlaceList)
 
         setLoaded(true)
     }, [])
+
+    function getList(storageTypeName, storageHashName, urlNumber, hashURL, fun){
+        AsyncStorage.getItem(storageHashName)
+        .then(res => {
+            console.log('Получаем хэш ' + storageTypeName)
+            fetch(hashURL, {method: 'GET'})
+                .then(response => response.json())
+                .then(json => {
+                    if(json.hash === res){
+                        console.log('Хэш ' + storageTypeName + ' совпадает', json.hash, res)
+                        AsyncStorage.getItem(storageTypeName)
+                            .then(res => fun(JSON.parse(res)))
+                    }
+                    else{
+                        console.log('Хэш ' + storageTypeName + ' не совпадает', json.hash, res)
+                        AsyncStorage.setItem(storageHashName, json.hash)
+                        fetch(URLs[urlNumber], {method: 'GET'})
+                            .then(response => response.json())
+                            .then(json => {
+                                fun(json)
+                                AsyncStorage.setItem(storageTypeName, JSON.stringify(json))
+                            })
+                    }
+                })
+                .catch(err => console.log('Не удалось получить хэш ' + storageTypeName ))
+        })  
+    }
 
     const renderHelp = ({ item }) => (
         <Help group={item} onPress={() => setCurrentGroup(item.name)} />
