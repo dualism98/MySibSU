@@ -18,12 +18,12 @@ export default function Vacancy(props){
             <Header title={locale['vacancies']} onPress={() => props.navigation.goBack()} />
             <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
                 <ScrollView contentContainerStyle={{paddingBottom: 120}}>
-                <Text style={{ fontFamily: 'roboto', fontSize: 18, color: 'gray', margin: 10}}>{name}</Text>
+                <Text style={{ fontFamily: 'roboto', fontSize: 18, color: 'gray', padding: w * 0.05}}>{name}</Text>
                 {info.map(item => {
                     console.log(item)
                     return(
-                        <View style={{ marginTop: 10, alignSelf: 'center'}}>
-                            <Text style={{ fontFamily: 'roboto', fontSize: 16, color: '#006AB3', marginBottom: 5}}>{item[0]}</Text>
+                        <View style={{ marginBottom: 15, alignSelf: 'center'}}>
+                            <Text style={{ fontFamily: 'roboto', fontSize: 17, color: '#006AB3', marginBottom: 5}}>{item[0]}</Text>
                             <View style={{ padding: 10, width: w * 0.9, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 5}}>
                                 <Text style={{fontFamily: 'roboto', fontSize: 14, color: theme.labelColor}}>{item[1]}</Text>
                             </View>
