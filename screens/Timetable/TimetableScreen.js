@@ -34,7 +34,7 @@ export default function TimetableScreen(props){
     const s_scrollViewRef = useRef()
     
     const didFocusSubscription = props.navigation.addListener(
-        'focus',
+        'state',
         payload => {
             console.log('Определение группы')
             AsyncStorage.getItem('@mode').then((mode) => setMode(mode))
@@ -42,6 +42,13 @@ export default function TimetableScreen(props){
             AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
         }
       );
+    
+    // useEffect(() => {
+    //     console.log('Определение группы')
+    //     AsyncStorage.getItem('@mode').then((mode) => setMode(mode))
+    //     AsyncStorage.getItem('@key').then((id) => setGroup(id))
+    //     AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
+    // })
 
     useEffect(() => {
         if(group !== null){

@@ -1,37 +1,62 @@
-import React, { useState } from 'react'
+// LIBS
+import React, { useState, useEffect } from 'react'
 import { Text, StyleSheet, View,  Dimensions, TouchableOpacity, AsyncStorage } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import MenuScreen from './MenuScreen'
-import EventsScreen from './EventsScreen'
-import NewsScreen from './NewsScreen'
-import ServiceScreen from './ServiceScreen'
-import MapScreen from './services/MapScreen'
-import InstitutesScreen from './services/Institutes/InstitutesScreen'
-import ActiveScreen from './services/student_life/ActiveScreen'
-import SportScreen from './services/student_life/SportScreen'
-import DesignScreen from './services/student_life/DesignScreen'
-import IITK from './services/Institutes/Institute'
-import Ermak from './services/student_life/Unit'
-import ShopScreen from './services/shop/ShopScreen'
-import ProductScreen from './services/shop/ProductScreen'
-import FAQScreen from './services/FAQScreen'
-import TopicsScreen from './services/poll/TopicsScreen'
-import SearchScreen from './Timetable/SearchScreen'
-import TimetableScreen from './Timetable/TimetableScreen'
-import PollScreen from './services/poll/PollScreen'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import Animated, {Easing} from 'react-native-reanimated'
+
+// SCREENS
+  // Feed
+  import EventsScreen from './EventsScreen'
+  import NewsScreen from './NewsScreen'
+
+  // Menu
+  import MenuScreen from './MenuScreen'
+
+  // Timetable
+  import SearchScreen from './Timetable/SearchScreen'
+  import TimetableScreen from './Timetable/TimetableScreen'
+
+  // Services 
+  import ServiceScreen from './ServiceScreen'
+    // Institutes
+    import InstitutesScreen from './services/Institutes/InstitutesScreen'
+    import IITK from './services/Institutes/Institute'
+    // Student Life
+    import ActiveScreen from './services/student_life/ActiveScreen'
+    import SportScreen from './services/student_life/SportScreen'
+    import DesignScreen from './services/student_life/DesignScreen'
+    import Ermak from './services/student_life/Unit'
+    //Map
+    import MapScreen from './services/MapScreen'
+    // Online Catalog
+    import ShopScreen from './services/shop/ShopScreen'
+    import ProductScreen from './services/shop/ProductScreen' 
+    // Vacancies
+    import VacanciesScreen from './services/vacancies/VacanciesScreen'
+    import Vacancy from './services/vacancies/Vacancy'
+    // Feedback
+    import TopicsScreen from './services/poll/TopicsScreen'
+    import PollScreen from './services/poll/PollScreen'
+    // FAQ
+    import FAQScreen from './services/FAQScreen'
+  
+// Person
+import PersonScreen from './personPage/PersonScreen'
+import SettingsScreen from './personPage/SettingsScreen'
+
+// MODULES
+import { useTheme } from '../themes/ThemeManager'
+import { useLocale } from '../locale/LocaleManager'
+
+// ICONS
 import { MaterialIcons } from '@expo/vector-icons'
 import { AntDesign } from '@expo/vector-icons'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Ionicons } from '@expo/vector-icons'
-import PersonScreen from './personPage/PersonScreen'
-import SettingsScreen from './personPage/SettingsScreen'
-import { useTheme } from '../themes/ThemeManager'
-import { useLocale } from '../locale/LocaleManager'
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import { useEffect } from 'react'
-import Animated, {Easing} from 'react-native-reanimated'
+
 
 const FeedTab = createMaterialTopTabNavigator();
 
@@ -256,6 +281,8 @@ function ServiceStackScreen(){
       <ServiceStack.Screen name="Map" component={MapScreen} />
       <ServiceStack.Screen name='Shop' component={ShopScreen} />
       <ServiceStack.Screen name='Product' component={ProductScreen} />
+      <ServiceStack.Screen name='Vacancies' component={VacanciesScreen} />
+      <ServiceStack.Screen name='Vacancy' component={Vacancy} />
       <ServiceStack.Screen name='Topics' component={TopicsScreen} />
       <ServiceStack.Screen name='Poll' component={PollScreen} />
       <ServiceStack.Screen name='FAQ' component={FAQScreen} />
