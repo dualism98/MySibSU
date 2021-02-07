@@ -35,10 +35,10 @@ export default function NewsScreen(props){
     return(
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
             <FlatList 
-                refreshControl={<RefreshControl colors={['#006AB3', '#7DC71C']} refreshing={refreshing} onRefresh={onRefresh} />}
                 data={newsList}
                 renderItem={({ item }) => <NewsModule data={item} />}
                 keyExtractor={item => item.text}
+                contentContainerStyle={{paddingBottom: 120}}
                 initialNumToRender={4}/>
         </View>
     )

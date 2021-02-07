@@ -77,7 +77,7 @@ export default function TimetableScreen(props){
         var second = []
         const week = [6, 0, 1, 2, 3, 4, 5]
         
-        if (this.getIndex() === 1) {
+        if (currentWeek === 1) {
             for (var i = 0; i <= week[new Date().getDay()]; i++){
                 first.push(new Date().setDate(new Date().getDate() - (week[new Date().getDay()] - i)))
                 first[i] = new Date(first[i])
@@ -120,13 +120,6 @@ export default function TimetableScreen(props){
 
         setWeekDay(locale[days[date.getDay()]])
     }, [])
-
-    function getIndex(){
-        if (((new Date() - new Date(2020, 9, 12, 0, 0, 0, 0))/1000/60/60/24)%14 <= 7)
-            return 1
-        else
-            return 2
-    }
 
     function changeIndex(){
         index === 1 ? setIndex(2) : setIndex(1)

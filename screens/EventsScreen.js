@@ -33,11 +33,10 @@ export default function EventsScreen(props){
     return(
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
             <FlatList 
-                refreshControl={<RefreshControl colors={['#006AB3', '#7DC71C']} refreshing={refreshing} onRefresh={onRefresh} />}
                 data={eventList}
                 renderItem={({ item }) => <EventModule data={item} />}
                 keyExtractor={item => item.text}
-                contentContainerStyle={{flex: 1}}
+                contentContainerStyle={{paddingBottom: 120}}
                 initialNumToRender={4}/>
         </View>
     )

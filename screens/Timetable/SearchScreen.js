@@ -219,7 +219,7 @@ export default function SearchScreen(props){
                     </View>
                 </TouchableHighlight>
             </View>
-            <View style={[{ position: 'absolute', top: 120, height: 30 + 7 * 30, maxHeight: h / 2, marginTop: 10, flexDirection: 'column', borderRadius: 15, paddingTop: 15, paddingBottom: 15, backgroundColor: 'white', zIndex: 3, elevation: 6}]}>
+            <View style={[{ position: 'absolute', top: 120, height: 30 + 7 * 30, maxHeight: h / 2, marginTop: 10, flexDirection: 'column', borderRadius: 15, paddingTop: 15, paddingBottom: 15, backgroundColor: theme.blockColor, zIndex: 3, elevation: 6}]}>
                 <FlatList 
                     data={shown}
                     renderItem={renderHelp}
