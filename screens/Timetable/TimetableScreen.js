@@ -75,14 +75,15 @@ export default function TimetableScreen(props){
         console.log('Определение дат')
         var first = []
         var second = []
-            
-        if (currentWeek === 1) {
-            for (var i = 0; i <= new Date().getDay() - 1; i++){
-                first.push(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1 - i)))
+        const week = [6, 0, 1, 2, 3, 4, 5]
+        
+        if (this.getIndex() === 1) {
+            for (var i = 0; i <= week[new Date().getDay()]; i++){
+                first.push(new Date().setDate(new Date().getDate() - (week[new Date().getDay()] - i)))
                 first[i] = new Date(first[i])
             }
             for (var i = new Date().getDay(); i < 6; i++){
-                first.push(new Date().setDate(new Date().getDate() + (i - new Date().getDay() + 1)))
+                first.push(new Date().setDate(new Date().getDate() + (i - week[new Date().getDay()])))
                 first[i] = new Date(first[i])
             }
             for (var i = 0; i < 6; i++){
@@ -92,12 +93,13 @@ export default function TimetableScreen(props){
             }
         }
         else{
-            for (var i = 0; i <= new Date().getDay() - 1; i++){
-                second.push(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1 - i)))
+            for (var i = 0; i <= week[new Date().getDay()]; i++){
+                second.push(new Date().setDate(new Date().getDate() - (week[new Date().getDay() - i])))
                 second[i] = new Date(second[i])
             }
+            console.log(second)
             for (var i = new Date().getDay(); i < 6; i++){
-                second.push(new Date().setDate(new Date().getDate() + (i - new Date().getDay() + 1)))
+                second.push(new Date().setDate(new Date().getDate() + (week[i - new Date().getDay()])))
                 second[i] = new Date(second[i])
             }
             for (var i = 0; i < 6; i++){
