@@ -1,10 +1,11 @@
 import React from 'react'
-import { AsyncStorage } from 'react-native'
-import { Appearance } from 'react-native-appearance'
+import { AsyncStorage, Appearance } from 'react-native'
 import { getTheme } from './theme'
 
 // set default colour scheme from OS
 let osTheme = ''
+
+
 
 AsyncStorage.getItem('Theme')
   .then(res => {
@@ -32,7 +33,7 @@ AsyncStorage.getItem('Theme')
     }
   })
 
-console.log('osTheme: ', osTheme)
+console.log("Color theme", Appearance.getColorScheme())
 
 // initiate context
 export const ManageThemeContext = React.createContext({

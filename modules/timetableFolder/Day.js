@@ -17,7 +17,7 @@ function get(date){
 }
 
 
-const Day = ({day, date, week, currentWeek, weekDay}) => {
+const Day = ({day, date, week, currentWeek, weekDay, timetableMode}) => {
     const {localeMode, locale, toggleLang} = useLocale()
     date = get(date)
     return(
@@ -44,7 +44,7 @@ const Day = ({day, date, week, currentWeek, weekDay}) => {
             }
             {day.lessons.map(item => {
                 let index = day.lessons.indexOf(item)
-                return(<Subject data={item} key={index}/>)
+                return(<Subject timetableMode={timetableMode} data={item} key={item}/>)
             })}
         </View>
     )

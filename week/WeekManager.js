@@ -1,7 +1,6 @@
 import React from 'react'
 
 var week = 0
-
 fetch("https://mysibsau.ru/CurrentWeek/")
     .then(response => response.json())
     .then(json => week = json.week)
@@ -17,11 +16,6 @@ export class WeekManager extends React.Component {
     state = {
       week: week
     };
-  
-    componentDidUpdate () {
-      console.log('week updated');
-    }
-  
 
     render () {
       return (

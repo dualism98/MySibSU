@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import {View, Text, StyleSheet, ScrollView, AsyncStorage } from 'react-native'
+import {View, Text, StyleSheet, ScrollView, AsyncStorage, Appearance } from 'react-native'
 import Header from '../../modules/Header'
 import { h, w } from '../../modules/constants'
 import LangElem from '../../modules/LangElem'
 import { useTheme } from '../../themes/ThemeManager'
 import SwitchSelector from "react-native-switch-selector";
-import { Appearance } from 'react-native-appearance'
 import {useLocale} from '../../locale/LocaleManager'
 
 export default function SettingsScreen(props){ 
@@ -28,7 +27,8 @@ export default function SettingsScreen(props){
                 if (colorScheme !== 'light' && colorScheme !== 'dark'){
                     mode === 'dark' ? toggle() : null
                 }
-                // mode === colorScheme ? null : toggle()
+                else if (mode !== colorScheme)
+                    toggle()
                 break
             case 'light':
                 AsyncStorage.setItem('Theme', 'Light')
@@ -72,8 +72,8 @@ export default function SettingsScreen(props){
                         initial={scheme}
                         borderRadius={15}
                         buttonColor={'#006AB3'}
-                        textStyle={{fontFamily: 'roboto', color: theme.headerTitle}}
-                        selectedTextStyle={{fontFamily: 'roboto'}}
+                        textStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center', color: theme.headerTitle}}
+                        selectedTextStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center',}}
                         backgroundColor={theme.blockColor}
                         onPress={value => changeTheme(value)}
                         />

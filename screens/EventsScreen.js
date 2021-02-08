@@ -8,7 +8,7 @@ const url = 'https://mysibsau.ru/v2/informing/all_events/?uuid='
 
 export default function EventsScreen(props){
     const [eventList, setEventList] = useState([])
-    const [refreshing, setRefreshing] = useState(true)
+    const [loaded, setLoaded] = useState(false)
 
     const {mode, theme, toggle} = useTheme()
 
@@ -20,24 +20,25 @@ export default function EventsScreen(props){
                         .then(response => response.json())
                         .then(json => {
                             setEventList(json)
-                            setRefreshing(false)
+                            setLoaded(true)
                         })
                         .catch(err => console.log(err))
                 })
-    }, [refreshing])
+    }, [loaded])
 
-    const onRefresh = React.useCallback(() => {
-        setRefreshing(true);
-      }, [refreshing]);
     
     return(
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
+            {!loaded ? 
+            <View style={{flex: 1, justifyContent: 'center', paddingBottom: 120}}>
+                <ActivityIndicator color='#006AB3' size='large' />
+            </View> :
             <FlatList 
                 data={eventList}
                 renderItem={({ item }) => <EventModule data={item} />}
                 keyExtractor={item => item.text}
                 contentContainerStyle={{paddingBottom: 120}}
-                initialNumToRender={4}/>
+                initialNumToRender={4}/>}
         </View>
     )
 }

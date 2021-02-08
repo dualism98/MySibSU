@@ -9,7 +9,7 @@ const url = 'https://mysibsau.ru/v2/informing/all_news/?uuid='
 
 export default function NewsScreen(props){
     const [newsList, setNewsList] = useState([])
-    const [refreshing, setRefreshing] = useState(true)
+    const [loaded, setLoaded] = useState(false)
 
     const {mode, theme, toggle} = useTheme()
 
@@ -22,24 +22,24 @@ export default function NewsScreen(props){
                         .then(response => response.json())
                         .then(json => {
                             setNewsList(json)
-                            setRefreshing(false)
+                            setLoaded(true)
                         })
                         .catch(err => console.log(err))
                 })
-    }, [refreshing])
-
-    const onRefresh = React.useCallback(() => {
-        setRefreshing(true);
-      }, [refreshing]);
+    }, [loaded])
 
     return(
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
+            {!loaded ? 
+            <View style={{flex: 1, justifyContent: 'center', paddingBottom: 120}}>
+                <ActivityIndicator color='#006AB3' size='large' />
+            </View> :
             <FlatList 
                 data={newsList}
                 renderItem={({ item }) => <NewsModule data={item} />}
                 keyExtractor={item => item.text}
                 contentContainerStyle={{paddingBottom: 120}}
-                initialNumToRender={4}/>
+                initialNumToRender={4}/>}
         </View>
     )
 }

@@ -8,23 +8,21 @@ import { useLocale } from '../../locale/LocaleManager'
 
 
 
-const Subject = (data) =>{
+const Subject = ({data, timetableMode}) =>{
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
-
+    console.log(timetableMode)
     const types = ['', [locale['lecture'], '#ef8531'], 
                 [locale['laboratory_work'], 'rgb(190, 175, 85)'], 
                 [locale['practice'], 'rgb(49, 151, 39)']]
     
     const subgroups = ['', locale['first_subgroup'], locale['second_subgroup']]
-    
-    
     return(
         <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>
-            {data.data !== 'Нет пар' ? 
+            {data !== 'Нет пар' ? 
             <View>
-                <Text style={[styles.time, {color: theme.labelColor}]}>{data.data.time}</Text>
-                {data.data.subgroups.map(item => {
+                <Text style={[styles.time, {color: theme.labelColor}]}>{data.time}</Text>
+                {data.subgroups.map(item => {
                     return(
                         <View key={item.teacher + item.place}>
                             <View style={styles.line}></View>
@@ -36,8 +34,9 @@ const Subject = (data) =>{
                             }
                             <Text style={styles.subject}>{item.name}</Text>
                             <Text style={styles.type, {color: String(types[Number(item.type)][1])}}>{types[Number(item.type)][0]}</Text>
-                            <Text style={styles.professor}>{item.teacher}</Text>
-                            <Text style={styles.place}>{item.place}</Text>
+                            {timetableMode !== 1 ? <Text style={styles.professor}>{item.teacher}</Text> : null}
+                            {timetableMode !== 0 ? <Text style={[styles.professor, timetableMode !== 1 ? {marginBottom: 3, marginTop: 3} : null]}>{item.group}</Text> : null}
+                            {timetableMode !== 2 ? <Text style={styles.place}>{item.place}</Text> : null}
                         </View>
                     )
                 })} 

@@ -21,11 +21,11 @@ export default function TimetableScreen(props){
 
     const [group, setGroup] = useState(null)
     const [weekDay, setWeekDay] = useState('')
-    const [currentWeek, setCurrentWeek] = useState(week)
+    const [currentWeek, setCurrentWeek] = useState(getIndex())
     const [textGroup, setTextGroup] = useState('')
     const [timetable, setTimetable] = useState({even_week: [], odd_week: []})
     const [loaded, setLoaded] = useState(false)
-    const [index, setIndex] = useState(week)
+    const [index, setIndex] = useState(getIndex())
     const [first_dates, setFirstDates] = useState([])
     const [second_dates, setSecondDates] = useState([])
     const [timetableMode, setMode] = useState(0)
@@ -65,6 +65,7 @@ export default function TimetableScreen(props){
                     }
                     return response.json()})
                 .then(json => {
+                    console.warn(json)
                     setTimetable(json)
                     setLoaded(true)})
                 .catch(err => console.log(err))
@@ -112,12 +113,19 @@ export default function TimetableScreen(props){
         setSecondDates(second)
     }, [group])
 
+    function getIndex(){
+        if (((new Date() - new Date(2020, 9, 12, 0, 0, 0, 0))/1000/60/60/24)%14 <= 7){
+            return 1
+        }
+        else
+            return 2
+    }
+
 
     useEffect(() => {
         console.log('Определяем день недели')
         let date = new Date()
         let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-
         setWeekDay(locale[days[date.getDay()]])
     }, [])
 
@@ -202,7 +210,7 @@ export default function TimetableScreen(props){
                                     f_scrollViewRef.current.scrollTo({x: 0, y: layout.y - 20, animated: true})
                                 }
                         }}>
-                        <Day day={item}  date={first_dates[index]} week={1} currentWeek={currentWeek} weekDay={weekDay} />
+                        <Day day={item} timetableMode={Number(timetableMode)} date={first_dates[index]} week={1} currentWeek={currentWeek} weekDay={weekDay} />
                     </View>
                 )})}
                 </ScrollView>
@@ -220,7 +228,7 @@ export default function TimetableScreen(props){
                                 s_scrollViewRef.current.scrollTo({x: 0, y: layout.y - 20, animated: true})
                             }
                         }}>
-                        <Day day={item} date={second_dates[index]} week={2} currentWeek={currentWeek} weekDay={weekDay}/>
+                        <Day day={item} timetableMode={Number(timetableMode)} date={second_dates[index]} week={2} currentWeek={currentWeek} weekDay={weekDay}/>
                     </View>) })}
                 </ScrollView>
             </Swiper>

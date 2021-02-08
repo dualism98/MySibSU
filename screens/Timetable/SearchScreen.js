@@ -116,7 +116,7 @@ export default function SearchScreen(props){
 
     function similarGroup(text){
         setGroup(text)
-        if(text !== '' && text.length > 1){
+        if(text !== '' && text.length > 0){
             timetableMode === 0 ? 
             setShown(fil(e => e.name.slice(0, text.length) === text.toUpperCase(), lists[timetableMode])) :
             setShown(fil(e => e.name.slice(0, text.length) === text, lists[timetableMode]))
@@ -203,11 +203,12 @@ export default function SearchScreen(props){
                         borderRadius={15}
                         buttonColor={'#0060B3'}
                         style={{alignSelf: 'center', width: w * 0.9}}
-                        textStyle={{fontFamily: 'roboto', color: theme.labelColor}}
-                        selectedTextStyle={{fontFamily: 'roboto', color: 'white'}}
+                        textStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center', color: theme.labelColor}}
+                        selectedTextStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center', color: 'white'}}
                         backgroundColor={theme.blockColor}
                         onPress={value => {
                             AsyncStorage.setItem('@mode', String(value))
+                            setShown([])
                             setTimetableMode(value)}}
                         />
             </View>
@@ -273,7 +274,7 @@ const styles = StyleSheet.create({
     input: {
         width: w * 0.745,
         height: h * 0.06,
-        borderRadius: 7,
+        borderRadius: 15,
         backgroundColor: 'white',
         paddingLeft: 10,
         fontSize: 15,
@@ -288,7 +289,7 @@ const styles = StyleSheet.create({
         width: w * 0.145,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 7,
+        borderRadius: 15,
         backgroundColor: 'white',
         elevation: 10,
         zIndex: 1,
