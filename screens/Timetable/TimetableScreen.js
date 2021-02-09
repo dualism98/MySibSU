@@ -198,7 +198,7 @@ export default function TimetableScreen(props){
                 <ScrollView ref={f_scrollViewRef}>
                 {!loaded ? 
                         <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
-                            <ActivityIndicator size='large' color={"#0060B3"}/>
+                            <ActivityIndicator size='large' color={theme.blueColor}/>
                         </View> :
                     timetable.odd_week.map(item => {
                         const index = timetable.odd_week.indexOf(item)
@@ -217,7 +217,7 @@ export default function TimetableScreen(props){
                 <ScrollView ref={s_scrollViewRef}>
                     {!loaded ?  
                         <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
-                            <ActivityIndicator size='large' color={"#0060B3"}/>
+                            <ActivityIndicator size='large' color={theme.blueColor}/>
                         </View> :
                         timetable.even_week.map(item => {
                         const index = timetable.even_week.indexOf(item)
@@ -253,21 +253,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingBottom: 0,
     },
-
-    changeText: {
-        fontSize: 20,
-        fontFamily: 'roboto',
-        color: '#006AB3',
-    },
-
-    loading: {
-        marginTop: 20,
-        fontSize: 20,
-        fontFamily: 'roboto',
-        color: '#006AB3',
-        alignSelf: 'center'
-    },
-
     shadow: elevationShadowStyle(5),
 
     

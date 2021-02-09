@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Platform } from 'react-native'
 import { h, w } from '../constants'
 import Subject from './Subject'
 import {useLocale} from '../../locale/LocaleManager'
+import {useTheme} from '../../themes/ThemeManager'
 
 const weekday = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
 
@@ -19,12 +20,13 @@ function get(date){
 
 const Day = ({day, date, week, currentWeek, weekDay, timetableMode}) => {
     const {localeMode, locale, toggleLang} = useLocale()
+    const {mode, theme, toggle} = useTheme()
     date = get(date)
     return(
         <View style={styles.container}>
             <View style={styles.dayname}>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={styles.title}>{locale[weekday[Number(day.day)]]}</Text>
+                    <Text style={[styles.title, {color: theme.blueColor}]}>{locale[weekday[Number(day.day)]]}</Text>
                     {week === currentWeek && weekDay ===  locale[weekday[Number(day.day)]] ?
                             <View style={{ minHeight: h * 0.05, justifyContent: 'center', marginTop: h * 0.013, maxHeight: h * 0.05, borderRadius: 14, backgroundColor: '#FF7575', opacity: 0.9, paddingLeft: 8, paddingRight: 8, shadowOffset: {
                                 width: 0,

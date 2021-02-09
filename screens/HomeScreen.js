@@ -8,6 +8,9 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import Animated, {Easing} from 'react-native-reanimated'
 
 // SCREENS
+  // Hello
+  import HelloScreen from './HelloScreen'
+  import AuthScreen from './AuthScreen'
   // Feed
   import EventsScreen from './EventsScreen'
   import NewsScreen from './NewsScreen'
@@ -112,6 +115,7 @@ function MyTabBar({ state, descriptors, navigation, position }) {
                 transform: [{translateX}],
                 width: Dimensions.get('window').width / 4,
                 height: 2,
+                backgroundColor: theme.blueColor
             },
         ]}
           />
@@ -187,11 +191,10 @@ function StudentLifeTabs(){
 
 const Tabs = createBottomTabNavigator();
 
-export default function HomeScreen(){
+function BottomTab(){
   const {localeMode, locale, toggleLang} = useLocale()
   
     return (
-      <NavigationContainer>
       <Tabs.Navigator initialRouteName={'Timetable'} tabBar={(props) => <MainTabBar {...props} />}>
         <Tabs.Screen name={'Feed'} component={FeedTabs}
         options={{
@@ -219,9 +222,23 @@ export default function HomeScreen(){
           title: locale['profile']
         }}/>
       </Tabs.Navigator>
+  )
+}
+
+const HelloStack = createStackNavigator();
+
+export default function Navigation({firstLaunch}){
+  var initialName = firstLaunch === true ? 'Hello' : 'Bottom' 
+  console.log(initialName, firstLaunch)
+  return(
+    <NavigationContainer>
+      <HelloStack.Navigator initialRouteName={initialName} headerMode='none'>
+        <HelloStack.Screen name='Hello' component={HelloScreen} />
+        <HelloStack.Screen name='Auth' component={AuthScreen} />
+        <HelloStack.Screen name='Bottom' component={BottomTab} />
+      </HelloStack.Navigator>
     </NavigationContainer>
   )
-  
 }
 
 const TimetableStack = createStackNavigator();
@@ -291,15 +308,16 @@ function ServiceStackScreen(){
 }
 
 const BottomMenuItem = ({ iconName, label, isCurrent }) => {
+  const {mode, theme, toggle} = useTheme()
 
   const icons = {
-    'Feed': <MaterialCommunityIcons name="timetable" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'}  />, 
-    'Menu': <MaterialIcons name="restaurant-menu" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
-    'Timetable': <MaterialCommunityIcons name="calendar-text" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />, 
-    'Services': <AntDesign name="appstore-o" size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />,
-    'Profile': <Ionicons name='md-person' size={26} color={isCurrent ? '#5575A7' : 'rgb(159, 165, 163)'} />}
+    'Feed': <MaterialCommunityIcons name="timetable" size={26} color={isCurrent ? theme.blueColor : 'rgb(159, 165, 163)'}  />, 
+    'Menu': <MaterialIcons name="restaurant-menu" size={26} color={isCurrent ? theme.blueColor : 'rgb(159, 165, 163)'} />, 
+    'Timetable': <MaterialCommunityIcons name="calendar-text" size={26} color={isCurrent ? theme.blueColor : 'rgb(159, 165, 163)'} />, 
+    'Services': <AntDesign name="appstore-o" size={26} color={isCurrent ? theme.blueColor : 'rgb(159, 165, 163)'} />,
+    'Profile': <Ionicons name='md-person' size={26} color={isCurrent ? theme.blueColor : 'rgb(159, 165, 163)'} />}
 
-  const color = isCurrent ? '#5575A7' : 'gray'
+  const color = isCurrent ? theme.blueColor : 'gray'
   return (
     <View
       style={{
@@ -386,7 +404,6 @@ const style = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     left: Dimensions.get('window').width / 8,
-    backgroundColor: '#006AB3',
     borderRadius: 10,
 },
 });

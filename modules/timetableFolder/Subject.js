@@ -32,7 +32,7 @@ const Subject = ({data, timetableMode}) =>{
                                     color: 'rgb(154,158,159)',
                                     marginBottom: -5, marginRight: 10}}>{subgroups[Number(item.num)]}</Text> : <View></View>
                             }
-                            <Text style={styles.subject}>{item.name}</Text>
+                            <Text style={[styles.subject, {color: theme.blueColor}]}>{item.name}</Text>
                             <Text style={styles.type, {color: String(types[Number(item.type)][1])}}>{types[Number(item.type)][0]}</Text>
                             {timetableMode !== 1 ? <Text style={styles.professor}>{item.teacher}</Text> : null}
                             {timetableMode !== 0 ? <Text style={[styles.professor, timetableMode !== 1 ? {marginBottom: 3, marginTop: 3} : null]}>{item.group}</Text> : null}
@@ -87,7 +87,6 @@ const styles = StyleSheet.create({
     subject: {
         marginTop: 4,
         fontSize: 15,
-        color: '#5575A7',
         fontFamily: 'roboto',
         fontWeight: 'bold'
     },

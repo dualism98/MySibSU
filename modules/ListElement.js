@@ -10,8 +10,8 @@ const ListElement = ({onPress, title, prop}) => {
     return(
         <TouchableOpacity onPress={onPress}>
            <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
-                <Text style={styles.text} >{title}</Text>
-                <Text style={styles.down} >{prop}</Text>
+                <Text style={[styles.text, {color: theme.blueColor}]} >{title}</Text>
+                <Text style={[styles.down, {color: theme.blueColor}]} >{prop}</Text>
             </View>
         </TouchableOpacity>
     );

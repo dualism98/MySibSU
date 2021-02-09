@@ -50,7 +50,7 @@ const EventModule = ({data}) => {
                 <View> 
                         {String(text).length >= 100 && mode === false ? 
                         <View>
-                            <Hyperlink linkStyle={ { color: '#006AB3', fontSize: 16 } }
+                            <Hyperlink linkStyle={ { color: theme.blueColor, fontSize: 16 } }
                             linkText={ url => setLink(url)}>
                                 <Text numberOfLines={3} style={{width: w * 0.85, color: theme.labelColor, padding: 5, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16}}>{text}</Text>
                             </Hyperlink>
@@ -66,7 +66,7 @@ const EventModule = ({data}) => {
                         </View>
                         : 
                         <View>
-                            <Hyperlink linkStyle={ { color: '#006AB3', fontSize: 16, } }
+                            <Hyperlink linkStyle={ { color: theme.blueColor, fontSize: 16, } }
                             linkDefault
                             linkText={ url => setLink(url)}
                             >

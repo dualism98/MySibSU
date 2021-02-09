@@ -31,7 +31,7 @@ export default function EventsScreen(props){
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
             {!loaded ? 
             <View style={{flex: 1, justifyContent: 'center', paddingBottom: 120}}>
-                <ActivityIndicator color='#006AB3' size='large' />
+                <ActivityIndicator color={theme.blueColor} size='large' />
             </View> :
             <FlatList 
                 data={eventList}

@@ -55,7 +55,7 @@ export default function MenuScreen(props){
                 </View>
                 {!loaded ?
                     <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
-                        <ActivityIndicator size='large' color='#0060B3' />
+                        <ActivityIndicator size='large' color={theme.blueColor} />
                     </View> :
                     food(count, theme, locale['no_menu'])}
             </View>

@@ -25,6 +25,7 @@ export const translations = {
         input_group_name: 'Enter the group/teacher/place..',
         no_menu: 'There is no menu for today',
         settings: 'Settings',
+        color_settings: '* Системное оформление - оформление приложение автоматически меняется при изменении оформления в настройках телефона',
         choose_lang: 'Select a language',
         choose_theme: 'Select a theme',
         dark_theme: 'Dark',
@@ -68,6 +69,11 @@ export const translations = {
         active_head: 'Head',
         training_days: 'Training days',
         vacancies: 'Vacancies',
+        what_it: 'What\'s it?',
+        how_it_work: 'How does it work?',
+        okay: 'Оkay',
+        welcome_to_application: 'Welcome to the app',
+        lets_tell: 'Let\s tell you what we have'
         },
   ru: { timetable: 'Расписание', 
         menu: 'Меню',
@@ -136,7 +142,12 @@ export const translations = {
         sdo: 'СКБ',
         active_head: 'Руководитель',
         training_days: 'Дни тренировок',
-        vacancies: 'Вакансии'},
+        vacancies: 'Вакансии',
+        what_it: 'Что это?',
+        how_it_work: 'Как это работает?',
+        okay: 'Окей',
+        welcome_to_application: 'Добро пожаловать в приложение',
+        lets_tell: 'Давай расскажем, что у нас есть'},
 };
 // Set the locale once at the beginning of your app.
 

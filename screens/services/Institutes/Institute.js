@@ -27,9 +27,9 @@ const Information = ({ number, data }) => {
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
                     <Image source={{uri: url + data.image}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
                 </View>
-                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{locale['director']}</Text>
+                <Text style={{ fontFamily: 'roboto', fontSize: 22, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#006AB3',}}>{locale['director']}</Text>
                 <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
-                    <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.name}</Text>
+                    <Text style={{fontFamily: 'roboto', fontSize: 20, color: theme.blueColor}}>{data.name}</Text>
                 </View>
                 <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                     <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
@@ -43,7 +43,7 @@ const Information = ({ number, data }) => {
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
                                 <MaterialCommunityIcons name="phone" size={24} color="rgb(115, 182, 28)" />
                             </View>
-                            <Text style={styles.buttonText}>{locale['call']}</Text>
+                            <Text style={[styles.buttonText, {color: '#006AB3'}]}>{locale['call']}</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${data.mail}?subject==&`)}>

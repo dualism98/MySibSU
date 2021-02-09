@@ -49,40 +49,34 @@ export default function SettingsScreen(props){
     }
   
     return(
-        <View style={{ backgroundColor: theme.primaryBackground}}>
+        <View style={{ flex: 1, backgroundColor: theme.primaryBackground}}>
             <Header title={locale['settings']} onPress={() => props.navigation.goBack()}/>
-            {/* {loaded ? */}
-            <ScrollView>
-                <View style={{ minHeight: h, backgroundColor: theme.primaryBackground}}>
-                    <Text style={styles.large_text}>{locale['choose_lang']}</Text>
-                    <View style={[styles.container, styles.shadow, {alignItems: 'center', minHeight: 50, backgroundColor: theme.blockColor}]}>
-                        {langs.map(item => {
-                            let first = langs.indexOf(item) === 0
-                            return(<LangElem name={item.name} current={localeMode === item.short_name} first={first} onPress={() => {
-                                AsyncStorage.setItem('Locale', item.short_name)
-                                changeLang(item.short_name)
-                            }}/>)
-                        })}
-                    </View>
-
-                    <Text style={styles.large_text}>{locale['choose_theme']}</Text>
-                    <View style={[styles.container, styles.shadow, {backgroundColor: theme.blockColor}]}>
-                    <SwitchSelector
-                        options={themes}
-                        initial={scheme}
-                        borderRadius={15}
-                        buttonColor={'#006AB3'}
-                        textStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center', color: theme.headerTitle}}
-                        selectedTextStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center',}}
-                        backgroundColor={theme.blockColor}
-                        onPress={value => changeTheme(value)}
-                        />
-                    </View>
+            <View style={{ flex: 1, backgroundColor: theme.primaryBackground}}>
+                <Text style={styles.large_text}>{locale['choose_lang']}</Text>
+                <View style={[styles.container, styles.shadow, {alignItems: 'center', minHeight: 50, backgroundColor: theme.blockColor}]}>
+                    {langs.map(item => {
+                        let first = langs.indexOf(item) === 0
+                        return(<LangElem name={item.name} current={localeMode === item.short_name} first={first} onPress={() => {
+                            AsyncStorage.setItem('Locale', item.short_name)
+                            changeLang(item.short_name)
+                        }}/>)
+                    })}
                 </View>
-            </ScrollView>
-            {/* <View>
-                <ActivityIndicator size={'large'} color={'006AB3'} />   
-            </View>}       */}
+                <Text style={styles.large_text}>{locale['choose_theme']}</Text>
+                <View style={[styles.container, styles.shadow, {backgroundColor: theme.blockColor}]}>
+                <SwitchSelector
+                    options={themes}
+                    initial={scheme}
+                    borderRadius={15}
+                    buttonColor={'#006AB3'}
+                    textStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center', color: theme.headerTitle}}
+                    selectedTextStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center',}}
+                    backgroundColor={theme.blockColor}
+                    onPress={value => changeTheme(value)}
+                    />
+                </View>
+                <Text style={{ width: w * 0.9, alignSelf: 'center', color: 'gray', fontSize: 12, fontFamily: 'roboto', marginTop: 15}}>{locale['color_settings']}</Text>
+            </View>
         </View>
     )
 }

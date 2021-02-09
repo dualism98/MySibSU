@@ -201,7 +201,7 @@ export default function SearchScreen(props){
                         options={modes}
                         initial={timetableMode}
                         borderRadius={15}
-                        buttonColor={'#0060B3'}
+                        buttonColor={theme.blueColor}
                         style={{alignSelf: 'center', width: w * 0.9}}
                         textStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center', color: theme.labelColor}}
                         selectedTextStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center', color: 'white'}}
@@ -214,9 +214,9 @@ export default function SearchScreen(props){
             </View>
             <View style={{flexDirection: 'row', marginTop: 10}}>
                 <TextInput style={[styles.input, {backgroundColor: theme.blockColor, color: theme.labelColor}]} placeholderTextColor={'lightgray'} value={group} onChangeText={text => similarGroup(text)} placeholder={locale['input_group_name']} />
-                <TouchableHighlight style={{borderRadius: 7}} onPress={() => setCurrentGroup(group)}>
+                <TouchableHighlight style={{borderRadius: 15}} onPress={() => setCurrentGroup(group)}>
                     <View style={[styles.button, {backgroundColor: theme.blockColor}]}>
-                        <Ionicons name="ios-search" size={24} color="#006AB3" />
+                        <Ionicons name="ios-search" size={24} color={theme.blueColor} />
                     </View>
                 </TouchableHighlight>
             </View>
@@ -239,7 +239,7 @@ export default function SearchScreen(props){
                             shadowRadius: 4.65,
                             elevation: 5,}, styles.shadow, { flex: 1, backgroundColor: theme.blockColor, width: w * 0.9, position: 'absolute', top: 115, zIndex: 0, borderRadius: 15, paddingBottom: 10}]}>
                 {lastGroups.length !== 0 ? 
-                <Text style={{ fontFamily: 'roboto', width: w, paddingLeft: 20, fontSize: 20, marginTop: 10, color: '#5575A7'}}>{locale['last_groups']}</Text> : null}
+                <Text style={{ fontFamily: 'roboto', width: w, paddingLeft: 20, fontSize: 20, marginTop: 10, color: theme.blueColor}}>{locale['last_groups']}</Text> : null}
                     {lastGroups.map(item => {
                         return(
                             <View style={{ height: 30, flexDirection: 'row', marginTop: 5}}>
