@@ -6,6 +6,7 @@ import LangElem from '../../modules/LangElem'
 import { useTheme } from '../../themes/ThemeManager'
 import SwitchSelector from "react-native-switch-selector";
 import {useLocale} from '../../locale/LocaleManager'
+import { TouchableOpacity } from 'react-native'
 
 export default function SettingsScreen(props){ 
     const { mode, theme, toggle } = useTheme();
@@ -47,7 +48,7 @@ export default function SettingsScreen(props){
             toggleLang()
         }
     }
-  
+
     return(
         <View style={{ flex: 1, backgroundColor: theme.primaryBackground}}>
             <Header title={locale['settings']} onPress={() => props.navigation.goBack()}/>
@@ -76,6 +77,16 @@ export default function SettingsScreen(props){
                     />
                 </View>
                 <Text style={{ width: w * 0.9, alignSelf: 'center', color: 'gray', fontSize: 12, fontFamily: 'roboto', marginTop: 15}}>{locale['color_settings']}</Text>
+                {Object.keys(props.route.params.user).length !== 0 ?
+                <TouchableOpacity onPress={() => {
+                    AsyncStorage.removeItem('User')
+                    props.navigation.navigate('Account')
+                }}>
+                    <View style={{ padding: 10, width: w * 0.4, alignSelf: 'center', marginTop: 20, borderRadius: 15, elevation: 5, backgroundColor: theme.blockColor}}>
+                        <Text style={{alignSelf: 'center', color: '#EE7575', fontWeight: 'bold', fontFamily: 'roboto',}}>ВЫЙТИ</Text>
+                    </View>
+                </TouchableOpacity> : null}
+                
             </View>
         </View>
     )

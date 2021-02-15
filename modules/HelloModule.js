@@ -11,8 +11,8 @@ const HelloModule = ({color, name, image, what_a, why_a}) => {
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
     return(
-        <View style={{flex: 1, backgroundColor: color}}>
-            <View style={{height: h * 0.25 - 15, width: w}}>
+        <View style={{height: h, backgroundColor: color}}>
+            <View style={{height: h * 0.25, width: w}}>
                 <Text style={{ color: 'white', fontFamily: 'roboto', padding: w * 0.05, fontSize: 40, fontWeight: 'bold'}}>{name}</Text>
                 {image}
             </View>

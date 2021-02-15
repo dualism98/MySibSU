@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, ActivityIndicator, ScrollView} from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator, DeviceEventEmitter, ScrollView} from 'react-native'
 import { h, w } from '../modules/constants' 
 import MenuElement from '../modules/MenuElement'
 import MainHeader from '../modules/MainHeader'

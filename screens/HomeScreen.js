@@ -48,6 +48,7 @@ import Animated, {Easing} from 'react-native-reanimated'
   
 // Person
 import PersonScreen from './personPage/PersonScreen'
+import ProfileScreen from './personPage/ProfileScreen'
 import SettingsScreen from './personPage/SettingsScreen'
 
 // MODULES
@@ -275,13 +276,36 @@ function TimetableStackScreen(){
 }
 
 const PersonStack = createStackNavigator();
+  
 
 function PersonStackScreen(){
+  const [screen, setScreen] = useState('')
+
+  const Layout = (initialName) => {
+    if(initialName === '')
+      return(<View></View>)
+    else
+      return(
+        <PersonStack.Navigator initialRouteName={initialName} headerMode='none'>
+          <PersonStack.Screen name='Account' component={PersonScreen} />
+          <PersonStack.Screen name='Profile' component={ProfileScreen} />
+          <PersonStack.Screen name='Settings' component={SettingsScreen} />
+        </PersonStack.Navigator>
+      )
+  }
+
+  useEffect(() => {
+    AsyncStorage.getItem('User')
+    .then(res => {
+      if (res !== null)
+        setScreen('Profile')
+      else
+        setScreen('Account')
+    })
+  }, [])
+
   return(
-    <PersonStack.Navigator initialRouteName='Account' headerMode='none'>
-      <PersonStack.Screen name='Account' component={PersonScreen} />
-      <PersonStack.Screen name='Settings' component={SettingsScreen} />
-    </PersonStack.Navigator>
+    Layout(screen)
   )
 }
 
