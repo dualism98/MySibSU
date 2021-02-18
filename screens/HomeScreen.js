@@ -50,6 +50,8 @@ import Animated, {Easing} from 'react-native-reanimated'
 import PersonScreen from './personPage/PersonScreen'
 import ProfileScreen from './personPage/ProfileScreen'
 import SettingsScreen from './personPage/SettingsScreen'
+import AttestationScreen from './personPage/AttestationScreen'
+import MarksScreen from './personPage/MarksScreen'
 
 // MODULES
 import { useTheme } from '../themes/ThemeManager'
@@ -290,6 +292,8 @@ function PersonStackScreen(){
           <PersonStack.Screen name='Account' component={PersonScreen} />
           <PersonStack.Screen name='Profile' component={ProfileScreen} />
           <PersonStack.Screen name='Settings' component={SettingsScreen} />
+          <PersonStack.Screen name='Attestation' component={AttestationScreen} />
+          <PersonStack.Screen name='Marks' component={MarksScreen} />
         </PersonStack.Navigator>
       )
   }

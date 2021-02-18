@@ -82,7 +82,10 @@ export const translations = {
         sign_in_tip: 'Sign in to your profile to have additional options',
         full_name: 'Full name',
         average: 'Average score',
-        
+        perfomance: 'Academic performance',
+        attestation: 'Attestation',
+        marks: 'Marks',
+        term: 'term'
         },
   ru: { timetable: 'Расписание', 
         menu: 'Меню',
@@ -165,7 +168,11 @@ export const translations = {
         color_settings: '* Системное оформление - оформление приложения автоматически меняется при изменении оформления в настройках телефона',
         sign_in_tip: 'Войдите в профиль, чтобы иметь дополнительные возможности',
         full_name: 'ФИО',
-        average: 'Средний балл',},
+        average: 'Средний балл',
+        perfomance: 'Успеваемость',
+        attestation: 'Аттестация',
+        marks: 'Оценки',
+        term: 'семестр'},
 };
 // Set the locale once at the beginning of your app.
 

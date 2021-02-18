@@ -46,6 +46,10 @@ export default function AuthScreen(props){
                                 if (!json.error){
                                     console.log(json)
                                     AsyncStorage.setItem('User', JSON.stringify(json))
+                                    AsyncStorage.setItem('AuthData', JSON.stringify({
+                                        username: login,
+                                        password: password
+                                    }))
                                     props.navigation.navigate('Bottom')
                                 }
                                 else{

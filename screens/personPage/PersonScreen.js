@@ -56,6 +56,10 @@ export default function PersonScreen(props){
                                     setLogin('')
                                     setPassword('')
                                     AsyncStorage.setItem('User', JSON.stringify(json))
+                                    AsyncStorage.setItem('AuthData', JSON.stringify({
+                                        username: login,
+                                        password: password
+                                    }))
                                     console.log(json)
                                     props.navigation.navigate('Profile')
                                 }

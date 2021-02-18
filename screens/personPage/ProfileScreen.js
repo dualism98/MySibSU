@@ -4,17 +4,16 @@ import { Octicons } from '@expo/vector-icons';
 import { h, w } from '../../modules/constants'
 import {useLocale} from '../../locale/LocaleManager'
 import {useTheme} from '../../themes/ThemeManager'
-import { Ionicons } from '@expo/vector-icons'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { MaterialIcons } from '@expo/vector-icons'; 
+
 
 export default function PersonScreen(props){
     const {localeMode, locale, toggleLang} = useLocale()
     const {mode, theme, toggle} = useTheme()
 
-    const [login, setLogin] = React.useState('')
-    const [password, setPassword] = React.useState('')
-
     const [user, setUser] = React.useState({})
+
+    const [authData, setAuthData] = React.useState({})
 
     const [loaded, setLoaded] = React.useState(false)
     const [fetching, setFetching] = React.useState(0)
@@ -27,6 +26,13 @@ export default function PersonScreen(props){
                 setLoaded(true)
             }
         })
+
+        AsyncStorage.getItem('AuthData')
+            .then(res => {
+                if(res !== null){
+                    setAuthData(JSON.parse(res))
+                }
+            })
       }, []);
 
     React.useEffect(() =>
@@ -48,33 +54,47 @@ export default function PersonScreen(props){
                     <Octicons name="gear" size={24} color={theme.headerTitle}/>
                 </TouchableOpacity>
             </View>
-            <ScrollView contentContainerStyle={{flex: 1}}> 
-                <View style={{width: w, flex: 1, paddingLeft: w * 0.05, paddingRight: w * 0.05, paddingTop: w * 0.05,  paddingBottom: 120}}>
-                    <Text style={{ fontFamily: 'roboto', fontSize: 18, color: '#006AB3', marginBottom: 5}}>{locale['full_name']}</Text>
-                    <View style={{ padding: 10, width: w * 0.9, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 5}}>
-                        <Text style={{ textAlign: 'center', fontFamily: 'roboto', fontSize: 18, color: theme.labelColor}}>{user.FIO}</Text>
-                    </View>
-                    <View style={{flexDirection: 'row'}}>
-                        <View>
-                            <Text style={{ fontFamily: 'roboto', fontSize: 18, color: '#006AB3', marginBottom: 5, marginTop: 15}}>{locale['group']}</Text>
-                            <View style={{ paddingTop: 10, paddingBottom: 10, width: w * 0.425, marginRight: w * 0.05, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 5}}>
-                                <Text style={{width: w * 0.425, textAlign: 'center', fontFamily: 'roboto', fontSize: 18, color: theme.labelColor}}>{user.group}</Text>
-                            </View>
-                        </View>
-                        <View>
-                            <Text style={{ fontFamily: 'roboto', fontSize: 18, color: '#006AB3', marginBottom: 5, marginTop: 15}}>{locale['average']}</Text>
-                            <View style={{ paddingTop: 10, paddingBottom: 10, width: w * 0.425, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 5}}>
-                                <Text style={{width: w * 0.425, textAlign: 'center',fontFamily: 'roboto', fontSize: 18, color: theme.labelColor}}>{user.averga}</Text>
-                            </View>
+            <View style={{width: w, flex: 1, paddingLeft: w * 0.05, paddingRight: w * 0.05, paddingTop: w * 0.05,  paddingBottom: 120}}>
+                <Text style={{ fontFamily: 'roboto', fontSize: 18, color: '#006AB3', marginBottom: 5}}>{locale['full_name']}</Text>
+                <View style={{ padding: 10, width: w * 0.9, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 5}}>
+                    <Text style={{ textAlign: 'center', fontFamily: 'roboto', fontSize: 18, color: theme.labelColor}}>{user.FIO}</Text>
+                </View>
+                <View style={{flexDirection: 'row'}}>
+                    <View>
+                        <Text style={{ fontFamily: 'roboto', fontSize: 18, color: '#006AB3', marginBottom: 5, marginTop: 15}}>{locale['group']}</Text>
+                        <View style={{ paddingTop: 10, paddingBottom: 10, width: w * 0.425, marginRight: w * 0.05, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 5}}>
+                            <Text style={{width: w * 0.425, textAlign: 'center', fontFamily: 'roboto', fontSize: 18, color: theme.labelColor}}>{user.group}</Text>
                         </View>
                     </View>
-                    <Text style={{ fontFamily: 'roboto', fontSize: 18, color: '#006AB3', marginBottom: 5, marginTop: 15}}>{locale['login']}</Text>
-                    <View style={{ padding: 10, width: w * 0.9, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 5}}>
-                        <Text style={{fontFamily: 'roboto', textAlign: 'center', fontSize: 18, color: theme.labelColor}}>{user.zachotka}</Text>
+                    <View>
+                        <Text style={{ fontFamily: 'roboto', fontSize: 18, color: '#006AB3', marginBottom: 5, marginTop: 15}}>{locale['average']}</Text>
+                        <View style={{ paddingTop: 10, paddingBottom: 10, width: w * 0.425, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 5}}>
+                            <Text style={{width: w * 0.425, textAlign: 'center',fontFamily: 'roboto', fontSize: 18, color: theme.labelColor}}>{user.averga}</Text>
+                        </View>
                     </View>
                 </View>
-            </ScrollView>
-            
+                <Text style={{ fontFamily: 'roboto', fontSize: 18, color: '#006AB3', marginBottom: 5, marginTop: 15}}>{locale['login']}</Text>
+                <View style={{ padding: 10, width: w * 0.9, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 5}}>
+                    <Text style={{fontFamily: 'roboto', textAlign: 'center', fontSize: 18, color: theme.labelColor}}>{user.zachotka}</Text>
+                </View>
+
+                <Text style={{ fontFamily: 'roboto', fontSize: 18, color: '#006AB3', marginBottom: 5, marginTop: 15}}>{locale['perfomance']}</Text>
+                <View style={{width: w * 0.9, borderRadius: 15, backgroundColor: theme.blockColor, elevation: 5}}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('Attestation', {data: authData})}>
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10}}>
+                            <Text style={{fontFamily: 'roboto', color: theme.labelColor, fontSize: 18}}>{locale['attestation']}</Text>
+                            <MaterialIcons name="keyboard-arrow-right" size={24} color="#006AB3" />
+                        </View>
+                    </TouchableOpacity>
+                    <View style={{width: w * 0.8, height: 1, backgroundColor: 'gray', alignSelf: 'center', opacity: 0.5}}/>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('Marks', {data: authData})}>
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10}}>
+                            <Text style={{fontFamily: 'roboto', color: theme.labelColor, fontSize: 18}}>{locale['marks']}</Text>
+                            <MaterialIcons name="keyboard-arrow-right" size={24} color="#006AB3" />
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </View> 
         </View>
     )
 }
