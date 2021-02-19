@@ -34,10 +34,8 @@ export default function VacanciesScreen(props){
             <FlatList
                 data={vacanciesList}
                 renderItem={item => 
-                    <TouchableOpacity  onPress={() => props.navigation.navigate('Vacancy',{data: item})}>
-                        <View style={[styles.list,{backgroundColor: theme.blockColor}]}>
-                            <Text style={[styles.listText, {color: theme.labelColor}]}>{item.item.name}</Text>
-                        </View>
+                    <TouchableOpacity style={[styles.list,{backgroundColor: theme.blockColor}]} onPress={() => props.navigation.navigate('Vacancy',{data: item})}>
+                        <Text style={[styles.listText, {color: theme.labelColor}]}>{item.item.name}</Text>
                     </TouchableOpacity>}
                 keyExtractor={item => item.id}
                 contentContainerStyle={{alignItems: 'center'}} 
