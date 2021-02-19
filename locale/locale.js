@@ -84,8 +84,10 @@ export const translations = {
         average: 'Average score',
         perfomance: 'Academic performance',
         attestation: 'Attestation',
-        marks: 'Marks',
-        term: 'term'
+        marks: 'Gradebook',
+        term: 'term',
+        att: 'att.',
+        total: 'Total'
         },
   ru: { timetable: 'Расписание', 
         menu: 'Меню',
@@ -171,8 +173,10 @@ export const translations = {
         average: 'Средний балл',
         perfomance: 'Успеваемость',
         attestation: 'Аттестация',
-        marks: 'Оценки',
-        term: 'семестр'},
+        marks: 'Зачётная книжка',
+        term: 'семестр',
+        att: 'атт.', 
+        total: 'Итог'},
 };
 // Set the locale once at the beginning of your app.
 

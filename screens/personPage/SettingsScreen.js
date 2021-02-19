@@ -78,13 +78,12 @@ export default function SettingsScreen(props){
                 </View>
                 <Text style={{ width: w * 0.9, alignSelf: 'center', color: 'gray', fontSize: 12, fontFamily: 'roboto', marginTop: 15}}>{locale['color_settings']}</Text>
                 {Object.keys(props.route.params.user).length !== 0 ?
-                <TouchableOpacity onPress={() => {
+                <TouchableOpacity style={{padding: 10, width: w * 0.4, alignSelf: 'center', marginTop: 20, borderRadius: 15, elevation: 5, backgroundColor: theme.blockColor}} onPress={() => {
+                    console.log('Out')
                     AsyncStorage.removeItem('User')
                     props.navigation.navigate('Account')
                 }}>
-                    <View style={{ padding: 10, width: w * 0.4, alignSelf: 'center', marginTop: 20, borderRadius: 15, elevation: 5, backgroundColor: theme.blockColor}}>
-                        <Text style={{alignSelf: 'center', color: '#EE7575', fontWeight: 'bold', fontFamily: 'roboto',}}>ВЫЙТИ</Text>
-                    </View>
+                    <Text style={{alignSelf: 'center', color: '#EE7575', fontWeight: 'bold', fontFamily: 'roboto',}}>ВЫЙТИ</Text>
                 </TouchableOpacity> : null}
                 
             </View>
