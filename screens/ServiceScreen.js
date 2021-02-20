@@ -6,11 +6,8 @@ import { h, w } from '../modules/constants'
 import { Entypo } from '@expo/vector-icons'; 
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { FontAwesome5 } from '@expo/vector-icons'; 
-import { AntDesign } from '@expo/vector-icons';
 import { useTheme } from '../themes/ThemeManager'
 import { useLocale } from '../locale/LocaleManager'
-
-
 
 
 export default function EventsScreen(props){

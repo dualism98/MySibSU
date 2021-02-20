@@ -27,13 +27,13 @@ const Subject = ({data, timetableMode}) =>{
                         <View key={item.teacher + item.place}>
                             <View style={styles.line}></View>
                             {
-                                (item.num !== 0) ? <Text style={{fontSize: 12,
+                                (item.num !== 0) ? <Text style={{fontSize: 14,
                                     fontFamily: 'roboto',
                                     color: 'rgb(154,158,159)',
                                     marginBottom: -5, marginRight: 10}}>{subgroups[Number(item.num)]}</Text> : <View></View>
                             }
                             <Text style={[styles.subject, {color: theme.blueColor}]}>{item.name}</Text>
-                            <Text style={styles.type, {color: String(types[Number(item.type)][1])}}>{types[Number(item.type)][0]}</Text>
+                            <Text style={styles.type, {color: String(types[Number(item.type)][1]), fontSize: 16}}>{types[Number(item.type)][0]}</Text>
                             {timetableMode !== 1 ? <Text style={styles.professor}>{item.teacher}</Text> : null}
                             {timetableMode !== 0 ? <Text style={[styles.professor, timetableMode !== 1 ? {marginBottom: 3, marginTop: 3} : null]}>{item.group}</Text> : null}
                             {timetableMode !== 2 ? <Text style={styles.place}>{item.place}</Text> : null}
@@ -86,26 +86,25 @@ const styles = StyleSheet.create({
 
     subject: {
         marginTop: 4,
-        fontSize: 15,
+        fontSize: 16,
         fontFamily: 'roboto',
         fontWeight: 'bold'
     },
 
     type: {
         fontSize: 18,
-        color: 'rgb(125, 199, 28)',
         fontFamily: 'roboto',
     },
 
     professor: {
-        fontSize: 15,
+        fontSize: 16,
         fontFamily: 'roboto',
         color: 'rgb(154,158,159)',
         marginBottom: -5
     },
 
     place: {
-        fontSize: 15,
+        fontSize: 16,
         color: 'gray',
         fontFamily: 'roboto',
         width: w * 0.82,

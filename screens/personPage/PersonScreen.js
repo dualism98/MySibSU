@@ -24,7 +24,7 @@ export default function PersonScreen(props){
                 <TouchableOpacity onPress={() => {
                     const modes = {"Default": 0, "Light": 1, "Dark": 2, null: 0}
                     AsyncStorage.getItem('Theme')
-                        .then(res => props.navigation.navigate('Settings', {theme: modes[res], user: user}))}}>
+                        .then(res => props.navigation.navigate('Settings', {theme: modes[res], user: {}}))}}>
                     <Octicons name="gear" size={24} color={theme.headerTitle}/>
                 </TouchableOpacity>
             </View>

@@ -38,7 +38,7 @@ const Day = ({day, date, week, currentWeek, weekDay, timetableMode}) => {
                             <Text style={{ fontSize: 18, color: 'white', fontFamily: 'roboto'}}>{locale['today']}</Text></View> : null
                         }
                 </View>
-                <Text style={{minHeight: h * 0.05, fontFamily: 'roboto', textAlignVertical: 'center', marginTop: h * 0.015, maxHeight: h * 0.05, fontSize: 15, color: 'gray', position: 'absolute', right: 20}}>{date}</Text>
+                <Text style={{minHeight: h * 0.05, fontFamily: 'roboto', textAlignVertical: 'center', marginTop: h * 0.015, maxHeight: h * 0.05, fontSize: 16, color: 'gray', position: 'absolute', right: 20}}>{date}</Text>
             </View>
             {
                 day.lessons.length === 0 ?

@@ -16,7 +16,8 @@ import Animated, {Easing} from 'react-native-reanimated'
   import NewsScreen from './NewsScreen'
 
   // Menu
-  import MenuScreen from './MenuScreen'
+  import MenuScreen from './Menu/MenuScreen'
+  import DinersScreen from './Menu/DinersScreen'
 
   // Timetable
   import SearchScreen from './Timetable/SearchScreen'
@@ -85,7 +86,8 @@ function FeedTabs() {
         elevation: 6
       },
       indicatorStyle: {
-        marginLeft: Dimensions.get('window').width / 4
+        marginLeft: Dimensions.get('window').width / 4,
+        color: theme.blueColor
       },
       activeTintColor: theme.labelColor,
       allowFontScaling: false,
@@ -204,7 +206,7 @@ function BottomTab(){
           headerShown: false,
           title: locale['feed']
         }}/>
-        <Tabs.Screen name={'Menu'} component={MenuScreen} 
+        <Tabs.Screen name={'Menu'} component={MenuStackScreen} 
         options={{
           headerShown: false,
           title: locale['menu']
@@ -213,7 +215,8 @@ function BottomTab(){
         options={{
           headerShown: false,
           title: locale['timetable']
-        }}/>
+        }}
+        />
         <Tabs.Screen name={'Services'} component={ServiceStackScreen} 
         options={{
           headerShown: false,
@@ -242,6 +245,37 @@ export default function Navigation({firstLaunch}){
       </HelloStack.Navigator>
     </NavigationContainer>
   )
+}
+
+const MenuStack = createStackNavigator();
+
+function MenuStackScreen(){
+  const [screen, setScreen] = useState('')
+
+  const Layout = (initialName) => {
+    if(initialName === '')
+      return(<View></View>)
+    else
+      return(
+        <MenuStack.Navigator initialRouteName={initialName} headerMode='none'>
+          <MenuStack.Screen name='DinersScreen' component={DinersScreen} />
+          <MenuStack.Screen name='MenuScreen' component={MenuScreen} />
+        </MenuStack.Navigator>
+      )
+  }
+
+  useEffect(() => {
+    AsyncStorage.getItem('Diner')
+      .then(res => {
+        console.log('DINER: ')
+        if(res !== null)
+          setScreen('MenuScreen')
+        else
+          setScreen('DinersScreen')
+      })
+  })
+
+  return(Layout(screen))
 }
 
 const TimetableStack = createStackNavigator();

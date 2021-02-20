@@ -29,6 +29,7 @@ export default function TimetableScreen(props){
     const [first_dates, setFirstDates] = useState([])
     const [second_dates, setSecondDates] = useState([])
     const [timetableMode, setMode] = useState(0)
+    const [y, setY] = useState(0)
 
     const f_scrollViewRef = useRef()
     const s_scrollViewRef = useRef()
@@ -42,6 +43,19 @@ export default function TimetableScreen(props){
             AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
         }
       );
+
+    useEffect(() => {
+        const unsubscribe = props.navigation.addListener('tabPress', e => {
+            if (currentWeek === 1){
+                console.log('FIRST')
+                f_scrollViewRef.current.scrollTo({x: 0, y: y - 20, animated: true})
+            }
+            else{
+                s_scrollViewRef.current.scrollTo({x: 0, y: y - 20, animated: true})
+            }
+            e.preventDefault();
+          });
+    }, [props.navigation])
     
     // useEffect(() => {
     //     console.log('Определение группы')
@@ -207,6 +221,7 @@ export default function TimetableScreen(props){
                                 var date = new Date()
                                 if(date.getDay() - 1 === item.day && currentWeek === 1){
                                     const layout = event.nativeEvent.layout
+                                    setY(layout.y)
                                     f_scrollViewRef.current.scrollTo({x: 0, y: layout.y - 20, animated: true})
                                 }
                         }}>
@@ -225,6 +240,7 @@ export default function TimetableScreen(props){
                             var date = new Date()
                             if(date.getDay() - 1 === item.day && currentWeek === 2){
                                 const layout = event.nativeEvent.layout
+                                setY(layout.y)
                                 s_scrollViewRef.current.scrollTo({x: 0, y: layout.y - 20, animated: true})
                             }
                         }}>

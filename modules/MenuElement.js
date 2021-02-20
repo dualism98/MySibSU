@@ -4,39 +4,23 @@ import { h, w } from './constants';
 import {useTheme} from '../themes/ThemeManager'
 import {useLocale} from '../locale/LocaleManager'
 
-const MenuElement = ({data, date}) => {
-    var { day, food } = data
+const MenuElement = ({data}) => {
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
-    day = day.split('-')
 
     return(
         <View style={{ alignItems: 'center'}}>
-            <View style={styles.sub}>
-                <Text style={styles.h1}>{day[2]}.{day[1]}.{day[0]}</Text>
-            </View>
-            <View style={[styles.box, {flexDirection: 'row', heigth: 20, marginTop: 10, backgroundColor: mode === 'light' ? 'rgb(240,240,240)' : 'rgb(25,25,25)', marginBottom: 10}]}>
-                <View style={{ height: 20, width: '55%', }}>
-                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'left', textAlignVertical: 'center', color: theme.labelColor }}>{locale['dish']}</Text>
-                </View>
-                <View style={{ height: 20, width: '15%',}}>
-                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center', color: theme.labelColor }}>{locale['weight']}</Text>
-                </View>
-                <View style={{ height: 20, width: '30%', }}>
-                    <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center', color: theme.labelColor }}>{locale['price']}</Text>
-                </View>
-            </View>
             <View style={styles.down}>
                 {
-                    food.map(item => (
-                        <View style={[styles.box, styles.shadow2, {flexDirection: 'row', heigth: 20, backgroundColor: theme.blockColor}]}>
+                    data.map(item => (
+                        <View style={{ elevation: 5, width: w * 0.9, padding: 10, borderRadius: 15, marginTop: 10, flexDirection: 'row', heigth: 20, backgroundColor: theme.blockColor}}>
                             <View style={{ height: 20, width: '55%', }}>
-                                <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'left', textAlignVertical: 'center', color: theme.labelColor }}>{item.name}</Text>
+                                <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'left', textAlignVertical: 'center', color: theme.labelColor }}>{item.diner_name}</Text>
                             </View>
-                            <View style={{ height: 20, width: '15%', }}>
-                                <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center', color: theme.labelColor }}>{item.mass}г.</Text>
+                            <View style={{ height: 20, width: '25%', }}>
+                                <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center', color: theme.labelColor }}>{item.weight}г.</Text>
                             </View>
-                            <View style={{ height: 20, width: '30%',}}>
+                            <View style={{ height: 20, width: '25%',}}>
                                 <Text style={{ height: '100%', fontFamily: 'roboto', fontSize: 15, textAlign: 'center', textAlignVertical: 'center', color: theme.labelColor }}>{item.price}₽</Text>
                             </View>
                         </View>

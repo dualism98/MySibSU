@@ -8,7 +8,6 @@ import { h, w } from '../../modules/constants'
 import SwitchSelector from "react-native-switch-selector";
 import { Ionicons } from '@expo/vector-icons'; 
 import { FontAwesome } from '@expo/vector-icons';
-import { getPixelSizeForLayoutSize } from 'react-native/Libraries/Utilities/PixelRatio'
 
 const URLs = ['https://mysibsau.ru/v2/timetable/all_groups/',
                 'https://mysibsau.ru/v2/timetable/all_teachers/',
@@ -72,7 +71,7 @@ export default function SearchScreen(props){
                     })
             })
         
-    }, [timetableMode])
+    }, [])
 
     useEffect(() => {
         console.log('Получаем группы/преподавателей/места')
