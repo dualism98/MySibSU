@@ -88,43 +88,29 @@ export default function TimetableScreen(props){
 
     useEffect(() => {
         console.log('Определение дат')
-        var first = []
-        var second = []
-        const week = [6, 0, 1, 2, 3, 4, 5]
-        
-        if (currentWeek === 1) {
-            for (var i = 0; i <= week[new Date().getDay()]; i++){
-                first.push(new Date().setDate(new Date().getDate() - (week[new Date().getDay()] - i)))
-                first[i] = new Date(first[i])
-            }
-            for (var i = new Date().getDay(); i < 6; i++){
-                first.push(new Date().setDate(new Date().getDate() + (i - week[new Date().getDay()])))
-                first[i] = new Date(first[i])
-            }
-            for (var i = 0; i < 6; i++){
-                var tmp = new Date(first[i])
-                second.push(tmp.setDate(tmp.getDate() + 7))
-                second[i] = new Date(second[i])
-            }
+        var d = new Date();
+        var day = d.getDay(),
+            diff = d.getDate() - day + (day == 0 ? -6:1)
+
+        var now_week = []
+        var next_week = []
+        var monday = new Date(d.setDate(diff))
+        now_week.push(monday)
+        for (var i = 1; i < 6; i++)
+            now_week.push(new Date(monday.getTime() + i * (24 * 60 * 60 * 1000)))
+
+        for (var i = 7; i < 13; i++)
+            next_week.push(new Date(monday.getTime() + i * (24 * 60 * 60 * 1000)))
+
+
+        if (currentWeek === 1){
+            setFirstDates(now_week)
+            setSecondDates(next_week)
         }
         else{
-            for (var i = 0; i <= week[new Date().getDay()]; i++){
-                second.push(new Date().setDate(new Date().getDate() - (week[new Date().getDay() - i])))
-                second[i] = new Date(second[i])
-            }
-            console.log(second)
-            for (var i = new Date().getDay(); i < 6; i++){
-                second.push(new Date().setDate(new Date().getDate() + (week[i - new Date().getDay()])))
-                second[i] = new Date(second[i])
-            }
-            for (var i = 0; i < 6; i++){
-                var tmp = new Date(second[i])
-                first.push(tmp.setDate(tmp.getDate() + 7))
-                first[i] = new Date(first[i])
-            }
+            setFirstDates(next_week)
+            setSecondDates(now_week)
         }
-        setFirstDates(first)
-        setSecondDates(second)
     }, [group])
 
     function getIndex(){
