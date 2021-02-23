@@ -34,7 +34,7 @@ export default function DinersScreen(props){
                     return(
                         <TouchableOpacity 
                             onPress={() => {
-                                AsyncStorage.setItem('Diner', String(menu.indexOf(diner)))
+                                AsyncStorage.setItem('Diner', String(diner.name))
                                 props.navigation.navigate('MenuScreen')
                             }}
                             style={{ width: w * 0.9, padding: 10, marginTop: 10, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 5, alignSelf: 'center'}}>

@@ -16,7 +16,6 @@ function food(count, theme, locale){
 }
 
 export default function MenuScreen(props){
-
     const [dayList, setDayList] = useState([])
     const [loaded, setLoaded] = useState(false)
     const [date, setDate] = useState('')
@@ -25,24 +24,35 @@ export default function MenuScreen(props){
     const {localeMode, locale, toggleLang} = useLocale()
 
     useEffect(() => {
-        AsyncStorage.getItem('Diner')
-            .then(res => {
-                if (res !== null){
-                    fetch(url, {method: 'GET'})
-                        .then(response => response.json())
-                        .then(json => {
-                            console.log(json[Number(res)])
-                            setDayList(json[Number(res)])
-                            setLoaded(true)
-                        })
-                }
-            })
+        
+        const unsubscribe = props.navigation.addListener(
+            'state',
+            payload => {
+                console.log('Получаю меню')
+                AsyncStorage.getItem('Diner')
+                .then(res => {
+                    if (res !== null){
+                        fetch(url, {method: 'GET'})
+                            .then(response => response.json())
+                            .then(json => {
+                                json.map(item => {
+                                    if(item.name === res){
+                                        setDayList(item)
+                                    }
+                                })
+                                setLoaded(true)
+                            })
+                    }
+                })
+            }
+        )
+        
     }, [])
 
     return( 
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
-            <Header title={dayList.name}/>
-            <ScrollView contentContainerStyle={{flex: 1, paddingBottom: 120}}>
+            <Header title={locale['menu']} onPress={() => props.navigation.navigate('DinersScreen')}/>
+            <ScrollView contentContainerStyle={{paddingBottom: 120}}>
                 
                 {!loaded ?
                 <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
@@ -54,9 +64,7 @@ export default function MenuScreen(props){
                         if(item.diners.length !== 0)
                             return(
                                 <View>
-                                    {/* <View style={{width: w * 0.9, marginTop: 10, alignSelf: 'center', padding: 10, backgroundColor: theme.primaryBackground, borderRadius: 15, elevation: 5}}> */}
-                                        <Text style={{fontFamily: 'roboto', marginLeft: w * 0.05, fontSize: 18, color: '#006AB3', marginTop: 20}}>{item.type}</Text>
-                                    {/* </View> */}
+                                    <Text style={{fontFamily: 'roboto', marginLeft: w * 0.05, fontSize: 18, color: '#006AB3', marginTop: 20}}>{item.type}</Text>
                                     <MenuElement data={item.diners} />
                                 </View>
                             )  

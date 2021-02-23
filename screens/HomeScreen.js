@@ -267,7 +267,6 @@ function MenuStackScreen(){
   useEffect(() => {
     AsyncStorage.getItem('Diner')
       .then(res => {
-        console.log('DINER: ')
         if(res !== null)
           setScreen('MenuScreen')
         else
