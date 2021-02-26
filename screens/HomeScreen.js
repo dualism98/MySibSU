@@ -46,6 +46,10 @@ import Animated, {Easing} from 'react-native-reanimated'
     import PollScreen from './services/poll/PollScreen'
     // FAQ
     import FAQScreen from './services/FAQScreen'
+    // Library
+    import LibrarySearchScreen from './services/library/LibrarySearchScreen'
+    import DigitalScreen from './services/library/DigitalScreen'
+    import PhysicalScreen from './services/library/PhysicalScreen'
   
 // Person
 import PersonScreen from './personPage/PersonScreen'
@@ -64,6 +68,100 @@ import { AntDesign } from '@expo/vector-icons'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Ionicons } from '@expo/vector-icons'
 
+function LibraryTabBar({ state, descriptors, navigation, position }) {
+  const {mode, theme, toggle} = useTheme()
+  const inputRange = state.routes.map((_, i) => i);
+  const translateX = Animated.interpolate(position, {
+    inputRange,
+    outputRange: inputRange.map(i => i * Dimensions.get('window').width / 4)
+  })
+  
+  return (
+    <View style={{ flexDirection: 'row', backgroundColor: theme.blockColor, elevation: 6}}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <View style={{ height: Dimensions.get('window').width / 8, width: Dimensions.get('window').width / 4 , justifyContent: 'center'}}>
+          <Ionicons name="ios-arrow-back" size={30} color="black" style={{ color: '#006AB3', paddingRight: 10, paddingLeft: 15}}/>
+        </View>
+      </TouchableOpacity>
+      <Animated.View
+        style={[
+            style.slider,
+            {
+                left: Dimensions.get('window').width / 4,
+                transform: [{translateX}],
+                width: Dimensions.get('window').width / 4,
+                height: 2,
+                backgroundColor: theme.blueColor
+            },
+        ]}
+          />
+      {state.routes.map((route, index) => {
+        const { options } = descriptors[route.key];
+        const label = options.title
+
+        const isFocused = state.index === index;
+
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+            canPreventDefault: true,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
+
+        const onLongPress = () => {
+          navigation.emit({
+            type: 'tabLongPress',
+            target: route.key,
+          });
+        };
+
+        const inputRange = state.routes.map((_, i) => i);
+        const opacity = Animated.interpolate(position, {
+          inputRange,
+          outputRange: inputRange.map(i => (i === index ? 1 : 0.5)),
+        });
+
+        return (
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            style={{ width: Dimensions.get('window').width / 4, alignItems: 'center', justifyContent: 'center' }}
+          >
+            <Animated.Text style={{ textTransform: 'uppercase', fontFamily: 'roboto', color: theme.labelColor, fontSize: 13, opacity }}>
+              {label}
+            </Animated.Text>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
+}
+
+const LibraryTab = createMaterialTopTabNavigator();
+
+function LibraryTabs({route}){
+  console.log(route)
+  const {localeMode, locale, toggleLang} = useLocale()
+  const {mode, theme, toggle} = useTheme()
+  return (
+    <LibraryTab.Navigator tabBar={props => <LibraryTabBar {...props} />} tabBarOptions={{
+      activeTintColor: theme.labelColor,
+      allowFontScaling: false,
+    }}>
+      <LibraryTab.Screen options={ ({route}) => ({ title: locale['digital'], data: route.params })} name="Digital" component={DigitalScreen} />
+      <LibraryTab.Screen options={ ({route}) => ({ title: locale['printed'], data: route.params })} name="Physical" component={PhysicalScreen} />
+    </LibraryTab.Navigator>
+  );
+}
 
 const FeedTab = createMaterialTopTabNavigator();
 
@@ -364,6 +462,8 @@ function ServiceStackScreen(){
       <ServiceStack.Screen name='Topics' component={TopicsScreen} />
       <ServiceStack.Screen name='Poll' component={PollScreen} />
       <ServiceStack.Screen name='FAQ' component={FAQScreen} />
+      <ServiceStack.Screen name='LibrarySearch' component={LibrarySearchScreen} />
+      <ServiceStack.Screen name='LibraryResult' component={LibraryTabs} />
     </ServiceStack.Navigator>
   )
 }

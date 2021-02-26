@@ -54,12 +54,9 @@ export default function AuthScreen(props){
                                 }
                                 else{
                                     console.log(json)
-                                    ToastAndroid.showWithGravityAndOffset(
-                                        "Неверный логин/пароль",
+                                    ToastAndroid.show(
+                                        locale['wrong_login'],
                                         ToastAndroid.LONG,
-                                        ToastAndroid.BOTTOM,
-                                        0,
-                                        200
                                       );
                                 }
                             })

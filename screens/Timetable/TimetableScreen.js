@@ -43,19 +43,6 @@ export default function TimetableScreen(props){
             AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
         }
       );
-
-    useEffect(() => {
-        const unsubscribe = props.navigation.addListener('tabPress', e => {
-            if (currentWeek === 1){
-                console.log('FIRST')
-                f_scrollViewRef.current.scrollTo({x: 0, y: y - 20, animated: true})
-            }
-            else{
-                s_scrollViewRef.current.scrollTo({x: 0, y: y - 20, animated: true})
-            }
-            e.preventDefault();
-          });
-    }, [props.navigation])
     
     // useEffect(() => {
     //     console.log('Определение группы')

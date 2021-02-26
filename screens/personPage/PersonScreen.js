@@ -64,12 +64,9 @@ export default function PersonScreen(props){
                                     props.navigation.navigate('Profile')
                                 }
                                 else{
-                                    ToastAndroid.showWithGravityAndOffset(
-                                        "Неверный логин/пароль",
-                                        ToastAndroid.LONG,
-                                        ToastAndroid.BOTTOM,
-                                        0,
-                                        200
+                                    ToastAndroid.show(
+                                        locale['wrong_login'],
+                                        ToastAndroid.LONG
                                       );
                                 }
                                 

@@ -18,7 +18,6 @@ function food(count, theme, locale){
 export default function MenuScreen(props){
     const [dayList, setDayList] = useState([])
     const [loaded, setLoaded] = useState(false)
-    const [date, setDate] = useState('')
 
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
@@ -51,7 +50,7 @@ export default function MenuScreen(props){
 
     return( 
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
-            <Header title={locale['menu']} onPress={() => props.navigation.navigate('DinersScreen')}/>
+            <Header title={dayList.name} onPress={() => props.navigation.navigate('DinersScreen')}/>
             <ScrollView contentContainerStyle={{paddingBottom: 120}}>
                 
                 {!loaded ?
@@ -60,6 +59,7 @@ export default function MenuScreen(props){
                 </View> :
                 <View>
                 {
+                    dayList.length !== 0 ?
                     dayList.menu.map(item => {
                         if(item.diners.length !== 0)
                             return(
@@ -69,6 +69,7 @@ export default function MenuScreen(props){
                                 </View>
                             )  
                     })
+                    : <Text style={{fontFamily: 'roboto', fontSize: 18, alignSelf: 'center', marginTop: 20, color: theme.labelColor}}>{locale['no_menu']}</Text>
                 }
                 </View>}
             </ScrollView>

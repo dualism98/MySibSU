@@ -20,11 +20,11 @@ function App(){
   useEffect(() => {
     AsyncStorage.getItem("alreadyLaunched").then(value => {
       if(value == null){
-           AsyncStorage.setItem('alreadyLaunched', true);
+           AsyncStorage.setItem('alreadyLaunched', "true");
            setFirstLaunch(true)
       }
       else
-           setFirstLaunch(true)
+           setFirstLaunch(false)
     })
   }, [])
 
@@ -56,8 +56,6 @@ function App(){
       if (res === null)
         AsyncStorage.setItem('@mode', '0')
     })
-
-  
 
   return (
     <WeekManager>

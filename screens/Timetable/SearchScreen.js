@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { View, Text, StyleSheet, Animated, StatusBar, TextInput, AsyncStorage, TouchableOpacity, TouchableHighlight, FlatList } from 'react-native'
+import { View, Text, StyleSheet, Animated, StatusBar, TextInput, AsyncStorage, TouchableOpacity, TouchableHighlight, FlatList, ToastAndroid } from 'react-native'
 import MainHeader from '../../modules/MainHeader'
 import Help from '../../modules/timetableFolder/Help'
 import { useTheme } from '../../themes/ThemeManager'
@@ -58,19 +58,20 @@ export default function SearchScreen(props){
     ];
 
     useEffect(() => {
-        console.log('Получаем список последних групп')
         AsyncStorage.getItem('@mode')
             .then(res => {
-                setTimetableMode(Number(res))
-                AsyncStorage.getItem(last[Number(res)])
-                    .then(list => {
-                        if (list !== null)
-                            setLast(JSON.parse(list))
-                        else
-                            setLast([])
-                    })
+                if (res !== null)
+                    setTimetableMode(Number(res))
+                else
+                    setTimetableMode(0)
             })
-        
+        AsyncStorage.getItem('Favourite')
+            .then(list => {
+                if (list !== null)
+                    setLast(JSON.parse(list))
+                else
+                    setLast([])
+            })
     }, [])
 
     useEffect(() => {
@@ -110,53 +111,13 @@ export default function SearchScreen(props){
     }
 
     const renderHelp = ({ item }) => (
-        <Help group={item} onPress={() => setCurrentGroup(item.name)} />
+        <Help group={item} onPress={() => setCurrentGroup(item.name)} onPlus={() => {
+            addFavourite(item)
+            ToastAndroid.show(locale['added_to_favourites'], ToastAndroid.SHORT)}}/>
     )
 
-    function similarGroup(text){
-        setGroup(text)
-        if(text !== '' && text.length > 0){
-            timetableMode === 0 ? 
-            setShown(fil(e => e.name.slice(0, text.length) === text.toUpperCase(), lists[timetableMode])) :
-            setShown(fil(e => e.name.slice(0, text.length) === text, lists[timetableMode]))
-        }
-        else{
-            setShown([])
-        }
-    }
-
-    function removeGroup(group){
-        let groups = []
-        AsyncStorage.getItem(last[timetableMode])
-            .then(res => {
-                groups = JSON.parse(res)
-                groups = groups.filter(item => {
-                    if(item.name !== group.name){
-                        return item
-                    }
-                })
-                setLast(groups)
-                AsyncStorage.setItem(last[timetableMode], JSON.stringify(groups))
-            })
-
-    }
-
-    function setCurrentGroup(name){
-        setGroup(name)
-        var choosed = ''
-        timetableMode === 0 ? 
-            choosed = name
-            .toUpperCase()
-            .split(' ')[0] : choosed = name    
-
-        
-
-        lists[timetableMode].map(group => {
-            if (group.name === choosed){
-                storeData(group.id, group.name, timetableMode)
-                setGroup('') 
-                setShown([])
-                AsyncStorage.getItem(last[timetableMode])
+    function addFavourite(group){
+        AsyncStorage.getItem('Favourite')
                     .then(res => {
                         let groups = []
                         let there_is = false
@@ -182,10 +143,54 @@ export default function SearchScreen(props){
                         }
                         
                         setLast(groups)
-                        AsyncStorage.setItem(last[timetableMode], JSON.stringify(groups))
+                        AsyncStorage.setItem('Favourite', JSON.stringify(groups))
                     })
-                    .then(() => {
-                        props.navigation.navigate('TimetableScreen', {group: group.id})})
+    }
+
+    function similarGroup(text){
+        setGroup(text)
+        if(text !== '' && text.length > 0){
+            timetableMode === 0 ? 
+            setShown(fil(e => e.name.slice(0, text.length) === text.toUpperCase(), lists[timetableMode])) :
+            setShown(fil(e => e.name.slice(0, text.length) === text, lists[timetableMode]))
+        }
+        else{
+            setShown([])
+        }
+    }
+
+    function removeGroup(group){
+        let groups = []
+        AsyncStorage.getItem('Favourite')
+            .then(res => {
+                groups = JSON.parse(res)
+                groups = groups.filter(item => {
+                    if(item.name !== group.name){
+                        return item
+                    }
+                })
+                setLast(groups)
+                AsyncStorage.setItem('Favourite', JSON.stringify(groups))
+            })
+
+    }
+
+    function setCurrentGroup(name){
+        setGroup(name)
+        var choosed = ''
+        timetableMode === 0 ? 
+            choosed = name
+            .toUpperCase()
+            .split(' ')[0] : choosed = name    
+
+
+        lists[timetableMode].map(group => {
+            if (group.name === choosed){
+                storeData(group.id, group.name, timetableMode)
+                setGroup('') 
+                setShown([])
+                
+                props.navigation.navigate('TimetableScreen', {group: group.id})
                 
             }
         })
@@ -219,14 +224,15 @@ export default function SearchScreen(props){
                     </View>
                 </TouchableHighlight>
             </View>
-            <View style={[{ position: 'absolute', top: 120, height: 30 + 7 * 30, maxHeight: h / 2, marginTop: 10, flexDirection: 'column', borderRadius: 15, paddingTop: 15, paddingBottom: 15, backgroundColor: theme.blockColor, zIndex: 3, elevation: 6}]}>
+            {shown.length !== 0 ?
+            <View style={[{ position: 'absolute', top: 120, height: 8 * 40, width: w * 0.9, marginTop: -5, flexDirection: 'column', borderRadius: 15, backgroundColor: theme.blockColor, zIndex: 3, elevation: 6}]}>
                 <FlatList 
                     data={shown}
                     renderItem={renderHelp}
                     initialNumToRender={15}
                     keyExtractor={item => item.name}
                 />
-            </View>
+            </View> : null}
             {lastGroups.length !== 0 ?
             <View style={[{ shadowColor: "#000",
                             shadowOffset: {
@@ -238,7 +244,7 @@ export default function SearchScreen(props){
                             shadowRadius: 4.65,
                             elevation: 5,}, styles.shadow, { flex: 1, backgroundColor: theme.blockColor, width: w * 0.9, position: 'absolute', top: 115, zIndex: 0, borderRadius: 15, paddingBottom: 10}]}>
                 {lastGroups.length !== 0 ? 
-                <Text style={{ fontFamily: 'roboto', width: w, paddingLeft: 20, fontSize: 20, marginTop: 10, color: theme.blueColor}}>{locale['last_groups']}</Text> : null}
+                <Text style={{ fontFamily: 'roboto', width: w, paddingLeft: 20, fontSize: 20, marginTop: 10, color: theme.blueColor}}>{locale['favourites']}</Text> : null}
                     {lastGroups.map(item => {
                         return(
                             <View style={{ height: 30, flexDirection: 'row', marginTop: 5}}>
@@ -254,11 +260,12 @@ export default function SearchScreen(props){
                             </TouchableOpacity>
                             </View>)
                     })}
-            </View> : null}
+            </View> : <Text style={{fontFamily: 'roboto', color: 'gray', alignSelf: 'center', width: w * 0.8, marginTop: 15}}>{locale['add_favourites']}</Text>}
             </View> : null}
             <Animated.View style={[{padding: 5, backgroundColor: 'white', borderRadius: 10, elevation: 6, position: 'absolute', bottom: 120, alignSelf: 'center'}, {opacity: fadeAnim}]}>
-                <Text style={{fontFamily: 'roboto', textAlign: 'center'}}>Расписание этой группы{'\n'}недоступно</Text>
+                <Text style={{fontFamily: 'roboto', textAlign: 'center'}}>{locale['timetable_isnt_available']}</Text>
             </Animated.View>  
+
         </View>
     )
 }
