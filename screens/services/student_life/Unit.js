@@ -25,8 +25,6 @@ export default function Ermak(props){
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
 
-    console.log(theme)
-
     async function sendMessage(link){
         const uri = 'https://mysibsau.ru/v2/campus/unions/join/' + props.route.params.data.id + '/'
         let vk_page = vk.split('/')
@@ -63,7 +61,7 @@ export default function Ermak(props){
                 <View>
                     <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: data.photo ? w * 0.2 + 20 : 20, marginLeft: 20, color: '#5575A7',}}>{locale['description']}</Text>
                     <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10, backgroundColor: theme.blockColor}]}>
-                        <Text style={{fontFamily: 'roboto', fontSize: 13, color: '#5575A7', paddingLeft: 5}}>{data.about}</Text>
+                        <Text style={{fontFamily: 'roboto', fontSize: 15, color: '#5575A7', paddingLeft: 5}}>{data.about}</Text>
                     </View>
                 </View> : null}
 
@@ -77,8 +75,8 @@ export default function Ermak(props){
                 
                 <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: 15, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank ? data.leader_rank : locale['active_head']}</Text>
                 {data.fio !== '-' ? 
-                    <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
-                        <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.fio}</Text>
+                    <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor, padding: 10}]}>
+                        <Text style={{fontFamily: 'roboto', fontSize: 20, textAlign: 'center', color: '#5575A7'}}>{data.fio}</Text>
                     </View> : null}
 
                 <View style={[styles.box, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>

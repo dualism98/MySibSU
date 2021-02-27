@@ -50,29 +50,41 @@ export default function MenuScreen(props){
 
     return( 
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
-            <Header title={dayList.name} onPress={() => props.navigation.navigate('DinersScreen')}/>
-            <ScrollView contentContainerStyle={{paddingBottom: 120}}>
+            <Header title={dayList.name} onPress={() => {
+                AsyncStorage.removeItem('Diner')
+                props.navigation.navigate('DinersScreen')}}/>
                 
-                {!loaded ?
-                <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
-                    <ActivityIndicator size='large' color={theme.blueColor} />
-                </View> :
-                <View>
+            {!loaded ?
+            <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
+                <ActivityIndicator size='large' color={theme.blueColor} />
+            </View> :
+            <View>
                 {
-                    dayList.length !== 0 ?
-                    dayList.menu.map(item => {
-                        if(item.diners.length !== 0)
-                            return(
-                                <View>
-                                    <Text style={{fontFamily: 'roboto', marginLeft: w * 0.05, fontSize: 18, color: '#006AB3', marginTop: 20}}>{item.type}</Text>
-                                    <MenuElement data={item.diners} />
-                                </View>
-                            )  
-                    })
-                    : <Text style={{fontFamily: 'roboto', fontSize: 18, alignSelf: 'center', marginTop: 20, color: theme.labelColor}}>{locale['no_menu']}</Text>
+                dayList.length === 0 ?
+                <Text style={{fontFamily: 'roboto', fontSize: 18, alignSelf: 'center', marginTop: 20, color: theme.labelColor}}>{locale['no_menu']}</Text> : null
+                // dayList.menu.map(item => {
+                //     if(item.diners.length !== 0)
+                //         return(
+                //             <View>
+                //                 <Text style={{fontFamily: 'roboto', marginLeft: w * 0.05, fontSize: 18, color: '#006AB3', marginTop: 20}}>{item.type}</Text>
+                //                 <MenuElement data={item.diners} />
+                //             </View>
+                //         )  
+                // })
+                // : <Text style={{fontFamily: 'roboto', fontSize: 18, alignSelf: 'center', marginTop: 20, color: theme.labelColor}}>{locale['no_menu']}</Text>
                 }
-                </View>}
-            </ScrollView>
+                <FlatList 
+                    data={dayList}
+                    renderItem={({ item }) => 
+                        <View>
+                            <Text style={{fontFamily: 'roboto', marginLeft: w * 0.05, fontSize: 18, color: '#006AB3', marginTop: 20}}>{item.type}</Text>
+                            <MenuElement data={item.diners} />
+                        </View>
+                    }
+                    keyExtractor={item => item}
+                    contentContainerStyle={{paddingBottom: 120}}
+                    initialNumToRender={15}/>
+            </View>}
         </View>       
     )
 }

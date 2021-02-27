@@ -12,6 +12,7 @@ export default function NewsScreen(props){
     const [loaded, setLoaded] = useState(false)
 
     const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
 
     useEffect(() => {
         console.log("Получение новостей")
@@ -34,12 +35,17 @@ export default function NewsScreen(props){
             <View style={{flex: 1, justifyContent: 'center', paddingBottom: 120}}>
                 <ActivityIndicator color={theme.blueColor} size='large' />
             </View> :
+            <>
+            {newsList.length === 0 ? 
+                <Text style={{fontFamily: 'roboto', fontSize: 18, alignSelf: 'center', marginTop: 20, color: theme.labelColor}}>{locale['empty']}</Text> : null
+            }
             <FlatList 
                 data={newsList}
                 renderItem={({ item }) => <NewsModule data={item} />}
                 keyExtractor={item => item.text}
                 contentContainerStyle={{paddingBottom: 120}}
-                initialNumToRender={4}/>}
+                initialNumToRender={4}/>
+            </>}
         </View>
     )
 }

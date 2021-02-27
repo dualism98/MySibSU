@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, TouchableOpacity, ActivityIndicator, AsyncStorage} from 'react-native'
+import {View, Text, TouchableOpacity, ActivityIndicator, AsyncStorage, FlatList} from 'react-native'
 import MainHeader from '../../modules/MainHeader'
 import { h, w } from '../../modules/constants'
 import {useLocale} from '../../locale/LocaleManager'
@@ -24,24 +24,31 @@ export default function DinersScreen(props){
 
     return(
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
-            <MainHeader title={'Столовые'} />
+            <MainHeader title={locale['canteens']} />
             {!loaded ? 
             <View style={{flex: 1, justifyContent: 'center', paddingBottom: 100}}>
                 <ActivityIndicator size='large' color='#006AB3' />
             </View> : 
             <View>
-                {menu.map(diner => {
-                    return(
+                {
+                    menu.length === 0 ? 
+                    <Text style={{fontFamily: 'roboto', fontSize: 18, alignSelf: 'center', marginTop: 20, color: theme.labelColor}}>{locale['canteens_dont_work']}</Text> : null
+                }
+                <FlatList 
+                    data={menu}
+                    renderItem={({ item }) => 
                         <TouchableOpacity 
                             onPress={() => {
-                                AsyncStorage.setItem('Diner', String(diner.name))
+                                AsyncStorage.setItem('Diner', String(item.name))
                                 props.navigation.navigate('MenuScreen')
                             }}
                             style={{ width: w * 0.9, padding: 10, marginTop: 10, backgroundColor: theme.blockColor, borderRadius: 15, elevation: 5, alignSelf: 'center'}}>
-                            <Text style={{fontFamily: 'roboto', fontSize: 16, color: theme.labelColor}}>{diner.name}</Text>
+                            <Text style={{fontFamily: 'roboto', fontSize: 16, color: theme.labelColor}}>{item.name}</Text>
                         </TouchableOpacity>
-                    )
-                })}
+                    }
+                    keyExtractor={item => item.name}
+                    contentContainerStyle={{paddingBottom: 120}}
+                    initialNumToRender={5}/>
             </View>}
         </View>
     )

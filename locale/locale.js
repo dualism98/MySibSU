@@ -1,7 +1,7 @@
 
 export const translations = {
   en: { timetable: 'Timetable', 
-        menu: 'Cafeteria',
+        menu: 'Canteens',
         events: 'Events',
         services: 'Services',
         profile: 'Profile',
@@ -98,6 +98,9 @@ export const translations = {
         digital: 'Digital',
         printed: 'Printed',
         wrong_login: 'Wrong username/password',
+        canteens_dont_work: 'Canteens don\'t work today',
+        canteens: 'Canteens',
+        empty: 'Empty',
         },
   ru: { timetable: 'Расписание', 
         menu: 'Столовые',
@@ -196,7 +199,10 @@ export const translations = {
         add_favourites: 'Добавьте группы/преподавателей/кабинеты в избранное, чтобы иметь быстрый доступ к ним',
         digital: 'Цифровые',
         printed: 'Печатные',
-        wrong_login: 'Неверный логин/пароль'},
+        wrong_login: 'Неверный логин/пароль',
+        canteens_dont_work: 'Столовые сегодня не работают',
+        canteens: 'Столовые',
+        empty: 'Пусто'},
 };
 // Set the locale once at the beginning of your app.
 
