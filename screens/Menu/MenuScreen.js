@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, ActivityIndicator, AsyncStorage, ScrollView} from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator, AsyncStorage, FlatList} from 'react-native'
 import { h, w } from '../../modules/constants' 
 import MenuElement from '../../modules/MenuElement'
 import Header from '../../modules/Header'
@@ -36,7 +36,7 @@ export default function MenuScreen(props){
                             .then(json => {
                                 json.map(item => {
                                     if(item.name === res){
-                                        setDayList(item)
+                                        setDayList(item.menu)
                                     }
                                 })
                                 setLoaded(true)
@@ -61,29 +61,20 @@ export default function MenuScreen(props){
             <View>
                 {
                 dayList.length === 0 ?
-                <Text style={{fontFamily: 'roboto', fontSize: 18, alignSelf: 'center', marginTop: 20, color: theme.labelColor}}>{locale['no_menu']}</Text> : null
-                // dayList.menu.map(item => {
-                //     if(item.diners.length !== 0)
-                //         return(
-                //             <View>
-                //                 <Text style={{fontFamily: 'roboto', marginLeft: w * 0.05, fontSize: 18, color: '#006AB3', marginTop: 20}}>{item.type}</Text>
-                //                 <MenuElement data={item.diners} />
-                //             </View>
-                //         )  
-                // })
-                // : <Text style={{fontFamily: 'roboto', fontSize: 18, alignSelf: 'center', marginTop: 20, color: theme.labelColor}}>{locale['no_menu']}</Text>
-                }
+                <Text style={{fontFamily: 'roboto', fontSize: 18, alignSelf: 'center', marginTop: 20, color: theme.labelColor}}>{locale['no_menu']}</Text> : 
                 <FlatList 
                     data={dayList}
                     renderItem={({ item }) => 
-                        <View>
-                            <Text style={{fontFamily: 'roboto', marginLeft: w * 0.05, fontSize: 18, color: '#006AB3', marginTop: 20}}>{item.type}</Text>
-                            <MenuElement data={item.diners} />
-                        </View>
+                        {console.log(item)
+                        return(
+                            <View>
+                                <Text style={{fontFamily: 'roboto', marginLeft: w * 0.05, fontSize: 18, color: '#006AB3', marginTop: 20}}>{item.type}</Text>
+                                <MenuElement data={item.diners} />
+                            </View>)
+                        }
                     }
-                    keyExtractor={item => item}
-                    contentContainerStyle={{paddingBottom: 120}}
-                    initialNumToRender={15}/>
+                    keyExtractor={item => item.diners}
+                    contentContainerStyle={{paddingBottom: 120}}/>}
             </View>}
         </View>       
     )
