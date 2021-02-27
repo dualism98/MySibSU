@@ -421,7 +421,12 @@ function PersonStackScreen(){
       return(
         <PersonStack.Navigator initialRouteName={initialName} headerMode='none'>
           <PersonStack.Screen name='Account' component={PersonScreen} />
-          <PersonStack.Screen name='Profile' component={ProfileScreen} />
+          <PersonStack.Screen name='Profile' component={ProfileScreen} 
+          listeners={{
+            tabPress: e => {
+              e.preventDefault();
+            },
+          }}/>
           <PersonStack.Screen name='Settings' component={SettingsScreen} />
           <PersonStack.Screen name='Attestation' component={AttestationScreen} />
           <PersonStack.Screen name='Marks' component={MarksScreen} />
