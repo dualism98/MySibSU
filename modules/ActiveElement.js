@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     text: {
         width: w * 0.9 - 80,
         fontSize: 14,
-        color: '#5575A7',
+        color: '#006AB3',
         fontFamily: 'roboto',
         textAlign: 'left',
         marginLeft: w * 0.9 - (w * 0.9 - 80) - 60

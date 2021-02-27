@@ -247,17 +247,17 @@ export default function SearchScreen(props){
                 <Text style={{ fontFamily: 'roboto', width: w, paddingLeft: 20, fontSize: 20, marginTop: 10, color: theme.blueColor}}>{locale['favourites']}</Text> : null}
                     {lastGroups.map(item => {
                         return(
-                            <View style={{ height: 30, flexDirection: 'row', marginTop: 5}}>
-                            <TouchableOpacity onPress={() => setCurrentGroup(item.name)}>
-                                <View style={{ height: 30, width: w * 0.8, paddingLeft: 20 }}>
-                                    <Text style={{ height: 30, textAlignVertical: 'center', fontFamily: 'roboto', fontSize: 15, color: 'gray'}}>{item.name}</Text>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => removeGroup(item)}>
-                                <View style={{height: 30, width: w * 0.1, alignItems: 'center', justifyContent: 'center'}}>
-                                    <FontAwesome name="trash-o" size={15} color={'gray'} />
-                                </View>
-                            </TouchableOpacity>
+                            <View style={{ height: 30, flexDirection: 'row'}}>
+                                <TouchableOpacity onPress={() => setCurrentGroup(item.name)}>
+                                    <View style={{ height: 30, width: w * 0.8, paddingLeft: 20 }}>
+                                        <Text style={{ height: 30, textAlignVertical: 'center', fontFamily: 'roboto', fontSize: 15, color: 'gray'}}>{item.name}</Text>
+                                    </View>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => removeGroup(item)}>
+                                    <View style={{height: 30, width: w * 0.1, alignItems: 'center', justifyContent: 'center'}}>
+                                        <FontAwesome name="trash-o" size={15} color={'gray'} />
+                                    </View>
+                                </TouchableOpacity>
                             </View>)
                     })}
             </View> : <Text style={{fontFamily: 'roboto', color: 'gray', alignSelf: 'center', width: w * 0.8, marginTop: 15}}>{locale['add_favourites']}</Text>}

@@ -30,10 +30,8 @@ export default function LibrarySearch(props){
             <ScrollView contentContainerStyle={{paddingBottom: 120}}>
             <View style={{flexDirection: 'row', marginTop: 10, alignSelf: 'center'}}>
                 <TextInput style={[styles.input, {backgroundColor: theme.blockColor, color: theme.labelColor}]} placeholderTextColor={'lightgray'} value={search} onChangeText={value => setSearch(value)} placeholder={locale['input_keywords']} />
-                <TouchableOpacity style={{borderRadius: 15}} onPress={() => getBooks()}>
-                    <View style={[styles.button, {backgroundColor: theme.blockColor}]}>
-                        <Ionicons name="ios-search" size={24} color={theme.blueColor} />
-                    </View>
+                <TouchableOpacity style={[styles.button, {backgroundColor: theme.blockColor, borderRadius: 15}]} onPress={() => getBooks()}>
+                    <Ionicons name="ios-search" size={24} color={theme.blueColor} />
                 </TouchableOpacity>
             </View>
             </ScrollView>
