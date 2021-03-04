@@ -17,6 +17,7 @@ export default function DinersScreen(props){
         fetch('https://mysibsau.ru/v2/menu/all/', {method: 'GET'})
             .then(response => response.json())
             .then(json => {
+                console.log(json)
                 setMenu(json)
                 setLoaded(true)
             })

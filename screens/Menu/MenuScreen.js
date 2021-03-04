@@ -36,7 +36,8 @@ export default function MenuScreen(props){
                             .then(json => {
                                 json.map(item => {
                                     if(item.name === res){
-                                        setDayList(item.menu)
+                                        console.log(item)
+                                        setDayList(item)
                                     }
                                 })
                                 setLoaded(true)
@@ -63,7 +64,7 @@ export default function MenuScreen(props){
                 dayList.length === 0 ?
                 <Text style={{fontFamily: 'roboto', fontSize: 18, alignSelf: 'center', marginTop: 20, color: theme.labelColor}}>{locale['no_menu']}</Text> : 
                 <FlatList 
-                    data={dayList}
+                    data={dayList.menu}
                     renderItem={({ item }) => 
                         {console.log(item)
                         return(

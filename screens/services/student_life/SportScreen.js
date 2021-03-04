@@ -39,13 +39,11 @@ export default function SportScreen(props){
 
     return(
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
-            <ScrollView>
-                <View style={[styles.main, {}]}>
-                    {loaded ? 
+            <ScrollView contentContainerStyle={{paddingBottom: 120}}>
+                {loaded ? 
                     unions.map( item => {
                         return(<ActiveElement onPress={() => props.navigation.navigate('Ermak', {data: item})} title={item.name} source={item.logo} key={item[0]} />)
-                    }) : <View style={{height: h, justifyContent: 'center', paddingBottom: 120}}><ActivityIndicator size='large' color='#0060B3' /></View>}   
-                </View>
+                }) : <View style={{height: h, justifyContent: 'center', paddingBottom: 120}}><ActivityIndicator size='large' color='#0060B3' /></View>}   
             </ScrollView>
         </View>
     )
