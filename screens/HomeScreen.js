@@ -285,9 +285,9 @@ function StudentLifeTabs(){
       },
       activeTintColor: theme.labelColor,
     }}>
-      <StudentLifeTab.Screen options={{ title: locale['unions']}} name="Unions" component={ActiveScreen} />
-      <StudentLifeTab.Screen options={{ title: locale['sport']}} name="Sport" component={SportScreen} />
-      <StudentLifeTab.Screen options={{ title: locale['sdo']}} name="Design" component={DesignScreen} />
+      <StudentLifeTab.Screen listeners={{state: e => console.log(e)}} options={{ title: locale['unions']}} name="Unions" component={ActiveScreen} />
+      <StudentLifeTab.Screen listeners={{state: e => console.log(e)}} options={{ title: locale['sport']}} name="Sport" component={SportScreen} />
+      <StudentLifeTab.Screen listeners={{state: e => console.log(e)}} options={{ title: locale['sdo']}} name="Design" component={DesignScreen} />
     </StudentLifeTab.Navigator>
   )
 }

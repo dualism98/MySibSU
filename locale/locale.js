@@ -101,6 +101,8 @@ export const translations = {
         canteens_dont_work: 'Canteens don\'t work today',
         canteens: 'Canteens',
         empty: 'Empty',
+        tickets: 'Tickets',
+        sign_out: 'SIGN OUT'
         },
   ru: { timetable: 'Расписание', 
         menu: 'Столовые',
@@ -202,7 +204,9 @@ export const translations = {
         wrong_login: 'Неверный логин/пароль',
         canteens_dont_work: 'Столовые сегодня не работают',
         canteens: 'Столовые',
-        empty: 'Пусто'},
+        empty: 'Пусто',
+        tickets: 'Билеты',
+        sign_out: 'ВЫЙТИ'},
 };
 // Set the locale once at the beginning of your app.
 

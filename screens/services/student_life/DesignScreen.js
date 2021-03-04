@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, ActivityIndicator, RefreshControl } from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator, BackHandler } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import ActiveElement from '../../../modules/ActiveElement'
 import Header from '../../../modules/Header'
@@ -22,6 +22,20 @@ export default function DesignScreen(props){
             })
             .catch(err => console.log(err))
     }, [loaded])
+
+    useEffect(() => {
+        const backAction = () => {
+          props.navigation.navigate('Service')
+          return true;
+        };
+    
+        const backHandler = BackHandler.addEventListener(
+          "hardwareBackPress",
+          backAction
+        );
+    
+        return () => backHandler.remove();
+      }, []);
 
     return(
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>

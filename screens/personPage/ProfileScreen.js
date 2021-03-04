@@ -35,11 +35,11 @@ export default function PersonScreen(props){
             })
       }, []);
 
-    // React.useEffect(() =>
-    //       props.navigation.addListener('beforeRemove', (e) => {
-    //         console.log(e)
-    //         e.preventDefault();
-    //       }))
+    React.useEffect(() =>
+          props.navigation.addListener('beforeRemove', (e) => {
+            if(e.data.action.type === 'GO_BACK')
+                e.preventDefault();
+          }))
 
 
     return(
