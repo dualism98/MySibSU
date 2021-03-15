@@ -113,6 +113,7 @@ export default function SearchScreen(props){
     const renderHelp = ({ item }) => (
         <Help group={item} onPress={() => setCurrentGroup(item.name)} onPlus={() => {
             addFavourite(item)
+            setShown([])
             ToastAndroid.show(locale['added_to_favourites'], ToastAndroid.SHORT)}}/>
     )
 
@@ -284,6 +285,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         paddingLeft: 10,
         fontSize: 15,
+        paddingTop: 0,
+        paddingBottom: 0,
         fontFamily: 'roboto',
         textAlignVertical: 'center',
         elevation: 4,

@@ -33,6 +33,7 @@ export default function TimetableScreen(props){
 
     const f_scrollViewRef = useRef()
     const s_scrollViewRef = useRef()
+    const swiper = useRef()
     
     const didFocusSubscription = props.navigation.addListener(
         'state',
@@ -43,13 +44,6 @@ export default function TimetableScreen(props){
             AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
         }
       );
-    
-    // useEffect(() => {
-    //     console.log('Определение группы')
-    //     AsyncStorage.getItem('@mode').then((mode) => setMode(mode))
-    //     AsyncStorage.getItem('@key').then((id) => setGroup(id))
-    //     AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
-    // })
 
     useEffect(() => {
         if(group !== null){
@@ -148,7 +142,7 @@ export default function TimetableScreen(props){
                         fontFamily: 'roboto',
                         color: theme.headerTitle}]}>{textGroup}</Text>
                 </View>
-                <View style={[{
+                <TouchableOpacity onPress={() => swiper.current.scrollBy(1, true)} style={[{
                                 height: w / 12,
                                 width: 100,
                                 alignItems: 'center',
@@ -171,8 +165,7 @@ export default function TimetableScreen(props){
                     <Text style={[{height: w/12, textAlignVertical: 'center', fontFamily: 'roboto',
                                 fontSize: 17,
                                 color: 'gray'}, {color: theme.headerTitle}]}>{index} {locale['week']}</Text>
-                </View>
-                
+                </TouchableOpacity>
             </View>
         )
     }
@@ -181,7 +174,7 @@ export default function TimetableScreen(props){
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
                 <StatusBar backgroundColor={theme.blockColor} barStyle={mode === 'light' ? 'dark-content' : 'light-content'}/>
                 <TimetableHeader />
-                <Swiper style={styles.wrapper} loop={false} index={currentWeek - 1} onIndexChanged={() => changeIndex()} showsPagination={false} >
+                <Swiper ref={swiper} style={styles.wrapper} loop={false} index={currentWeek - 1} onIndexChanged={() => changeIndex()} showsPagination={false} >
                 <ScrollView ref={f_scrollViewRef}>
                 {!loaded ? 
                         <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
