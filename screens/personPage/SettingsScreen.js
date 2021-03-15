@@ -86,6 +86,7 @@ export default function SettingsScreen(props){
                 }}>
                     <Text style={{alignSelf: 'center', color: '#EE7575', fontWeight: 'bold', fontFamily: 'roboto',}}>{locale['sign_out']}</Text>
                 </TouchableOpacity> : null}
+                <Text style={{fontFamily: 'roboto', alignSelf: 'center', color: 'gray', position: 'absolute', bottom: 60}}>{locale['version']}: 2.0.0</Text>
                 
             </View>
         </View>
