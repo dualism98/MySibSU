@@ -142,7 +142,9 @@ export default function TimetableScreen(props){
                         fontFamily: 'roboto',
                         color: theme.headerTitle}]}>{textGroup}</Text>
                 </View>
-                <TouchableOpacity onPress={() => swiper.current.scrollBy(1, true)} style={[{
+                <TouchableOpacity onPress={() => {
+                    index === 1 ?
+                    swiper.current.scrollBy(1, true) : swiper.current.scrollBy(-1, true)}} style={[{
                                 height: w / 12,
                                 width: 100,
                                 alignItems: 'center',
