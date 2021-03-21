@@ -78,7 +78,7 @@ function LibraryTabBar({ state, descriptors, navigation, position }) {
   
   return (
     <View style={{ flexDirection: 'row', backgroundColor: theme.blockColor, elevation: 6}}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <TouchableOpacity onPress={() => navigation.navigate('LibrarySearch')}>
         <View style={{ height: Dimensions.get('window').width / 8, width: Dimensions.get('window').width / 4 , justifyContent: 'center'}}>
           <Ionicons name="ios-arrow-back" size={30} color="black" style={{ color: '#006AB3', paddingRight: 10, paddingLeft: 15}}/>
         </View>

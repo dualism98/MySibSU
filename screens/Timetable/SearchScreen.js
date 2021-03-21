@@ -127,12 +127,13 @@ export default function SearchScreen(props){
                             groups = JSON.parse(res)
                             groups.map(item => {
                                 if(item.name === group.name){
-                                    there_is = true
+                                    there_is = true;
                                 }
                             })
                             
                             if (!there_is){
-                                groups.push(group)
+                                group['mode'] = timetableMode;
+                                groups.push(group);
                             }
                         }
                         else{
@@ -176,23 +177,24 @@ export default function SearchScreen(props){
 
     }
 
-    function setCurrentGroup(name){
+    function setCurrentGroup(name, mode){
+        console.log(mode)
         setGroup(name)
         var choosed = ''
+        var type = mode === undefined ? timetableMode : Number(mode)
         timetableMode === 0 ? 
             choosed = name
             .toUpperCase()
             .split(' ')[0] : choosed = name    
-
 
         lists[timetableMode].map(group => {
             if (group.name === choosed){
                 storeData(group.id, group.name, timetableMode)
                 setGroup('') 
                 setShown([])
-                
+                    
                 props.navigation.navigate('TimetableScreen', {group: group.id})
-                
+                    
             }
         })
     }
@@ -249,7 +251,7 @@ export default function SearchScreen(props){
                     {lastGroups.map(item => {
                         return(
                             <View style={{ height: 30, flexDirection: 'row'}}>
-                                <TouchableOpacity onPress={() => setCurrentGroup(item.name)}>
+                                <TouchableOpacity onPress={() => setCurrentGroup(item.name, item.mode)}>
                                     <View style={{ height: 30, width: w * 0.8, paddingLeft: 20 }}>
                                         <Text style={{ height: 30, textAlignVertical: 'center', fontFamily: 'roboto', fontSize: 15, color: 'gray'}}>{item.name}</Text>
                                     </View>
