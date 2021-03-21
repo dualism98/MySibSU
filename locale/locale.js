@@ -103,7 +103,11 @@ export const translations = {
         empty: 'Empty',
         tickets: 'Tickets',
         sign_out: 'SIGN OUT',
-        version: 'Version'
+        version: 'Version',
+        name: 'Name',
+        date_and_time: 'Date and time',
+        place: 'Place',
+        book_a_ticket: 'Book a ticket',
         },
   ru: { timetable: 'Расписание', 
         menu: 'Столовые',
@@ -208,7 +212,12 @@ export const translations = {
         empty: 'Пусто',
         tickets: 'Билеты',
         sign_out: 'ВЫЙТИ',
-        version: 'Версия'},
+        version: 'Версия',
+        name: 'Название',
+        date_and_time: 'Дата и время',
+        place: 'Место',
+        book_a_ticket: 'Забронировать билет',
+    },
 };
 // Set the locale once at the beginning of your app.
 
