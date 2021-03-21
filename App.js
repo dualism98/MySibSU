@@ -1,5 +1,13 @@
-import React, { useState, useEffect, setState } from 'react'
-import {AsyncStorage, View, Text} from 'react-native'
+/* eslint-disable react-native/no-inline-styles */
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
+import React, { useState, useEffect } from 'react'
+import {AsyncStorage, Text} from 'react-native'
 import Navigation from './screens/HomeScreen'
 import AppLoading from 'expo-app-loading'
 import { useFonts } from '@use-expo/font'

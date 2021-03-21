@@ -314,6 +314,11 @@ function BottomTab(){
           headerShown: false,
           title: locale['timetable']
         }}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+          },
+        }}
         />
         <Tabs.Screen name={'Services'} component={ServiceStackScreen} 
         options={{

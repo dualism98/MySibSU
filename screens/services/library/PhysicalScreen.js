@@ -30,6 +30,8 @@ export default function LibrarySearch(props){
     return(
         <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
             {!loaded ? <View style={{flex: 1, justifyContent: 'center', paddingBottom: 100}}><ActivityIndicator size={'large'} color={'#006AB3'}/></View> :
+            <>
+            {books.physical.length === 0 ? <Text style={{fontFamily: 'roboto', fontSize: 18, alignSelf: 'center', marginTop: 20, color: theme.labelColor}}>{locale['empty']}</Text> : null}
             <FlatList 
                 data={books.physical}
                 renderItem={({ item }) => 
@@ -42,7 +44,8 @@ export default function LibrarySearch(props){
                 }
                 keyExtractor={item => item.name}
                 contentContainerStyle={{paddingBottom: 120}}
-                initialNumToRender={10}/>}
+                initialNumToRender={10}/>
+            </>}
         </View>
     )
 }

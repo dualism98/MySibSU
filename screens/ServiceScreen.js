@@ -14,6 +14,7 @@ import { useLocale } from '../locale/LocaleManager'
 export default function EventsScreen(props){
 
     const [UUID, setUUID] = React.useState('')
+    const [token, setToken] = React.useState('')
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
     const services = (locale) => {return [{name: locale['institutes'], path: 'Institutes', image: <View style={{ height: 55, width: 55, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', borderRadius: 5, backgroundColor: mode === 'light' ? 'rgba(0,0,0, 0.4)' : 'lightgray'}}><FontAwesome5 name="university" size={40} color={theme.blockColor} /></View>}, 
@@ -29,8 +30,21 @@ export default function EventsScreen(props){
                         </View>
                         </View>},
                     {name: "FAQ", path: 'FAQ', image: <View style={{ height: 55, width: 55, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', borderRadius: 5, backgroundColor: 'rgba(76, 174, 50, 0.6)'}}><Text style={{fontFamily: 'roboto', color: theme.blockColor, fontWeight: 'bold', fontSize: 40}}>?</Text></View>},
-                    {name: locale['library'], path: 'LibrarySearch', image: <View style={{ height: 55, width: 55, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', borderRadius: 5, backgroundColor: 'rgba(76, 174, 50, 0.6)'}}><Ionicons name="library-outline" size={40} color={theme.blockColor} /></View>}, 
-                    {name: locale['tickets'], path: 'Shop', image: <View style={{ height: 55, width: 55, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', borderRadius: 5, backgroundColor: 'rgba(0, 108, 181, 0.6)'}}><MaterialIcons name="theater-comedy" size={40} color={theme.blockColor} /></View>},] }
+                    {name: locale['library'], path: 'LibrarySearch', image: <View style={{ height: 55, width: 55, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', borderRadius: 5, backgroundColor: 'rgba(76, 174, 50, 0.6)'}}><Ionicons name="library-outline" size={40} color={theme.blockColor} /></View>}] }
+
+    const didFocusSubscription = props.navigation.addListener(
+        'focus',
+          payload => {
+            AsyncStorage.getItem('User')
+            .then(res => {
+                if (res !== null){
+                    setToken(res)
+                } else {
+                    setToken('')
+                }
+            })
+          }
+        );
 
     React.useEffect(() => {
         AsyncStorage.getItem('UUID')
@@ -42,8 +56,15 @@ export default function EventsScreen(props){
             <MainHeader title={locale['services']} onPress={() => props.navigation.goBack()}/>
                 <View style={{ backgroundColor: theme.headerColor, height: '100%',  width: w, flexDirection: 'row', flexWrap: 'wrap'}}>
                     {services(locale).map(item => {
+                        if (item.name === locale['tickets']){
+                            if(token === ''){
+                                return null
+                            }
+                        }
                         return(<ServiceElement key={item.name} name={item.name} image={item.image} onPress={() => props.navigation.navigate(item.path, {uuid: UUID, id: 3})}/>)
                     })}
+                    {token !== '' ? 
+                        <ServiceElement onPress={() => props.navigation.navigate('Shop', {uuid: UUID})} key={locale['tickets']} name={locale['tickets']} image={<View style={{ height: 55, width: 55, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', borderRadius: 5, backgroundColor: 'rgba(0, 108, 181, 0.6)'}}><MaterialIcons name="theater-comedy" size={40} color={theme.blockColor} /></View>} /> : null}
                 </View>   
         </View>
     )
