@@ -108,6 +108,9 @@ export const translations = {
         date_and_time: 'Date and time',
         place: 'Place',
         book_a_ticket: 'Book a ticket',
+        date: 'Date',
+        time: 'Time',
+        hall: 'Hall',
         },
   ru: { timetable: 'Расписание', 
         menu: 'Столовые',
@@ -217,6 +220,9 @@ export const translations = {
         date_and_time: 'Дата и время',
         place: 'Место',
         book_a_ticket: 'Забронировать билет',
+        date: 'Дата',
+        time: 'Время',
+        hall: 'Зал',
     },
 };
 // Set the locale once at the beginning of your app.

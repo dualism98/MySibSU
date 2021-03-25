@@ -10,6 +10,7 @@ export default function ProductScreen(props){
     const {localeMode, locale, toggleLang} = useLocale()
 
     let item = props.route.params.data
+    console.log(item)
     return(
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
             <Header title={locale['online_catalog']} onPress={() => props.navigation.goBack()}/>
@@ -25,7 +26,7 @@ export default function ProductScreen(props){
                     <Text style={[styles.name, {alignSelf: 'flex-start'}]}>{item.theatre}</Text>
                 </View>
 
-                <TouchableOpacity style={{width: w * 0.9, padding: 20, backgroundColor: '#006AB3', borderRadius: 15, alignSelf: 'center', marginTop: 30, elevation: 5}}>
+                <TouchableOpacity onPress={() => props.navigation.navigate('Concerts', {id: item.id})} style={{width: w * 0.9, padding: 20, backgroundColor: '#006AB3', borderRadius: 15, alignSelf: 'center', marginTop: 30, elevation: 5}}>
                     <Text style={{ fontFamily: 'roboto', fontWeight: 'bold', fontSize: 18, alignSelf: 'center', color: 'white'}}>{locale['book_a_ticket']}</Text>
                 </TouchableOpacity>
             </ScrollView>

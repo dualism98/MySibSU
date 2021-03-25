@@ -35,9 +35,11 @@ import Animated, {Easing} from 'react-native-reanimated'
     import Ermak from './services/student_life/Unit'
     //Map
     import MapScreen from './services/MapScreen'
-    // Online Catalog
+    // Online Catalog (tickets)
     import ShopScreen from './services/shop/ShopScreen'
     import ProductScreen from './services/shop/ProductScreen' 
+    import ConcertsScreen from './services/shop/ConcertsScreen'
+    import ConcertScreen from './services/shop/ConcertScreen'
     // Vacancies
     import VacanciesScreen from './services/vacancies/VacanciesScreen'
     import Vacancy from './services/vacancies/Vacancy'
@@ -467,6 +469,8 @@ function ServiceStackScreen(){
       <ServiceStack.Screen name="Map" component={MapScreen} />
       <ServiceStack.Screen name='Shop' component={ShopScreen} />
       <ServiceStack.Screen name='Product' component={ProductScreen} />
+      <ServiceStack.Screen name='Concerts' component={ConcertsScreen} />
+      <ServiceStack.Screen name='CurrentConcert' component={ConcertScreen} />
       <ServiceStack.Screen name='Vacancies' component={VacanciesScreen} />
       <ServiceStack.Screen name='Vacancy' component={Vacancy} />
       <ServiceStack.Screen name='Topics' component={TopicsScreen} />
