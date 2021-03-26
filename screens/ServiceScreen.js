@@ -63,8 +63,8 @@ export default function EventsScreen(props){
                         }
                         return(<ServiceElement key={item.name} name={item.name} image={item.image} onPress={() => props.navigation.navigate(item.path, {uuid: UUID, id: 3})}/>)
                     })}
-                    {token !== '' ? 
-                        <ServiceElement onPress={() => props.navigation.navigate('Shop', {uuid: UUID})} key={locale['tickets']} name={locale['tickets']} image={<View style={{ height: 55, width: 55, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', borderRadius: 5, backgroundColor: 'rgba(0, 108, 181, 0.6)'}}><MaterialIcons name="theater-comedy" size={40} color={theme.blockColor} /></View>} /> : null}
+                    {/* {token !== '' ? 
+                        <ServiceElement onPress={() => props.navigation.navigate('Shop', {uuid: UUID})} key={locale['tickets']} name={locale['tickets']} image={<View style={{ height: 55, width: 55, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', borderRadius: 5, backgroundColor: 'rgba(0, 108, 181, 0.6)'}}><MaterialIcons name="theater-comedy" size={40} color={theme.blockColor} /></View>} /> : null} */}
                 </View>   
         </View>
     )

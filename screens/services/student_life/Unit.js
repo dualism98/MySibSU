@@ -50,7 +50,7 @@ export default function Ermak(props){
             <ScrollView>
 
                 <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
-                    <Image source={data.logo ? {uri: url + data.logo} : require('../../../assets/back.png')}  style={{ width: w, height: w / 2, resizeMode: 'cover'}} blurRadius={data.logo ? 0.5 : 0}/>
+                    <Image source={data.logo ? {uri: url + data.logo} : require('../../../assets/back.png')}  style={{ width: w, height: w / 2, resizeMode: 'cover', backgroundColor: 'white'}} blurRadius={data.logo ? 0.5 : 0}/>
                 </View>
                 {data.photo ?
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
