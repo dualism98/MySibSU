@@ -111,6 +111,16 @@ export const translations = {
         date: 'Date',
         time: 'Time',
         hall: 'Hall',
+        hello_feed_what: 'Stay up to date with all the news and events of your University!',
+        hello_feed_how: 'The "Events" tab informs about upcoming University events.\nThe "News" tab tells what has already happened.',
+        hello_canteens_what: 'Now you can learn the University canteen menu without leaving the classroom!',
+        hello_canteens_how: 'To get acquainted with the list of dishes, choose a suitable cafeteria from the list provided.',
+        hello_timetable_what: 'This service allows you to monitor the schedule of groups, teachers, or classrooms of your interest.',
+        hello_timetable_how: 'On the start screen, there is a search bar for the study group. Enter the one you are interested in and follow the schedule. It works in a similar way with the other two forms when you swipe to the right. The search bar remembers previously entered queries.',
+        hello_services_what: 'Part-time job vacancies, quick questions, campus, and more are available in the “Services” tab.',
+        hello_services_how: `"Institute" - contacts of the institute director’s office, academic department and Student Council.\n"Student life" – there is more to being a part of Reshetnev University than getting a higher education!\n"Buildings" - geolocation of university buildings with redirection to 2gis app\n"Vacancies" - work offers for young specialists from partner companies of the University.`,
+        hello_profile_what: 'After authorization, you will have access to your current academic performance and much more!',
+        hello_profile_how: 'In the settings, you can change the language or set the "dark theme".' 
         },
   ru: { timetable: 'Расписание', 
         menu: 'Столовые',
@@ -223,6 +233,16 @@ export const translations = {
         date: 'Дата',
         time: 'Время',
         hall: 'Зал',
+        hello_feed_what: 'Будь в курсе всех новостей и событий твоего вуза!',
+        hello_feed_how: 'Вкладка «события» - информирует о предстоящих событиях в вузе.\nВкладка «Новости» - об уже случившихся.',
+        hello_canteens_what: 'Теперь меню столовой можно узнать, не выходя из аудитории!',
+        hello_canteens_how: 'Чтобы ознакомиться с перечнем блюд, выбери подходящий буфет из представленного перечня.',
+        hello_timetable_what: 'Этот сервис позволит следить за расписанием интересующих групп, преподавателей или аудиторий.',
+        hello_timetable_how: 'На стартовом экране расположена строка поиска учебной группы. Введи интересующую и следи за расписанием. Аналогично с другими двумя формами по «свайпу» вправо. Строка поиска запоминает ранее введенные запросы.',
+        hello_services_what: 'Вакансии для подработки, быстрые вопросы – ответы, кампус и многое другое доступно во вкладке «Сервисы».',
+        hello_services_how: `«Институт» - контакты дирекции, кафедры и студенческого совета.\n«Студенческая жизнь» - в СибГУ им. М.Ф. Решетнева можно не только получить высшее образование!\n«Корпуса» - геолокация корпусов университета с переадресацией на 2гис \n«Вакансии» - приглашение на работу молодых специалистов от компаний-партнеров вуза.`,
+        hello_profile_what: 'Пройдя авторизацию, тебе станет доступна своя успеваемость на текущий момент. И многое другое!',
+        hello_profile_how: 'В настройках можно изменить язык или поставить «темную тему»' 
     },
 };
 // Set the locale once at the beginning of your app.

@@ -19,7 +19,7 @@ export default function FAQScreen(props){
 
     useEffect(() => {
         console.log('Получаем список вопросов')
-        fetch("https://mysibsau.ru/v2/support/faq/", {method: 'GET'})
+        fetch("https://mysibsau.ru/v2/support/faq/?language=" + String(localeMode), {method: 'GET'})
             .then(response => response.json())
             .then(json => {
                 setQuestions(json)

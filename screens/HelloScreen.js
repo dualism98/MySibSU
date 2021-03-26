@@ -30,11 +30,11 @@ export default function HelloScreen(props){
                         <Text style={{fontFamily: 'roboto', fontSize: 20, color: theme.labelColor, fontWeight: 'bold', padding: 20}}>{locale['lets_tell']}</Text>
                     </View>
                 </View>
-                <HelloModule color={'#006AB3'} name={locale['feed']} image={<MaterialCommunityIcons name="timetable" size={86} style={{position: 'absolute', right: 0, bottom: 0, opacity: 0.5}} color={'white'}  />}/>
-                <HelloModule color={'#7DC71C'} name={locale['menu']} image={<MaterialIcons name="restaurant-menu" size={86} style={{position: 'absolute', right: 0, bottom: 0, opacity: 0.5}} color={'white'} />}/>
-                <HelloModule color={'#ef8531'} name={locale['timetable']} image={<MaterialCommunityIcons name="calendar-text" size={86} style={{position: 'absolute', right: 0, bottom: 0, opacity: 0.5}} color={'white'} />}/>
-                <HelloModule color={'#77787B'} name={locale['services']} image={<AntDesign name="appstore-o" size={86} style={{position: 'absolute', right: 0, bottom: 0, opacity: 0.5}} color={'white'} />}/>
-                <HelloModule color={'red'} name={locale['profile']} image={<Ionicons name='md-person' size={86} style={{position: 'absolute', right: 0, bottom: 0, opacity: 0.5}} color={'white'} />}/>
+                <HelloModule what={locale['hello_feed_what']} how={locale['hello_feed_how']} color={'#006AB3'} name={locale['feed']} image={<MaterialCommunityIcons name="timetable" size={86} style={{position: 'absolute', right: 0, bottom: 0, opacity: 0.5}} color={'white'}  />}/>
+                <HelloModule what={locale['hello_canteens_what']} how={locale['hello_canteens_how']} color={'#7DC71C'} name={locale['menu']} image={<MaterialIcons name="restaurant-menu" size={86} style={{position: 'absolute', right: 0, bottom: 0, opacity: 0.5}} color={'white'} />}/>
+                <HelloModule what={locale['hello_timetable_what']} how={locale['hello_timetable_how']} color={'#ef8531'} name={locale['timetable']} image={<MaterialCommunityIcons name="calendar-text" size={86} style={{position: 'absolute', right: 0, bottom: 0, opacity: 0.5}} color={'white'} />}/>
+                <HelloModule what={locale['hello_services_what']} how={locale['hello_services_how']} color={'#77787B'} name={locale['services']} image={<AntDesign name="appstore-o" size={86} style={{position: 'absolute', right: 0, bottom: 0, opacity: 0.5}} color={'white'} />}/>
+                <HelloModule what={locale['hello_profile_what']} how={locale['hello_profile_how']} color={'red'} name={locale['profile']} image={<Ionicons name='md-person' size={86} style={{position: 'absolute', right: 0, bottom: 0, opacity: 0.5}} color={'white'} />}/>
             </Swiper>
             <TouchableWithoutFeedback onPress={() => {
                 if(swiper_ref.current.state.index === 5)
