@@ -151,14 +151,16 @@ function LibraryTabBar({ state, descriptors, navigation, position }) {
 const LibraryTab = createMaterialTopTabNavigator();
 
 function LibraryTabs({route}){
-  console.log(route)
   const {localeMode, locale, toggleLang} = useLocale()
   const {mode, theme, toggle} = useTheme()
   return (
-    <LibraryTab.Navigator tabBar={props => <LibraryTabBar {...props} />} tabBarOptions={{
-      activeTintColor: theme.labelColor,
-      allowFontScaling: false,
-    }}>
+    <LibraryTab.Navigator 
+      tabBar={props => <LibraryTabBar {...props} />} 
+      tabBarOptions={{
+        activeTintColor: theme.labelColor,
+        allowFontScaling: false,
+      }}
+    >
       <LibraryTab.Screen options={ ({route}) => ({ title: locale['digital'], data: route.params })} name="Digital" component={DigitalScreen} />
       <LibraryTab.Screen options={ ({route}) => ({ title: locale['printed'], data: route.params })} name="Physical" component={PhysicalScreen} />
     </LibraryTab.Navigator>
@@ -316,11 +318,6 @@ function BottomTab(){
           headerShown: false,
           title: locale['timetable']
         }}
-        listeners={{
-          tabPress: e => {
-            e.preventDefault();
-          },
-        }}
         />
         <Tabs.Screen name={'Services'} component={ServiceStackScreen} 
         options={{
@@ -394,8 +391,22 @@ function TimetableStackScreen(){
     else
       return(
         <TimetableStack.Navigator initialRouteName={initialName} headerMode='none'>
-          <TimetableStack.Screen name='SearchScreen' component={SearchScreen} />
-          <TimetableStack.Screen name='TimetableScreen' component={TimetableScreen} />
+          <TimetableStack.Screen 
+            listeners={{
+              tabPress: e => {
+                e.preventDefault();
+              },
+            }} 
+            name='SearchScreen' 
+            component={SearchScreen} />
+          <TimetableStack.Screen 
+            listeners={{
+              tabPress: e => {
+                e.preventDefault();
+              },
+            }} 
+            name='TimetableScreen' 
+            component={TimetableScreen} />
         </TimetableStack.Navigator>
       )
   }

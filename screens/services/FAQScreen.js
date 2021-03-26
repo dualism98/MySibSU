@@ -63,17 +63,18 @@ export default function FAQScreen(props){
                 </View>
             </Modal>
             {loaded ? 
-                <ScrollView contentContainerStyle={{paddingTop: 10}}>
+                <ScrollView contentContainerStyle={{paddingTop: 10, paddingBottom: 100}}>
                     <View style={{marginBottom: 20}}>
                     {questions.map(item => {
                         return(<FAQModule data={item} />)
                     })}
                     </View>
+                    {props.route.params.token !== '' ?
                     <TouchableOpacity onPress={() => setVisible(true)}>
                         <View style={[styles.ask, {backgroundColor: theme.blockColor}]}>
                             <Text style={{fontFamily: 'roboto', fontSize: 18, color: '#0060B3'}}>{locale['ask']}</Text>
                         </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity> : null }
                 </ScrollView>
                 : 
                 <View style={{flex: 1, justifyContent: 'center', }}>
