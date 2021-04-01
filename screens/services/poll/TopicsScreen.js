@@ -16,7 +16,6 @@ export default function TopicsScreen(props){
 
 
     React.useEffect(() => {
-        console.log(process.env.NODE_ENV)
         const unsubscribe = props.navigation.addListener('focus', () => {
             let uuid = ''
             AsyncStorage.getItem('UUID')
@@ -51,14 +50,11 @@ export default function TopicsScreen(props){
                     {Array.isArray(topics) ? 
                     topics.map(item => {
                         return(
-                            <TouchableOpacity  onPress={() => props.navigation.navigate('Poll',{
+                            <TouchableOpacity style={[styles.list, styles.shadow, {backgroundColor: theme.blockColor}]} onPress={() => props.navigation.navigate('Poll',{
                                 id: item.id, 
                                 uuid: UUID,
-                                onBack: () => console.log('FSDF')
                             })}>
-                                <View style={[styles.list, styles.shadow, {backgroundColor: theme.blockColor}]}>
-                                    <Text style={[styles.listText, {color: theme.labelColor}]}>{item.name.length > 30 ? item.name.slice(0,30) + '...' : item.name}</Text>
-                                </View>
+                                <Text style={[styles.listText, {color: theme.labelColor}]}>{item.name.length > 30 ? item.name.slice(0,30) + '...' : item.name}</Text>
                             </TouchableOpacity>
                         )
                     }) : null}

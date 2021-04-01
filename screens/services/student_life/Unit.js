@@ -7,6 +7,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
 import {useTheme} from '../../../themes/ThemeManager'
 import {useLocale} from '../../../locale/LocaleManager'
+import { Ionicons } from '@expo/vector-icons'; 
 
 
 const url = 'https://mysibsau.ru'
@@ -23,8 +24,6 @@ export default function Ermak(props){
 
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
-
-    console.log(theme)
 
     async function sendMessage(link){
         const uri = 'https://mysibsau.ru/v2/campus/unions/join/' + props.route.params.data.id + '/'
@@ -46,26 +45,38 @@ export default function Ermak(props){
     const data = props.route.params.data
     return(
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
-            <Header title={data.short_name} onPress={() => props.navigation.goBack()}/>
+            <Header title={data.short_name ? data.short_name : 
+                data.name.length > 25 ? data.name.slice(0, 25) + '..' : data.name} onPress={() => props.navigation.goBack()}/>
             <ScrollView>
-                
-                <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
-                    <Image source={{uri: url + data.logo}}  style={{ width: w, height: w / 2, resizeMode: 'cover'}} blurRadius={Platform.OS === 'android' ? 0.5 : 1}/>
-                </View>
 
+                <View style={{ borderBottomWidth: 2, borderColor: 'gray'}}>
+                    <Image source={data.logo ? {uri: url + data.logo} : require('../../../assets/back.png')}  style={{ width: w, height: w / 2, resizeMode: 'cover', backgroundColor: 'white'}} blurRadius={data.logo ? 0.5 : 0}/>
+                </View>
+                {data.photo ?
                 <View style={[styles.profile, styles.centerContent, styles.shadow1]}>
                     <Image source={{uri: url + data.photo}} style={{width: w*0.4, height: w*0.4, borderRadius: w*0.4, borderWidth: 2, borderColor: 'gray'}} />
-                </View>
+                </View> : null}
 
-                <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: w * 0.2 + 20, marginLeft: 20, color: '#5575A7',}}>{locale['description']}</Text>
-                <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10, backgroundColor: theme.blockColor}]}>
-                    <Text style={{fontFamily: 'roboto', fontSize: 13, color: '#5575A7', paddingLeft: 5}}>{data.about}</Text>
-                </View>
+                {data.about ?
+                <View>
+                    <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: data.photo ? w * 0.2 + 20 : 20, marginLeft: 20, color: '#5575A7',}}>{locale['description']}</Text>
+                    <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10, backgroundColor: theme.blockColor}]}>
+                        <Text style={{fontFamily: 'roboto', fontSize: 15, color: '#5575A7', paddingLeft: 5}}>{data.about}</Text>
+                    </View>
+                </View> : null}
 
-                <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: 15, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank}</Text>
+                {data.dates ? 
+                <View>
+                    <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: data.photo ? w * 0.2 + 20 : 20, marginLeft: 20, color: '#5575A7',}}>{locale['training_days']}</Text>
+                    <View style={[styles.box, styles.centerContent, styles.shadow2, {padding: 10, backgroundColor: theme.blockColor}]}>
+                        <Text style={{fontFamily: 'roboto', fontSize: 16, color: '#5575A7', paddingLeft: 5}}>{data.dates}</Text>
+                    </View>
+                </View> : null}
+                
+                <Text style={{ fontFamily: 'roboto', fontSize: 20, marginTop: 15, marginLeft: 20, color: '#5575A7',}}>{data.leader_rank ? data.leader_rank : locale['active_head']}</Text>
                 {data.fio !== '-' ? 
-                    <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
-                        <Text style={{fontFamily: 'roboto', fontSize: 20, color: '#5575A7'}}>{data.fio}</Text>
+                    <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor, padding: 10}]}>
+                        <Text style={{fontFamily: 'roboto', fontSize: 20, textAlign: 'center', color: '#5575A7'}}>{data.fio}</Text>
                     </View> : null}
 
                 <View style={[styles.box, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
@@ -78,6 +89,7 @@ export default function Ermak(props){
                 </View>
 
                 <View style={{flexDirection: 'column', paddingBottom: 180}}>
+                    {data.phone ?
                     <TouchableWithoutFeedback onPress={() => call({number: data.phone, prompt: false})}>
                         <View style={[styles.box, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
@@ -88,8 +100,9 @@ export default function Ermak(props){
                             </View>
                             
                         </View>
-                    </TouchableWithoutFeedback>
+                    </TouchableWithoutFeedback> : null}
 
+                    {data.group_vk ? 
                     <TouchableWithoutFeedback onPress={() => Linking.openURL(data.group_vk)}>
                         <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
                             <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
@@ -99,7 +112,17 @@ export default function Ermak(props){
                                 <Text style={styles.buttonText}>{locale['group_vk']}</Text>
                             </View>
                         </View>
-                    </TouchableWithoutFeedback>
+                    </TouchableWithoutFeedback> : null}
+
+                    {data.email ?
+                    <TouchableWithoutFeedback onPress={() => Linking.openURL(`mailto:${data.email}?subject==&`)}>
+                    <View style={[styles.box, styles.centerContent, styles.shadow2, {flexDirection: 'row', backgroundColor: theme.blockColor}]}>
+                        <View style={{ width: w * 0.1, justifyContent: 'center', alignItems: 'center'}}>
+                            <Ionicons name="mail" size={24} color="rgb(115, 182, 28)" />
+                        </View>
+                        <Text style={styles.buttonText}>{locale['write_email']}</Text>
+                    </View>
+                </TouchableWithoutFeedback> : null}
 
                     {data.page_vk ?
                     <TouchableWithoutFeedback onPress={() => setVisible(!onVisible)}>

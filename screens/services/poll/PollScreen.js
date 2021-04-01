@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
         width: w,
         fontFamily: 'roboto',
         fontSize: 20,
-        color: '#5575A7',
+        color: '#006AB3',
         textAlign: 'left',
         paddingLeft: 20,
         marginTop: 20,

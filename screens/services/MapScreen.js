@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, ActivityIndicator, TouchableWithoutFeedback, Linking, ScrollView, Image } from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator, TouchableOpacity, Linking, ScrollView, Image } from 'react-native'
 import Header from '../../modules/Header'
 import { h, w } from '../../modules/constants'
 import {useLocale} from '../../locale/LocaleManager'
@@ -31,30 +31,26 @@ export default function MapScreen(props){
                         <Text style={[styles.head]}>{locale['educational_facilities_r']}</Text>
                         {buildings.map( map => {
                             if (map.coast === 1){
-                            return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.link)} key={map.name}>
-                                        <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
-                                            <View style={{ width: w * 0.1}}>
-                                                <Text style={[styles.number, {color: theme.labelColor}]}>{map.name}</Text>
-                                            </View>
-                                            <View style={{borderLeftWidth: 2, borderLeftColor: '#006AB3',}}>
-                                                <Text style={[styles.text, {color: theme.labelColor}]}>{map.type}{'\n'}{map.address}</Text>
-                                            </View>
+                            return(<TouchableOpacity style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]} onPress={() => Linking.openURL(map.link)} key={map.name}>
+                                        <View style={{ width: w * 0.1}}>
+                                            <Text style={[styles.number, {color: theme.labelColor}]}>{map.name}</Text>
                                         </View>
-                                    </TouchableWithoutFeedback>)
+                                        <View style={{borderLeftWidth: 2, borderLeftColor: '#006AB3',}}>
+                                            <Text style={[styles.text, {color: theme.labelColor}]}>{map.type}{'\n'}{map.address}</Text>
+                                        </View>
+                                    </TouchableOpacity>)
                             }})}
                     </View>
                     <View style={styles.left}>
                         <Text style={styles.head}>{locale['educational_facilities_l']}</Text>
                         {buildings.map( map => {
                             if (map.coast === 0){
-                            return(<TouchableWithoutFeedback onPress={() => Linking.openURL(map.link)} key={map.name}>
-                                        <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
-                                            <View style={{ width: w * 0.1}}>
-                                                <Text style={[styles.number, {color: theme.labelColor}]}>{map.name}</Text>
-                                            </View>
-                                            <Text style={[styles.text_left, {color: theme.labelColor}]}>{map.type}{'\n'}{map.address}</Text>
+                            return(<TouchableOpacity style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]} onPress={() => Linking.openURL(map.link)} key={map.name}>
+                                        <View style={{ width: w * 0.1}}>
+                                            <Text style={[styles.number, {color: theme.labelColor}]}>{map.name}</Text>
                                         </View>
-                                    </TouchableWithoutFeedback>)
+                                        <Text style={[styles.text_left, {color: theme.labelColor}]}>{map.type}{'\n'}{map.address}</Text>
+                                    </TouchableOpacity>)
                             }})}    
                     </View>
                 </View> : 

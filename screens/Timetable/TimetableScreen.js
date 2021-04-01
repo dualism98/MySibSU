@@ -9,38 +9,45 @@ import Swiper from 'react-native-swiper'
 
 import {useTheme} from '../../themes/ThemeManager'
 import {useLocale} from '../../locale/LocaleManager'
+import {useWeek} from '../../week/WeekManager'
 
 const URLs = ['group', 'teacher', 'place']
 
 
 export default function TimetableScreen(props){
+    const {mode, theme, toggle} = useTheme()
+    const {localeMode, locale, toggleLang} = useLocale()
+    const {week} = useWeek()
+
     const [group, setGroup] = useState(null)
     const [weekDay, setWeekDay] = useState('')
-    const [currentWeek, setCurrentWeek] = useState(global.week)
+    const [currentWeek, setCurrentWeek] = useState(getIndex())
     const [textGroup, setTextGroup] = useState('')
     const [timetable, setTimetable] = useState({even_week: [], odd_week: []})
     const [loaded, setLoaded] = useState(false)
-    const [index, setIndex] = useState(global.week)
+    const [index, setIndex] = useState(getIndex())
     const [first_dates, setFirstDates] = useState([])
     const [second_dates, setSecondDates] = useState([])
     const [timetableMode, setMode] = useState(0)
+    const [y, setY] = useState(0)
 
     const f_scrollViewRef = useRef()
     const s_scrollViewRef = useRef()
+    const swiper = useRef()
     
-    const {mode, theme, toggle} = useTheme()
-    const {localeMode, locale, toggleLang} = useLocale()
-    
-    useEffect(() => {
-        console.log('Определение группы')
-        AsyncStorage.getItem('@mode').then((mode) => setMode(mode))
-        AsyncStorage.getItem('@key').then((id) => setGroup(id))
-        AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
-    }, [group])
+    const didFocusSubscription = props.navigation.addListener(
+        'state',
+        payload => {
+            console.log('Определение группы')
+            AsyncStorage.getItem('@mode').then((mode) => setMode(mode))
+            AsyncStorage.getItem('@key').then((id) => setGroup(id))
+            AsyncStorage.getItem('@name').then((name) => setTextGroup(name))
+        }
+      );
 
     useEffect(() => {
         if(group !== null){
-            console.log('Получение расписания')
+            console.log('Получение расписания группы ' + textGroup )
             let uri = 'https://mysibsau.ru/v2/timetable/' + URLs[Number(timetableMode)] + '/' + String(group) + '/'
             console.log(uri)
             fetch(uri, {method: 'GET'})
@@ -53,6 +60,7 @@ export default function TimetableScreen(props){
                     }
                     return response.json()})
                 .then(json => {
+                    console.warn(json)
                     setTimetable(json)
                     setLoaded(true)})
                 .catch(err => console.log(err))
@@ -61,58 +69,46 @@ export default function TimetableScreen(props){
 
     useEffect(() => {
         console.log('Определение дат')
-        var first = []
-        var second = []
-            
-        if (currentWeek === 1) {
-            for (var i = 0; i <= new Date().getDay() - 1; i++){
-                first.push(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1 - i)))
-                first[i] = new Date(first[i])
-            }
-            for (var i = new Date().getDay(); i < 6; i++){
-                first.push(new Date().setDate(new Date().getDate() + (i - new Date().getDay() + 1)))
-                first[i] = new Date(first[i])
-            }
-            for (var i = 0; i < 6; i++){
-                var tmp = new Date(first[i])
-                second.push(tmp.setDate(tmp.getDate() + 7))
-                second[i] = new Date(second[i])
-            }
+        var d = new Date();
+        var day = d.getDay(),
+            diff = d.getDate() - day + (day == 0 ? -6:1)
+
+        var now_week = []
+        var next_week = []
+        var monday = new Date(d.setDate(diff))
+        now_week.push(monday)
+        for (var i = 1; i < 6; i++)
+            now_week.push(new Date(monday.getTime() + i * (24 * 60 * 60 * 1000)))
+
+        for (var i = 7; i < 13; i++)
+            next_week.push(new Date(monday.getTime() + i * (24 * 60 * 60 * 1000)))
+
+
+        if (currentWeek === 1){
+            setFirstDates(now_week)
+            setSecondDates(next_week)
         }
         else{
-            for (var i = 0; i <= new Date().getDay() - 1; i++){
-                second.push(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1 - i)))
-                second[i] = new Date(second[i])
-            }
-            for (var i = new Date().getDay(); i < 6; i++){
-                second.push(new Date().setDate(new Date().getDate() + (i - new Date().getDay() + 1)))
-                second[i] = new Date(second[i])
-            }
-            for (var i = 0; i < 6; i++){
-                var tmp = new Date(second[i])
-                first.push(tmp.setDate(tmp.getDate() + 7))
-                first[i] = new Date(first[i])
-            }
+            setFirstDates(next_week)
+            setSecondDates(now_week)
         }
-        setFirstDates(first)
-        setSecondDates(second)
     }, [group])
+
+    function getIndex(){
+        if (((new Date() - new Date(2020, 9, 12, 0, 0, 0, 0))/1000/60/60/24)%14 <= 7){
+            return 1
+        }
+        else
+            return 2
+    }
 
 
     useEffect(() => {
         console.log('Определяем день недели')
         let date = new Date()
         let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-
         setWeekDay(locale[days[date.getDay()]])
     }, [])
-
-    function getIndex(){
-        if (((new Date() - new Date(2020, 9, 12, 0, 0, 0, 0))/1000/60/60/24)%14 <= 7)
-            return 1
-        else
-            return 2
-    }
 
     function changeIndex(){
         index === 1 ? setIndex(2) : setIndex(1)
@@ -131,6 +127,7 @@ export default function TimetableScreen(props){
                 <View style={{flexDirection: 'row'}}>
                     <View style={{ width: 60, height: 40, alignItems: 'center', justifyContent: 'center'}}>
                         <TouchableOpacity onPress={() => {
+                            setTextGroup(''); setTimetable({even_week: [], odd_week: []}); setLoaded(false); setGroup(null)
                             AsyncStorage.removeItem('@key')
                             AsyncStorage.removeItem('@group')
                             props.navigation.navigate('SearchScreen')
@@ -145,7 +142,9 @@ export default function TimetableScreen(props){
                         fontFamily: 'roboto',
                         color: theme.headerTitle}]}>{textGroup}</Text>
                 </View>
-                <View style={[{
+                <TouchableOpacity onPress={() => {
+                    index === 1 ?
+                    swiper.current.scrollBy(1, true) : swiper.current.scrollBy(-1, true)}} style={[{
                                 height: w / 12,
                                 width: 100,
                                 alignItems: 'center',
@@ -168,8 +167,7 @@ export default function TimetableScreen(props){
                     <Text style={[{height: w/12, textAlignVertical: 'center', fontFamily: 'roboto',
                                 fontSize: 17,
                                 color: 'gray'}, {color: theme.headerTitle}]}>{index} {locale['week']}</Text>
-                </View>
-                
+                </TouchableOpacity>
             </View>
         )
     }
@@ -178,11 +176,11 @@ export default function TimetableScreen(props){
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
                 <StatusBar backgroundColor={theme.blockColor} barStyle={mode === 'light' ? 'dark-content' : 'light-content'}/>
                 <TimetableHeader />
-                <Swiper style={styles.wrapper} loop={false} index={currentWeek - 1} onIndexChanged={() => changeIndex()} showsPagination={false} >
+                <Swiper ref={swiper} style={styles.wrapper} loop={false} index={currentWeek - 1} onIndexChanged={() => changeIndex()} showsPagination={false} >
                 <ScrollView ref={f_scrollViewRef}>
                 {!loaded ? 
                         <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
-                            <ActivityIndicator size='large' color={"#0060B3"}/>
+                            <ActivityIndicator size='large' color={theme.blueColor}/>
                         </View> :
                     timetable.odd_week.map(item => {
                         const index = timetable.odd_week.indexOf(item)
@@ -191,17 +189,18 @@ export default function TimetableScreen(props){
                                 var date = new Date()
                                 if(date.getDay() - 1 === item.day && currentWeek === 1){
                                     const layout = event.nativeEvent.layout
+                                    setY(layout.y)
                                     f_scrollViewRef.current.scrollTo({x: 0, y: layout.y - 20, animated: true})
                                 }
                         }}>
-                        <Day day={item}  date={first_dates[index]} week={1} currentWeek={currentWeek} weekDay={weekDay} />
+                        <Day day={item} timetableMode={Number(timetableMode)} date={first_dates[index]} week={1} currentWeek={currentWeek} weekDay={weekDay} />
                     </View>
                 )})}
                 </ScrollView>
                 <ScrollView ref={s_scrollViewRef}>
                     {!loaded ?  
                         <View style={{ height: h - 140, alignItems: 'center', justifyContent: 'center'}}>
-                            <ActivityIndicator size='large' color={"#0060B3"}/>
+                            <ActivityIndicator size='large' color={theme.blueColor}/>
                         </View> :
                         timetable.even_week.map(item => {
                         const index = timetable.even_week.indexOf(item)
@@ -209,10 +208,11 @@ export default function TimetableScreen(props){
                             var date = new Date()
                             if(date.getDay() - 1 === item.day && currentWeek === 2){
                                 const layout = event.nativeEvent.layout
+                                setY(layout.y)
                                 s_scrollViewRef.current.scrollTo({x: 0, y: layout.y - 20, animated: true})
                             }
                         }}>
-                        <Day day={item} date={second_dates[index]} week={2} currentWeek={currentWeek} weekDay={weekDay}/>
+                        <Day day={item} timetableMode={Number(timetableMode)} date={second_dates[index]} week={2} currentWeek={currentWeek} weekDay={weekDay}/>
                     </View>) })}
                 </ScrollView>
             </Swiper>
@@ -237,21 +237,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingBottom: 0,
     },
-
-    changeText: {
-        fontSize: 20,
-        fontFamily: 'roboto',
-        color: '#006AB3',
-    },
-
-    loading: {
-        marginTop: 20,
-        fontSize: 20,
-        fontFamily: 'roboto',
-        color: '#006AB3',
-        alignSelf: 'center'
-    },
-
     shadow: elevationShadowStyle(5),
 
     

@@ -3,21 +3,28 @@ import {View, Text, StyleSheet} from 'react-native'
 import {h, w} from './constants'
 import {useTheme} from '../themes/ThemeManager'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
+import Hyperlink from 'react-native-hyperlink'
 
 const FAQModule = (data) => {
     const {mode, theme, toggle} = useTheme()
     const [show, setShow] = useState(false)
     return(
-        <TouchableWithoutFeedback onPress={() => {
-            setShow(!show)
-            if(!show)
-                fetch('https://mysibsau.ru/v2/support/faq/' + data.data.id + '/', {method: 'POST'})}}>
+        <>
             <View style={[styles.container, {backgroundColor: theme.blockColor}]}>
-                <Text style={styles.question}>{data.data.question}</Text>
+                <TouchableWithoutFeedback onPress={() => {
+                setShow(!show)
+                if(!show)
+                    fetch('https://mysibsau.ru/v2/support/faq/' + data.data.id + '/', {method: 'POST'})}}>
+                    <Text style={styles.question}>{data.data.question}</Text>
+                </TouchableWithoutFeedback>
                 {show ? 
-                <Text style={[styles.answer, {color: theme.labelColor}]}>{data.data.answer}</Text> : null}
+                <Hyperlink linkStyle={ { color: theme.blueColor, fontSize: 16, } }
+                linkDefault>
+                    <Text style={[styles.answer, {color: theme.labelColor}]}>{data.data.answer}</Text>
+                </Hyperlink> : null}
             </View>
-        </TouchableWithoutFeedback>
+        
+        </>
         
     )
 }

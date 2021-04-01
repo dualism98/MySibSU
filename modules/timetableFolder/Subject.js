@@ -8,36 +8,35 @@ import { useLocale } from '../../locale/LocaleManager'
 
 
 
-const Subject = (data) =>{
+const Subject = ({data, timetableMode}) =>{
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
-
+    console.log(timetableMode)
     const types = ['', [locale['lecture'], '#ef8531'], 
                 [locale['laboratory_work'], 'rgb(190, 175, 85)'], 
                 [locale['practice'], 'rgb(49, 151, 39)']]
     
     const subgroups = ['', locale['first_subgroup'], locale['second_subgroup']]
-    
-    
     return(
         <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>
-            {data.data !== 'Нет пар' ? 
+            {data !== 'Нет пар' ? 
             <View>
-                <Text style={[styles.time, {color: theme.labelColor}]}>{data.data.time}</Text>
-                {data.data.subgroups.map(item => {
+                <Text style={[styles.time, {color: theme.labelColor}]}>{data.time}</Text>
+                {data.subgroups.map(item => {
                     return(
                         <View key={item.teacher + item.place}>
                             <View style={styles.line}></View>
                             {
-                                (item.num !== 0) ? <Text style={{fontSize: 12,
+                                (item.num !== 0) ? <Text style={{fontSize: 14,
                                     fontFamily: 'roboto',
                                     color: 'rgb(154,158,159)',
                                     marginBottom: -5, marginRight: 10}}>{subgroups[Number(item.num)]}</Text> : <View></View>
                             }
-                            <Text style={styles.subject}>{item.name}</Text>
-                            <Text style={styles.type, {color: String(types[Number(item.type)][1])}}>{types[Number(item.type)][0]}</Text>
-                            <Text style={styles.professor}>{item.teacher}</Text>
-                            <Text style={styles.place}>{item.place}</Text>
+                            <Text style={[styles.subject, {color: theme.blueColor}]}>{item.name}</Text>
+                            <Text style={styles.type, {color: String(types[Number(item.type)][1]), fontSize: 16}}>{types[Number(item.type)][0]}</Text>
+                            {timetableMode !== 1 ? <Text style={styles.professor}>{item.teacher}</Text> : null}
+                            {timetableMode !== 0 ? <Text style={[styles.professor, timetableMode !== 1 ? {marginBottom: 3, marginTop: 3} : null]}>{item.group}</Text> : null}
+                            {timetableMode !== 2 ? <Text style={styles.place}>{item.place}</Text> : null}
                         </View>
                     )
                 })} 
@@ -87,27 +86,25 @@ const styles = StyleSheet.create({
 
     subject: {
         marginTop: 4,
-        fontSize: 15,
-        color: '#5575A7',
+        fontSize: 16,
         fontFamily: 'roboto',
         fontWeight: 'bold'
     },
 
     type: {
         fontSize: 18,
-        color: 'rgb(125, 199, 28)',
         fontFamily: 'roboto',
     },
 
     professor: {
-        fontSize: 15,
+        fontSize: 16,
         fontFamily: 'roboto',
         color: 'rgb(154,158,159)',
         marginBottom: -5
     },
 
     place: {
-        fontSize: 15,
+        fontSize: 16,
         color: 'gray',
         fontFamily: 'roboto',
         width: w * 0.82,

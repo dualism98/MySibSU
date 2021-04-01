@@ -10,10 +10,10 @@ const Header = ({title, onPress}) => {
         <View style={[styles.box, styles.shadow2, {backgroundColor: theme.blockColor}]}>
             <TouchableOpacity onPress={onPress}>
                 <View style={{ height: w / 8 , justifyContent: 'center'}}>
-                  <Ionicons name="ios-arrow-back" size={30} color="black" style={{ color: '#006AB3', paddingRight: 10, paddingLeft: 15}}/>
+                  <Ionicons name="ios-arrow-back" size={30} style={{ color: theme.blueColor, paddingRight: 10, paddingLeft: 15}}/>
                 </View>
             </TouchableOpacity>
-            <Text style={[styles.maintext, {color: theme.headerTitle}]}>{title}</Text>
+            <Text numberOfLines={1} style={[styles.maintext, {color: theme.headerTitle}]}>{title}</Text>
         </View>
     )
 }
@@ -30,13 +30,13 @@ function elevationShadowStyle(elevation) {
 
 const styles = StyleSheet.create({
     maintext: {
+        width: w * 0.75,
         height: w / 8,
         fontSize: 25,
         color: 'gray',
         textAlignVertical: 'center',
         marginLeft: 10,
         fontFamily: 'roboto',
-        textAlign: 'center',
       },
 
     shadow2: elevationShadowStyle(5),

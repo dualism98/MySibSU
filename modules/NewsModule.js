@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, Image, TouchableWithoutFeedback, Linking, StyleSheet} from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { h, w } from './constants'
-import {useTheme} from '../themes/ThemeManager'
 import {useLocale} from '../locale/LocaleManager'
+import {useTheme} from '../themes/ThemeManager'
+import { h, w } from './constants'
+import Hyperlink from 'react-native-hyperlink'
 
 const url = 'https://mysibsau.ru'
 
-const NewsModule = ({data}) => {
+const EventModule = ({data}) => {
     const [mode, setMode] = useState(false)
-    const {theme, toggle} = useTheme()
+    const {themeMode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
 
     const stringLinkRegex = 'https?://(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,4}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)'
     const regex = '\\[(.*?)\\]\\(\(stringLinkRegex)\\)'.replace('stringLinkRegex', stringLinkRegex)
-    
+    console.log(data)
     let text = data.text
     let links = []
 
@@ -44,51 +45,46 @@ const NewsModule = ({data}) => {
     let coef = 1
     if (data.images.length !== 0)
         coef = data.images[0].height/data.images[0].width
-
+        
     return(
-        <View style={{ width: w, backgroundColor: 'transparent', alignItems: 'center', marginBottom: 20, marginTop: 20}}>
             <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}> 
-                <ScrollView nestedScrollEnabled = {true}>
-                    {
-                        data.images.length !== 0 ? <Image style={{width: w * 0.9, height: w * 0.9 * coef,  borderRadius: 15}}
-                        source={{ uri: url + data.images[0].url }} /> : null
-                    }
-                
+                {data.images.length !== 0 ? <Image style={{width: w * 0.9, height: w * 0.9 * coef,  borderRadius: 15}}
+                    source={{ uri: url + data.images[0].url }} /> : null}
                 <View> 
-                        {String(data.text).length >= 100 && mode === false ? 
+                        {String(text).length >= 100 && mode === false ? 
                         <View>
-                        <Text style={{width: w * 0.85, padding: 15, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16, color: '#006AB3'}}>{data.text.slice(0, 100)}...</Text>
+                            <Hyperlink linkStyle={ { color: theme.blueColor, fontSize: 16 } }
+                            linkText={ url => setLink(url)}>
+                                <Text numberOfLines={3} style={{width: w * 0.85, color: theme.labelColor, padding: 5, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16}}>{text}</Text>
+                            </Hyperlink>
                         <View>
                             <TouchableWithoutFeedback onPress={() => {
+                                fetch('https://mysibsau.ru/v2/informing/view/' + data.id + '')
+                                    .then(res => console.log(res))
                                 setMode(!mode)
                             }}>
-                                <Text style={{ fontFamily: 'roboto', fontSize: 16, color: '#006AB3', marginLeft: 25}}>{locale['read_more']}</Text>
+                                <Text style={{ fontFamily: 'roboto', fontSize: 16, color: 'gray', marginLeft: 15}}>{locale['read_more']}</Text>
                             </TouchableWithoutFeedback>
                         </View>
                         </View>
                         : 
                         <View>
-                            <Text style={{width: w * 0.85, padding: 15, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16, color: '#006AB3'}}>{data.text}</Text>
-                            {/* {data.links.map(item => {
-                                return(
-                                    <TouchableWithoutFeedback onPress={() => Linking.openURL(item.link)}>
-                                        <Text style={{width: w * 0.85, padding: 15, paddingTop: 0, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16, color: '#006AB3', textDecorationLine: 'underline'}}>{item.name}</Text>
-                                    </TouchableWithoutFeedback>
-                                )
-                            })} */}
+                            <Hyperlink linkStyle={ { color: theme.blueColor, fontSize: 16, } }
+                            linkDefault
+                            linkText={ url => setLink(url)}
+                            >
+                                <Text style={{width: w * 0.85, padding: 5, alignSelf: 'center', fontFamily: 'roboto', fontSize: 16, color: theme.labelColor}}>{text}</Text>
+                            </Hyperlink>
                             <View>
-                                {String(data.text).length >= 100 ? 
+                                {String(text).length >= 100 ? 
                                 <TouchableWithoutFeedback onPress={() => {setMode(!mode)}}>
-                                    <Text style={{ fontFamily: 'roboto', fontSize: 16, color: '#006AB3', marginLeft: 25}}>{locale['hide']}</Text>
+                                    <Text style={{ fontFamily: 'roboto', fontSize: 16, color: 'gray', marginLeft: 15}}>{locale['hide']}</Text>
                                 </TouchableWithoutFeedback> : null}
                             </View>
                         </View>
                         }
                 </View>
-                </ScrollView>
             </View>
-        </View>
-        
     )
 }
 function elevationShadowStyle(elevation) {
@@ -109,10 +105,12 @@ const styles = StyleSheet.create({
         width: w * 0.9, 
         flexDirection: 'column',
         paddingBottom: 10,
+        alignSelf: 'center',
+        marginTop: 20,
     },
     centerContent: {
         alignItems: 'center'
     },
 })
 
-export default NewsModule
+export default EventModule

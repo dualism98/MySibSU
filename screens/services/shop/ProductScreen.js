@@ -9,16 +9,26 @@ export default function ProductScreen(props){
     const {mode, theme, toggle} = useTheme()
     const {localeMode, locale, toggleLang} = useLocale()
 
-    let item = props.route.params.item
+    let item = props.route.params.data
+    console.log(item)
     return(
         <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
             <Header title={locale['online_catalog']} onPress={() => props.navigation.goBack()}/>
-            <ScrollView>
-                <Image source={{uri: item.image}} style={styles.image}/>
-                <Text style={styles.name}>{item.name}</Text>
-                <Text style={[styles.name, {marginTop: 10}]}>{locale['price']}: {item.price}₽</Text>
-                <Text style={styles.name}>{locale['description']}:</Text>
-                <Text style={styles.description}>{String(item.description)}</Text>
+            <ScrollView contentContainerStyle={{paddingBottom: 120}}>
+                <Image source={{uri: `https://mysibsau.ru/${item.logo}`}} style={{width: w, height: w, resizeMode: 'contain',}}/>
+                <Text style={{fontFamily: 'roboto', fontWeight: 'bold', fontSize: 20, color: '#006AB3', marginLeft: w * 0.05}}>{locale['name']}</Text>
+                <View style={{width: w * 0.9, borderRadius: 15, backgroundColor: theme.blockColor, elevation: 6, alignSelf: 'center', padding: 10, marginTop: 10}}>
+                    <Text style={styles.name}>{item.name}</Text>
+                </View>
+
+                <Text style={{fontFamily: 'roboto', fontWeight: 'bold', fontSize: 20, color: '#006AB3', marginLeft: w * 0.05, marginTop: 20}}>{locale['place']}</Text>
+                <View style={{width: w * 0.9, borderRadius: 15, backgroundColor: theme.blockColor, elevation: 6, alignSelf: 'center', padding: 10, marginTop: 10}}>
+                    <Text style={[styles.name, {alignSelf: 'flex-start'}]}>{item.theatre}</Text>
+                </View>
+
+                <TouchableOpacity onPress={() => props.navigation.navigate('Concerts', {id: item.id})} style={{width: w * 0.9, padding: 20, backgroundColor: '#006AB3', borderRadius: 15, alignSelf: 'center', marginTop: 30, elevation: 5}}>
+                    <Text style={{ fontFamily: 'roboto', fontWeight: 'bold', fontSize: 18, alignSelf: 'center', color: 'white'}}>{locale['book_a_ticket']}</Text>
+                </TouchableOpacity>
             </ScrollView>
         </View>
     )
@@ -28,29 +38,17 @@ export default function ProductScreen(props){
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        justifyContent: 'center',
         backgroundColor: 'white',
         minHeight: h,
         flex: 1,
         width: w,
-        paddingBottom: 40
-    },
-
-    image: {
-        width: w - 40,
-        height: w - 40,
-        resizeMode: 'contain',
-        marginTop: 20,
-        borderRadius: 15,
-        alignSelf: 'center'
     },
 
     name: {
-        marginTop: 30,
         fontSize: 20,
         fontFamily: 'roboto',
-        color: '#5575A7',
-        marginLeft: 20
+        color: '#006AB3',
+        alignSelf: 'center'
     },
 
     description: {

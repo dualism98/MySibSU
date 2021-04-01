@@ -8,11 +8,9 @@ const ListElement = ({onPress, title, prop}) => {
     const {mode, theme, toggle} = useTheme()
 
     return(
-        <TouchableOpacity onPress={onPress}>
-           <View style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]}>
-                <Text style={styles.text} >{title}</Text>
-                <Text style={styles.down} >{prop}</Text>
-            </View>
+        <TouchableOpacity style={[styles.box, styles.centerContent, styles.shadow2, {backgroundColor: theme.blockColor}]} onPress={onPress}>
+          <Text style={[styles.text, {color: theme.blueColor}]} >{title}</Text>
+          <Text style={[styles.down, {color: theme.blueColor}]} >{prop}</Text>
         </TouchableOpacity>
     );
 }

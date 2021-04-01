@@ -1,5 +1,9 @@
 
 export const ThemeColors = {
+    blueColor: {
+        light: '#006AB3',
+        dark: '#006AB3',
+    },
     primaryText: {
        light: 'black',
        dark: 'white',

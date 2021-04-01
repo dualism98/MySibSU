@@ -1,16 +1,40 @@
-import React, { useState, useEffect, setState } from 'react'
-import {AsyncStorage, View, Text} from 'react-native'
-import HomeScreen from './screens/HomeScreen'
+/* eslint-disable react-native/no-inline-styles */
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
+import React, { useState, useEffect } from 'react'
+import {AsyncStorage, Text} from 'react-native'
+import Navigation from './screens/HomeScreen'
 import AppLoading from 'expo-app-loading'
 import { useFonts } from '@use-expo/font'
 import { AppearanceProvider } from 'react-native-appearance'
 import { ThemeManager } from './themes/ThemeManager'
 import { LocaleManager } from './locale/LocaleManager'
+import WeekManager from './week/WeekManager'
+
 
 function App(){
 
   Text.defaultProps = Text.defaultProps || {};
   Text.defaultProps.allowFontScaling = false; 
+
+  const [firstLaunch, setFirstLaunch] = useState(null)
+  // const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    AsyncStorage.getItem("alreadyLaunched").then(value => {
+      if(value == null){
+           AsyncStorage.setItem('alreadyLaunched', "true");
+           setFirstLaunch(true)
+      }
+      else
+           setFirstLaunch(false)
+    })
+  }, [])
 
   // Устанавливаем кастомный шрифт, который лежит в ./assets/fonts/
   let [fontsLoaded] = useFonts({
@@ -18,7 +42,7 @@ function App(){
   });
 
   // Если шрифты еще не были установлены, продолжаем загружать приложение
-  if (!fontsLoaded) {
+  if (!fontsLoaded || firstLaunch === null) {
     return <AppLoading />;
   }
 
@@ -41,18 +65,16 @@ function App(){
         AsyncStorage.setItem('@mode', '0')
     })
 
-  
-  
-  console.log("GLOBAL: ", global.week)
-
   return (
-    <AppearanceProvider>
-      <LocaleManager>
-        <ThemeManager>
-          <HomeScreen />
-        </ThemeManager>
-      </LocaleManager>
-    </AppearanceProvider>  
+    <WeekManager>
+      <AppearanceProvider>
+        <LocaleManager>
+          <ThemeManager>
+            <Navigation firstLaunch={firstLaunch}/>
+          </ThemeManager>
+        </LocaleManager>
+      </AppearanceProvider> 
+    </WeekManager> 
   )
 }
 

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import {View, Text, StyleSheet, ScrollView, AsyncStorage } from 'react-native'
+import {View, Text, StyleSheet, ScrollView, AsyncStorage, Appearance } from 'react-native'
 import Header from '../../modules/Header'
 import { h, w } from '../../modules/constants'
 import LangElem from '../../modules/LangElem'
 import { useTheme } from '../../themes/ThemeManager'
 import SwitchSelector from "react-native-switch-selector";
-import { Appearance } from 'react-native-appearance'
 import {useLocale} from '../../locale/LocaleManager'
+import { TouchableOpacity } from 'react-native'
 
 export default function SettingsScreen(props){ 
     const { mode, theme, toggle } = useTheme();
@@ -28,7 +28,8 @@ export default function SettingsScreen(props){
                 if (colorScheme !== 'light' && colorScheme !== 'dark'){
                     mode === 'dark' ? toggle() : null
                 }
-                // mode === colorScheme ? null : toggle()
+                else if (mode !== colorScheme)
+                    toggle()
                 break
             case 'light':
                 AsyncStorage.setItem('Theme', 'Light')
@@ -47,42 +48,47 @@ export default function SettingsScreen(props){
             toggleLang()
         }
     }
-  
-    return(
-        <View style={{ backgroundColor: theme.primaryBackground}}>
-            <Header title={locale['settings']} onPress={() => props.navigation.goBack()}/>
-            {/* {loaded ? */}
-            <ScrollView>
-                <View style={{ minHeight: h, backgroundColor: theme.primaryBackground}}>
-                    <Text style={styles.large_text}>{locale['choose_lang']}</Text>
-                    <View style={[styles.container, styles.shadow, {alignItems: 'center', minHeight: 50, backgroundColor: theme.blockColor}]}>
-                        {langs.map(item => {
-                            let first = langs.indexOf(item) === 0
-                            return(<LangElem name={item.name} current={localeMode === item.short_name} first={first} onPress={() => {
-                                AsyncStorage.setItem('Locale', item.short_name)
-                                changeLang(item.short_name)
-                            }}/>)
-                        })}
-                    </View>
 
-                    <Text style={styles.large_text}>{locale['choose_theme']}</Text>
-                    <View style={[styles.container, styles.shadow, {backgroundColor: theme.blockColor}]}>
-                    <SwitchSelector
-                        options={themes}
-                        initial={scheme}
-                        borderRadius={15}
-                        buttonColor={'#006AB3'}
-                        textStyle={{fontFamily: 'roboto', color: theme.headerTitle}}
-                        selectedTextStyle={{fontFamily: 'roboto'}}
-                        backgroundColor={theme.blockColor}
-                        onPress={value => changeTheme(value)}
-                        />
-                    </View>
+    return(
+        <View style={{ flex: 1, backgroundColor: theme.primaryBackground}}>
+            <Header title={locale['settings']} onPress={() => props.navigation.goBack()}/>
+            <View style={{ flex: 1, backgroundColor: theme.primaryBackground}}>
+                <Text style={styles.large_text}>{locale['choose_lang']}</Text>
+                <View style={[styles.container, styles.shadow, {alignItems: 'center', minHeight: 50, backgroundColor: theme.blockColor}]}>
+                    {langs.map(item => {
+                        let first = langs.indexOf(item) === 0
+                        return(<LangElem name={item.name} current={localeMode === item.short_name} first={first} onPress={() => {
+                            AsyncStorage.setItem('Locale', item.short_name)
+                            changeLang(item.short_name)
+                        }}/>)
+                    })}
                 </View>
-            </ScrollView>
-            {/* <View>
-                <ActivityIndicator size={'large'} color={'006AB3'} />   
-            </View>}       */}
+                <Text style={styles.large_text}>{locale['choose_theme']}</Text>
+                <View style={[styles.container, styles.shadow, {backgroundColor: theme.blockColor}]}>
+                <SwitchSelector
+                    options={themes}
+                    initial={scheme}
+                    borderRadius={15}
+                    buttonColor={'#006AB3'}
+                    textStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center', color: theme.headerTitle}}
+                    selectedTextStyle={{fontFamily: 'roboto', height: 40, textAlignVertical: 'center',}}
+                    backgroundColor={theme.blockColor}
+                    onPress={value => changeTheme(value)}
+                    />
+                </View>
+                <Text style={{ width: w * 0.9, alignSelf: 'center', color: 'gray', fontSize: 12, fontFamily: 'roboto', marginTop: 15}}>{locale['color_settings']}</Text>
+                {Object.keys(props.route.params.user).length !== 0 ?
+                <TouchableOpacity style={{padding: 10, width: w * 0.4, alignSelf: 'center', marginTop: 20, borderRadius: 15, elevation: 5, backgroundColor: theme.blockColor}} onPress={() => {
+                    console.log('out')
+                    AsyncStorage.removeItem('User')
+                    AsyncStorage.removeItem('AuthData')
+                    props.navigation.navigate('Account')
+                }}>
+                    <Text style={{alignSelf: 'center', color: '#EE7575', fontWeight: 'bold', fontFamily: 'roboto',}}>{locale['sign_out']}</Text>
+                </TouchableOpacity> : null}
+                <Text style={{fontFamily: 'roboto', alignSelf: 'center', color: 'gray', position: 'absolute', bottom: 60}}>{locale['version']}: 2.0.0</Text>
+                
+            </View>
         </View>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, ActivityIndicator, RefreshControl } from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator, BackHandler, Alert } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import ActiveElement from '../../../modules/ActiveElement'
 import Header from '../../../modules/Header'
@@ -23,16 +23,28 @@ export default function ActiveScreen(props){
             .catch(err => console.log(err))
     }, [loaded])
 
+    useEffect(() => {
+        const backAction = () => {
+          props.navigation.navigate('Service')
+          return true;
+        };
+    
+        const backHandler = BackHandler.addEventListener(
+          "hardwareBackPress",
+          backAction
+        );
+    
+        return () => backHandler.remove();
+      }, []);
+
     return(
-        <View style={[styles.container, {backgroundColor: theme.primaryBackground}]}>
-            <Header title={locale['student_life']} onPress={() => props.navigation.goBack()}/>
-            <ScrollView>
-                <View style={styles.main}>
-                    {loaded ? 
-                    unions.map( item => {
-                        return(<ActiveElement onPress={() => props.navigation.navigate('Ermak', {data: item})} title={item.name} source={item.logo} key={item[0]} />)
-                    }) : <ActivityIndicator size='large' color='#0060B3' />}   
-                </View>
+        <View style={{flex: 1, backgroundColor: theme.primaryBackground}}>
+            {/* <Header title={locale['student_life']} onPress={() => props.navigation.goBack()}/> */}
+            <ScrollView contentContainerStyle={{paddingBottom: 120}}>
+                {loaded ? 
+                unions.map( item => {
+                    return(<ActiveElement onPress={() => props.navigation.navigate('Ermak', {data: item})} title={item.name} source={item.logo} key={item[0]} />)
+                }) : <View style={{height: h, justifyContent: 'center', paddingBottom: 120}}><ActivityIndicator size='large' color='#0060B3' /></View>}   
             </ScrollView>
         </View>
     )
@@ -42,8 +54,6 @@ const styles = StyleSheet.create({
     main: {
         paddingBottom: 150, 
         width: w,
-        minHeight: h,
-        justifyContent: 'center'
     },
 
     text: {
